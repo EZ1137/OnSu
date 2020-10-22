@@ -22,6 +22,8 @@
   --font-regular: 18px;
   --font-small: 16px;
   --font-micro: 14px;
+  
+   --border-radi:2px;
 }
 * {
   margin: 0px;
@@ -32,10 +34,12 @@
 .first {
   width: 100%;
   height: 100vh;
-  background-color: var(--color-light-blue);
+  background-image: url("../img/bg1.jpg"); 
   border: 1px solid red;
   display: flex;
   flex-direction: column;
+  background-repeat : no-repeat;
+
 }
 .first-wrapper {
   width: 100%;
@@ -68,49 +72,9 @@
 .second {
   width: 100%;
   height: 100vh;
-  background-color: var(--color-blue);
+  background-color: var(--color-light-grey);
   z-index: 0;
   border: 2px solid yellow;
-}
-
-.second-area-01 {
-  width: 35%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: var(--font-regular);
-}
-
-.second-area-02 {
-  width: 65%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-content: space-around;
-  font-size: var(--font-small);
-}
-
-.second-area-03 {
-  width: 35%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: var(--font-micro);
-}
-
-.second-area-04 {
-  width: 35%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: var(--font-medium);
 }
 
 .second-menu-wrapper {
@@ -144,22 +108,37 @@
 
 /*Scroll*/
 .arrow-up {
-  position: fixed;
-  bottom: 50px;
-  right: 50px;
-  width: 50px;
-  height: 50px;
-  font-size: 30px;
-  color: grey;
-  background-color: transparent;
-  border-radius: 50%;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 300ms ease-in;
-  z-index: 9999;
+	position: fixed;
+	bottom: 50px;
+	right: 50px;
+	width: 50px;
+	height: 50px;
+	font-size: 30px;
+	color: var(--color-black);
+	background-color: transparent;
+	border-radius: 50%;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 300ms ease-in;
+	z-index: 9999;
 }
 
 .arrow-up.visible {
-  opacity: 1;
-  pointer-events: auto;
+	opacity: 1;
+	pointer-events: auto;
+}
+
+header {
+	
+	width: 100%;
+	height: 80px;
+	position: fixed;
+	z-index: 1;
+	transition: all 300ms ease;
+}
+
+/* header 스크롤시  컬러 변경용 */
+#header.header--dark {
+	background-color: var(--color-blue);
+	opacity: 1;
 }
