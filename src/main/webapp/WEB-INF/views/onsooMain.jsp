@@ -29,24 +29,94 @@
 			<p class="maintext">font-medium /Lorem ipsum dolor sit amet,
 				consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
 				labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-				exercit</p>
-
+				exercit
+			</p>
 		</div>
-		<div class="second-wrapper"></div>
-<div>
 	</section>
 	<!-- class -->
 	<section class="section second area">
-		<div class="second-wrapper-01">강의 소개</div>
+		<div class="vod_cards_title">
+			<p>동영상 강의</p>
+		</div>
+		<div class="more_btn">
+			<a href="#">더 보기</a>
+		</div>
+		<div class="class_row">
+			<div class="class_card">
+				<div class="class_title">
+					class_title
+				</div>
+				<div class="class_info">
+					class_info
+				</div>
+			</div>
+			<div class="class_card">
+				<div class="class_title">
+					class_title
+				</div>
+				<div class="class_info">
+					class_info
+				</div>
+			</div>
+			<div class="class_card">
+				<div class="class_title">
+					class_title
+				</div>
+				<div class="class_info">
+					class_info
+				</div>
+			</div>
+			<div class="class_card">
+				<div class="class_title">
+					class_title
+				</div>
+				<div class="class_info">
+					class_info
+				</div>
+			</div>
+		</div><div class="class_row">
+			<div class="class_card">
+				<div class="class_title">
+					class_title
+				</div>
+				<div class="class_info">
+					class_info
+				</div>
+			</div>
+			<div class="class_card">
+				<div class="class_title">
+					class_title
+				</div>
+				<div class="class_info">
+					class_info
+				</div>
+			</div>
+			<div class="class_card">
+				<div class="class_title">
+					class_title
+				</div>
+				<div class="class_info">
+					class_info
+				</div>
+			</div>
+			<div class="class_card">
+				<div class="class_title">
+					class_title
+				</div>
+				<div class="class_info">
+					class_info
+				</div>
+			</div>
+		</div>
 	</section>
 	<section class="section third area">
-		<div class="third-wrapper-01">best 강의</div>
+		<div class="third-wrapper">best 강의</div>
 	</section>
 	<section class="section fourth area">
-		<div class="fourth-wrapper-01">강사가 되고싶으신가요?</div>
+		<div class="fourth-wrapper">강사가 되고싶으신가요?</div>
 	</section>
 	<section class="section fifth area">
-		<div class="fifth-wrapper-01">
+		<div class="fifth-wrapper">
 		do you need help?</div>
 	</section>
 

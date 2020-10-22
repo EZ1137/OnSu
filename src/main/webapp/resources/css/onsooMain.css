@@ -73,14 +73,72 @@
 .second {
   width: 100%;
   height: 100vh;
-  background-color: var(--color-light-grey);
+  background-color: var(--color-white);
   z-index: 0;
   border: 2px solid yellow;
 }
 
-.second-menu-wrapper {
+.second-wrapper {
   display: flex;
   justify-content: space-around;
+}
+
+.vod_cards_title {
+	margin: 100px auto 10px auto;
+	padding-top: 10px;
+	width: 70%;
+	height: 50px;
+	float: center;
+	background-color: var(--color-light-white);
+	filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.1));
+	border-radius: 10px;
+}
+
+.vod_cards_title > p {
+	font-size: var(--font-medium);
+	font-weight: bold;
+	text-align: center;
+	color: var(--color-dark-blue);
+}
+
+.more_btn {
+	width: 70%;
+	float: center;
+}
+
+.more_btn > a {
+	text-align: right;
+	font-size: var(--font-micro);
+}
+
+.class_row {
+	padding: 0 15% 0 15%;
+	margin: 10px auto 20px auto;
+	display: flex;
+}
+
+.class_card {
+	width: 200px;
+	height: 190px;
+	margin: auto;
+	background-color: var(--color-white);
+	border-radius: 10px;
+	filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.1));
+}
+
+.class_title {
+	font-size: var(--font-small);
+	margin-top: 100px;
+	height: 30px;
+	width: 100%;
+	border: 1px solid black;
+}
+
+.class_info {
+	font-size: var(--font-micro);
+	width: 100%;
+	height: 60px;
+	border: 1px solid black;
 }
 
 .third {
@@ -130,7 +188,6 @@
 }
 
 header {
-	
 	width: 100%;
 	height: 80px;
 	position: fixed;
