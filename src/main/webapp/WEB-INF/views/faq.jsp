@@ -4,8 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>On:Soo - FAQ</title>
 <link href="${pageContext.request.contextPath}/resources/css/faq.css" rel="stylesheet" >
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 
@@ -35,7 +36,7 @@
 	
 		<div class="faq_box">
 			<div class="faq_title">
-				<p>Q. Lorem ipsum dolor sit amet,</p>
+				<p>Q. 강사 등록은 어떻게 하나요?</p>
 			</div>
 			<div class="faq_content">
 				<p>
@@ -54,7 +55,7 @@
 	
 		<div class="faq_box">
 			<div class="faq_title">
-				<p>Q. Lorem ipsum dolor sit amet,</p>
+				<p>Q. 결제는 어떻게 되나요?</p>
 			</div>
 			<div class="faq_content">
 				<p>

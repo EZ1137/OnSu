@@ -11,10 +11,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class MainController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
-	
+
 	@RequestMapping(value = "/faq.do", method = RequestMethod.GET)
 	public String faq(Model model) {			
 		return "faq";
+	}
+	
+	@RequestMapping(value = "/contact.do", method = RequestMethod.GET)
+	public String contact(Model model) {			
+		return "contact";
 	}
 }
 
