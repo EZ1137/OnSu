@@ -12,15 +12,9 @@ public class MainController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
-	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
-	public String home(Model model) {			
-		return "onsooMain";
-	}	
-	
 	@RequestMapping(value = "/faq.do", method = RequestMethod.GET)
 	public String faq(Model model) {			
 		return "faq";
 	}
-		
 }
 
