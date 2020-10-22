@@ -1,0 +1,136 @@
+/** @format */
+:root {
+  /* Color */
+  --color-white: #ffffff;
+  --color-light-white: #f7f7ff;
+  --color-black: #000000;
+
+  --color-blue: #577399;
+  --color-light-blue: #bdd5ea;
+  --color-dark-blue: #495867;
+  --color-red: #fe5f55;
+  --color-light-grey: #7c7979;
+
+  --color-yellow: #fff7d1;
+  --color-orange: #feb546;
+
+  /*Font size*/
+
+  --font-large: 48px;
+  --font-medium: 28px;
+  --font-regular: 18px;
+  --font-small: 16px;
+  --font-micro: 14px;
+  
+  --border-radi:2px;
+}
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+/*헤더 전체*/
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  text-decoration:none;
+  list-style:none;
+}
+
+header {
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+  border:2px solid blue; 
+}
+
+/* 헤더 */
+.wrapper {
+  height: 50px;
+  display: flex;
+  flex-direction:row;
+  justify-content: space-between;
+   
+  
+}
+
+/*페이지 이름*/
+.wrapper #header-bar {
+  display: flex;
+  cursor: pointer;
+  font-weight: bold;
+  font-size:var(--font-medium);
+  align-content:center;
+  border: 1px solid white;
+}
+
+
+
+#searchzone{
+	display:flex;
+	
+}
+
+.wrapper #header-bar span {
+  display: block;
+  font-size: --font-medium;
+  margin-left: 10px;
+  margin: auto;
+  letter-spacing: 10px;
+ 
+}
+
+.wrapper a {
+  text-decoration: none;
+
+}
+
+nav{
+	display:flex;
+}
+
+.header-menu{
+	display:flex;
+	flex-direction:row;
+}
+
+
+.login button {
+  /*로그인*/
+  background-color: var(--color-red);
+  color: black;
+  border: none;
+  border-radius: var(--border-radi);
+  padding: 5px 20px;
+  margin: 5px 10px 5px 0px;
+  
+}
+
+.login button:hover {
+  border: none;
+  background-color:var(--color-light-white); 
+  color: white;
+ 
+}
+
+.regist button {
+  /*register*/
+  background-color: #b5b5b5;
+  color: var(--color-blue);
+  border: none;
+  border-radius: var(--border-radi);
+  padding: 5px 15px;
+  margin: 5px 10px 5px 0px;
+ 
+}
+
+.regist button:hover {
+  border: none;
+  background-color: var(--color-orange);
+  color: white;
+  
+}
+
