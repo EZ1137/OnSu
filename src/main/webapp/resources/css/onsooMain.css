@@ -1,6 +1,7 @@
 /** @format */
 
 :root {
+	font-family: 'IBM Plex Sans', sans-serif;
   /* Color */
   --color-white: #ffffff;
   --color-light-white: #f7f7ff;
