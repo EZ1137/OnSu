@@ -15,7 +15,7 @@ import com.kh.onsoo.admin.model.dto.AdminDto;
 public class AdminDaoImpl implements AdminDao {
 	
 	@Autowired
-	private SqlSessionTemplate sqlSession;
+	//private SqlSessionTemplate sqlSession;
 	
 	private Logger logger = LoggerFactory.getLogger(AdminDaoImpl.class);
 	
@@ -24,7 +24,7 @@ public class AdminDaoImpl implements AdminDao {
 		List<AdminDto> list = new ArrayList<AdminDto>();
 		
 		try {
-			list = sqlSession.selectList(NAMESPACE + "selectList");
+			//list = sqlSession.selectList(NAMESPACE + "selectList");
 		} catch (Exception e) {
 			logger.info("AdminDaoImpl selectList[error]");
 			e.printStackTrace();
@@ -38,7 +38,7 @@ public class AdminDaoImpl implements AdminDao {
 		AdminDto dto = null;
 		
 		try {
-			dto = sqlSession.selectOne(NAMESPACE + "selectOne", member_no);
+			//dto = sqlSession.selectOne(NAMESPACE + "selectOne", member_no);
 		} catch (Exception e) {
 			logger.info("AdminDaoImpl selectOne[error]");
 			e.printStackTrace();
@@ -52,7 +52,7 @@ public class AdminDaoImpl implements AdminDao {
 		int res = 0;
 		
 		try {
-			res = sqlSession.insert(NAMESPACE + "insert",dto);
+			//res = sqlSession.insert(NAMESPACE + "insert",dto);
 		} catch (Exception e) {
 			logger.info("AdminDaoImpl insert[error]");
 			e.printStackTrace();
@@ -67,7 +67,7 @@ public class AdminDaoImpl implements AdminDao {
 		int res = 0;
 		
 		try {
-			res = sqlSession.insert(NAMESPACE + "update",dto);
+			//res = sqlSession.insert(NAMESPACE + "update",dto);
 		} catch (Exception e) {
 			logger.info("AdminDaoImpl update[error]");
 			e.printStackTrace();
@@ -82,7 +82,7 @@ public class AdminDaoImpl implements AdminDao {
 		int res = 0;
 		
 		try {
-			res = sqlSession.delete(NAMESPACE + "delete",member_no);
+			//res = sqlSession.delete(NAMESPACE + "delete",member_no);
 		} catch (Exception e) {
 			logger.info("AdminDaoImpl delete[error]");
 			e.printStackTrace();
