@@ -21,5 +21,10 @@ public class MainController {
 	public String contact(Model model) {			
 		return "contact";
 	}
+	
+	@RequestMapping(value = "/scroll.do", method = RequestMethod.GET)
+	public String scroll(Model model) {			
+		return "scroll";
+	}
 }
 
