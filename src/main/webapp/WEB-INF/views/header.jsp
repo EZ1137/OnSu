@@ -7,14 +7,14 @@
 <head>
 <meta charset="UTF-8">
 <title>header</title>
-<link href="${pageContext.request.contextPath}/resources/css/header.css"
+<link href="${pageContext.request.contextPath}/resources/css/header.css?after"
 	rel="stylesheet">
 <body>
 
-	<header>
+	<div>
 		<div class="wrapper">
 			<div id="header-bar" onclick="location.href='#'">
-				<span> On:soo </span>
+				<span> On:Soo </span>
 			</div>
 			<nav>
 				<!-- 통합검색 -->
@@ -22,9 +22,9 @@
 					<input type="hidden" name="" value="">
 					<input type="hidden" name="" value=""> 
 					<input type="hidden" name="" value="">
-					<input type="text" name="" id="" required="required" placeholder="찾으시는 강의 검색 ."> 
-					<span>
-						<button class="headerbtn" type="submit">검색</button>
+					<input type="text" name="" id="" required="required" placeholder="찾으시는 강의 검색"> 
+					<span class="search">
+						<button class="searchbtn" type="submit">검색</button>
 					</span>
 				</form>
 				
@@ -45,17 +45,24 @@
 					</li>
 				</ul>
 				
+				<div class="hamburger"><i class="fas fa-bars"></i></div>
+				
 				<div id="mySidenav" class="sidenav">
-					<a href="#"><p>H O M E</p></a>
+					<a href="main.do"><p>H O M E</p></a>
 					<a href="#"><p>V I D E O</p></a>
 					<a href="#"><p>1 : 1 C L A S S</p></a>
 					<a href="faq.do"><p>F A Q</p></a>
-					<a href="#"><p>N O T I C E</p></a>
+					<a href="notice.do"><p>N O T I C E</p></a>
 					<a href="contact.do"><p>C O N T A C T</p></a>
+					<a href="admin.do"><p>A D M I N</p></a>
 				</div>
 			</nav>
 		</div>
-	</header>
+	</div>
 
 </body>
 </html>
+
+	
+				
+				
