@@ -41,6 +41,7 @@ header {
 section {
 	width: 100%;
 	padding-top: 100px;
+	z-index:9999;
 }
 
 .contact_board_title {
@@ -118,27 +119,18 @@ section {
 }
 .inner_area04{	
 	font-size: var(--font-medium);
-	border:1px solid red;
 	width: 70%;
 	
 }
 .contact_inner_second{
 	height:60%;
 	width: 100%;
-
-	border:1px solid red;
 	justify-content:center;
-	
-
-	
 }
 
 #map{
-	border:1px solid red;
-	
+
 	box-shadow:  var(--bax-shadow);
 	border-radius:  var(--border-radi-title);
 	height: 93%;
-	z-index: 10;
-
 }
