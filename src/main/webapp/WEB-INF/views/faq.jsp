@@ -128,9 +128,7 @@
 	
 	<!-- footer -->
 	<footer id="footerarea" class="area">
-		<footer>
-			<%@ include file="/WEB-INF/views/footer.jsp"%>
-		</footer>
+		<%@ include file="/WEB-INF/views/footer.jsp"%>
 	</footer>
 
 </body>

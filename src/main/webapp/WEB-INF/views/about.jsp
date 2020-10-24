@@ -4,9 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>On:Soo - CONTACT</title>
-<link href="${pageContext.request.contextPath}/resources/css/contact.css" rel="stylesheet" >
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+<title>On:Soo - About Us</title>
 </head>
 <body>
 
@@ -16,20 +14,19 @@
     </header>
 
     <section class="section area">
-		<div class="contact_board_title">
-			<p>CONTACT</p>
+		<div class="about_board_title">
+			<p>About Us</p>
 		</div>
 		
-		<div class="contact_box">
-			
+		<div class="about_box">
+			<p></p>
 		</div>
-		
 	</section>
 	
 	<!-- footer -->
 	<footer id="footerarea" class="area">
-			<%@ include file="/WEB-INF/views/footer.jsp"%>
+		<%@ include file="/WEB-INF/views/footer.jsp"%>
 	</footer>
-
+	
 </body>
 </html>

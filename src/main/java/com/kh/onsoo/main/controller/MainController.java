@@ -22,9 +22,9 @@ public class MainController {
 		return "contact";
 	}
 	
-	@RequestMapping(value = "/scroll.do", method = RequestMethod.GET)
-	public String scroll(Model model) {			
-		return "scroll";
+	@RequestMapping(value = "/about.do", method = RequestMethod.GET)
+	public String about(Model model) {			
+		return "about";
 	}
 }
 
