@@ -106,7 +106,7 @@
 	padding-top: 10px;
 	float: center;
 	cursor: pointer;
-	z-index: 9999;
+	z-index: 9;
 }
 
 .more_btn > a {
@@ -196,6 +196,10 @@
   background-color: var(--color-light-grey);
   z-index: 0;
   border: 2px solid red;
+}
+
+.sidenav {
+	width: 12%;
 }
 
 /*Scroll*/
