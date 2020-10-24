@@ -19,7 +19,7 @@
 		</div>
 		
 		<div class="about_box">
-			<p></p>
+			<p>About Us Contents</p>
 		</div>
 	</section>
 	
