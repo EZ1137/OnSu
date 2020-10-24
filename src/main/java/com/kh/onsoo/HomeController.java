@@ -16,6 +16,7 @@ public class HomeController {
 	public String home(Model model) {
 		
 		return "onsooMain";
+		
 	}
-	
+
 }

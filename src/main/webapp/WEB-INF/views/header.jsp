@@ -13,7 +13,7 @@
 
 	<div>
 		<div class="wrapper">
-			<div id="header-bar" onclick="location.href='#'">
+			<div id="header-bar" onclick="location.href='main.do'">
 				<span> On:Soo </span>
 			</div>
 			<nav>
