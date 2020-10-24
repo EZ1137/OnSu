@@ -50,9 +50,9 @@
 					</li>
 					<li class="icon-item"><a href="#" class="icon-link"
 						title="Follow us on Twitter"><i class="fab  fa-twitter"></i></a></li>
-					<li class="icon-item"><a href="#" class="icon-link"
+					<!-- <li class="icon-item"><a href="#" class="icon-link"
 						title="Follow us on Linked in"><i class="fab  fa-linkedin-in"></i></a>
-					</li>
+					</li> -->
 					<li class="icon-item"><a href="#" class="icon-link"
 						title="Follow us on YouTube"><i class="fab  fa-youtube"></i></a></li>
 					<li class="icon-item"><a href="#" class="icon-link"
