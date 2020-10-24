@@ -108,7 +108,7 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-	
+		
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -116,6 +116,53 @@
 			<version>4.7</version>
 			<scope>test</scope>
 		</dependency>        
+		
+		<!-- 추가 -->
+		<!-- ojdbc6, mybatis, mybatis-spring, commons-dbcp, spring-orm, aspectjweaver, jackson -->
+		<!-- ojdbc6 -->
+		<dependency>
+		    <groupId>com.oracle.database.jdbc</groupId>
+		    <artifactId>ojdbc6</artifactId>
+		    <version>11.2.0.4</version>
+		</dependency>
+		<!-- mybatis -->
+		<dependency>
+		    <groupId>org.mybatis</groupId>
+		    <artifactId>mybatis</artifactId>
+		    <version>3.5.6</version>
+		</dependency>
+		<!-- mybatis-spring -->
+		<dependency>
+		    <groupId>org.mybatis</groupId>
+		    <artifactId>mybatis-spring</artifactId>
+		    <version>2.0.5</version>
+		</dependency>
+		
+		<!-- commons-dbcp -->
+		<!-- Database Connection Pool 의 약자이다. 요청이 올때마다 Connection 객체를 얻는 것이 아닌, 
+		미리 일정 갯수 찍어내서 Connection Pool 로 관리하는 것 -->
+		<dependency>
+		    <groupId>commons-dbcp</groupId>
+		    <artifactId>commons-dbcp</artifactId>
+		    <version>1.4</version>
+		</dependency>
+
+		<!-- spring-orm -->
+		<!-- ORM이란 객체와 DB의 테이블이 매핑을 이루는 것을 말합니다. (Java 진영에 국한된 기술은 아닙니다.)
+		즉, 객체가 테이블이 되도록 매핑 시켜주는 것을 말합니다 -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-orm</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
+		<!-- aspectjweaver -->
+		<!-- AOP 기능 구현을 위한 jar -->
+		<dependency>
+		    <groupId>org.aspectj</groupId>
+		    <artifactId>aspectjweaver</artifactId>
+		    <version>${org.aspectj-version}</version>
+		</dependency>
+
 	</dependencies>
     <build>
         <plugins>

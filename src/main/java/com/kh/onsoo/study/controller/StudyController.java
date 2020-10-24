@@ -21,4 +21,11 @@ public class StudyController {
 	public String studyInsert(Model model) {
 		return "studyinsert";
 	}
+	
+	@RequestMapping("/studydetail.do")
+	public String studyDetail(Model model) {
+		return "studydetail";
+	}
+	
+	
 }
