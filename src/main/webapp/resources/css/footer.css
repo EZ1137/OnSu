@@ -123,6 +123,7 @@
   border-radius: 50%;
   box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.2), -1rem -1rem 2rem #fff;
 }
+
 .icon-link:hover {
   box-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.2),
     -0.25rem -0.25rem 0.5rem rgba(255, 255, 255, 0.95);

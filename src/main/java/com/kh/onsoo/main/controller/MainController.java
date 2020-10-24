@@ -18,7 +18,7 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "/contact.do", method = RequestMethod.GET)
-	public String contact(Model model) {			
+	public String contact(Model model) {
 		return "contact";
 	}
 	
