@@ -23,7 +23,7 @@
 					<input type="hidden" name="" value=""> 
 					<input type="hidden" name="" value="">
 					<input type="text" name="" id="" required="required" placeholder="찾으시는 강의 검색"> 
-					<span class="">
+					<span class="search">
 						<button class="searchbtn" type="submit">검색</button>
 					</span>
 				</form>
@@ -48,8 +48,8 @@
 				<div class="hamburger"><i class="fas fa-bars"></i></div>
 				
 				<div id="mySidenav" class="sidenav">
-					<a href="about.do"><p>A B O U T</p></a>
-					<a href="#"><p>V I D E O</p></a>
+					<a href="#"><p>H O M E</p></a>
+					<a href="studylist.do"><p>V I D E O</p></a>
 					<a href="#"><p>1 : 1 C L A S S</p></a>
 					<a href="faq.do"><p>F A Q</p></a>
 					<a href="notice.do"><p>N O T I C E</p></a>
