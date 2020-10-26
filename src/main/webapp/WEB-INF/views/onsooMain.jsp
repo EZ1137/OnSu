@@ -183,16 +183,57 @@
 				</div>
 			</div>
 		</section>
-		
-		<section class="section fourth area">
+<section class="section fourth area">
 			<div class="fourth-wrapper">
-				강사가 되고 싶으신가요?
-			</div>
+				<div class="fourth-inner01">
+					<div class="fourth-title">지금 강사가 되어보세요!</div>
+					<div class="fourth-inner-box">인증후 강사가 될 수 있습니다!</div>
+					<hr>
+					<span class="regist">
+								<button id="registbtn">Register</button>
+							</span>
+				</div>
+				<div class="fourth-inner02">
+					<div class="slideshow-container">
+
+						<div class="mySlides fade">
+							<div class="numbertext">1 / 3</div>
+							<img src="resources/img/img1.jpg" style="width: 100%">
+							<div class="text"> 간편 가입 </div>
+						</div>
+
+						<div class="mySlides fade">
+							<div class="numbertext">2 / 3</div>
+							<img src="resources/img/img2.jpg" style="width: 100%">
+							<div class="text"> 강사 인증 </div>
+						</div>
+
+						<div class="mySlides fade">
+							<div class="numbertext">3 / 3</div>
+							<img src="resources/img/img3.jpg" style="width: 100%">
+							<div class="text">수업을 시작해보세요!</div>
+						</div>
+
+					</div>
+
+					</div>
+					<br>
+
+					<div style="text-align: center">
+						<span class="dot" onclick="currentSlide(1)"></span> <span
+							class="dot" onclick="currentSlide(2)"></span> <span class="dot"
+							onclick="currentSlide(3)"></span>
+					</div>
+
+				</div>
 		</section>
-		
+
 		<section class="section fifth area">
 			<div class="fifth-wrapper">
-				do you need help?
+				<div class="fifth-title">도움이 필요하세요?</div>
+				<div class="fifth-sub">궁금한 점이 있다면 언제든 연락해주세요!
+					<div><button class="contactbtn">문의하러가기</button></div>
+				</div>
 			</div>
 		</section>
 	</main>
