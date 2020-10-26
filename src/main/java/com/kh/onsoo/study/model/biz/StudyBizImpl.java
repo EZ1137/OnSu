@@ -2,41 +2,41 @@ package com.kh.onsoo.study.model.biz;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.onsoo.study.model.dao.StudyDao;
 import com.kh.onsoo.study.model.dto.StudyDto;
 
 @Service
 public class StudyBizImpl implements StudyBiz {
 
+	@Autowired
+	private StudyDao studyDao;
+	
 	@Override
 	public List<StudyDto> selectList() {
-		// TODO Auto-generated method stub
-		return null;
+		return studyDao.selectList();
 	}
 
 	@Override
 	public StudyDto selectOne(int class_no) {
-		// TODO Auto-generated method stub
-		return null;
+		return studyDao.selectOne(class_no);
 	}
 
 	@Override
 	public int insert(StudyDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return studyDao.insert(dto);
 	}
 
 	@Override
 	public int update(StudyDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return studyDao.update(dto);
 	}
 
 	@Override
 	public int delete(int class_no) {
-		// TODO Auto-generated method stub
-		return 0;
+		return studyDao.delete(class_no);
 	}
 
 }
