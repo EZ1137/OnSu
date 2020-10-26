@@ -199,36 +199,59 @@
 					</span>
 				</div>
 				<div class="fourth-inner02">
-					<div class="slideshow-container">
+					<div id="slider-wrap">
+    <ul id="slider">
+        <li>
+            <div>
+                <h3>Slide #1</h3>
+                <span>Sub-title #1</span>
+            </div>
+            <img src="https://fakeimg.pl/350x200/960a96/000?text=11111">
+        </li>
 
-						<div class="mySlides fade">
-							<div class="numbertext">1 / 3</div>
-							<img src="resources/img/img1.jpg" style="width: 100%">
-							<div class="text">간편 가입</div>
-						</div>
+        <li>
+            <div>
+                <h3>Slide #2</h3>
+                <span>Sub-title #2</span>
+            </div>
+            <img src="https://fakeimg.pl/350x200/D27328/000?text=22222">
+        </li>
 
-						<div class="mySlides fade">
-							<div class="numbertext">2 / 3</div>
-							<img src="resources/img/img2.jpg" style="width: 100%">
-							<div class="text">강사 인증</div>
-						</div>
+        <li>
+            <div>
+                <h3>Slide #3</h3>
+                <span>Sub-title #3</span>
+            </div>
+            <img src="https://fakeimg.pl/350x200/FF607F/000?text=33333">
+        </li>
 
-						<div class="mySlides fade">
-							<div class="numbertext">3 / 3</div>
-							<img src="resources/img/img3.jpg" style="width: 100%">
-							<div class="text">수업을 시작해보세요!</div>
-						</div>
+        <li>
+            <div>
+                <h3>Slide #4</h3>
+                <span>Sub-title #4</span>
+            </div>
+            <img src="https://fakeimg.pl/350x200/0A6E0A/000?text=44444">
+        </li>
 
-					</div>
+        <li>
+            <div>
+                <h3>Slide #5</h3>
+                <span>Sub-title #5</span>
+            </div>
+            <img src="https://fakeimg.pl/350x200/0064CD/000?text=55555">
+        </li>
+    </ul>
 
+    <div class="slider-btns" id="next"><span>▶</span></div>
+    <div class="slider-btns" id="previous"><span>◀</span></div>
+
+    <div id="slider-pagination-wrap">
+        <ul>
+        </ul>
+    </div>
+</div>
 				</div>
-				<br>
 
-				<div style="text-align: center">
-					<span class="dot" onclick="currentSlide(1)"></span> <span
-						class="dot" onclick="currentSlide(2)"></span> <span class="dot"
-						onclick="currentSlide(3)"></span>
-				</div>
 
 			</div>
 		</section>
