@@ -21,7 +21,6 @@ public class FaqController {
 		
 		logger.info("FaqController.selectList");
 		
-		model.addAttribute("list", faqBiz.selectList());
 		
 		return "faq";
 	}
