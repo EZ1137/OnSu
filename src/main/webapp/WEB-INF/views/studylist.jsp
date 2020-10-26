@@ -14,8 +14,8 @@
 		<colgroup>
 			<col width="50">
 			<col width="100">
-			<col width="300">
 			<col width="100">
+			<col width="500">
 		</colgroup>
 		
 		<tr>

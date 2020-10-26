@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.study">
-  
+<mapper namespace="com.onsoo.study">
+
+	<select id="selectList" resultType="studyDto">
+		SELECT * FROM CLASS
+		ORDER BY CLASS_NO DESC
+	</select>
+	
+	<select id="selectOne" resultType="studyDto" parameterType="int">
+		SELECT * FROM CLASS
+		WHERE CLASS_NO = #{class_no}
+	</select>
+	
+	<insert id="insert" parameterType="studyDto">
+		INSERT INTO CLASS
+		VALUES(CLASSSEQ.NEXTVAL, #{class_title}, 'test', #{class_teachername}, #{class_type}, #{class_bigcategory}, #{class_smallcategory}, #{class_info}, #{class_price})
+	</insert>
 </mapper>

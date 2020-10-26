@@ -6,7 +6,7 @@ import com.kh.onsoo.study.model.dto.StudyDto;
 
 public interface StudyDao {
 
-	String NAMESPACE = "";
+	String NAMESPACE = "com.onsoo.study.";
 	
 	public List<StudyDto> selectList();
 	public StudyDto selectOne(int class_no);
