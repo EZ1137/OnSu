@@ -234,6 +234,6 @@ header {
 
 /* header 스크롤시  컬러 변경용 */
 #header.header--dark {
-	background-color: var(--color-blue);
-	opacity: 1;
+	background-color: var(--color-white);
+	opacity: .7;
 }

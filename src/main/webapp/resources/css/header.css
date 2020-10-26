@@ -14,7 +14,7 @@
   --color-yellow: #fff7d1;
   --color-orange: #feb546;
 
-  /*Font size*/
+  /* Font size */
   --font-large: 48px;
   --font-medium: 28px;
   --font-regular: 18px;
@@ -22,11 +22,11 @@
   --font-micro: 14px;
   --border-radi-title: 36px;
   --border-radi-btn: 20px;
-  --box-shadow: 10px 10px 20px #b6b6b6, 
-             -10px -10px 20px #ffffff;
+  --box-shadow: 2px 2px 6px #b6b6b6, -2px -2px 6px #ffffff;
+  --btn-shadow: 2px 2px 3px #b6b6b6, -2px -2px 3px #ffffff;
 }
 
-/*헤더 전체*/
+/* 헤더 전체 */
 * {
   margin: 0px;
   padding: 0px;
@@ -42,7 +42,7 @@ header {
   width: 96%;
   height: 60px;
   border-radius: var(--border-radi-title);
-  background: var(--color-background);
+  background: var(--color-white);
   box-shadow: var(--box-shadow);
   z-index: 10;
   /* border:2px solid blue; */ 
@@ -57,42 +57,26 @@ header {
   justify-content: space-between; 
 }
 
-/*페이지 이름*/
+/* 페이지 이름 */
 .wrapper #header-bar {
   display: flex;
-  margin-left: 15px;
+  margin: 3px 0 0 30px;
   cursor: pointer;
   align-content: center;
 }
 
-/*로고*/
+/* 로고 */
 .wrapper #header-bar span {
   display: block;
   font-weight: bold;
   font-size: var(--font-medium);
   color: var(--color-dark-grey);
-  letter-spacing: 10px;
+  letter-spacing: 6px;
 }
 
 #searchzone {
-  display: flex;
-  align-items: center;
-}
-
-.searchbtn {	
-  margin: 5px 10px 5px 0px;
-  padding: 5px 20px;
-  background: var(--color-background);
-  color: var(--color-black);
-  border: none;
-  border-radius: var(--border-radi-btn);
-  box-shadow: var(--box-shadow);
-}
-
-.search > button:hover {
-  background-color: var(--color-light-white); 
-  color: var(--color-white);
-  border: none;
+  float: center;
+  margin-top: 2px;
 }
 
 input[type="text"] {
@@ -100,8 +84,9 @@ input[type="text"] {
   width: 300px;
   height: 36px;
   margin: 0;
-  padding: 12px 7px;
+  padding-left: 16px;
   border: 1px solid #ccc;
+  border-radius: 18px;
   box-sizing: border-box;
 }
 
@@ -111,6 +96,7 @@ input[type="text"] {
 
 nav {
   display: flex;
+  width: 70%;
 }
 
 .header-menu {
@@ -120,41 +106,70 @@ nav {
 }
 
 .login button {
-  /*로그인*/
-  margin: 5px 10px 5px 0px;
+  /* 로그인 */
+  margin: 7px 10px 0 300px;
   padding: 5px 20px;
-  background: var(--color-background);
-  color: var(--color-black);
+  background: var(--color-white);
+  color: var(--color-dark-grey);
+  height: 34px;
   border: none;
   border-radius: var(--border-radi-btn);
-  box-shadow:  var(--box-shadow);
+  box-shadow: var(--btn-shadow);
 }
 
 .login button:hover {
-  background-color: var(--color-light-white); 
-  color: var(--color-white);
+  background-color: var(--color-light-blue);
+  color: var(--color-black);
   border: none;
 }
 
 .regist button {
-  /*register*/
-  margin: 5px 10px 5px 0px;
+  /* register */
+  margin: 7px 10px 0 0;
   padding: 5px 15px;
-  background: var(--color-background);
-  color: var(--color-black);
+  background: var(--color-white);
+  color: var(--color-dark-grey);
+  height: 34px;
   border: none;
   border-radius: var(--border-radi-btn);
-  box-shadow: var(--box-shadow);
- 
+  box-shadow: var(--btn-shadow);
 }
 
 .regist button:hover {
   border: none;
   background-color: var(--color-orange);
-  color: white;
-  
+  color: var(--color-black);
 }
-.hamburger {
-	width: 80px;
-	height: 80px;
+
+#hamburger {
+	width: 34px;
+	height: 34px;
+	cursor: pointer;
+}
+
+#hamburger:hover {
+	color: var(--color-white);
+}
+
+#hamburger:active {
+	color: var(--color-white);
+}
+
+.sidenav {
+  float: right;
+  margin: 4px 0 0 16px;
+}
+
+#mySidenav {
+  margin-top: 20%;
+  height: 160px;
+  padding: 4px;
+  display: none;
+  background: var(--color-white);
+  box-shadow: var(--btn-shadow);
+  box-sizing: border-box;
+}
+
+#mySidenav > a {
+  letter-spacing: -1px;
 }
