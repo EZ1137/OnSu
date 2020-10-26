@@ -163,7 +163,6 @@ nav {
 
 #mySidenav {
   margin-top: 20%;
-  height: 270px;
   padding: 6px;
   display: none;
   border-radius: var(--border-radi-btn);
@@ -174,12 +173,12 @@ nav {
 
 .sideAsset {
   letter-spacing: -1px;
-  margin: 1px;
-  color: var(--color-dark-grey);
+  margin: 4px 0 0 2px;
   cursor: pointer;
+  font-size: var(—font-micro);
 }
 
 .sideAsset:hover {
-  color: var(--color-black);
-  font-weight: bold;
+  color: var(—color-black);
+  background-color: var(--color-light-white);
 }

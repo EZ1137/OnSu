@@ -229,6 +229,7 @@
 								</div> <img src="https://fakeimg.pl/350x200/0A6E0A/000?text=44444">
 							</li>
 
+
 							<li>
 								<div>
 									<h3>Slide #5</h3>
@@ -241,6 +242,7 @@
 						</div>
 						<div class="slider-btns" id="previous">
 							<span>◀</span>
+
 						</div>
 
 						<div id="slider-pagination-wrap">
@@ -254,9 +256,9 @@
 
 		<section class="section fifth area">
 			<div class="fifth-wrapper">
-				<div class="fifth-title">도움이 필요하세요?</div>
+				<div class="fifth-title">도움이 필요하신가요?</div>
 				<div class="fifth-sub">
-					궁금한 점이 있다면 언제든 연락해주세요!
+					궁금한 점이 있다면 언제든 연락 주세요!
 					<div>
 						<a href="reportinsert.do"><button class="contactbtn">문의하러가기</button></a>
 					</div>
