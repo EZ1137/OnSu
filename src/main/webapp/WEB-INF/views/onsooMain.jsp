@@ -241,7 +241,6 @@
             <img src="https://fakeimg.pl/350x200/0064CD/000?text=55555">
         </li>
     </ul>
-
     <div class="slider-btns" id="next"><span>▶</span></div>
     <div class="slider-btns" id="previous"><span>◀</span></div>
 
