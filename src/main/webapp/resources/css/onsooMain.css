@@ -72,7 +72,7 @@
   height: 100vh;
   background-color: var(--color-white);
   z-index: 0;
-  border: 2px solid yellow;
+ 
 }
 
 .second-wrapper {
@@ -158,7 +158,7 @@
   height: 100vh;
   background-color: var(--color-white);
   z-index: 0;
-  border: 2px solid green;
+  
 }
 
 .rtc_cards_title {
@@ -185,22 +185,122 @@
 .fourth {
   width: 100%;
   height: 100vh;
-  background-color: var(--color-red);
-  z-index: 0;
-  border: 2px solid red;
+  background-color: var(--color-white);
+  
+  display: flex;
+  
+  align-items: center;
+  justify-content:space-around;
+  
+}
+
+
+.fourth-wrapper{
+	width: 70%;
+	
+	border-radius: 10px;
+	box-shadow: 5px 5px 10px #e6e6e6, -5px -5px 10px #ffffff;
+	display:flex;
+	justify-content: space-around;
+	align-items:center;
+	
+}
+
+.fourth-inner01{
+	width:60%;
+	height: 500px;
+	
+	color: var(--color-black);
+	
+	
+}
+
+.fourth-inner02{
+	width:60%;
+	height:500px;
+	display:flex;
+	justify-content:center;
+	
+}
+
+.fourth-title{
+	font-size: var(--font-medium);
+	margin-bottom:5px;
+	margin-top: 20px;
+	margin-left:20px;
+}
+.fourth-inner-box{
+	font-size: var(--font-regular);
+	margin-bottom: 10px;
+	margin-left:20px;
+}
+
+hr{
+	width: 70%;
+	height:10xp;
+	box-shadow: 5px 5px 10px #e6e6e6, -5px -5px 10px #ffffff;
+	margin-bottom:10px;
+	margin-left:20px;
+	
+	
+}
+.regist{
+	margin-left:20px;
+}
+.registbtn {
+	margin: 5px 10px 5px 5px;
+	margin-left:20px;
+	padding: 5px 20px;
+	color: var(- -color-black);
+	border: none;
+	border-radius: var(- -border-radi-btn);
+	background-color: var(--color-white);
+	box-shadow: 5px 5px 10px #e6e6e6, -5px -5px 10px #ffffff;
 }
 
 .fifth {
   width: 100%;
   height: 100vh;
-  background-color: var(--color-light-grey);
-  z-index: 0;
-  border: 2px solid red;
+  background-color: var(--color-white);
+ 
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+}
+.fifth-wrapper{
+	width: 70%;
+	height: 600px;
+	border-radius: 10px;
+	box-shadow: 5px 5px 10px #e6e6e6, -5px -5px 10px #ffffff;
+	display:flex;
+	justify-content: space-around;
+	align-items:center;
+	
+}
+.fifth-title{
+	font-size: var(--font-large);
+	
 }
 
-.sidenav {
-	width: 12%;
+.fifth-sub{
+	font-size: var(--font-medium);
+	
 }
+
+.contactbtn{
+	margin: 5px 10px 5px 5px;
+	padding: 5px 20px;
+	color: var(- -color-black);
+	border: none;
+	border-radius: var(- -border-radi-btn);
+	background-color: var(--color-white);
+	box-shadow: 5px 5px 10px #e6e6e6, -5px -5px 10px #ffffff;
+}
+.mySlides {display: none;
+
+}
+img {vertical-align: middle;}
 
 /*Scroll*/
 .arrow-up {
