@@ -7,16 +7,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.kh.onsoo.admin.model.biz.ReportBiz;
-import com.kh.onsoo.admin.model.dto.ReportDto;
+import com.kh.onsoo.admin.model.biz.AdminReportBiz;
+import com.kh.onsoo.admin.model.dto.AdminReportDto;
 
 @Controller
-public class ReportController {
+public class AdminReportController {
 
 	@Autowired
-	private ReportBiz biz;
+	private AdminReportBiz biz;
 	
-	private Logger logger = LoggerFactory.getLogger(ReportController.class);
+	private Logger logger = LoggerFactory.getLogger(AdminReportController.class);
 	
 	@RequestMapping("/reportlist.do")
 	public String selectList(Model model) {
@@ -31,7 +31,7 @@ public class ReportController {
 	public String detail(Model model, int report_no) {
 		logger.info("ReportController detail");
 		
-		ReportDto dto = biz.selectOne(report_no);
+		AdminReportDto dto = biz.selectOne(report_no);
 		model.addAttribute("dto", dto);
 		return "reportdetail";
 	}

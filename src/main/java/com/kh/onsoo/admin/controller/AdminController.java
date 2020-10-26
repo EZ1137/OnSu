@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kh.onsoo.admin.model.biz.AdminBiz;
-import com.kh.onsoo.admin.model.biz.ReportBiz;
+import com.kh.onsoo.admin.model.biz.AdminReportBiz;
 
 @Controller
 public class AdminController {
@@ -16,7 +16,7 @@ public class AdminController {
 	@Autowired
 	private AdminBiz abiz;
 	@Autowired
-	private ReportBiz rbiz;
+	private AdminReportBiz rbiz;
 	
 	private Logger logger = LoggerFactory.getLogger(AdminController.class);
 	

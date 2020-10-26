@@ -9,19 +9,19 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.kh.onsoo.admin.model.dto.ReportDto;
+import com.kh.onsoo.admin.model.dto.AdminReportDto;
 
 @Repository
-public class ReportDaoImpl implements ReportDao {
+public class AdminReportDaoImpl implements AdminReportDao {
 
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	private Logger logger = LoggerFactory.getLogger(ReportDaoImpl.class);
+	private Logger logger = LoggerFactory.getLogger(AdminReportDaoImpl.class);
 	
 	@Override
-	public List<ReportDto> selectList() {
-		List<ReportDto> list = new ArrayList<ReportDto>();
+	public List<AdminReportDto> selectList() {
+		List<AdminReportDto> list = new ArrayList<AdminReportDto>();
 		
 		try {
 			list = sqlSession.selectList(NAMESPACE + "selectList");
@@ -33,8 +33,8 @@ public class ReportDaoImpl implements ReportDao {
 	}
 
 	@Override
-	public ReportDto selectOne(int report_no) {
-		ReportDto dto = new ReportDto();
+	public AdminReportDto selectOne(int report_no) {
+		AdminReportDto dto = new AdminReportDto();
 		
 		try {
 			dto = sqlSession.selectOne(NAMESPACE + "selectOne",report_no);
@@ -47,13 +47,13 @@ public class ReportDaoImpl implements ReportDao {
 	}
 
 	@Override
-	public int insert(ReportDto dto) {
+	public int insert(AdminReportDto dto) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int update(ReportDto dto) {
+	public int update(AdminReportDto dto) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

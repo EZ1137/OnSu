@@ -2,7 +2,7 @@ package com.kh.onsoo.admin.model.dto;
 
 import java.sql.Date;
 
-public class ReportDto {
+public class AdminReportDto {
 
 	private int report_no;
 	private String report_title;
@@ -12,11 +12,11 @@ public class ReportDto {
 	private String report_id;
 	private String report_ided;
 	
-	public ReportDto() {
+	public AdminReportDto() {
 		
 	}
 
-	public ReportDto(int report_no, String report_title, String report_content, String report_date,
+	public AdminReportDto(int report_no, String report_title, String report_content, String report_date,
 			String report_filename, String report_id, String report_ided) {
 		super();
 		this.report_no = report_no;

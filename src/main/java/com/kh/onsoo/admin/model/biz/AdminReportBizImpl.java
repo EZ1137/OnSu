@@ -5,32 +5,32 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.kh.onsoo.admin.model.dao.ReportDao;
-import com.kh.onsoo.admin.model.dto.ReportDto;
+import com.kh.onsoo.admin.model.dao.AdminReportDao;
+import com.kh.onsoo.admin.model.dto.AdminReportDto;
 
 @Service
-public class ReportBizImpl implements ReportBiz {
+public class AdminReportBizImpl implements AdminReportBiz {
 
 	@Autowired
-	private ReportDao dao;
+	private AdminReportDao dao;
 	
 	@Override
-	public List<ReportDto> selectList() {
+	public List<AdminReportDto> selectList() {
 		return dao.selectList();
 	}
 
 	@Override
-	public ReportDto selectOne(int report_no) {
+	public AdminReportDto selectOne(int report_no) {
 		return dao.selectOne(report_no);
 	}
 
 	@Override
-	public int insert(ReportDto dto) {
+	public int insert(AdminReportDto dto) {
 		return dao.insert(dto);
 	}
 
 	@Override
-	public int update(ReportDto dto) {
+	public int update(AdminReportDto dto) {
 		return dao.update(dto);
 	}
 
