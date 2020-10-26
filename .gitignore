@@ -19,7 +19,6 @@ pom.properties
 MANIFEST.MF
 .settings
 /target/
-db.properties
 
 # External tool builders
 .externalToolBuilders/
