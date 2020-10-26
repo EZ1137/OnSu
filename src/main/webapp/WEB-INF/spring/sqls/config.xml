@@ -4,9 +4,13 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.kh.onsoo.study.model.dto.StudyDto" alias="studyDto"/>
+		<typeAlias type="com.kh.onsoo.admin.model.dto.AdminDto" alias="AdminDto"/>
+		<typeAlias type="com.kh.onsoo.admin.model.dto.AdminReportDto" alias="AdminReportDto"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="/mybatis/study-mapper.xml"/>
+		<mapper resource="/mybatis/admin-mapper.xml" />
+		<mapper resource="/mybatis/report-mapper.xml" />
 	</mappers>
 </configuration>

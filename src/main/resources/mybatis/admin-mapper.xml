@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kh.onsoo.admin.memberboard">
+
+	<resultMap type="AdminDto" id="AdminDtoMap">
+		<result property="member_no" column="MEMBER_NO"/>
+		<result property="member_id" column="MEMBER_ID"/>
+		<result property="member_pw" column="MEMBER_PW"/>
+		<result property="member_name" column="MEMBER_NAME"/>
+		<result property="member_gender" column="MEMBER_GENDER"/>
+		<result property="member_email" column="MEMBER_EMAIL"/>
+		<result property="member_addr" column="MEMBER_ADDR"/>
+		<result property="member_phone" column="MEMBER_PHONE"/>
+		<result property="member_birth" column="MEMBER_BIRTH"/>
+		<result property="member_role" column="MEMBER_ROLE"/>
+		<result property="member_deletedate" column="MEMBER_DELETEDATE"/>
+		<result property="member_blockdate" column="MEMBER_BLOCKDATE"/>
+	</resultMap>
+	
+	<select id="selectList" resultMap="AdminDtoMap">
+		SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_GENDER, MEMBER_EMAIL, MEMBER_ADDR, MEMBER_PHONE, MEMBER_BIRTH, MEMBER_ROLE, MEMBER_DELETEDATE, MEMBER_BLOCKDATE FROM MEMBER
+	</select>
+	<update id="update" parameterType="AdminDto">
+		UPDATE ADMIN
+		SET 
+	</update>
+	
+
+	
+
+</mapper>
