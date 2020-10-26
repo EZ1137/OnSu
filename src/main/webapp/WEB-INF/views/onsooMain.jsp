@@ -22,9 +22,7 @@
 	<header id="header" class="area">
 		<%@ include file="/WEB-INF/views/header.jsp"%>
 	</header>
-
 	<main>
-
 		<!-- main -->
 		<section class="section first area">
 			<div class="first-wrapper">
@@ -192,44 +190,67 @@
 			<div class="fourth-wrapper">
 				<div class="fourth-inner01">
 					<div class="fourth-title">선생님이 되어 보세요 :)</div>
-					<div class="fourth-inner-box">강사 인증 후, <br/>수업을 시작할 수 있습니다.</div>
+					<div class="fourth-inner-box">
+						강사 인증 후, <br />수업을 시작할 수 있습니다.
+					</div>
 					<hr>
 					<span class="validate">
 						<button class="validatebtn">인증하러 가기</button>
 					</span>
 				</div>
 				<div class="fourth-inner02">
-					<div class="slideshow-container">
+					<div id="slider-wrap">
+						<ul id="slider">
+							<li>
+								<div>
+									<h3>Slide #1</h3>
+									<span>Sub-title #1</span>
+								</div> <img src="https://fakeimg.pl/350x200/960a96/000?text=11111">
+							</li>
 
-						<div class="mySlides fade">
-							<div class="numbertext">1 / 3</div>
-							<img src="resources/img/img1.jpg" style="width: 100%">
-							<div class="text">간편 가입</div>
+							<li>
+								<div>
+									<h3>Slide #2</h3>
+									<span>Sub-title #2</span>
+								</div> <img src="https://fakeimg.pl/350x200/D27328/000?text=22222">
+							</li>
+
+							<li>
+								<div>
+									<h3>Slide #3</h3>
+									<span>Sub-title #3</span>
+								</div> <img src="https://fakeimg.pl/350x200/FF607F/000?text=33333">
+							</li>
+
+							<li>
+								<div>
+									<h3>Slide #4</h3>
+									<span>Sub-title #4</span>
+								</div> <img src="https://fakeimg.pl/350x200/0A6E0A/000?text=44444">
+							</li>
+
+
+							<li>
+								<div>
+									<h3>Slide #5</h3>
+									<span>Sub-title #5</span>
+								</div> <img src="https://fakeimg.pl/350x200/0064CD/000?text=55555">
+							</li>
+						</ul>
+						<div class="slider-btns" id="next">
+							<span>▶</span>
+						</div>
+						<div class="slider-btns" id="previous">
+							<span>◀</span>
+
 						</div>
 
-						<div class="mySlides fade">
-							<div class="numbertext">2 / 3</div>
-							<img src="resources/img/img2.jpg" style="width: 100%">
-							<div class="text">강사 인증</div>
+						<div id="slider-pagination-wrap">
+							<ul>
+							</ul>
 						</div>
-
-						<div class="mySlides fade">
-							<div class="numbertext">3 / 3</div>
-							<img src="resources/img/img3.jpg" style="width: 100%">
-							<div class="text">수업을 시작하세요!</div>
-						</div>
-
 					</div>
-
 				</div>
-				<br>
-
-				<div style="text-align: center">
-					<span class="dot" onclick="currentSlide(1)"></span>
-					<span class="dot" onclick="currentSlide(2)"></span> 
-					<span class="dot" onclick="currentSlide(3)"></span>
-				</div>
-
 			</div>
 		</section>
 
@@ -239,12 +260,12 @@
 				<div class="fifth-sub">
 					궁금한 점이 있다면 언제든 연락 주세요!
 					<div>
-					<a href="reportinsert.do"><button class="contactbtn">문의하러가기</button></a>	
+						<a href="reportinsert.do"><button class="contactbtn">문의하러가기</button></a>
 					</div>
 				</div>
 			</div>
 		</section>
-		
+
 	</main>
 
 	<footer id="footerarea" class="area">
