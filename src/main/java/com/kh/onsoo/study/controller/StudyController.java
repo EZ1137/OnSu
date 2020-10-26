@@ -1,10 +1,15 @@
 package com.kh.onsoo.study.controller;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.util.UUID;
 
+import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,9 +19,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.kh.onsoo.study.model.biz.StudyBiz;
 import com.kh.onsoo.study.model.dto.StudyDto;
@@ -65,8 +70,10 @@ public class StudyController {
      * @return
      * @throws Exception
      */
-    @RequestMapping("/imageUpload.do", method = RequestMethod.POST)
-    public void imageUpload(HttpServletRequest request, HttpServletResponse response, MultipartHttpServletRequest multiFile, @RequestParam MultipartFile upload) throws Exception {
+    @RequestMapping(value="/mine/imageUpload.do", method = RequestMethod.POST)
+    public void imageUpload(HttpServletRequest request,
+            HttpServletResponse response, MultipartHttpServletRequest multiFile
+            , @RequestParam MultipartFile upload) throws Exception{
         // 랜덤 문자 생성
         UUID uid = UUID.randomUUID();
         
@@ -132,8 +139,8 @@ public class StudyController {
      */
     //
     @RequestMapping(value="/mine/ckImgSubmit.do")
-    public void ckSubmit(@RequestParam(value="uid") String uid, @RequestParam(value="fileName") String fileName, HttpServletRequest request, 
-    		HttpServletResponse response) throws ServletException, IOException{
+    public void ckSubmit(@RequestParam(value="uid") String uid, @RequestParam(value="fileName") String fileNam, HttpServletRequest request, HttpServletResponse response)
+    			throws ServletException, IOException{
         
         //서버에 저장된 이미지 경로
         String path = fileDir.getPath() + "ckImage/";
@@ -168,12 +175,17 @@ public class StudyController {
                 out.flush();
                 
             }catch(IOException e){
-                logger.info(e);
+                logger.info("[ERROR 이미지 URL 전달");
             }finally {
-                outputStream.close;
-                fileInputStream.close;
-                out.close;
+                try {
+					outputStream.close();
+					fileInputStream.close();
+					out.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
             }
         }
     }
+	
 }
