@@ -191,11 +191,11 @@
 		<section class="section fourth area">
 			<div class="fourth-wrapper">
 				<div class="fourth-inner01">
-					<div class="fourth-title">지금 강사가 되어보세요!</div>
-					<div class="fourth-inner-box">인증후 강사가 될 수 있습니다!</div>
+					<div class="fourth-title">선생님이 되어 보세요 :)</div>
+					<div class="fourth-inner-box">강사 인증 후, <br/>수업을 시작할 수 있습니다.</div>
 					<hr>
 					<span class="validate">
-						<button id="validatebtn">인증버튼</button>
+						<button class="validatebtn">인증하러 가기</button>
 					</span>
 				</div>
 				<div class="fourth-inner02">

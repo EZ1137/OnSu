@@ -248,14 +248,19 @@ hr{
 	margin-left:20px;
 }
 .validatebtn {
-	margin: 5px 10px 5px 5px;
-	margin-left:20px;
-	padding: 5px 20px;
-	color: var(- -color-black);
-	border: none;
-	border-radius: var(- -border-radi-btn);
-	background-color: var(--color-white);
-	box-shadow: 5px 5px 10px #e6e6e6, -5px -5px 10px #ffffff;
+  margin: 7px 10px 0 0;
+  padding: 5px 15px;
+  background: var(--color-white);
+  color: var(--color-dark-grey);
+  height: 34px;
+  border: none;
+  border-radius: var(--border-radi-btn);
+  box-shadow: var(--btn-shadow);
+}
+
+.validatebtn:hover {
+  background-color: var(--color-red);
+  color: var(--color-black);
 }
 
 .fifth {
@@ -337,6 +342,5 @@ header {
 
 /* header 스크롤시  컬러 변경용 */
 #header.header--dark {
-	background-color: var(--color-white);
-	opacity: .7;
+	background-color: rgba(255,255,255,0.7);
 }

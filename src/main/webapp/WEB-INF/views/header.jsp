@@ -11,14 +11,14 @@
 	rel="stylesheet">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript">
-function menu() {
-    if ($('#mySidenav').css('display') == 'none') {
-	    $('#mySidenav').show();
-	    
-	} else {
-	    $('#mySidenav').hide();
+	function menu() {
+	    if ($('#mySidenav').css('display') == 'none') {
+		    $('#mySidenav').show();
+		    
+		} else {
+		    $('#mySidenav').hide();
+		}
 	}
-}
 </script>
 <body>
 
@@ -30,8 +30,6 @@ function menu() {
 			<nav>
 				<!-- 통합검색 -->
 				<form id="searchzone" action="classsearch.do" method="post">
-					<input type="hidden" name="" value="">
-					<input type="hidden" name="" value=""> 
 					<input type="hidden" name="" value="">
 					<input type="text" name="" id="" required="required" placeholder="찾으시는 강의를 검색하세요"> 
 				</form>
@@ -55,13 +53,13 @@ function menu() {
 				<div class="sidenav">
 					<i id="hamburger" class="fas fa-bars fa-2x" onclick="menu()"></i>
 					<div id="mySidenav">
-						<a href="about.do"><p>A B O U T</p></a>
-						<a href="#"><p>V I D E O</p></a>
-						<a href="#"><p>1 : 1 C L A S S</p></a>
-						<a href="faq.do"><p>F A Q</p></a>
-						<a href="notice.do"><p>N O T I C E</p></a>
-						<a href="contact.do"><p>C O N T A C T</p></a>
-						<a href="admin.do"><p>A D M I N</p></a>
+						<a class="sideAsset" href="about.do"><p>A B O U T</p></a>
+						<a class="sideAsset" href="#"><p>V I D E O</p></a>
+						<a class="sideAsset" href="#"><p>1 : 1 C L A S S</p></a>
+						<a class="sideAsset" href="faq.do"><p>F A Q</p></a>
+						<a class="sideAsset" href="notice.do"><p>N O T I C E</p></a>
+						<a class="sideAsset" href="contact.do"><p>C O N T A C T</p></a>
+						<a class="sideAsset" href="admin.do"><p>A D M I N</p></a>
 					</div>
 				</div>
 			</nav>
