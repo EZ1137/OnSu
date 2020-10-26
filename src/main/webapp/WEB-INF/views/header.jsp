@@ -53,13 +53,13 @@
 				<div class="sidenav">
 					<i id="hamburger" class="fas fa-bars fa-2x" onclick="menu()"></i>
 					<div id="mySidenav">
-						<a class="sideAsset" href="about.do"><p>A B O U T</p></a>
-						<a class="sideAsset" href="#"><p>V I D E O</p></a>
-						<a class="sideAsset" href="#"><p>1 : 1 C L A S S</p></a>
-						<a class="sideAsset" href="faq.do"><p>F A Q</p></a>
-						<a class="sideAsset" href="notice.do"><p>N O T I C E</p></a>
-						<a class="sideAsset" href="contact.do"><p>C O N T A C T</p></a>
-						<a class="sideAsset" href="admin.do"><p>A D M I N</p></a>
+						<p class="sideAsset" onclick="location.href='about.do'">A B O U T</p>
+						<p class="sideAsset" onclick="location.href=''">V I D E O</p>
+						<p class="sideAsset" onclick="location.href=''">1 : 1 C L A S S</p>
+						<p class="sideAsset" onclick="location.href='faq.do'">F A Q</p>
+						<p class="sideAsset" onclick="location.href='notice.do'">N O T I C E</p>
+						<p class="sideAsset" onclick="location.href='contact.do'">C O N T A C T</p>
+						<p class="sideAsset" onclick="location.href='admin.do'">A D M I N</p>
 					</div>
 				</div>
 			</nav>
