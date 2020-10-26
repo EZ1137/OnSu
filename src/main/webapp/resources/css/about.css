@@ -69,3 +69,14 @@ section {
 	filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.1));
 	border-radius: 10px;
 }
+
+.about_mini_title {
+	font-size: var(--font-medium);
+	font-weight: bold;
+	margin: 10px 50px;
+}
+
+.about_mini_content {
+	font-size: var(--font-regular);
+	margin: 20px 70px;
+}
