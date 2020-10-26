@@ -12,7 +12,6 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -127,7 +126,7 @@ public class StudyController {
         
         return;
     }
-    
+
     /**
      * cKeditor 서버로 전송된 이미지 뿌려주기
      * @param uid
@@ -187,5 +186,4 @@ public class StudyController {
             }
         }
     }
-	
 }
