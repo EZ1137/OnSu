@@ -1,4 +1,4 @@
-package com.kh.onsoo.report.model.controller;
+package com.kh.onsoo.report.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

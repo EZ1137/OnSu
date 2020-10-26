@@ -1,55 +1,49 @@
 @charset "UTF-8";
-/** @format */
 
 :root {
-  font-family: 'Montserrat', sans-serif;
-  
+	font-family: 'IBM Plex Sans', sans-serif;
+	
   /* Color */
   --color-white: #ffffff;
   --color-light-white: #f7f7ff;
   --color-black: #000000;
-  --color-background: linear-gradient(145deg, #fefefe, #d5d5d5);
+
   --color-blue: #577399;
   --color-light-blue: #bdd5ea;
   --color-dark-blue: #495867;
   --color-red: #fe5f55;
   --color-light-grey: #7c7979;
-  --color-dark-grey: #363434;
+
   --color-yellow: #fff7d1;
   --color-orange: #feb546;
 
   /*Font size*/
+
   --font-large: 48px;
   --font-medium: 28px;
   --font-regular: 18px;
   --font-small: 16px;
   --font-micro: 14px;
-  --border-radi-btn: 20px;
-  --box-shadow: 7px 7px 14px #b6b6b6, 
-             -7px -7px 14px #ffffff;
+  
+  --border-radi: 2px;
 }
 
 * {
-  margin: 10px;
+  margin: 0px;
   padding: 0px;
   box-sizing: border-box;
 }
+
+header {
+	background-color: rgba(255,255,255,0.7);
+}
+
 section {
 	width: 100%;
+	height:100vh;
 	padding-top: 100px;
 }
 
-.first {
-	
-  display: flex;
-  width: 100%;
-  height: 100vh;
-  background: var(--color-white);
-  /* background-image: url("../img/bg1.jpg"); */ 
-  box-shadow: var(--box-shadow);
-  flex-direction: column;
-  background-repeat : no-repeat;
-}
 
 .report_board_title {
 	margin: 0px auto 20px auto;
@@ -62,8 +56,57 @@ section {
 	border-radius: 10px;
 }
 
-.wrapper{
-	border:1px solid blue;
-	display: flex;
-	flex-direction: column;
+.report_board_title > p {
+	font-size: var(--font-medium);
+	font-weight: bold;
+	color: var(--color-dark-blue);
+}
+
+.report_box {
+	margin: 20px auto;
+	width: 70%;
+	height:80vh;
+	float: center;
+	padding: 20px;
+	background-color: var(--color-white);
+	filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.1));
+	border-radius: 10px;
+	display:flex;
+}
+
+
+.report_mini_title {
+	font-size: var(--font-medium);
+	font-weight: bold;
+	margin: 10px 50px;
+}
+
+.report_mini_content {
+	font-size: var(--font-regular);
+	margin: 20px 70px;
+}
+
+
+
+.report{
+	margin-left:20px;
+	font-size: var(--font-regular);
+}
+
+
+
+.reportbtn {
+  margin: 7px 10px 0 0;
+  padding: 5px 15px;
+  background: var(--color-white);
+  color: var(--color-dark-grey);
+  height: 34px;
+  border: none;
+  border-radius: var(--border-radi-btn);
+  box-shadow: var(--btn-shadow);
+}
+
+.reportbtn:hover {
+  background-color: var(--color-red);
+  color: var(--color-black);
 }
