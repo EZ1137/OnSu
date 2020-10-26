@@ -239,11 +239,12 @@
 				<div class="fifth-sub">
 					궁금한 점이 있다면 언제든 연락해주세요!
 					<div>
-						<button class="contactbtn">문의하러가기</button>
+					<a href="reportinsert.do"><button class="contactbtn">문의하러가기</button></a>	
 					</div>
 				</div>
 			</div>
 		</section>
+		
 	</main>
 
 	<footer id="footerarea" class="area">
