@@ -216,7 +216,7 @@
 						<div class="mySlides fade">
 							<div class="numbertext">3 / 3</div>
 							<img src="resources/img/img3.jpg" style="width: 100%">
-							<div class="text">수업을 시작해보세요!</div>
+							<div class="text">수업을 시작하세요!</div>
 						</div>
 
 					</div>
@@ -225,9 +225,9 @@
 				<br>
 
 				<div style="text-align: center">
-					<span class="dot" onclick="currentSlide(1)"></span> <span
-						class="dot" onclick="currentSlide(2)"></span> <span class="dot"
-						onclick="currentSlide(3)"></span>
+					<span class="dot" onclick="currentSlide(1)"></span>
+					<span class="dot" onclick="currentSlide(2)"></span> 
+					<span class="dot" onclick="currentSlide(3)"></span>
 				</div>
 
 			</div>
@@ -235,9 +235,9 @@
 
 		<section class="section fifth area">
 			<div class="fifth-wrapper">
-				<div class="fifth-title">도움이 필요하세요?</div>
+				<div class="fifth-title">도움이 필요하신가요?</div>
 				<div class="fifth-sub">
-					궁금한 점이 있다면 언제든 연락해주세요!
+					궁금한 점이 있다면 언제든 연락 주세요!
 					<div>
 					<a href="reportinsert.do"><button class="contactbtn">문의하러가기</button></a>	
 					</div>
