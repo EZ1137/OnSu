@@ -59,8 +59,6 @@
 						title="Follow us on Github"><i class="fab  fa-github"></i></a></li>
 				</ul>
 			</div>
-
-
 		</div>
 	</div>
 
