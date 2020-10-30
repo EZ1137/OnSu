@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+* {
+	margin:0;
+	pardding:0;
+	
+}
+
+section{
+
+	padding-top: 10%;
+}
+
+h1{
+	text-align: center;
+	padding-bottom: 5%;
+}
+
+
+
+table{
+  border-collapse: collapse;
+  border-spacing: 0 25px;
+  border-top: 1px solid #4444444;
+}
+th ,td{
+	border-bottom:1px solid #444444;
+	padding:10px;
+}
+
+ thead tr {
+    background-color: #0d47a1;
+    color: #ffffff;
+  }
+  tbody tr:nth-child(2n) {
+    background-color: #7c7979;
+  }
+  tbody tr:nth-child(2n+1) {
+    background-color: #f7f7ff;
+  }
+
+
+
+a{
+	text-decoration: none;
+	
+}
+
+#notice{
+	width: 50%;
+	margin: 0 auto;
+}
+#qnalist{
+	text-align:center
+	 
+}
+
