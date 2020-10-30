@@ -6,11 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 </head>
 <body>
+	<!-- header -->
+	<header id="header" class="area">
+		<%@ include file="/WEB-INF/views/header.jsp"%>
+	</header>
+	<div class=".admin_area">
 	<h1>전체 회원조회</h1>
 	
-	<table border="1">
+	<table class="admin_first_table" border="1">
 		<col width="50"/>
 		<col width="100"/>
 		<col width="100"/>
@@ -32,7 +38,7 @@
 	</table>
 	<h3><a href="memberlist.do">더 보기</a></h3>
 	<h1>강사인증 신청목록</h1>
-	<table border="1">
+	<table class="admin_first_table" border="1">
 		<col width="50"/>
 		<col width="100"/>
 		<col width="100"/>
@@ -52,9 +58,10 @@
 				</tr>
 			</c:forEach>
 	</table>
+	</div>
 	<h3><a href="reviewlist.do">더 보기</a></h3>
 	<h1>신고된 회원조회</h1>
-	<table border="1">
+	<table class="admin_second_table" border="1">
 		<col width="50"/>
 		<col width="100"/>
 		<col width="100"/>
@@ -77,7 +84,7 @@
 	</table>
 	<h3><a href="reportlist.do">더보기</a></h3>
 	<h1>동영상 심의 신청조회</h1>
-	<table border="1">
+	<table class="admin_second_table" border="1">
 		<col width="50"/>
 		<col width="100"/>
 		<col width="100"/>
@@ -100,6 +107,10 @@
 		 -->
 	</table>
 	<h3><a href="videoreviewlist.do">더 보기</a></h3>
+	
+	<footer id="footerarea" class="area">
+		<%@ include file="/WEB-INF/views/footer.jsp"%>
+	</footer>
 	
 </body>
 </html>
