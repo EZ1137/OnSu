@@ -7,6 +7,7 @@
 		<typeAlias type="com.kh.onsoo.admin.model.dto.AdminDto" alias="AdminDto"/>
 		<typeAlias type="com.kh.onsoo.admin.model.dto.AdminReportDto" alias="AdminReportDto"/>
 		<typeAlias type="com.kh.onsoo.notice.model.dto.NoticeDto" alias="NoticeDto"/>
+		<typeAlias type="com.kh.onsoo.calendar.model.dto.CalendarDto" alias="CalendarDto"/>
 	</typeAliases>
 	
 	<mappers>
@@ -14,5 +15,6 @@
 		<mapper resource="/mybatis/admin-mapper.xml" />
 		<mapper resource="/mybatis/report-mapper.xml" />
 		<mapper resource="/mybatis/notice-mapper.xml" />
+		<mapper resource="/mybatis/calendar-mapper.xml" />
 	</mappers>
 </configuration>

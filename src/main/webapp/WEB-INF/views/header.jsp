@@ -60,6 +60,7 @@
 						<p class="sideAsset" onclick="location.href='notice.do'">N O T I C E</p>
 						<p class="sideAsset" onclick="location.href='contact.do'">C O N T A C T</p>
 						<p class="sideAsset" onclick="location.href='admin.do'">A D M I N</p>
+						<p class="sideAsset" onclick="location.href='mypage.do'">M Y P A G E</p>
 					</div>
 				</div>
 			</nav>
