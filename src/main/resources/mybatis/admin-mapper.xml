@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.kh.onsoo.admin.memberboard">
+<mapper namespace="com.onsoo.admin.memberboard">
 
 	<resultMap type="AdminDto" id="AdminDtoMap">
 		<result property="member_no" column="MEMBER_NO"/>
@@ -20,10 +20,32 @@
 	<select id="selectList" resultMap="AdminDtoMap">
 		SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_GENDER, MEMBER_EMAIL, MEMBER_ADDR, MEMBER_PHONE, MEMBER_BIRTH, MEMBER_ROLE, MEMBER_DELETEDATE, MEMBER_BLOCKDATE FROM MEMBER
 	</select>
-	<update id="update" parameterType="AdminDto">
-		UPDATE ADMIN
-		SET 
-	</update>
+	
+	<!--회원가입  -->
+	<insert id="insert" parameterType="AdminDto">
+		INSERT INTO MEMBER
+		VALUES(MEMBERSEQ.NEXTVAL,
+				#{member_id},		
+				#{member_pw},
+				#{member_name},
+				#{member_gender},
+				#{member_phone},
+				#{member_email},
+				#{member_addr},
+				'0901',
+				'S',
+				SYSDATE,
+				NULL,
+				NULL,
+				1)
+	</insert>
+	
+	
+	
+	
+	
+	
+	
 	
 
 	

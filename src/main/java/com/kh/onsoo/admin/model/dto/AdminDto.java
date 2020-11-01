@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class AdminDto {
 	
+
 	private int member_no;
 	private String member_id;
 	private String member_pw;
@@ -16,11 +17,12 @@ public class AdminDto {
 	private String member_role;
 	private Date member_deletedate;
 	private Date member_blockdate;
+	private int enabled;
 	
 	public AdminDto() {
-		
 	}
-
+	
+	
 	public AdminDto(int member_no, String member_id, String member_pw, String member_name, String member_gender,
 			String member_email, String member_addr, String member_phone, String member_birth, String member_role,
 			Date member_deletedate, Date member_blockdate) {
