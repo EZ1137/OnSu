@@ -15,7 +15,7 @@ public class MyPageController {
 	@RequestMapping(value = "mypage.do", method = RequestMethod.GET)
 	public String myPage(Model model) {
 		
-		return "/mypage";
+		return "/user/mypage";
 		
 	}
 }
