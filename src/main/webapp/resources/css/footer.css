@@ -137,7 +137,7 @@
     inset -0.125rem -0.125rem 0.25rem rgba(255, 255, 255, 0.95);
 }
 
-i {
+.icon-link > i {
   margin: auto;
   text-shadow: 1px 1px 0px #fff, -1px -1px 0px rgba(0, 0, 0, 0.5);
 }
