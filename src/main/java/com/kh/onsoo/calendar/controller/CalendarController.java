@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.onsoo.calendar.model.biz.CalendarBiz;
 import com.kh.onsoo.calendar.model.dto.CalendarDto;
+import com.kh.onsoo.listen.model.biz.ListenVideoBiz;
+import com.kh.onsoo.listen.model.biz.ListenWithBiz;
 import com.kh.onsoo.utils.Utils;
 
 @Controller
@@ -19,13 +21,22 @@ public class CalendarController {
 	private Logger logger = LoggerFactory.getLogger(CalendarController.class);
 	
 	@Autowired
+	private ListenVideoBiz listenVideoBiz;
+	@Autowired
+	private ListenWithBiz listenWithBiz;
+	@Autowired
 	private CalendarBiz calendarBiz;
 	
-	@RequestMapping(value = "/calendarList.do")
-	public String selectList(Model model) {
-		logger.info("[calendarList.do]");
+	@RequestMapping(value = "mypage.do")
+	public String myPage(Model model) {
+		logger.info("[mypage.do]");
 		
-		return "/mypage";
+		model.addAttribute("lvlist", listenVideoBiz.selectList());
+		model.addAttribute("lwlist", listenWithBiz.selectList());
+		model.addAttribute("callist", calendarBiz.schedule());
+		
+		return "/user/mypage";
+		
 	}
 	
 	@RequestMapping(value = "calendarDetail.do")

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="listenVideo">
+
+	<select id="selectList" resultType="ListenVideoDto">
+		SELECT LISTEN_VNO, LISTEN_VMEMBERID, LISTEN_VCLASSNO, LISTEN_VSTARTDATE, LISTEN_VCLASSTITLE
+		FROM LISTEN_VIDEO
+		ORDER BY LISTEN_VNO DESC
+	</select>
+
+</mapper>
