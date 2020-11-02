@@ -25,39 +25,39 @@
 		</div>
 		
 		<!-- 게시글 작성하기 -->
-		<table class="qna_insert">
-			<colgroup>
-				<col width="15%"/>
-				<col width="35%"/>
-				<col width="15%"/>
-				<col width="35%"/>
-			</colgroup>
-			
-			<thead>
-				<tr>
-					<th>Q.</th>
-					<td colspan="3"><input type="text" value="${qnadto.qnatitle}"></td>
-				</tr>
-			</thead>
-			
-			<tbody>
-				<tr>
-					<td colspan="4" class="qcontents">
-						<textarea rows="10" cols="122">${qnadto.qnaqcontent}</textarea>
-					</td>
-				</tr>
-			</tbody>
-			
-			<tfoot>
-				<tr>
-					<td colspan="6" style="text-align:right;">
-						<input type="button" value="LIST" onclick="location.href='qna.do'"/>
-						<input type="button" value="RESET" onclick="location.href='qnaupdateform.do?qnano=${qnadto.qnano}'"/>
-						<input type="button" value="WRITE" onclick="location.href='qnadelete.do?qnano=${qnadto.qnano}'"/>
-					</td>
-				</tr>
-			</tfoot>
-		</table>
+		<form action="qnainsertres.do" method="post">
+			<table class="qna_insert">
+				<colgroup>
+					<col width="15%"/>
+					<col width="85%"/>
+				</colgroup>
+				
+				<thead>
+					<tr>
+						<th>Q.</th>
+						<td><input type="text" name="qnatitle" style="height:100%;" placeholder="제목을 입력하세요."/></td>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<tr>
+						<td colspan="2" class="qcontents">
+							<textarea rows="10" cols="122" name="qnaqcontent" placeholder="내용을 입력하세요."></textarea>
+						</td>
+					</tr>
+				</tbody>
+				
+				<tfoot>
+					<tr>
+						<td colspan="2" style="text-align:right;">
+							<input type="button" value="LIST" onclick="location.href='qna.do'"/>
+							<input type="reset" value="RESET"/>
+							<input type="submit" value="WRITE"/>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</form>
 	</section>
 	
 	<!-- footer -->
