@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="class">
+
+	<select id="search" resultType="ClassDto">
+		SELECT CLASS_TITLE, CLASS_TEACHERNAME, CLASS_PRICE
+		FROM CLASS
+		WHERE CLASS_TITLE LIKE '%'||#{search}||'%'
+	</select>
+
+</mapper>
