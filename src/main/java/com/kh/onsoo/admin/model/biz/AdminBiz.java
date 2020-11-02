@@ -12,4 +12,5 @@ public interface AdminBiz {
 	public int update (AdminDto dto);
 	public int delete(int member_no);
 
+	public int idchk(String member_id);
 }

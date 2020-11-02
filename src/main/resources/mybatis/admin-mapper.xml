@@ -40,7 +40,12 @@
 				1)
 	</insert>
 	
+	<!--아이디 체크   -->
 	
+	<select id="idchk"  parameterType="String" resultType="int">
+	SELECT 	COUNT(*) FROM MEMBER 
+	WHERE MEMBER_ID =#{member_id}
+	</select>
 	
 	
 	

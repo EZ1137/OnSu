@@ -13,5 +13,7 @@ public interface AdminDao {
 	public int insert (AdminDto dto);
 	public int update (AdminDto dto);
 	public int delete(int member_no);
+	
+	public int idchk(String member_id);
 
 }

@@ -1,0 +1,3 @@
+function idchk(){
+	alert('test');
+}

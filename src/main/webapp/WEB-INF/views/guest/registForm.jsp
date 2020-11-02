@@ -55,7 +55,48 @@ function sample6_execDaumPostcode() {
    }).open();
 }
 </script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/registForm.js?" defer></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+/*
+function idchk(){
+	alert("제발");
+	
+	var member_id =$("#member_id").val();
+	
+	console.log(member_id+"입력값");
+	
+	$.ajax({
+		url: "idchk.do",
+		type: "GET",
+		dataType: "json",
+		data:{"member_id":$("#member_id").val()},
+		success: function(data){
+			console.log(data);
+			alert(data);
+		}
+	})
+}
+
+*/
+function idchk(){
+	
+	var member_id =$("#member_id").val();
+	console.log(member_id);
+	
+	$.ajax({
+		url:"/idchk.do?member_id="+member_id,
+		type:'get',
+		success: function(data){
+			console.log("1= 중복 / 0 중복 x "+data);
+			
+		}
+		});
+	}
+	
+
+
+</script>
+
 
 </head>
 <link href="${pageContext.request.contextPath}/resources/css/registform.css" rel="stylesheet" >
@@ -64,7 +105,8 @@ function sample6_execDaumPostcode() {
 	<header id="header">
 		<%@ include file="/WEB-INF/views/header.jsp"%>
 	</header>
-<section>
+
+<section id="content">
 
 
 	<fieldset id="registform">
@@ -74,7 +116,12 @@ function sample6_execDaumPostcode() {
 			<table>
 				<tr>
 					<th>아이디</th>
-					<td><input type="text" name="member_id" placeholder="아이디를 입력해주세요"></td>
+					<td>
+					<input type="text" name="member_id" id="member_id"   placeholder="아이디를 입력해주세요">
+					<input type="button" onclick="idchk();" value="중복확인">
+					<p id="id_chk"></p>
+					</td>
+						
 				</tr>
 				<tr>
 					<th>비밀번호</th>
@@ -129,7 +176,9 @@ function sample6_execDaumPostcode() {
 	</fieldset>
 
 
-</section>>
+</section>
+
+
 		<!-- footer -->
 	<footer id="footerarea" class="area">
 		<%@ include file="/WEB-INF/views/footer.jsp"%>
