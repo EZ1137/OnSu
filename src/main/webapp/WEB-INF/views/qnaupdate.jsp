@@ -3,6 +3,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="com.kh.onsoo.qna.model.dto.QnaDto" %>
+<%@ page import="com.kh.onsoo.admin.model.dto.AdminDto" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,70 +25,67 @@
 			<p>Q&amp;A</p>
 		</div>
 		
-		<!-- 게시글 상세보기 -->
-		<table class="qna_one">
-			<colgroup>
-				<col width="15%"/>
-				<col width="35%"/>
-				<col width="15%"/>
-				<col width="35%"/>
-			</colgroup>
-			
-			<thead>
+		<!-- 게시글 수정하기 -->
+		<!-- 답변 작성 (O) -->
+		<c:if test="${qnadto.qnaresponse eq 'Y'}">
+			<table class="qna_one" style="margin:80px auto;">
 				<tr>
-					<th>WRITER</th>
-					<td><input type="text" value="${qnadto.qnaqwriter}" readonly="readonly"></td>
-					<th>DATE</th>
-					<td><input type="text" value="${qnadto.qnaqregdate}" readonly="readonly"></td>
+					<th style="height:80px;">이미 답변이 작성되어 수정할 수 없습니다.</th>
 				</tr>
 				<tr>
-					<th>Q.</th>
-					<td colspan="3"><input type="text" value="${qnadto.qnatitle}"></td>
-				</tr>
-			</thead>
-			
-			<tbody>
-				<tr>
-					<td colspan="4" class="qcontents">
-						<textarea rows="10" cols="122">${qnadto.qnaqcontent}</textarea>
-					</td>
-				</tr>
-			</tbody>
-			
-			<c:if test="${qnadto.qnaresponse eq 'Y'}">
-				<thead>
-					<tr>
-						<th>WRITER</th>
-						<td><input type="text" value="${qnadto.qnaawriter}" readonly="readonly"></td>
-						<th>DATE</th>
-						<td><input type="text" value="${qnadto.qnaaregdate}" readonly="readonly"></td>
-					</tr>
-					<tr>
-						<th>A. </th>
-						<td colspan="3"><input type="text" value="RE : ${qnadto.qnatitle}" readonly="readonly"></td>
-					</tr>
-				</thead>
-				
-				<tbody>
-					<tr>
-						<td colspan="4" class="qcontents">
-							<textarea rows="10" cols="122" readonly="readonly">${qnadto.qnaacontent}</textarea>
-						</td>
-					</tr>
-				</tbody>
-			</c:if>
-			
-			<tfoot>
-				<tr>
-					<td colspan="6" style="text-align:right;">
+					<td style="height:100px;">
 						<input type="button" value="LIST" onclick="location.href='qna.do'"/>
-						<input type="button" value="EDIT" onclick="location.href='qnaupdateform.do?qnano=${qnadto.qnano}'"/>
 						<input type="button" value="DELETE" onclick="location.href='qnadelete.do?qnano=${qnadto.qnano}'"/>
-						<input type="button" value="ANSWER" onclick="location.href='qnaanswerform.do?qnano=${qnadto.qnano}'"/>
 					</td>
 				</tr>
-			</tfoot>
-		</table>
+			</table>
+		</c:if>
+		
+		<!-- 답변 작성 (X) -->
+		<c:if test="${qnadto.qnaresponse eq 'N'}">
+			<form action="qnaupdateres.do">
+				<input type="hidden" name="qnano" value="${qnadto.qnano}"/>
+				<table class="qna_one">
+					<colgroup>
+						<col width="15%"/>
+						<col width="35%"/>
+						<col width="15%"/>
+						<col width="35%"/>
+					</colgroup>
+					
+					<thead>
+						<tr>
+							<th>WRITER</th>
+							<td><input type="text" value="${qnadto.qnaqwriter}" readonly="readonly"></td>
+							<th>DATE</th>
+							<td><input type="text" value="${qnadto.qnaqregdate}" readonly="readonly"></td>
+						</tr>
+						<tr>
+							<th>Q.</th>
+							<td colspan="3"><input type="text" name="qnatitle" value="${qnadto.qnatitle}"></td>
+						</tr>
+					</thead>
+					
+					<tbody>
+						<tr>
+							<td colspan="4" class="qcontents">
+								<textarea rows="10" cols="122" name="qnaqcontent">${qnadto.qnaqcontent}</textarea>
+							</td>
+						</tr>
+					</tbody>
+					
+					<tfoot>
+						<tr>
+							<td colspan="6" style="text-align:right;">
+								<input type="button" value="LIST" onclick="location.href='qna.do'"/>
+								<input type="reset" value="RESET"/>
+								<input type="submit" value="UPDATE"/>
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</form>
+		</c:if>
 	</section>
 	
 	<!-- footer -->
