@@ -3,6 +3,7 @@
 /* 내려올때 header 컬러 변경 */
 const header = document.querySelector("#header");
 const headerHeight = header.getBoundingClientRect().height;
+const arrow = document.querySelector("#arrow")
 
 document.addEventListener("scroll", () => {
 
@@ -11,36 +12,55 @@ document.addEventListener("scroll", () => {
 
   if (window.scrollY > headerHeight) {
     header.classList.add("header--dark");
+    arrow.classList.add("visible");
   } else {
     header.classList.remove("header--dark");
+    arrow.classList.remove("visible");
   }
 });
 
+jQuery(document).ready(function ($) {
 
-/* image slider */
-var slideIndex = 1;
-showSlides(slideIndex);
+  $('#checkbox').change(function(){
+    setInterval(function () {
+        moveRight();
+    }, 3000);
+  });
+  
+	var slideCount = $('#slider ul li').length;
+	var slideWidth = $('#slider ul li').width();
+	var slideHeight = $('#slider ul li').height();
+	var sliderUlWidth = slideCount * slideWidth;
 
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
+	$('#slider').css({ width: slideWidth, height: slideHeight });
+	
+	$('#slider ul').css({ width: sliderUlWidth, marginLeft: - slideWidth });
+	
+    $('#slider ul li:last-child').prependTo('#slider ul');
+    function moveLeft() {
+        $('#slider ul').animate({
+            left: + slideWidth
+        }, 200, function () {
+            $('#slider ul li:last-child').prependTo('#slider ul');
+            $('#slider ul').css('left', '');
+        });
+    };
 
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
+    function moveRight() {
+        $('#slider ul').animate({
+            left: - slideWidth
+        }, 200, function () {
+            $('#slider ul li:first-child').appendTo('#slider ul');
+            $('#slider ul').css('left', '');
+        });
+    };
 
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";  
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-}
+    $('a.control_prev').click(function () {
+        moveLeft();
+    });
+
+    $('a.control_next').click(function () {
+        moveRight();
+    });
+
+});    

@@ -6,11 +6,17 @@
 		<typeAlias type="com.kh.onsoo.study.model.dto.StudyDto" alias="studyDto"/>
 		<typeAlias type="com.kh.onsoo.admin.model.dto.AdminDto" alias="AdminDto"/>
 		<typeAlias type="com.kh.onsoo.admin.model.dto.AdminReportDto" alias="AdminReportDto"/>
+		<typeAlias type="com.kh.onsoo.notice.model.dto.NoticeDto" alias="NoticeDto"/>
+		<typeAlias type="com.kh.onsoo.calendar.model.dto.CalendarDto" alias="CalendarDto"/>
+		<typeAlias type="com.kh.onsoo.qna.model.dto.QnaDto" alias="QnaDto"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="/mybatis/study-mapper.xml"/>
 		<mapper resource="/mybatis/admin-mapper.xml" />
 		<mapper resource="/mybatis/report-mapper.xml" />
+		<mapper resource="/mybatis/notice-mapper.xml" />
+		<mapper resource="/mybatis/calendar-mapper.xml" />
+		<mapper resource="/mybatis/qna-mapper.xml" />
 	</mappers>
 </configuration>
