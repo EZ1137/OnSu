@@ -1,7 +1,11 @@
 package com.kh.onsoo.main.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.security.Principal;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -18,6 +22,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.kh.onsoo.admin.model.biz.AdminBiz;
 import com.kh.onsoo.admin.model.dto.AdminDto;
@@ -45,15 +51,72 @@ public class MainController {
 		return "about";
 	}
 	
+	@RequestMapping(value = "/upload2", method = RequestMethod.GET)
+	public String upload2(Locale locale, Model model) {
+
+		return "upload2";
+	}
 	
-	//·Î±×ÀÎ 
+	@RequestMapping(value = "/tvalid.do", method = RequestMethod.GET)
+	public String tvalid(Locale locale, Model model) {			
+		return "teachervalid";
+	}
+	
+	@RequestMapping(value = "requestupload2")
+	public String requestupload2(MultipartHttpServletRequest mtfRequest) {
+		List<MultipartFile> fileList = mtfRequest.getFiles("file");
+		String src = mtfRequest.getParameter("src");
+		System.out.println("src value : " + src);
+
+		String path = "C:\\image\\";
+
+		for (MultipartFile mf : fileList) {
+			String originFileName = mf.getOriginalFilename(); // ì›ë³¸ íŒŒì¼ ëª…
+			long fileSize = mf.getSize(); // íŒŒì¼ ì‚¬ì´ì¦ˆ
+
+			System.out.println("originFileName : " + originFileName);
+			System.out.println("fileSize : " + fileSize);
+
+			String safeFile = path + System.currentTimeMillis() + originFileName;
+			try {
+				mf.transferTo(new File(safeFile));
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		return "redirect:/";
+	}
+	
+	
+	//ï¿½Î±ï¿½ï¿½ï¿½ 
 		@RequestMapping(value = "/login/loginForm.do",method = RequestMethod.GET)
-		public String loginForm(Locale locale, Model model) {
+		public String loginForm(Locale locale, Model model, Principal princopal) {
 			 logger.info("Welcome Login Form! ");
+			 //
+				model.addAttribute(princopal);
+			      //ì‹œíë¦¬í‹° ì»¨í…ìŠ¤íŠ¸ ê°ì²´ë¥¼ ì–»ìŠµë‹ˆë‹¤.
+			      SecurityContext context = SecurityContextHolder.getContext();
+			      
+			      //ì¸ì¦ê°ì²´ë¥¼ ì–»ìŠµë‹ˆë‹¤. 
+			      Authentication authentication = context.getAuthentication();
+			                              // contextì— ìˆëŠ” ì¸ì¦ì •ë³´ë¥¼ getAuthentication()ìœ¼ë¡œ ê°–ê³ ì˜¨ë‹¤.
+			      //ë¡œê·¸ì¸í•œ ì‚¬ìš©ì ì •ë³´ë¥¼ ê°€ì§„ ê°ì²´ë¥¼ ì–»ìŠµë‹ˆë‹¤.
+			      UserDetails principal = (UserDetails)authentication.getPrincipal();
+			                        //authenticationì— ìˆëŠ”  get Princinpal ê°ì²´ì•  ìœ ì €ì •ë³´ë¥¼ ë‹´ëŠ”ë‹¤. 
+			                        //ìœ ì €ê°ì²´ëŠ” UserDetailsë¥¼ implement í•¨ 
+			      
+			      String username = principal.getUsername();  //ì‚¬ìš©ì ì´ë¦„ 
+			      System.out.println("username : " + username);
+			    //
 			return "login/loginForm";
 		}
 		
-		//Á¢¼Ó °ÅºÎ ÆäÀÌÁö 
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½Åºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 		@RequestMapping(value = "/login/accessDenied.do",method = RequestMethod.GET)
 		public String accessDenied(Locale locale, Model model) {
 			logger.info("Welcome Access Denied");
@@ -61,7 +124,7 @@ public class MainController {
 		}
 		
 		
-		//°ü¸®ÀÚ ÆäÀÌÁö 
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 			@RequestMapping(value = "/admin/adminHome.do", method = RequestMethod.GET)
 			public String home(Locale locale, Model model) {
 				logger.info("Welcome Admin Home!");
@@ -70,46 +133,46 @@ public class MainController {
 			}
 			
 			
-			//ºí¶ôÆäÀÌÁö 
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 			@RequestMapping(value ="/block/blockhome.do", method = RequestMethod.GET)
 			public String blockhome(Locale locale, Model model) {
-				logger.info("ºí¶ô´çÇÑ »ç¶÷µé ÆäÀÌÁö ");
+				logger.info("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ");
 				return "/block/block";
 			}
 			
-			//°èÁ¤ ·Î±×ÀÎ ÆäÀÌÁö ÀÌµ¿ 
+			//ï¿½ï¿½ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ 
 			@RequestMapping(value = "/intro/introduction.do", method = RequestMethod.GET)
 			public String introduction(Locale locale, Model model) {
 				logger.info("Welcome Introduction!");
 				
-				//½ÃÅ¥¸®Æ¼ ÄÁÅØ½ºÆ® °´Ã¼¸¦ ¾ò½À´Ï´Ù.
+				//ï¿½ï¿½Å¥ï¿½ï¿½Æ¼ ï¿½ï¿½ï¿½Ø½ï¿½Æ® ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.
 				SecurityContext context = SecurityContextHolder.getContext();
 				
-				//ÀÎÁõ°´Ã¼¸¦ ¾ò½À´Ï´Ù. 
+				//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½. 
 				Authentication authentication = 
 												context.getAuthentication();
-												// context¿¡ ÀÖ´Â ÀÎÁõÁ¤º¸¸¦ getAuthentication()À¸·Î °®°í¿Â´Ù.
-				//·Î±×ÀÎÇÑ »ç¿ëÀÚ Á¤º¸¸¦ °¡Áø °´Ã¼¸¦ ¾ò½À´Ï´Ù.
+												// contextï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ getAuthentication()ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
+				//ï¿½Î±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.
 				UserDetails principal = (UserDetails)authentication.getPrincipal();
-										//authentication¿¡ ÀÖ´Â  get Princinpal °´Ã¼¾Ö À¯ÀúÁ¤º¸¸¦ ´ã´Â´Ù. 
-										//À¯Àú°´Ã¼´Â UserDetails¸¦ implement ÇÔ 
+										//authenticationï¿½ï¿½ ï¿½Ö´ï¿½  get Princinpal ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â´ï¿½. 
+										//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½ UserDetailsï¿½ï¿½ implement ï¿½ï¿½ 
 				
-				String username = principal.getUsername();  //»ç¿ëÀÚ ÀÌ¸§ 
-				String password = principal.getPassword();	// »ç¿ëÀÚ ºñ¹Ğ¹øÈ£ (¾ÏÈ£È­)
+				String username = principal.getUsername();  //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ 
+				String password = principal.getPassword();	// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ğ¹ï¿½È£ (ï¿½ï¿½È£È­)
 				
 				System.out.println("username :"+username+", password :"+password);
 				
 				
 				
-				//»ç¿ëÀÚ°¡ °¡Áø ¸ğµç ·Ñ Á¤º¸¸¦ ¾ò½À´Ï´Ù.
+				//ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.
 				Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-																					//±ÇÇÑÁ¤º¸¸¦ ´ã¾Æ¼­ 
+																					//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ¼ï¿½ 
 				Iterator<? extends GrantedAuthority> iter =authorities.iterator();
 				
-				//while¹®À» ÅëÇØ °®°íÀÖ´Â ±ÇÇÑÀ» Ãâ·ÂÇØÁØ´Ù.
+				//whileï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø´ï¿½.
 				while(iter.hasNext()) {
 					GrantedAuthority auth = iter.next();
-					System.out.println(" ±ÇÇÑ : "+auth.getAuthority());
+					System.out.println(" ï¿½ï¿½ï¿½ï¿½ : "+auth.getAuthority());
 				}
 				
 				
@@ -120,22 +183,22 @@ public class MainController {
 			
 			
 			
-			//È¸¿ø°¡ÀÔÃ¢ ÀÌµ¿
+			//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¢ ï¿½Ìµï¿½
 			@RequestMapping( value ="/guest/registForm.do",method = RequestMethod.GET)
 			public String registerForm(Locale locale, Model model) {
-				logger.info("È¸¿ø°¡ÀÔÃ¢ ÀÌµ¿ ");
+				logger.info("È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¢ ï¿½Ìµï¿½ ");
 				return "guest/registForm";
 			}
 			
-			//È¸¿ø°¡ÀÔ µ¥ÀÌÅÍ 
+			//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 			@RequestMapping(value ="/regist.do",method = RequestMethod.POST )
 			public String regist(@ModelAttribute AdminDto dto) {
-				logger.info("È¸¿ø°¡ÀÔ ¿Ï·á ");
+				logger.info("È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½ ");
 				
 				String encPassword = passwordEncoder.encode(dto.getMember_pw());
 				dto.setMember_pw(encPassword);
 				
-				System.out.println("ÀÎ¼­Æ®¹® µé¾î°¡³ª¿ä ");
+				System.out.println("ï¿½Î¼ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½î°¡ï¿½ï¿½ï¿½ï¿½ ");
 				
 				if(adminBiz.insert(dto)>0) {
 					return "redirect: login/loginForm.do";
