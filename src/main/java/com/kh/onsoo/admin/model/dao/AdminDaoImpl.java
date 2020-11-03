@@ -85,6 +85,21 @@ public class AdminDaoImpl implements AdminDao {
 		return res;
 	}
 	
+	
+	//아이디 중복체크 
+	@Override
+	public int idchk(String member_id) {
+		int idchk=0;
+		
+		try {
+			idchk=sqlSession.selectOne(NAMESPACE+"idchk",member_id);
+		} catch (Exception e) {
+			logger.info("���̵� �ߺ�üũ");
+			e.printStackTrace();
+		}
+		return idchk;
+	}
+	
 	public AdminDto selectOne2(String member_id) {
 		AdminDto dto = new AdminDto();
 		

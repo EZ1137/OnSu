@@ -18,8 +18,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.onsoo.admin.model.biz.AdminBiz;
+import com.kh.onsoo.admin.model.biz.AuthBiz;
 import com.kh.onsoo.admin.model.dto.AdminDto;
 
 @Controller
@@ -27,12 +30,18 @@ public class MainController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
-	
+	//ì•”í˜¸í™”
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
+	
+	//íšŒì›ì •ë³´
 	@Autowired
 	private AdminBiz adminBiz;
+	
+	@Autowired
+	private AuthBiz authBiz;
+	
 	
 	
 	@RequestMapping(value = "/contact.do", method = RequestMethod.GET)
@@ -46,14 +55,14 @@ public class MainController {
 	}
 	
 	
-	//·Î±×ÀÎ 
+	//ë¡œê·¸ì¸ 
 		@RequestMapping(value = "/login/loginForm.do",method = RequestMethod.GET)
 		public String loginForm(Locale locale, Model model) {
 			 logger.info("Welcome Login Form! ");
 			return "login/loginForm";
 		}
 		
-		//Á¢¼Ó °ÅºÎ ÆäÀÌÁö 
+	// ì ‘ê·¼ê¸ˆì§€ 
 		@RequestMapping(value = "/login/accessDenied.do",method = RequestMethod.GET)
 		public String accessDenied(Locale locale, Model model) {
 			logger.info("Welcome Access Denied");
@@ -61,7 +70,7 @@ public class MainController {
 		}
 		
 		
-		//°ü¸®ÀÚ ÆäÀÌÁö 
+		// ê´€ë¦¬ì 
 			@RequestMapping(value = "/admin/adminHome.do", method = RequestMethod.GET)
 			public String home(Locale locale, Model model) {
 				logger.info("Welcome Admin Home!");
@@ -70,46 +79,33 @@ public class MainController {
 			}
 			
 			
-			//ºí¶ôÆäÀÌÁö 
-			@RequestMapping(value ="/block/blockhome.do", method = RequestMethod.GET)
-			public String blockhome(Locale locale, Model model) {
-				logger.info("ºí¶ô´çÇÑ »ç¶÷µé ÆäÀÌÁö ");
-				return "/block/block";
-			}
+		
 			
-			//°èÁ¤ ·Î±×ÀÎ ÆäÀÌÁö ÀÌµ¿ 
+			//ì†Œê°œí˜ì´ì§€ 
 			@RequestMapping(value = "/intro/introduction.do", method = RequestMethod.GET)
 			public String introduction(Locale locale, Model model) {
 				logger.info("Welcome Introduction!");
 				
-				//½ÃÅ¥¸®Æ¼ ÄÁÅØ½ºÆ® °´Ã¼¸¦ ¾ò½À´Ï´Ù.
 				SecurityContext context = SecurityContextHolder.getContext();
 				
-				//ÀÎÁõ°´Ã¼¸¦ ¾ò½À´Ï´Ù. 
 				Authentication authentication = 
 												context.getAuthentication();
-												// context¿¡ ÀÖ´Â ÀÎÁõÁ¤º¸¸¦ getAuthentication()À¸·Î °®°í¿Â´Ù.
-				//·Î±×ÀÎÇÑ »ç¿ëÀÚ Á¤º¸¸¦ °¡Áø °´Ã¼¸¦ ¾ò½À´Ï´Ù.
 				UserDetails principal = (UserDetails)authentication.getPrincipal();
-										//authentication¿¡ ÀÖ´Â  get Princinpal °´Ã¼¾Ö À¯ÀúÁ¤º¸¸¦ ´ã´Â´Ù. 
-										//À¯Àú°´Ã¼´Â UserDetails¸¦ implement ÇÔ 
 				
-				String username = principal.getUsername();  //»ç¿ëÀÚ ÀÌ¸§ 
-				String password = principal.getPassword();	// »ç¿ëÀÚ ºñ¹Ğ¹øÈ£ (¾ÏÈ£È­)
+				String username = principal.getUsername();  // username 
+				String password = principal.getPassword();	// password 
 				
 				System.out.println("username :"+username+", password :"+password);
 				
 				
 				
-				//»ç¿ëÀÚ°¡ °¡Áø ¸ğµç ·Ñ Á¤º¸¸¦ ¾ò½À´Ï´Ù.
 				Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-																					//±ÇÇÑÁ¤º¸¸¦ ´ã¾Æ¼­ 
+																					//ê¶Œí•œ ëŒ€í–‰  
 				Iterator<? extends GrantedAuthority> iter =authorities.iterator();
 				
-				//while¹®À» ÅëÇØ °®°íÀÖ´Â ±ÇÇÑÀ» Ãâ·ÂÇØÁØ´Ù.
 				while(iter.hasNext()) {
 					GrantedAuthority auth = iter.next();
-					System.out.println(" ±ÇÇÑ : "+auth.getAuthority());
+					System.out.println(" ï¿½ï¿½ï¿½ï¿½ : "+auth.getAuthority());
 				}
 				
 				
@@ -120,35 +116,77 @@ public class MainController {
 			
 			
 			
-			//È¸¿ø°¡ÀÔÃ¢ ÀÌµ¿
+			//íšŒì›ê°€ì… í¼ 
 			@RequestMapping( value ="/guest/registForm.do",method = RequestMethod.GET)
 			public String registerForm(Locale locale, Model model) {
-				logger.info("È¸¿ø°¡ÀÔÃ¢ ÀÌµ¿ ");
+				logger.info("íšŒì›ê°€ì… í¼  ");
 				return "guest/registForm";
 			}
 			
-			//È¸¿ø°¡ÀÔ µ¥ÀÌÅÍ 
+			//íšŒì›ê°€ì… ì™„ë£Œ 
 			@RequestMapping(value ="/regist.do",method = RequestMethod.POST )
 			public String regist(@ModelAttribute AdminDto dto) {
-				logger.info("È¸¿ø°¡ÀÔ ¿Ï·á ");
+				logger.info("íšŒì›ê°€ì…  ");
 				
 				String encPassword = passwordEncoder.encode(dto.getMember_pw());
 				dto.setMember_pw(encPassword);
 				
-				System.out.println("ÀÎ¼­Æ®¹® µé¾î°¡³ª¿ä ");
+				//ë©¤ë²„ ì•„ì´ë””ë¡œ íšŒì›ê°€ì…ê³¼ ë™ì‹œì— ê¶Œí•œí…Œì´ë¸”ì— ê¶Œí•œ ë¶€ì—¬ 
+				String member_id = dto.getMember_id();
 				
-				if(adminBiz.insert(dto)>0) {
+				if(adminBiz.insert(dto)>0 && authBiz.insert(member_id)>0 ) {
 					return "redirect: login/loginForm.do";
 				}
 				return "redirect: user/registForm.do";
 			}
+			
+			
+			//ì•„ì´ë”” ì¤‘ë³µì²´í¬ 
+			/*
+			@ResponseBody
+			@RequestMapping(value ="idchk.do",method = RequestMethod.GET)
+			public int idchk(@RequestParam("member_id")String member_id) {
+				System.out.println(member_id);
+				
+				
+				int res = 0 ;
+				
+				
+				return res;
+			}
+			
+			*/
+			
+			
+			//ì•„ì´ë”” ì¤‘ë³µì²´í¬ 
+			@RequestMapping(value ="/idchk.do",method=RequestMethod.GET)
+			@ResponseBody
+			public int idchk(@RequestParam("member_id") String member_id){
+				System.out.println(member_id);
+				
+				int res = adminBiz.idchk(member_id);
+				return res;
+			}
+			
+			
+			
+			
+			
+			
+			
 	
+			
+			@RequestMapping(value = "/login/idpwFind.do",method =RequestMethod.GET)
+			public String IdPwfind(Locale locale,Model model) {
+				logger.info("ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½Ğ¹ï¿½È£ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ");
+				
+				return "login/idpwFind";
+			}
 	
-	
-	
-	
-	
-	
+			
+			
+			
+		
 	
 	
 	

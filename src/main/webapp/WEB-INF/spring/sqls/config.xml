@@ -9,6 +9,7 @@
 		<typeAlias type="com.kh.onsoo.notice.model.dto.NoticeDto" alias="NoticeDto"/>
 		<typeAlias type="com.kh.onsoo.calendar.model.dto.CalendarDto" alias="CalendarDto"/>
 		<typeAlias type="com.kh.onsoo.qna.model.dto.QnaDto" alias="QnaDto"/>
+		<typeAlias type="com.kh.onsoo.admin.model.dto.AuthDto" alias="authDto" />
 		<typeAlias type="com.kh.onsoo.online.model.dto.ClassDto" alias="ClassDto"/>
 		<typeAlias type="com.kh.onsoo.listen.model.dto.ListenWithDto" alias="ListenWithDto"/>
 		<typeAlias type="com.kh.onsoo.listen.model.dto.ListenVideoDto" alias="ListenVideoDto"/>
@@ -21,6 +22,7 @@
 		<mapper resource="/mybatis/notice-mapper.xml" />
 		<mapper resource="/mybatis/calendar-mapper.xml" />
 		<mapper resource="/mybatis/qna-mapper.xml" />
+		<mapper resource="/mybatis/auth-mapper.xml" />
 		<mapper resource="/mybatis/class-mapper.xml" />
 		<mapper resource="/mybatis/listenwith-mapper.xml" />
 		<mapper resource="/mybatis/listenvideo-mapper.xml" />
