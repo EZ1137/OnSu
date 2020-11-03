@@ -4,8 +4,6 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Locale;
 
-import javax.servlet.http.HttpSession;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.onsoo.admin.model.biz.AdminBiz;
+import com.kh.onsoo.admin.model.biz.AuthBiz;
 import com.kh.onsoo.admin.model.dto.AdminDto;
 
 @Controller
@@ -31,12 +30,18 @@ public class MainController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
-	
+	//암호화
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
+	
+	//회원정보
 	@Autowired
 	private AdminBiz adminBiz;
+	
+	@Autowired
+	private AuthBiz authBiz;
+	
 	
 	
 	@RequestMapping(value = "/contact.do", method = RequestMethod.GET)
@@ -126,9 +131,10 @@ public class MainController {
 				String encPassword = passwordEncoder.encode(dto.getMember_pw());
 				dto.setMember_pw(encPassword);
 				
-				System.out.println("�μ�Ʈ�� ������ ");
+				//멤버 아이디로 회원가입과 동시에 권한테이블에 권한 부여 
+				String member_id = dto.getMember_id();
 				
-				if(adminBiz.insert(dto)>0) {
+				if(adminBiz.insert(dto)>0 && authBiz.insert(member_id)>0 ) {
 					return "redirect: login/loginForm.do";
 				}
 				return "redirect: user/registForm.do";

@@ -96,7 +96,7 @@ function idchk(){
 
 
 </script>
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/registForm.js"></script>
 
 </head>
 <link href="${pageContext.request.contextPath}/resources/css/registform.css" rel="stylesheet" >
