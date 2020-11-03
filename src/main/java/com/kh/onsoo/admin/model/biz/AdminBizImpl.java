@@ -38,5 +38,9 @@ public class AdminBizImpl implements AdminBiz {
 	public int delete(int member_no) {
 		return dao.delete(member_no);
 	}
+	
+	public AdminDto selectOne2(String member_id) {
+		return dao.selectOne2(member_id);
+	}
 
 }
