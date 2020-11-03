@@ -57,18 +57,12 @@ public class MainController {
 		return "about";
 	}
 	
-	@RequestMapping(value = "/upload2", method = RequestMethod.GET)
-	public String upload2(Locale locale, Model model) {
-
-		return "upload2";
-	}
-	
 	@RequestMapping(value = "/tvalid.do", method = RequestMethod.GET)
 	public String tvalid(Locale locale, Model model) {			
 		return "teachervalid";
 	}
 	
-	@RequestMapping(value = "requestupload2")
+	@RequestMapping(value = "/tvalidup.do")
 	public String requestupload2(MultipartHttpServletRequest mtfRequest) {
 		List<MultipartFile> fileList = mtfRequest.getFiles("file");
 		String src = mtfRequest.getParameter("src");
@@ -87,21 +81,19 @@ public class MainController {
 			try {
 				mf.transferTo(new File(safeFile));
 			} catch (IllegalStateException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-
 		return "redirect:/";
 	}
 
 	//로그인 
 		@RequestMapping(value = "/login/loginForm.do",method = RequestMethod.GET)
-		public String loginForm(Locale locale, Model model, Principal princopal) {
+		public String loginForm(Locale locale, Model model) {
 			 logger.info("Welcome Login Form! ");
+<<<<<<< HEAD
 			 //
 				model.addAttribute(princopal);
 			      //시큐리티 컨텍스트 객체를 얻습니다.
@@ -118,6 +110,9 @@ public class MainController {
 			      String username = principal.getUsername();  //사용자 이름 
 			      System.out.println("username : " + username);
 			    //
+=======
+
+>>>>>>> branch 'develop' of https://github.com/parkjin1407/onsoo.git
 			return "login/loginForm";
 		}
 
