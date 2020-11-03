@@ -132,8 +132,6 @@ SELECT * FROM authorities
 
 --권한테이블 추가 
 CREATE TABLE authorities(
-      MEMBER_ID                            VARCHAR2(20)       NOT NULL,
-      authority                           VARCHAR2(20)       NOT NULL
 
 );
 

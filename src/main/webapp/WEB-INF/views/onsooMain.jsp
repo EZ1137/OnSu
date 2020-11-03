@@ -195,7 +195,7 @@
 							</div>
 							<hr>
 							<span class="validate">
-								<button class="validatebtn">인증하러 가기</button>
+								<input type="button" class="validatebtn" value="인증하러 가기" onclick="location.href='tvalid.do'">
 							</span>
 						</div>
 						<div class="fourth-inner02">
