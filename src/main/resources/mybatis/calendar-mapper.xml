@@ -33,9 +33,16 @@
 		WHERE CALENDAR_NO = #{calendar_no}
 	</update>
 	
-		<delete id="delete" parameterType="int">
+	<delete id="delete" parameterType="int">
 		DELETE FROM CALENDAR
 		WHERE CALENDAR_NO = #{calendar_no}
 	</delete>
+	
+	<select id="schedule" resultType="CalendarDto">
+		SELECT CALENDAR_NO, CALENDAR_TITLE, CALENDAR_MDATE
+		FROM CALENDAR
+		WHERE (CALENDAR_MDATE BETWEEN TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS') AND TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS')+1)
+		ORDER BY CALENDAR_MDATE
+	</select>
 
 </mapper>
