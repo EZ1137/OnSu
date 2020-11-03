@@ -1,25 +1,49 @@
 DROP SEQUENCE MEMBERSEQ;
 DROP TABLE MEMBER CASCADE CONSTRAINTS;
+   
+
 DROP TABLE authorities CASCADE CONSTRAINTS;
 
---íšŒì›í…Œì´ë¸” 
+
+
+
+--È¸¿øÅ×ÀÌºí 
 SELECT * FROM MEMBER;
 
---ê¶Œí•œ í…Œì´ë¸” 
+--±ÇÇÑ Å×ÀÌºí 
 SELECT * FROM authorities
 
 /*
---íšŒì›ê°€ìž…í›„ í•´ë‹¹ ì•„ì´ë””ì— ê¶Œí•œì„ ë¶€ì—¬ 
---ê¶Œí•œ ë¶€ì—¬í•  ê²½ìš° í•´ë‹¹  ('ì•„ì´ë””ê°’','ROLE_USER')  ì´ ê°™ì€ í˜•ì‹ìœ¼ë¡œ ë¶€ì—¬ í•´ì•¼í•¨ 
--- ë‹¤ë§Œ ì—¬ëŸ¬ ê¶Œí•œì´ í•„ìš”í•  ê²½ìš°  ê°™ì€ê²½ìš° í•´ë‹¹ ê³„ì •ì— ê°ê° ADMIN, BLOCK ì¶”ê°€ë¡œ INSERT í•´ì£¼ë©´ ëœë‹¤ .
+--È¸¿ø°¡ÀÔÈÄ ÇØ´ç ¾ÆÀÌµð¿¡ ±ÇÇÑÀ» ºÎ¿© 
+<<<<<<< HEAD
+
+--±ÇÇÑ ºÎ¿©ÇÒ °æ¿ì ÇØ´ç  ('¾ÆÀÌµð°ª','ROLE_USER')  ÀÌ °°Àº Çü½ÄÀ¸·Î ºÎ¿© ÇØ¾ßÇÔ 
+
+=======
+--±ÇÇÑ ºÎ¿©ÇÒ °æ¿ì ÇØ´ç  ('¾ÆÀÌµð°ª','ROLE_USER')  ÀÌ °°Àº Çü½ÄÀ¸·Î ºÎ¿© ÇØ¾ßÇÔ 
+>>>>>>> branch 'develop' of https://github.com/parkjin1407/onsoo.git
+-- ´Ù¸¸ ¿©·¯ ±ÇÇÑÀÌ ÇÊ¿äÇÒ °æ¿ì  °°Àº°æ¿ì ÇØ´ç °èÁ¤¿¡ °¢°¢ ADMIN, BLOCK Ãß°¡·Î INSERT ÇØÁÖ¸é µÈ´Ù .
  
- ex)
-	ì¼ë°˜íšŒì› ê¶Œí•œ 1ê°œ 
-	INSERT INTO authorities (MEMBER_ID, authority) VALUES ('user', 'ROLE_USER');   
+<<<<<<< HEAD
+ ex) ÀÏ¹ÝÈ¸¿ø ±ÇÇÑ 1°³ 
+       INSERT INTO authorities (MEMBER_ID, authority) VALUES ('user', 'ROLE_USER');
        
-	ê´€ë¦¬ìž   ê¶Œí•œ 2ê°œ 
-	INSERT INTO authorities (MEMBER_ID, authority) VALUES ('admin', 'ROLE_ADMIN');
-	INSERT INTO authorities (MEMBER_ID, authority) VALUES ('admin', 'ROLE_USER');
+       
+       °ü¸®ÀÚ   ±ÇÇÑ 2°³ 
+        INSERT INTO authorities (MEMBER_ID, authority) VALUES ('admin', 'ROLE_ADMIN');
+      INSERT INTO authorities (MEMBER_ID, authority) VALUES ('admin', 'ROLE_USER');
+   
+   
+
+=======
+ ex)
+   ÀÏ¹ÝÈ¸¿ø ±ÇÇÑ 1°³ 
+   INSERT INTO authorities (MEMBER_ID, authority) VALUES ('user', 'ROLE_USER');   
+       
+   °ü¸®ÀÚ   ±ÇÇÑ 2°³ 
+   INSERT INTO authorities (MEMBER_ID, authority) VALUES ('admin', 'ROLE_ADMIN');
+   INSERT INTO authorities (MEMBER_ID, authority) VALUES ('admin', 'ROLE_USER');
+>>>>>>> branch 'develop' of https://github.com/parkjin1407/onsoo.git
 */
 
 SELECT * FROM MEMBER;
@@ -33,85 +57,91 @@ INSERT INTO authorities (MEMBER_ID, authority) VALUES ('admin', 'ROLE_USER');
 
 CREATE SEQUENCE MEMBERSEQ;
 
+
 CREATE TABLE MEMBER(
-   -- íšŒì› ë²ˆí˜¸ (PK X)
-   MEMBER_NO NUMBER NOT NULL, 
+   -- È¸¿ø ¹øÈ£ (PK X)
+   SEQ NUMBER NOT NULL, 
    
-   -- íšŒì› ID (PK)
+   -- È¸¿ø ID (PK)
    MEMBER_ID VARCHAR2(100) NOT NULL,
    
-   -- íšŒì› Password
+   -- È¸¿ø Password
    MEMBER_PW VARCHAR2(100) NOT NULL,
    
-   -- íšŒì› ì´ë¦„
+   -- È¸¿ø ÀÌ¸§
    MEMBER_NAME VARCHAR2(50) NOT NULL,
    
-   -- íšŒì› ì„±ë³„
+   -- È¸¿ø ¼ºº°
    MEMBER_GENDER VARCHAR2(30) NOT NULL,
    
-   -- íšŒì› ì „í™”ë²ˆí˜¸ (Unique)
+   -- È¸¿ø ÀüÈ­¹øÈ£ (Unique)
    MEMBER_PHONE VARCHAR2(20) NOT NULL,
    
-   -- íšŒì› EMAIL (Unique)
+   -- È¸¿ø EMAIL (Unique)
    MEMBER_EMAIL VARCHAR2(1000) NOT NULL,
    
-   -- íšŒì› ì£¼ì†Œ
+   -- È¸¿ø ÁÖ¼Ò
    MEMBER_ADDR VARCHAR2(2000) NOT NULL,
    
-   -- íšŒì› ìƒì¼ (kakao:mmdd, naver:mm-dd, google:?, facebook:?)
+   -- È¸¿ø »ýÀÏ (kakao:mmdd, naver:mm-dd, google:?, facebook:?)
    MEMBER_BIRTH VARCHAR2(20) NOT NULL,
    
-   -- íšŒì› ìƒíƒœ
+   -- È¸¿ø »óÅÂ
    MEMBER_ROLE CHAR(8) NOT NULL,
    
-   -- íšŒì› ê°€ìž…ì¼ìž
+   -- È¸¿ø °¡ÀÔÀÏÀÚ
    MEMBER_REGDATE DATE NOT NULL,
    
-   -- íšŒì› íƒˆí‡´ì¼ìž (NOT NULL X)
-   MEMBER_DELETEDATE DATE,
+   -- È¸¿ø Å»ÅðÀÏÀÚ (NOT NULL X)
+   MEMBER_DDATE DATE,
    
-   -- íšŒì› ì •ì§€ì¼ìž (NOT NULL X)
-   MEMBER_BLOCKDATE DATE, 
+   -- È¸¿ø Á¤ÁöÀÏÀÚ (NOT NULL X)
+   MEMBER_BDATE DATE, 
    
-   -- ê¶Œí•œì„¤ì • = 1
-   enabled NUMBER NULL,
-   
-   -- integer nummber
-   -- íšŒì› ID : PK
+   --±ÇÇÑ¼³Á¤=1
+   enabled    NUMBER    NULL ,
+   --integer nummber
+   -- È¸¿ø ID : PK
    CONSTRAINT ID_MEMBER_PK PRIMARY KEY(MEMBER_ID), 
    
-   -- íšŒì› ì„±ë³„ : CHK(F:emale, M:ale)
+   -- È¸¿ø ¼ºº° : CHK(F:emale, M:ale)
    CONSTRAINT MEMBER_GENDER_MEMBER_CHK CHECK(MEMBER_GENDER IN('F','M')), 
    
-   -- íšŒì› ì „í™”ë²ˆí˜¸ : UQ
+   -- È¸¿ø ÀüÈ­¹øÈ£ : UQ
    CONSTRAINT PHONE_MEMBER_UNQ UNIQUE(MEMBER_PHONE), 
    
-   -- íšŒì› EMAIL : UQ
+   -- È¸¿ø EMAIL : UQ
    CONSTRAINT EMAIL_MEMBER_UNQ UNIQUE(MEMBER_EMAIL), 
 
-   -- íšŒì› ìƒíƒœ : CHK(S:tudent(íšŒì›), I:ntern(êµìƒ), T:eacher(ê°•ì‚¬), A:dmin(ê´€ë¦¬ìž), D:eleted(íƒˆí‡´), B:locked(ì •ì§€))
+   -- È¸¿ø »óÅÂ : CHK(S:tudent(È¸¿ø), I:ntern(±³»ý), T:eacher(°­»ç), A:dmin(°ü¸®ÀÚ), D:eleted(Å»Åð), B:locked(Á¤Áö))
    CONSTRAINT MEMBER_ROLE_MEMBER_CHK CHECK(MEMBER_ROLE IN('S','I','T','A','D','B'))
    
 );
 
 SELECT * FROM MEMBER;
 
---ê´€ë¦¬ìž ê³„ì •
+--°ü¸®ÀÚ °èÁ¤
 INSERT INTO MEMBER 
-VALUES(MEMBERSEQ.NEXTVAL, 'admin', 'admin', 'ê´€ë¦¬ìž', 'M', '010-0000-0000', 
-   'admin@onsoo.com', 'ì„œìš¸ ê°•ë‚¨êµ¬ ì—­ì‚¼ë™', '1019', 'A', SYSDATE, NULL, NULL,1);
+VALUES(MEMBERSEQ.NEXTVAL, 'admin', 'admin', '°ü¸®ÀÚ', 'M', '010-0000-0000', 
+   'admin@onsoo.com', '¼­¿ï °­³²±¸ ¿ª»ïµ¿', '1019', 'A', SYSDATE, NULL, NULL,1);
+
+
 
 DROP TABLE authorities CASCADE CONSTRAINTS;
 
 SELECT * FROM authorities
 
---ê¶Œí•œí…Œì´ë¸” ì¶”ê°€ 
+--±ÇÇÑÅ×ÀÌºí Ãß°¡ 
 CREATE TABLE authorities(
-	MEMBER_ID VARCHAR2(20) NOT NULL,
-	authority VARCHAR2(20) NOT NULL
+   MEMBER_ID VARCHAR2(20) NOT NULL,
+   authority VARCHAR2(20) NOT NULL
 );
 
 ALTER TABLE authorities ADD CONSTRAINT IDX_authorities_PK PRIMARY KEY (MEMBER_ID, authority);
 ALTER TABLE authorities ADD CONSTRAINT IDX_authorities_FK0 FOREIGN KEY (MEMBER_ID) REFERENCES MEMBER (MEMBER_ID);
 
 INSERT INTO authorities (MEMBER_ID, authority) VALUES ('dd', 'ROLE_USER');
+<<<<<<< HEAD
+
+
+

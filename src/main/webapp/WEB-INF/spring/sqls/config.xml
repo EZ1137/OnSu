@@ -3,6 +3,7 @@
 
 <configuration>
 	<typeAliases>
+
 		<typeAlias type="com.kh.onsoo.study.model.dto.StudyDto"
 			alias="studyDto" />
 		<typeAlias type="com.kh.onsoo.admin.model.dto.AdminDto"
@@ -28,6 +29,7 @@
 		<typeAlias type="com.kh.onsoo.free.model.dto.FreeboardDto"
 			alias="freeDto" />
 
+
 	</typeAliases>
 
 	<mappers>
@@ -37,6 +39,7 @@
 		<mapper resource="/mybatis/notice-mapper.xml" />
 		<mapper resource="/mybatis/calendar-mapper.xml" />
 		<mapper resource="/mybatis/qna-mapper.xml" />
+		<mapper resource="/mybatis/auth-mapper.xml" />
 		<mapper resource="/mybatis/class-mapper.xml" />
 		<mapper resource="/mybatis/listenwith-mapper.xml" />
 		<mapper resource="/mybatis/listenvideo-mapper.xml" />
