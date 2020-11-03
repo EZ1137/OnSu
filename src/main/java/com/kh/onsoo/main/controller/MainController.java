@@ -40,15 +40,12 @@ public class MainController {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
-	
 	//회원정보
 	@Autowired
 	private AdminBiz adminBiz;
 	
 	@Autowired
 	private AuthBiz authBiz;
-	
-	
 	
 	@RequestMapping(value = "/contact.do", method = RequestMethod.GET)
 	public String contact(Model model) {
@@ -100,8 +97,6 @@ public class MainController {
 
 		return "redirect:/";
 	}
-	
-	
 
 	//로그인 
 		@RequestMapping(value = "/login/loginForm.do",method = RequestMethod.GET)
@@ -125,7 +120,6 @@ public class MainController {
 			    //
 			return "login/loginForm";
 		}
-		
 
 	// 접근금지 
 		@RequestMapping(value = "/login/accessDenied.do",method = RequestMethod.GET)
@@ -133,8 +127,6 @@ public class MainController {
 			logger.info("Welcome Access Denied");
 			return "login/accessDenied";
 		}
-		
-		
 
 		// 관리자 
 
@@ -145,84 +137,6 @@ public class MainController {
 				return "admin/adminHome";
 			}
 			
-			
-
-			//��������� 
-			@RequestMapping(value ="/block/blockhome.do", method = RequestMethod.GET)
-			public String blockhome(Locale locale, Model model) {
-				logger.info("������� ����� ������ ");
-				return "/block/block";
-			}
-			
-
-		
-			
-			//소개페이지 
-
-			@RequestMapping(value = "/intro/introduction.do", method = RequestMethod.GET)
-			public String introduction(Locale locale, Model model) {
-				logger.info("Welcome Introduction!");
-				
-
-				//��ť��Ƽ ���ؽ�Ʈ ��ü�� ����ϴ�.
-				SecurityContext context = SecurityContextHolder.getContext();
-				
-				//������ü�� ����ϴ�. 
-				Authentication authentication = 
-												context.getAuthentication();
-												// context�� �ִ� ���������� getAuthentication()���� ����´�.
-				//�α����� ����� ������ ���� ��ü�� ����ϴ�.
-				UserDetails principal = (UserDetails)authentication.getPrincipal();
-										//authentication�� �ִ�  get Princinpal ��ü�� ���������� ��´�. 
-										//������ü�� UserDetails�� implement �� 
-				
-				String username = principal.getUsername();  //����� �̸� 
-				String password = principal.getPassword();	// ����� ��й�ȣ (��ȣȭ)
-
-				SecurityContext context = SecurityContextHolder.getContext();
-				
-				Authentication authentication = 
-												context.getAuthentication();
-				UserDetails principal = (UserDetails)authentication.getPrincipal();
-				
-				String username = principal.getUsername();  // username 
-				String password = principal.getPassword();	// password 
-				
-				System.out.println("username :"+username+", password :"+password);
-				
-				
-				
-
-				Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-																					//권한 대행  
-				Iterator<? extends GrantedAuthority> iter =authorities.iterator();
-				
-
-				while(iter.hasNext()) {
-					GrantedAuthority auth = iter.next();
-					System.out.println(" ���� : "+auth.getAuthority());
-				}
-				
-				
-				
-				return "intro/introduction";
-			}
-			
-			
-			
-			
-
-			@RequestMapping( value ="/guest/registForm.do",method = RequestMethod.GET)
-			public String registerForm(Locale locale, Model model) {
-				logger.info("ȸ������â �̵� ");
-				return "guest/registForm";
-			}
-			
-			//ȸ������ ������ 
-			@RequestMapping(value ="/regist.do",method = RequestMethod.POST )
-			public String regist(@ModelAttribute AdminDto dto) {
-				logger.info("ȸ������ �Ϸ� ");
-
 			//회원가입 폼 
 			@RequestMapping( value ="/guest/registForm.do",method = RequestMethod.GET)
 			public String registerForm(Locale locale, Model model) {
@@ -240,7 +154,7 @@ public class MainController {
 				dto.setMember_pw(encPassword);
 				
 
-				System.out.println("�μ�Ʈ�� ������ ");
+				System.out.println("");
 
 				//멤버 아이디로 회원가입과 동시에 권한테이블에 권한 부여 
 				String member_id = dto.getMember_id();
@@ -252,7 +166,6 @@ public class MainController {
 				return "redirect: user/registForm.do";
 			}
 			
-			
 			//아이디 중복체크 
 			/*
 			@ResponseBody
@@ -260,15 +173,12 @@ public class MainController {
 			public int idchk(@RequestParam("member_id")String member_id) {
 				System.out.println(member_id);
 				
-				
 				int res = 0 ;
-				
 				
 				return res;
 			}
 			
 			*/
-			
 			
 			//아이디 중복체크 
 			@RequestMapping(value ="/idchk.do",method=RequestMethod.GET)
@@ -280,33 +190,12 @@ public class MainController {
 				return res;
 			}
 			
-			
-			
-			
-			
-			
-			
-	
-			
 			@RequestMapping(value = "/login/idpwFind.do",method =RequestMethod.GET)
 			public String IdPwfind(Locale locale,Model model) {
-				logger.info("���̵� ��й�ȣ ������ �̵� ");
+				logger.info("");
 				
 				return "login/idpwFind";
 			}
-	
-			
-			
-			
-		
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }
 
