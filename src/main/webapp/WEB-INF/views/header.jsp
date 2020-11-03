@@ -1,7 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+<%@ page import="com.kh.onsoo.admin.model.dto.AdminDto" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>	
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -51,35 +51,69 @@
 					</li>
 					</sec:authorize>
 					 --%>
-					<li>
-						<a href="<c:url value="/login/loginForm.do" />">
-							<span class="login">
-								<button id="loginbtn">Log In</button>
-							</span>
-						</a>
-					</li>
-					
-					
-					<!--로그인 권한 있을시  페이지   -->
-							<!-- 
-					<li>
-					<sec:authorize access="isAuthenticated()">
-						<form:form action="${pageContext.request.contextPath}/logout" method="POST">
-   							 <input type="submit" id="loginbtn" value="LogOut" />
-						</form:form>
-					</sec:authorize>
+					<c:if test="${admindto == null}">
+						<li>
+							<a href="<c:url value="/login/loginForm.do" />">
+								<span class="login">
+									<button id="loginbtn">Log In</button>
+								</span>
+							</a>
+						</li>
 						
-					</li>
-							 -->
-					
-					
-					<li>
-						<a href="<c:url value="/guest/registForm.do" />">
-							<span class="regist">
-								<button id="registbtn">Sign Up</button>
-							</span>
-						</a>
-					</li>
+						
+						<!--로그인 권한 있을시  페이지   -->
+								<!-- 
+						<li>
+						<sec:authorize access="isAuthenticated()">
+							<form:form action="${pageContext.request.contextPath}/logout" method="POST">
+	   							 <input type="submit" id="loginbtn" value="LogOut" />
+							</form:form>
+						</sec:authorize>
+							
+						</li>
+								 -->
+						
+						
+						<li>
+							<a href="<c:url value="/guest/registForm.do" />">
+								<span class="regist">
+									<button id="registbtn">Sign Up</button>
+								</span>
+							</a>
+						</li>
+					</c:if>
+					<c:if test="${admindto.member_role eq 'T' || admindto.member_role eq 'S'}">
+						<li>
+							<a href="<c:url value="/login/loginForm.do" />">
+								<span class="login">
+									<button id="loginbtn">Log Out</button>
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="<c:url value="/guest/registForm.do" />">
+								<span class="regist">
+									<button id="registbtn">My Page</button>
+								</span>
+							</a>
+						</li>
+					</c:if>
+					<c:if test="${admindto.member_role eq 'A'}">
+						<li>
+							<a href="<c:url value="/login/loginForm.do" />">
+								<span class="login">
+									<button id="loginbtn">Log Out</button>
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="<c:url value="/guest/registForm.do" />">
+								<span class="regist">
+									<button id="registbtn">Admin Page</button>
+								</span>
+							</a>
+						</li>
+					</c:if>
 				</ul>
 				<div class="sidenav">
 					<i id="hamburger" class="fas fa-bars fa-2x" onclick="menu()"></i>

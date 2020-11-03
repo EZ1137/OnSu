@@ -12,6 +12,17 @@
 DROP SEQUENCE QNASEQ;
 CREATE SEQUENCE QNASEQ;
 
+SELECT * FROM authorities;
+
+INSERT INTO authorities (MEMBER_ID, authority) VALUES ('teacher', 'ROLE_USER');
+INSERT INTO authorities (MEMBER_ID, authority) VALUES ('student', 'ROLE_USER');
+INSERT INTO authorities (MEMBER_ID, authority) VALUES ('blocked', 'ROLE_USER');
+INSERT INTO authorities (MEMBER_ID, authority) VALUES ('deleted', 'ROLE_USER');
+
+INSERT INTO authorities (MEMBER_ID, authority) VALUES ('admin', 'ROLE_ADMIN');
+INSERT INTO authorities (MEMBER_ID, authority) VALUES ('admin', 'ROLE_USER');
+
+
 DROP TABLE QNA;
 CREATE TABLE QNA(
 	-- QNA NO
