@@ -7,13 +7,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>On:Soo - FAQ</title>
+<title>On:Soo - Q&amp;A</title>
 <link href="${pageContext.request.contextPath}/resources/css/qna.css" rel="stylesheet" >
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 
-<fmt:formatDate value="${qnadto.qnaqregdate}" pattern="yyyy.MM.dd"/>
 	<!-- header -->
     <header id="header" class="area">
     	<%@ include file="/WEB-INF/views/header.jsp"%>
@@ -73,7 +72,7 @@
 									</c:if>
 								</td>
 								<td>${qnadto.qnaqwriter}</td>
-								<td>${qnadto.qnaqregdate}</td>
+								<td><fmt:formatDate value="${qnadto.qnaqregdate}" pattern="yyyy-MM-dd" /></td>
 							</tr>
 						</c:forEach>
 					</c:otherwise>
@@ -83,7 +82,7 @@
 			<tfoot>
 				<tr>
 					<td colspan="6" class="qbtnbar" style="text-align:right;">
-						<input type="button" value="WRITE" onclick="location.href=''"/>
+						<input type="button" value="WRITE" onclick="location.href='qnainsertform.do'"/>
 					</td>
 				</tr>
 			</tfoot>

@@ -15,5 +15,6 @@ public interface AdminDao {
 	public int delete(int member_no);
 	
 	public int idchk(String member_id);
+	public AdminDto selectOne2(String member_id);
 
 }

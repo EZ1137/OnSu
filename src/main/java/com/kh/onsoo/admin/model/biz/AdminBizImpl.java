@@ -39,6 +39,10 @@ public class AdminBizImpl implements AdminBiz {
 		return dao.delete(member_no);
 	}
 	
+	public AdminDto selectOne2(String member_id) {
+		return dao.selectOne2(member_id);
+	}
+	
 	@Override
 	public int idchk(String member_id) {
 		return dao.idchk(member_id);

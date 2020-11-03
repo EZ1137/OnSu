@@ -99,5 +99,18 @@ public class AdminDaoImpl implements AdminDao {
 		}
 		return idchk;
 	}
+	
+	public AdminDto selectOne2(String member_id) {
+		AdminDto dto = new AdminDto();
+		
+		try {
+			dto = sqlSession.selectOne(NAMESPACE + "selectOne2", member_id);
+		} catch (Exception e) {
+			logger.info("AdminDaoImpl selectOne2[error]");
+			e.printStackTrace();
+		}
+		
+		return dto;
+	} 
 
 }
