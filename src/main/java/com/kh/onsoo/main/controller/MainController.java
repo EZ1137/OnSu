@@ -57,18 +57,12 @@ public class MainController {
 		return "about";
 	}
 	
-	@RequestMapping(value = "/upload2", method = RequestMethod.GET)
-	public String upload2(Locale locale, Model model) {
-
-		return "upload2";
-	}
-	
 	@RequestMapping(value = "/tvalid.do", method = RequestMethod.GET)
 	public String tvalid(Locale locale, Model model) {			
 		return "teachervalid";
 	}
 	
-	@RequestMapping(value = "requestupload2")
+	@RequestMapping(value = "/tvalidup.do")
 	public String requestupload2(MultipartHttpServletRequest mtfRequest) {
 		List<MultipartFile> fileList = mtfRequest.getFiles("file");
 		String src = mtfRequest.getParameter("src");
@@ -87,37 +81,19 @@ public class MainController {
 			try {
 				mf.transferTo(new File(safeFile));
 			} catch (IllegalStateException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-
 		return "redirect:/";
 	}
 
 	//로그인 
 		@RequestMapping(value = "/login/loginForm.do",method = RequestMethod.GET)
-		public String loginForm(Locale locale, Model model, Principal princopal) {
+		public String loginForm(Locale locale, Model model) {
 			 logger.info("Welcome Login Form! ");
-			 //
-				model.addAttribute(princopal);
-			      //시큐리티 컨텍스트 객체를 얻습니다.
-			      SecurityContext context = SecurityContextHolder.getContext();
-			      
-			      //인증객체를 얻습니다. 
-			      Authentication authentication = context.getAuthentication();
-			                              // context에 있는 인증정보를 getAuthentication()으로 갖고온다.
-			      //로그인한 사용자 정보를 가진 객체를 얻습니다.
-			      UserDetails principal = (UserDetails)authentication.getPrincipal();
-			                        //authentication에 있는  get Princinpal 객체애 유저정보를 담는다. 
-			                        //유저객체는 UserDetails를 implement 함 
-			      
-			      String username = principal.getUsername();  //사용자 이름 
-			      System.out.println("username : " + username);
-			    //
+
 			return "login/loginForm";
 		}
 
