@@ -36,11 +36,11 @@ public class MainController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
-	//ì•”í˜¸í™”
+	//¾ÏÈ£È­
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
-	//íšŒì›ì •ë³´
+	//È¸¿øÁ¤º¸
 	@Autowired
 	private AdminBiz adminBiz;
 	
@@ -57,18 +57,12 @@ public class MainController {
 		return "about";
 	}
 	
-	@RequestMapping(value = "/upload2", method = RequestMethod.GET)
-	public String upload2(Locale locale, Model model) {
-
-		return "upload2";
-	}
-	
 	@RequestMapping(value = "/tvalid.do", method = RequestMethod.GET)
 	public String tvalid(Locale locale, Model model) {			
 		return "teachervalid";
 	}
 	
-	@RequestMapping(value = "requestupload2")
+	@RequestMapping(value = "/tvalidup.do")
 	public String requestupload2(MultipartHttpServletRequest mtfRequest) {
 		List<MultipartFile> fileList = mtfRequest.getFiles("file");
 		String src = mtfRequest.getParameter("src");
@@ -77,8 +71,8 @@ public class MainController {
 		String path = "C:\\image\\";
 
 		for (MultipartFile mf : fileList) {
-			String originFileName = mf.getOriginalFilename(); // ì›ë³¸ íŒŒì¼ ëª…
-			long fileSize = mf.getSize(); // íŒŒì¼ ì‚¬ì´ì¦ˆ
+			String originFileName = mf.getOriginalFilename(); // ¿øº» ÆÄÀÏ ¸í
+			long fileSize = mf.getSize(); // ÆÄÀÏ »çÀÌÁî
 
 			System.out.println("originFileName : " + originFileName);
 			System.out.println("fileSize : " + fileSize);
@@ -87,48 +81,29 @@ public class MainController {
 			try {
 				mf.transferTo(new File(safeFile));
 			} catch (IllegalStateException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-
 		return "redirect:/";
 	}
 
-	//ë¡œê·¸ì¸ 
+	//·Î±×ÀÎ 
 		@RequestMapping(value = "/login/loginForm.do",method = RequestMethod.GET)
-		public String loginForm(Locale locale, Model model, Principal princopal) {
+		public String loginForm(Locale locale, Model model) {
 			 logger.info("Welcome Login Form! ");
-			 //
-				model.addAttribute(princopal);
-			      //ì‹œíë¦¬í‹° ì»¨í…ìŠ¤íŠ¸ ê°ì²´ë¥¼ ì–»ìŠµë‹ˆë‹¤.
-			      SecurityContext context = SecurityContextHolder.getContext();
-			      
-			      //ì¸ì¦ê°ì²´ë¥¼ ì–»ìŠµë‹ˆë‹¤. 
-			      Authentication authentication = context.getAuthentication();
-			                              // contextì— ìˆëŠ” ì¸ì¦ì •ë³´ë¥¼ getAuthentication()ìœ¼ë¡œ ê°–ê³ ì˜¨ë‹¤.
-			      //ë¡œê·¸ì¸í•œ ì‚¬ìš©ì ì •ë³´ë¥¼ ê°€ì§„ ê°ì²´ë¥¼ ì–»ìŠµë‹ˆë‹¤.
-			      UserDetails principal = (UserDetails)authentication.getPrincipal();
-			                        //authenticationì— ìˆëŠ”  get Princinpal ê°ì²´ì•  ìœ ì €ì •ë³´ë¥¼ ë‹´ëŠ”ë‹¤. 
-			                        //ìœ ì €ê°ì²´ëŠ” UserDetailsë¥¼ implement í•¨ 
-			      
-			      String username = principal.getUsername();  //ì‚¬ìš©ì ì´ë¦„ 
-			      System.out.println("username : " + username);
-			    //
 			return "login/loginForm";
 		}
 
-	// ì ‘ê·¼ê¸ˆì§€ 
+	// Á¢±Ù±İÁö 
 		@RequestMapping(value = "/login/accessDenied.do",method = RequestMethod.GET)
 		public String accessDenied(Locale locale, Model model) {
 			logger.info("Welcome Access Denied");
 			return "login/accessDenied";
 		}
 
-		// ê´€ë¦¬ì 
+		// °ü¸®ÀÚ 
 
 			@RequestMapping(value = "/admin/adminHome.do", method = RequestMethod.GET)
 			public String home(Locale locale, Model model) {
@@ -137,17 +112,17 @@ public class MainController {
 				return "admin/adminHome";
 			}
 			
-			//íšŒì›ê°€ì… í¼ 
+			//È¸¿ø°¡ÀÔ Æû 
 			@RequestMapping( value ="/guest/registForm.do",method = RequestMethod.GET)
 			public String registerForm(Locale locale, Model model) {
-				logger.info("íšŒì›ê°€ì… í¼  ");
+				logger.info("È¸¿ø°¡ÀÔ Æû  ");
 				return "guest/registForm";
 			}
 			
-			//íšŒì›ê°€ì… ì™„ë£Œ 
+			//È¸¿ø°¡ÀÔ ¿Ï·á 
 			@RequestMapping(value ="/regist.do",method = RequestMethod.POST )
 			public String regist(@ModelAttribute AdminDto dto) {
-				logger.info("íšŒì›ê°€ì…  ");
+				logger.info("È¸¿ø°¡ÀÔ  ");
 
 				
 				String encPassword = passwordEncoder.encode(dto.getMember_pw());
@@ -156,7 +131,7 @@ public class MainController {
 
 				System.out.println("");
 
-				//ë©¤ë²„ ì•„ì´ë””ë¡œ íšŒì›ê°€ì…ê³¼ ë™ì‹œì— ê¶Œí•œí…Œì´ë¸”ì— ê¶Œí•œ ë¶€ì—¬ 
+				//¸â¹ö ¾ÆÀÌµğ·Î È¸¿ø°¡ÀÔ°ú µ¿½Ã¿¡ ±ÇÇÑÅ×ÀÌºí¿¡ ±ÇÇÑ ºÎ¿© 
 				String member_id = dto.getMember_id();
 
 				
@@ -166,7 +141,7 @@ public class MainController {
 				return "redirect: user/registForm.do";
 			}
 			
-			//ì•„ì´ë”” ì¤‘ë³µì²´í¬ 
+			//¾ÆÀÌµğ Áßº¹Ã¼Å© 
 			/*
 			@ResponseBody
 			@RequestMapping(value ="idchk.do",method = RequestMethod.GET)
@@ -180,7 +155,7 @@ public class MainController {
 			
 			*/
 			
-			//ì•„ì´ë”” ì¤‘ë³µì²´í¬ 
+			//¾ÆÀÌµğ Áßº¹Ã¼Å© 
 			@RequestMapping(value ="/idchk.do",method=RequestMethod.GET)
 			@ResponseBody
 			public int idchk(@RequestParam("member_id") String member_id){
@@ -198,4 +173,3 @@ public class MainController {
 			}
 	
 }
-
