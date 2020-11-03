@@ -23,8 +23,10 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.kh.onsoo" />
-	
-	
-	
+		
+
+	<!-- context:property-placeholder location="classpath:database.properties"  /!-->
+	<context:property-placeholder location="/WEB-INF/*.properties" /> 
+
 </beans:beans>
    
