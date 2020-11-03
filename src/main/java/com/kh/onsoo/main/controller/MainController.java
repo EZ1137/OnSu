@@ -93,26 +93,6 @@ public class MainController {
 		@RequestMapping(value = "/login/loginForm.do",method = RequestMethod.GET)
 		public String loginForm(Locale locale, Model model) {
 			 logger.info("Welcome Login Form! ");
-<<<<<<< HEAD
-			 //
-				model.addAttribute(princopal);
-			      //시큐리티 컨텍스트 객체를 얻습니다.
-			      SecurityContext context = SecurityContextHolder.getContext();
-			      
-			      //인증객체를 얻습니다. 
-			      Authentication authentication = context.getAuthentication();
-			                              // context에 있는 인증정보를 getAuthentication()으로 갖고온다.
-			      //로그인한 사용자 정보를 가진 객체를 얻습니다.
-			      UserDetails principal = (UserDetails)authentication.getPrincipal();
-			                        //authentication에 있는  get Princinpal 객체애 유저정보를 담는다. 
-			                        //유저객체는 UserDetails를 implement 함 
-			      
-			      String username = principal.getUsername();  //사용자 이름 
-			      System.out.println("username : " + username);
-			    //
-=======
-
->>>>>>> branch 'develop' of https://github.com/parkjin1407/onsoo.git
 			return "login/loginForm";
 		}
 
