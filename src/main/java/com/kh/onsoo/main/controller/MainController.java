@@ -1,7 +1,11 @@
 package com.kh.onsoo.main.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.security.Principal;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -18,8 +22,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.onsoo.admin.model.biz.AdminBiz;
+import com.kh.onsoo.admin.model.biz.AuthBiz;
 import com.kh.onsoo.admin.model.dto.AdminDto;
 
 @Controller
@@ -27,13 +36,16 @@ public class MainController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
-	
+	//ì•”í˜¸í™”
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
+	//íšŒì›ì •ë³´
 	@Autowired
 	private AdminBiz adminBiz;
 	
+	@Autowired
+	private AuthBiz authBiz;
 	
 	@RequestMapping(value = "/contact.do", method = RequestMethod.GET)
 	public String contact(Model model) {
@@ -45,23 +57,79 @@ public class MainController {
 		return "about";
 	}
 	
+	@RequestMapping(value = "/upload2", method = RequestMethod.GET)
+	public String upload2(Locale locale, Model model) {
+
+		return "upload2";
+	}
 	
-	//·Î±×ÀÎ 
+	@RequestMapping(value = "/tvalid.do", method = RequestMethod.GET)
+	public String tvalid(Locale locale, Model model) {			
+		return "teachervalid";
+	}
+	
+	@RequestMapping(value = "requestupload2")
+	public String requestupload2(MultipartHttpServletRequest mtfRequest) {
+		List<MultipartFile> fileList = mtfRequest.getFiles("file");
+		String src = mtfRequest.getParameter("src");
+		System.out.println("src value : " + src);
+
+		String path = "C:\\image\\";
+
+		for (MultipartFile mf : fileList) {
+			String originFileName = mf.getOriginalFilename(); // ì›ë³¸ íŒŒì¼ ëª…
+			long fileSize = mf.getSize(); // íŒŒì¼ ì‚¬ì´ì¦ˆ
+
+			System.out.println("originFileName : " + originFileName);
+			System.out.println("fileSize : " + fileSize);
+
+			String safeFile = path + System.currentTimeMillis() + originFileName;
+			try {
+				mf.transferTo(new File(safeFile));
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		return "redirect:/";
+	}
+
+	//ë¡œê·¸ì¸ 
 		@RequestMapping(value = "/login/loginForm.do",method = RequestMethod.GET)
-		public String loginForm(Locale locale, Model model) {
+		public String loginForm(Locale locale, Model model, Principal princopal) {
 			 logger.info("Welcome Login Form! ");
+			 //
+				model.addAttribute(princopal);
+			      //ì‹œíë¦¬í‹° ì»¨í…ìŠ¤íŠ¸ ê°ì²´ë¥¼ ì–»ìŠµë‹ˆë‹¤.
+			      SecurityContext context = SecurityContextHolder.getContext();
+			      
+			      //ì¸ì¦ê°ì²´ë¥¼ ì–»ìŠµë‹ˆë‹¤. 
+			      Authentication authentication = context.getAuthentication();
+			                              // contextì— ìˆëŠ” ì¸ì¦ì •ë³´ë¥¼ getAuthentication()ìœ¼ë¡œ ê°–ê³ ì˜¨ë‹¤.
+			      //ë¡œê·¸ì¸í•œ ì‚¬ìš©ì ì •ë³´ë¥¼ ê°€ì§„ ê°ì²´ë¥¼ ì–»ìŠµë‹ˆë‹¤.
+			      UserDetails principal = (UserDetails)authentication.getPrincipal();
+			                        //authenticationì— ìˆëŠ”  get Princinpal ê°ì²´ì•  ìœ ì €ì •ë³´ë¥¼ ë‹´ëŠ”ë‹¤. 
+			                        //ìœ ì €ê°ì²´ëŠ” UserDetailsë¥¼ implement í•¨ 
+			      
+			      String username = principal.getUsername();  //ì‚¬ìš©ì ì´ë¦„ 
+			      System.out.println("username : " + username);
+			    //
 			return "login/loginForm";
 		}
-		
-		//Á¢¼Ó °ÅºÎ ÆäÀÌÁö 
+
+	// ì ‘ê·¼ê¸ˆì§€ 
 		@RequestMapping(value = "/login/accessDenied.do",method = RequestMethod.GET)
 		public String accessDenied(Locale locale, Model model) {
 			logger.info("Welcome Access Denied");
 			return "login/accessDenied";
 		}
-		
-		
-		//°ü¸®ÀÚ ÆäÀÌÁö 
+
+		// ê´€ë¦¬ì 
+
 			@RequestMapping(value = "/admin/adminHome.do", method = RequestMethod.GET)
 			public String home(Locale locale, Model model) {
 				logger.info("Welcome Admin Home!");
@@ -69,94 +137,65 @@ public class MainController {
 				return "admin/adminHome";
 			}
 			
-			
-			//ºí¶ôÆäÀÌÁö 
-			@RequestMapping(value ="/block/blockhome.do", method = RequestMethod.GET)
-			public String blockhome(Locale locale, Model model) {
-				logger.info("ºí¶ô´çÇÑ »ç¶÷µé ÆäÀÌÁö ");
-				return "/block/block";
-			}
-			
-			//°èÁ¤ ·Î±×ÀÎ ÆäÀÌÁö ÀÌµ¿ 
-			@RequestMapping(value = "/intro/introduction.do", method = RequestMethod.GET)
-			public String introduction(Locale locale, Model model) {
-				logger.info("Welcome Introduction!");
-				
-				//½ÃÅ¥¸®Æ¼ ÄÁÅØ½ºÆ® °´Ã¼¸¦ ¾ò½À´Ï´Ù.
-				SecurityContext context = SecurityContextHolder.getContext();
-				
-				//ÀÎÁõ°´Ã¼¸¦ ¾ò½À´Ï´Ù. 
-				Authentication authentication = 
-												context.getAuthentication();
-												// context¿¡ ÀÖ´Â ÀÎÁõÁ¤º¸¸¦ getAuthentication()À¸·Î °®°í¿Â´Ù.
-				//·Î±×ÀÎÇÑ »ç¿ëÀÚ Á¤º¸¸¦ °¡Áø °´Ã¼¸¦ ¾ò½À´Ï´Ù.
-				UserDetails principal = (UserDetails)authentication.getPrincipal();
-										//authentication¿¡ ÀÖ´Â  get Princinpal °´Ã¼¾Ö À¯ÀúÁ¤º¸¸¦ ´ã´Â´Ù. 
-										//À¯Àú°´Ã¼´Â UserDetails¸¦ implement ÇÔ 
-				
-				String username = principal.getUsername();  //»ç¿ëÀÚ ÀÌ¸§ 
-				String password = principal.getPassword();	// »ç¿ëÀÚ ºñ¹Ğ¹øÈ£ (¾ÏÈ£È­)
-				
-				System.out.println("username :"+username+", password :"+password);
-				
-				
-				
-				//»ç¿ëÀÚ°¡ °¡Áø ¸ğµç ·Ñ Á¤º¸¸¦ ¾ò½À´Ï´Ù.
-				Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-																					//±ÇÇÑÁ¤º¸¸¦ ´ã¾Æ¼­ 
-				Iterator<? extends GrantedAuthority> iter =authorities.iterator();
-				
-				//while¹®À» ÅëÇØ °®°íÀÖ´Â ±ÇÇÑÀ» Ãâ·ÂÇØÁØ´Ù.
-				while(iter.hasNext()) {
-					GrantedAuthority auth = iter.next();
-					System.out.println(" ±ÇÇÑ : "+auth.getAuthority());
-				}
-				
-				
-				
-				return "intro/introduction";
-			}
-			
-			
-			
-			
-			//È¸¿ø°¡ÀÔÃ¢ ÀÌµ¿
+			//íšŒì›ê°€ì… í¼ 
 			@RequestMapping( value ="/guest/registForm.do",method = RequestMethod.GET)
 			public String registerForm(Locale locale, Model model) {
-				logger.info("È¸¿ø°¡ÀÔÃ¢ ÀÌµ¿ ");
+				logger.info("íšŒì›ê°€ì… í¼  ");
 				return "guest/registForm";
 			}
 			
-			//È¸¿ø°¡ÀÔ µ¥ÀÌÅÍ 
+			//íšŒì›ê°€ì… ì™„ë£Œ 
 			@RequestMapping(value ="/regist.do",method = RequestMethod.POST )
 			public String regist(@ModelAttribute AdminDto dto) {
-				logger.info("È¸¿ø°¡ÀÔ ¿Ï·á ");
+				logger.info("íšŒì›ê°€ì…  ");
+
 				
 				String encPassword = passwordEncoder.encode(dto.getMember_pw());
 				dto.setMember_pw(encPassword);
 				
-				System.out.println("ÀÎ¼­Æ®¹® µé¾î°¡³ª¿ä ");
+
+				System.out.println("");
+
+				//ë©¤ë²„ ì•„ì´ë””ë¡œ íšŒì›ê°€ì…ê³¼ ë™ì‹œì— ê¶Œí•œí…Œì´ë¸”ì— ê¶Œí•œ ë¶€ì—¬ 
+				String member_id = dto.getMember_id();
+
 				
-				if(adminBiz.insert(dto)>0) {
+				if(adminBiz.insert(dto)>0 && authBiz.insert(member_id)>0 ) {
 					return "redirect: login/loginForm.do";
 				}
 				return "redirect: user/registForm.do";
 			}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+			
+			//ì•„ì´ë”” ì¤‘ë³µì²´í¬ 
+			/*
+			@ResponseBody
+			@RequestMapping(value ="idchk.do",method = RequestMethod.GET)
+			public int idchk(@RequestParam("member_id")String member_id) {
+				System.out.println(member_id);
+				
+				int res = 0 ;
+				
+				return res;
+			}
+			
+			*/
+			
+			//ì•„ì´ë”” ì¤‘ë³µì²´í¬ 
+			@RequestMapping(value ="/idchk.do",method=RequestMethod.GET)
+			@ResponseBody
+			public int idchk(@RequestParam("member_id") String member_id){
+				System.out.println(member_id);
+				
+				int res = adminBiz.idchk(member_id);
+				return res;
+			}
+			
+			@RequestMapping(value = "/login/idpwFind.do",method =RequestMethod.GET)
+			public String IdPwfind(Locale locale,Model model) {
+				logger.info("");
+				
+				return "login/idpwFind";
+			}
 	
 }
 

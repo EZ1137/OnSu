@@ -52,4 +52,10 @@ public class AdminController {
 		return "videoreview";
 	}
 	
+//	@RequestMapping("/reviewdetail.do")
+//	public String Reviewdetail(Model model) {
+//		logger.info("AdminController Reviewdetail");
+//		model.addAttribute("de")
+//	}
+	
 }

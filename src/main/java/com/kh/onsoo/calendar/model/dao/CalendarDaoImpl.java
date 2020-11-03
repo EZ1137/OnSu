@@ -19,10 +19,15 @@ public class CalendarDaoImpl implements CalendarDao {
 	private Logger logger = LoggerFactory.getLogger(CalendarDaoImpl.class);
 	
 	@Override
-	public List<CalendarDto> selectList(String yyyyMMdd) {
+	public List<CalendarDto> selectList() {
 		List<CalendarDto> list = new ArrayList<CalendarDto>();
 		
-		list = sqlSession.selectList(NAMESPACE+"selectList", yyyyMMdd);
+		try {
+			list = sqlSession.selectList(NAMESPACE+"selectList");
+		} catch (Exception e) {
+			logger.info("[ERROR] selectList");
+			e.printStackTrace();
+		}
 		
 		return list;
 	}
@@ -86,6 +91,19 @@ public class CalendarDaoImpl implements CalendarDao {
 		List<CalendarDto> list = new ArrayList<CalendarDto>();
 		
 		list = sqlSession.selectList(NAMESPACE+"calendarList", yyyyMMdd);
+		
+		return list;
+	}
+	
+	public List<CalendarDto> schedule() {
+		List<CalendarDto> list = new ArrayList<CalendarDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE+"schedule");
+		} catch (Exception e) {
+			logger.info("[ERROR] schedule");
+			e.printStackTrace();
+		}
 		
 		return list;
 	}

@@ -43,13 +43,7 @@
 					<td>${dto.member_blockdate }</td>
 					<td>첨부파일(졸증,경증)</td>
 					<td>${dto.member_role }</td>
-					<td>
-						<select>
-							<option>----선택----</option>
-							<option>강사인증탈락</option>
-							<option>강사인증완료</option>
-						</select>
-					</td>
+					<td><input type="button" value="수정" onclick="location.href='reviewdetail.do?member_no=${dto.member_no}'"></td>
 				</tr>
 			</c:forEach>
 			

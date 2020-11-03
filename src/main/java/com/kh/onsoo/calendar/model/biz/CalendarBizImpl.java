@@ -15,8 +15,8 @@ public class CalendarBizImpl implements CalendarBiz {
 	private CalendarDao calendarDao;
 	
 	@Override
-	public List<CalendarDto> selectList(String yyyyMMdd) {
-		return calendarDao.selectList(yyyyMMdd);
+	public List<CalendarDto> selectList() {
+		return calendarDao.selectList();
 	}
 
 	@Override
@@ -41,5 +41,9 @@ public class CalendarBizImpl implements CalendarBiz {
 
 	public List<CalendarDto> calendarList(String yyyyMMdd) {
 		return calendarDao.calendarList(yyyyMMdd);
+	}
+	
+	public List<CalendarDto> schedule() {
+		return calendarDao.schedule();
 	}
 }

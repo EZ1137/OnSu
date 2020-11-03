@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="listenWith">
+
+	<select id="selectList" resultType="ListenWithDto">
+		SELECT LISTEN_WNO, LISTEN_WMEMBERID, LISTEN_WCLASSNO, LISTEN_WCOUNT, LISTEN_WCLASSTITLE
+		FROM LISTEN_WITH
+		ORDER BY LISTEN_WNO DESC
+	</select>
+
+</mapper>
