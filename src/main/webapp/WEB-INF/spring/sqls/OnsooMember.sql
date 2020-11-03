@@ -1,25 +1,51 @@
 DROP SEQUENCE MEMBERSEQ;
 DROP TABLE MEMBER CASCADE CONSTRAINTS;
+   
+
 DROP TABLE authorities CASCADE CONSTRAINTS;
+
+
+
 
 --회원테이블 
 SELECT * FROM MEMBER;
 
---권한 테이블 
+
 SELECT * FROM authorities;
 
+
+--권한 테이블 
+SELECT * FROM authorities
+
 /*
--- 회원가입 후 해당 아이디에 권한을 부여 
--- 권한 부여할 경우 해당  ('아이디값','ROLE_USER')이 같은 형식으로 부여 해야 함 
--- 다만 여러 권한이 필요할 경우  같은경우 해당 계정에 각각 ADMIN, BLOCK 추가로 INSERT 해주면 된다.
+--회원가입후 해당 아이디에 권한을 부여 
+
+
+--권한 부여할 경우 해당  ('아이디값','ROLE_USER')  이 같은 형식으로 부여 해야함 
+
+-- 다만 여러 권한이 필요할 경우  같은경우 해당 계정에 각각 ADMIN, BLOCK 추가로 INSERT 해주면 된다 .
+
  
- ex)
-	일반회원 권한 1개 
-	INSERT INTO authorities (MEMBER_ID, authority) VALUES ('user', 'ROLE_USER');
+
+ ex) 일반회원 권한 1개 
+       INSERT INTO authorities (MEMBER_ID, authority) VALUES ('user', 'ROLE_USER');
        
-	관리자   권한 2개 
-	INSERT INTO authorities (MEMBER_ID, authority) VALUES ('admin', 'ROLE_ADMIN');
-	INSERT INTO authorities (MEMBER_ID, authority) VALUES ('admin', 'ROLE_USER');
+       
+       관리자   권한 2개 
+        INSERT INTO authorities (MEMBER_ID, authority) VALUES ('admin', 'ROLE_ADMIN');
+      INSERT INTO authorities (MEMBER_ID, authority) VALUES ('admin', 'ROLE_USER');
+   
+   
+
+
+   일반회원 권한 1개 
+   INSERT INTO authorities (MEMBER_ID, authority) VALUES ('user', 'ROLE_USER');   
+
+       
+   관리자   권한 2개 
+   INSERT INTO authorities (MEMBER_ID, authority) VALUES ('admin', 'ROLE_ADMIN');
+   INSERT INTO authorities (MEMBER_ID, authority) VALUES ('admin', 'ROLE_USER');
+
 */
 
 SELECT * FROM MEMBER;
@@ -33,9 +59,10 @@ INSERT INTO authorities (MEMBER_ID, authority) VALUES ('admin', 'ROLE_USER');
 
 CREATE SEQUENCE MEMBERSEQ;
 
+
 CREATE TABLE MEMBER(
    -- 회원 번호 (PK X)
-   MEMBER_NO NUMBER NOT NULL, 
+   SEQ NUMBER NOT NULL, 
    
    -- 회원 ID (PK)
    MEMBER_ID VARCHAR2(100) NOT NULL,
@@ -68,15 +95,14 @@ CREATE TABLE MEMBER(
    MEMBER_REGDATE DATE NOT NULL,
    
    -- 회원 탈퇴일자 (NOT NULL X)
-   MEMBER_DELETEDATE DATE,
+   MEMBER_DDATE DATE,
    
    -- 회원 정지일자 (NOT NULL X)
-   MEMBER_BLOCKDATE DATE, 
+   MEMBER_BDATE DATE, 
    
-   -- 권한설정 = 1
-   enabled NUMBER NULL,
-   
-   -- integer nummber
+   --권한설정=1
+   enabled    NUMBER    NULL ,
+   --integer nummber
    -- 회원 ID : PK
    CONSTRAINT ID_MEMBER_PK PRIMARY KEY(MEMBER_ID), 
    
@@ -98,8 +124,12 @@ SELECT * FROM MEMBER;
 
 --관리자 계정
 INSERT INTO MEMBER 
+
 VALUES(MEMBERSEQ.NEXTVAL, 'admin', 'admin', '관리자', 'M', '010-0000-0000', 
-   'admin@onsoo.com', '서울 강남구 역삼동', '1019', 'A', SYSDATE, NULL, NULL, 1);
+   'admin@onsoo.com', '서울 강남구 역삼동', '1019', 'A', SYSDATE, NULL, NULL,1);
+
+
+
 
 DROP TABLE authorities CASCADE CONSTRAINTS;
 
@@ -107,11 +137,15 @@ SELECT * FROM authorities;
 
 --권한테이블 추가 
 CREATE TABLE authorities(
-	MEMBER_ID VARCHAR2(20) NOT NULL,
-	authority VARCHAR2(20) NOT NULL
+   MEMBER_ID VARCHAR2(20) NOT NULL,
+   authority VARCHAR2(20) NOT NULL
 );
 
 ALTER TABLE authorities ADD CONSTRAINT IDX_authorities_PK PRIMARY KEY (MEMBER_ID, authority);
 ALTER TABLE authorities ADD CONSTRAINT IDX_authorities_FK0 FOREIGN KEY (MEMBER_ID) REFERENCES MEMBER (MEMBER_ID);
 
 INSERT INTO authorities (MEMBER_ID, authority) VALUES ('dd', 'ROLE_USER');
+
+
+
+

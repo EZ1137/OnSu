@@ -59,35 +59,43 @@
 	
 	<section>
 		<div class="mypage_title">
-			<h1>나의 온수<a href="">개인 정보 수정</a></h1>
+			<h1>나의 온수 <a href="">개인 정보 수정</a></h1>
 		</div>
 		<div class="ldiv">
 			<h1>수강 중인 강의 목록</h1>
 			<table>
 				<c:choose>
-					<c:when test="${empty list }">
+					<c:when test="${empty lwlist && empty lvlist }">
 						<tr>
 							<th>수강 중인 강의가 없습니다.</th>
 						</tr>	
 					</c:when>
 					<c:otherwise>
-					<c:forEach items="${list }" var="listendto">
+					<c:forEach items="${lwlist }" var="listenWithdto">
 						<tr>
-							<td></td>
+							<td>1</td>
 							<td></td>
 							<td><a href=""></a></td>
 							<td></td>
 						</tr>
 					</c:forEach>
+					<c:forEach items="${lvlist }" var="listenVideodto">
+						<tr>
+							<td>2</td>
+							<td></td>
+							<td><a href=""></a></td>
+							<td></td>
+						</tr>
+					</c:forEach>					
 					</c:otherwise>	
 				</c:choose>
 			</table>
 		</div>
 		
 		<div class="rdiv">
-			<h1>강의 일정</h1>
-			<div>
-				<table id="calendar" border="1" >
+			<h1>${mlist.member_id }님의 강의 일정</h1>
+			<div class="cdiv">
+				<table class="ldiv" id="cal">
 				<caption>
 					<a href="mypage.do?year=<%=year-1%>&month=<%=month%>">◀◀</a>
 					<a href="mypage.do?year=<%=year%>&month=<%=month-1%>">◁</a>
@@ -129,6 +137,32 @@
 				}
 				%>
 				</table>
+			<div class="rdiv">
+				<table>
+				<caption>오늘, 내일 남은 일정</caption>
+					<tr>
+						<th>일정</th>
+						<th>시간</th>
+					</tr>
+					<tr>
+						<c:choose>
+					<c:when test="${empty callist }">
+						<tr>
+							<th>오늘, 내일은 일정이 없습니다.</th>
+						</tr>	
+					</c:when>
+					<c:otherwise>
+					<c:forEach items="${callist }" var="calendardto">
+						<tr>
+							<td><a style="color:blue;" href="calendarDetail.do?calendar_no=${calendardto.calendar_no }">${calendardto.calendar_title }</a></td>
+							<td>${calendardto.calendar_mdate }</td>
+						</tr>
+					</c:forEach>
+					</c:otherwise>	
+				</c:choose>
+					</tr>
+				</table>
+			</div>
 			</div>
 		</div>
 	</section>

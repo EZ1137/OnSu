@@ -47,13 +47,24 @@ section {
 .ldiv {
 	float : left;
 	width: 40%;
-	border : 1px solid black;
+	height: 70%;
 }
 
 .rdiv {
 	float : right;
 	width: 60%;
-	border : 1px solid black;
+	height: 70%;
+}
+
+.cdiv {
+	width: 100%;
+	height: 70%;
+}
+
+#cal {
+	width: 40%;
+	height: 100%;
+	text-align : center;
 }
 
 
