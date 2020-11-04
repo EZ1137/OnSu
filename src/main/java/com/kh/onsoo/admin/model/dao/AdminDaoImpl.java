@@ -33,11 +33,11 @@ public class AdminDaoImpl implements AdminDao {
 	}
 
 	@Override
-	public AdminDto selectOne(int member_no) {
+	public AdminDto selectOne(String member_id) {
 		AdminDto dto = new AdminDto();
 		
 		try {
-			dto = sqlSession.selectOne(NAMESPACE + "selectOne", member_no);
+			dto = sqlSession.selectOne(NAMESPACE + "selectOne", member_id);
 		} catch (Exception e) {
 			logger.info("AdminDaoImpl selectOne[error]");
 			e.printStackTrace();
@@ -86,7 +86,7 @@ public class AdminDaoImpl implements AdminDao {
 	}
 	
 	
-	//아이디 중복체크 
+	//�븘�씠�뵒 以묐났泥댄겕 
 	@Override
 	public int idchk(String member_id) {
 		int idchk=0;
@@ -94,7 +94,7 @@ public class AdminDaoImpl implements AdminDao {
 		try {
 			idchk=sqlSession.selectOne(NAMESPACE+"idchk",member_id);
 		} catch (Exception e) {
-			logger.info("���̵� �ߺ�üũ");
+			logger.info("占쏙옙占싱듸옙 占쌩븝옙체크");
 			e.printStackTrace();
 		}
 		return idchk;

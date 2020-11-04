@@ -20,8 +20,8 @@ public class AdminBizImpl implements AdminBiz {
 	}
 
 	@Override
-	public AdminDto selectOne(int member_no) {
-		return dao.selectOne(member_no);
+	public AdminDto selectOne(String member_id) {
+		return dao.selectOne(member_id);
 	}
 
 	@Override

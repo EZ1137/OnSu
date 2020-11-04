@@ -18,7 +18,7 @@
 	</resultMap>
 	
 	<select id="selectList" resultMap="AdminDtoMap">
-		SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_GENDER, MEMBER_EMAIL, MEMBER_ADDR, MEMBER_PHONE, MEMBER_BIRTH, MEMBER_ROLE, MEMBER_DELETEDATE, MEMBER_BLOCKDATE FROM MEMBER
+		SELECT * FROM MEMBER
 	</select>
 	
 	<!--회원가입  -->
@@ -39,6 +39,18 @@
 				NULL,
 				1)
 	</insert>
+	
+	<select id="selectOne" parameterType="String" resultType="AdminDto">
+		SELECT * 
+		FROM MEMBER 
+		WHERE MEMBER_ID = #{member_id}
+	</select>
+	
+	<update id="update" parameterType="AdminDto">
+		UPDATE MEMBER
+		SET MEMBER_ROLE = #{member_role} 
+		WHERE MEMBER_ID = #{member_id}
+	</update>
 	
 	<!--아이디 체크 
 	<select id="selectOne2" resultMap="AdminDtoMap">

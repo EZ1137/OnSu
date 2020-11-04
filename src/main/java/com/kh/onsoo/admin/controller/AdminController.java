@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kh.onsoo.admin.model.biz.AdminBiz;
 import com.kh.onsoo.admin.model.biz.AdminReportBiz;
+import com.kh.onsoo.admin.model.dto.AdminDto;
 
 @Controller
 public class AdminController {
@@ -45,17 +46,24 @@ public class AdminController {
 		return "reviewlist";
 	}
 	
-	@RequestMapping("/videoreviewlist.do")
-	public String VideoReview(Model model) {
-		logger.info("AdminController videoreviewlist");
-		model.addAttribute("list");
-		return "videoreview";
+	@RequestMapping("/reviewdetail.do")
+	public String Reviewdetail(Model model, String member_id) {
+		logger.info("AdminController reviewdetail");
+		AdminDto dto = abiz.selectOne(member_id);
+		model.addAttribute("dto",dto);
+		System.out.println(dto.getMember_no());
+		return "reviewdetail";
 	}
 	
-//	@RequestMapping("/reviewdetail.do")
-//	public String Reviewdetail(Model model) {
-//		logger.info("AdminController Reviewdetail");
-//		model.addAttribute("de")
-//	}
+	@RequestMapping("/reviewupdate.do")
+	public String Reviewupdate(Model model, AdminDto dto) {
+		logger.info("AdminController reviewupdate");
+		int res = abiz.update(dto);
+		System.out.println(res);
+		if(res > 0) {
+			return "redirect:reviewlist.do";
+		}
+		return "redirect:reviewdetail.do?member_id =" + dto.getMember_id();
+	}
 	
 }

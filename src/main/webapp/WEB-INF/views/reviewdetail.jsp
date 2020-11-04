@@ -8,35 +8,37 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>강사인증 페이지</h1>
+<h1>강사인증 페이지</h1>
+	<form action="reviewupdate.do" method="post">
+	<input type="hidden" name="member_id" value="${dto.member_id }"/>
+	<input type="hidden" name="member_no" value="${dto.member_no }"/>
 	<table border="1">
 		<tr>
-			<th></th>
-			<td></td>
+			<th>작성자 ID</th>
+			<td>${dto.member_id }</td>
 		</tr>
 		<tr>
-			<th></th>
-			<td></td>
+			<th>현재 권한</th>
+			<td>${dto.member_role }</td>
 		</tr>
 		<tr>
-			<th></th>
-			<td><textarea rows="10" cols="60" readonly="readonly">첨부파일 미리보기</textarea></td>
-		</tr>
-		<tr>
-			<th></th>
-			<td></td>
+			<th>첨부파일 미리보기</th>
+			<td><textarea rows="10" cols="60" >첨부파일</textarea></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="right">
-				<select>
-					<option>-----인증 여부-----</option>
-					<option>강사인증 완료</option>
-					<option>강사인증 실패</option>
+				 <select name="member_role">
+					<option value="">-----인증 여부-----</option>
+					<option value="T">강사인증 완료</option>
+					<option value="S">강사인증 실패</option>
 				</select>
-				<input type="button" value="인증완료">
+				<input type="submit" value="인증완료">
 				<input type="button" value="목록" onclick="location.href='reviewlist.do'"/>
 			</td>
 		</tr>
 	</table>
+	</form>
+	<input type="button" value="관리자페이지 메인이동" onclick="location.href='list.do'">
+
 </body>
 </html>
