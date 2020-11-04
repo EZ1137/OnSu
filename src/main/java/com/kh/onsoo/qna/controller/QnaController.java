@@ -1,14 +1,14 @@
 package com.kh.onsoo.qna.controller;
 
-import java.security.Principal;
+//import java.security.Principal;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.Authentication;
+//import org.springframework.security.core.context.SecurityContext;
+//import org.springframework.security.core.context.SecurityContextHolder;
+//import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,8 +26,8 @@ public class QnaController {
 	@Autowired
 	private QnaBiz qnaBiz;
 	
-	@Autowired
-	private AdminBiz adminBiz;
+//	@Autowired
+//	private AdminBiz adminBiz;
 
 	@RequestMapping(value = "/qna.do")
 	public String selectList(Model model) {
@@ -82,6 +82,19 @@ public class QnaController {
 			return "qna.do";
 		} else {
 			return "qnainsertform.do";	
+		}
+	}
+
+	@RequestMapping(value = "/qnasetsecret.do")
+	public String setSecret(Model model, QnaDto qnaDto) {
+		
+		logger.info("QnaController.insertForm");
+		int res = qnaBiz.setsecret(qnaDto);
+		
+		if (res > 0) {
+			return "qna.do";
+		} else {
+			return "qnaone.do?qnano=" + qnaDto.getQnano();	
 		}
 	}
 

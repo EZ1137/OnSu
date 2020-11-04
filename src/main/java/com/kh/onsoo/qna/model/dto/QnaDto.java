@@ -5,28 +5,25 @@ import java.util.Date;
 public class QnaDto {
 	
 	private int qnano;
-	private String qnaqwriter;
+	private String qnawriter;
 	private String qnatitle;
 	private String qnaqcontent;
 	private Date qnaqregdate;
 	private String qnasecret;
 	private String qnaresponse;
-	private String qnaawriter;
 	private String qnaacontent;
 	private Date qnaaregdate;
 
 	public QnaDto() {
 	}
 	
-	public QnaDto(int qnano, String qnaqwriter, String qnatitle, String qnaqcontent, Date qnaqregdate, String qnasecret, String qnaresponse, String qnaawriter, String qnaacontent, Date qnaaregdate) {
+	public QnaDto(int qnano, String qnawriter, String qnatitle, String qnaqcontent, Date qnaqregdate, String qnasecret, String qnaresponse, String qnaacontent, Date qnaaregdate) {
 		this.qnano = qnano;
-		this.qnaqwriter = qnaqwriter;
 		this.qnatitle = qnatitle;
 		this.qnaqcontent = qnaqcontent;
 		this.qnaqregdate = qnaqregdate;
 		this.qnasecret = qnasecret;
 		this.qnaresponse = qnaresponse;
-		this.qnaqwriter = qnaawriter;
 		this.qnaqcontent = qnaacontent;
 		this.qnaaregdate = qnaaregdate;
 	}
@@ -39,12 +36,12 @@ public class QnaDto {
 		this.qnano = qnano;
 	}
 
-	public String getQnaqwriter() {
-		return qnaqwriter;
+	public String getQnawriter() {
+		return qnawriter;
 	}
 
-	public void setQnaqwriter(String qnaqwriter) {
-		this.qnaqwriter = qnaqwriter;
+	public void setQnawriter(String qnawriter) {
+		this.qnawriter = qnawriter;
 	}
 
 	public String getQnatitle() {
@@ -85,14 +82,6 @@ public class QnaDto {
 
 	public void setQnaresponse(String qnaresponse) {
 		this.qnaresponse = qnaresponse;
-	}
-
-	public String getQnaawriter() {
-		return qnaawriter;
-	}
-
-	public void setQnaawriter(String qnaawriter) {
-		this.qnaawriter = qnaawriter;
 	}
 
 	public String getQnaacontent() {
