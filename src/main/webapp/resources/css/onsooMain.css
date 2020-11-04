@@ -171,7 +171,7 @@ header {
 	height: 30px;
 	border-radius: 16px;
 	text-align: center;
-	background-color: var(--color-white);s
+	background-color: var(--color-white);
 	box-shadow: 5px 5px 10px #e6e6e6, -5px -5px 10px #ffffff;
 }
 
@@ -354,14 +354,12 @@ img {
 	border-radius: 50%;
 	cursor: pointer;
 	/* visibility: hidden; */
-	pointer-events: none;
 	transition: opacity 300ms ease-in;
 	z-index: 9999;
 }
 
 .arrow-up.visible {
 	visibility: visible;
-	pointer-events: auto;
 }
 
 header {

@@ -36,11 +36,11 @@ public class MainController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
-	//¾ÏÈ£È­
+	//ì•”í˜¸í™”
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
-	//È¸¿øÁ¤º¸
+	//íšŒì›ì •ë³´
 	@Autowired
 	private AdminBiz adminBiz;
 	
@@ -57,6 +57,11 @@ public class MainController {
 		return "about";
 	}
 	
+	@RequestMapping(value = "/streaming.do", method = RequestMethod.GET)
+	public String streaming(Model model) {			
+		return "streaming";
+	}
+	
 	@RequestMapping(value = "/tvalid.do", method = RequestMethod.GET)
 	public String tvalid(Locale locale, Model model) {			
 		return "teachervalid";
@@ -71,8 +76,8 @@ public class MainController {
 		String path = "C:\\image\\";
 
 		for (MultipartFile mf : fileList) {
-			String originFileName = mf.getOriginalFilename(); // ¿øº» ÆÄÀÏ ¸í
-			long fileSize = mf.getSize(); // ÆÄÀÏ »çÀÌÁî
+			String originFileName = mf.getOriginalFilename(); // ì›ë³¸ íŒŒì¼ ëª…
+			long fileSize = mf.getSize(); // íŒŒì¼ ì‚¬ì´ì¦ˆ
 
 			System.out.println("originFileName : " + originFileName);
 			System.out.println("fileSize : " + fileSize);
@@ -89,21 +94,21 @@ public class MainController {
 		return "redirect:/";
 	}
 
-	//·Î±×ÀÎ 
+	//ë¡œê·¸ì¸ 
 		@RequestMapping(value = "/login/loginForm.do",method = RequestMethod.GET)
 		public String loginForm(Locale locale, Model model) {
 			 logger.info("Welcome Login Form! ");
 			return "login/loginForm";
 		}
 
-	// Á¢±Ù±İÁö 
+	// ì ‘ê·¼ê¸ˆì§€ 
 		@RequestMapping(value = "/login/accessDenied.do",method = RequestMethod.GET)
 		public String accessDenied(Locale locale, Model model) {
 			logger.info("Welcome Access Denied");
 			return "login/accessDenied";
 		}
 
-		// °ü¸®ÀÚ 
+		// ê´€ë¦¬ì 
 
 			@RequestMapping(value = "/admin/adminHome.do", method = RequestMethod.GET)
 			public String home(Locale locale, Model model) {
@@ -112,17 +117,17 @@ public class MainController {
 				return "admin/adminHome";
 			}
 			
-			//È¸¿ø°¡ÀÔ Æû 
+			//íšŒì›ê°€ì… í¼ 
 			@RequestMapping( value ="/guest/registForm.do",method = RequestMethod.GET)
 			public String registerForm(Locale locale, Model model) {
-				logger.info("È¸¿ø°¡ÀÔ Æû  ");
+				logger.info("íšŒì›ê°€ì… í¼  ");
 				return "guest/registForm";
 			}
 			
-			//È¸¿ø°¡ÀÔ ¿Ï·á 
+			//íšŒì›ê°€ì… ì™„ë£Œ 
 			@RequestMapping(value ="/regist.do",method = RequestMethod.POST )
 			public String regist(@ModelAttribute AdminDto dto) {
-				logger.info("È¸¿ø°¡ÀÔ  ");
+				logger.info("íšŒì›ê°€ì…  ");
 
 				
 				String encPassword = passwordEncoder.encode(dto.getMember_pw());
@@ -131,7 +136,7 @@ public class MainController {
 
 				System.out.println("");
 
-				//¸â¹ö ¾ÆÀÌµğ·Î È¸¿ø°¡ÀÔ°ú µ¿½Ã¿¡ ±ÇÇÑÅ×ÀÌºí¿¡ ±ÇÇÑ ºÎ¿© 
+				//ë©¤ë²„ ì•„ì´ë””ë¡œ íšŒì›ê°€ì…ê³¼ ë™ì‹œì— ê¶Œí•œí…Œì´ë¸”ì— ê¶Œí•œ ë¶€ì—¬ 
 				String member_id = dto.getMember_id();
 
 				
@@ -141,7 +146,7 @@ public class MainController {
 				return "redirect: user/registForm.do";
 			}
 			
-			//¾ÆÀÌµğ Áßº¹Ã¼Å© 
+			//ì•„ì´ë”” ì¤‘ë³µì²´í¬ 
 			/*
 			@ResponseBody
 			@RequestMapping(value ="idchk.do",method = RequestMethod.GET)
@@ -155,7 +160,7 @@ public class MainController {
 			
 			*/
 			
-			//¾ÆÀÌµğ Áßº¹Ã¼Å© 
+			//ì•„ì´ë”” ì¤‘ë³µì²´í¬ 
 			@RequestMapping(value ="/idchk.do",method=RequestMethod.GET)
 			@ResponseBody
 			public int idchk(@RequestParam("member_id") String member_id){

@@ -30,27 +30,27 @@ public class QnaController {
 	private AdminBiz adminBiz;
 
 	@RequestMapping(value = "/qna.do")
-	public String selectList(Model model, Principal princopal) {
+	public String selectList(Model model) {
 		
 		logger.info("QnaController.selectList");
 		model.addAttribute("qna", qnaBiz.selectList());
-		//
-		model.addAttribute(princopal);
-	      //시큐리티 컨텍스트 객체를 얻습니다.
-	      SecurityContext context = SecurityContextHolder.getContext();
-	      
-	      //인증객체를 얻습니다. 
-	      Authentication authentication = 
-	                              context.getAuthentication();
-	                              // context에 있는 인증정보를 getAuthentication()으로 갖고온다.
-	      //로그인한 사용자 정보를 가진 객체를 얻습니다.
-	      UserDetails principal = (UserDetails)authentication.getPrincipal();
-	                        //authentication에 있는  get Princinpal 객체애 유저정보를 담는다. 
-	                        //유저객체는 UserDetails를 implement 함 
-	      
-	      String username = principal.getUsername();  //사용자 이름 
-	      System.out.println("username : " + username);
-	    //
+		
+//		// 주석 처리 안하면 qna.do 진입 불가
+//		model.addAttribute(princopal);
+//	      //시큐리티 컨텍스트 객체를 얻습니다.
+//	      SecurityContext context = SecurityContextHolder.getContext();
+//	      
+//	      //인증객체를 얻습니다. 
+//	      Authentication authentication = context.getAuthentication();
+//	                              // context에 있는 인증정보를 getAuthentication()으로 갖고온다.
+//	      //로그인한 사용자 정보를 가진 객체를 얻습니다.
+//	      UserDetails principal = (UserDetails)authentication.getPrincipal();
+//	                        //authentication에 있는  get Princinpal 객체애 유저정보를 담는다. 
+//	                        //유저객체는 UserDetails를 implement 함 
+//	      
+//	      String username = principal.getUsername();  //사용자 이름 
+//	      System.out.println("username : " + username);
+//	    //
 		
 		return "qnalist";
 	}
