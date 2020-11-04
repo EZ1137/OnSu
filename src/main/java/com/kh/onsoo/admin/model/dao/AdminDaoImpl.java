@@ -88,16 +88,14 @@ public class AdminDaoImpl implements AdminDao {
 	
 	//아이디 중복체크 
 	@Override
-	public int idchk(String member_id) {
-		int idchk=0;
-		
+	public int idchk(AdminDto dto) {
+		int res= 0;
 		try {
-			idchk=sqlSession.selectOne(NAMESPACE+"idchk",member_id);
+			res=sqlSession.selectOne(NAMESPACE+"idchk",dto);
 		} catch (Exception e) {
-			logger.info("���̵� �ߺ�üũ");
 			e.printStackTrace();
 		}
-		return idchk;
+		return res;
 	}
 	
 	public AdminDto selectOne2(String member_id) {

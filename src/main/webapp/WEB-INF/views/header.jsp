@@ -62,7 +62,7 @@
 						
 						
 						<!--로그인 권한 있을시  페이지   -->
-								<!-- 
+								
 						<li>
 						<sec:authorize access="isAuthenticated()">
 							<form:form action="${pageContext.request.contextPath}/logout" method="POST">
@@ -71,15 +71,16 @@
 						</sec:authorize>
 							
 						</li>
-								 -->
 						
 						
 						<li>
+							<sec:authorize access="isAnonymous()">
 							<a href="<c:url value="/guest/registForm.do" />">
 								<span class="regist">
 									<button id="registbtn">Sign Up</button>
 								</span>
 							</a>
+							</sec:authorize>
 						</li>
 					</c:if>
 					<c:if test="${admindto.member_role eq 'T' || admindto.member_role eq 'S'}">

@@ -44,7 +44,7 @@ public class AdminBizImpl implements AdminBiz {
 	}
 	
 	@Override
-	public int idchk(String member_id) {
-		return dao.idchk(member_id);
+	public int idchk(AdminDto dto) {
+		return dao.idchk(dto);
 	}
 }

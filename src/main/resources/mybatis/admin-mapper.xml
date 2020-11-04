@@ -40,13 +40,13 @@
 				1)
 	</insert>
 	
-	<!--아이디 체크 
 	<select id="selectOne2" resultMap="AdminDtoMap">
 		SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_GENDER, MEMBER_EMAIL, MEMBER_ADDR, MEMBER_PHONE, MEMBER_BIRTH, MEMBER_ROLE, MEMBER_DELETEDATE, MEMBER_BLOCKDATE
 		FROM MEMBER
 		WHERE MEMBER_ID = #{MEMBER_ID}
 	</select>
 	
+	<!--아이디 체크 
 	<select id="idchk"  parameterType="String" resultType="int">
 	SELECT 	COUNT(*) FROM MEMBER 
 	WHERE MEMBER_ID =#{member_id}
