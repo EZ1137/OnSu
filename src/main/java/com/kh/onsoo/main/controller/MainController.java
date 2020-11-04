@@ -32,11 +32,12 @@ public class MainController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
-	//��ȣȭ
+
+	//암호화
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
-	//ȸ������
+	//회원정보
 	@Autowired
 	private AdminBiz adminBiz;
 	
@@ -53,6 +54,11 @@ public class MainController {
 		return "about";
 	}
 	
+	@RequestMapping(value = "/streaming.do", method = RequestMethod.GET)
+	public String streaming(Model model) {			
+		return "streaming";
+	}
+	
 	@RequestMapping(value = "/tvalid.do", method = RequestMethod.GET)
 	public String tvalid(Locale locale, Model model) {			
 		return "teachervalid";
@@ -67,8 +73,9 @@ public class MainController {
 		String path = "C:\\image\\";
 
 		for (MultipartFile mf : fileList) {
-			String originFileName = mf.getOriginalFilename(); // ���� ���� ��
-			long fileSize = mf.getSize(); // ���� ������
+
+			String originFileName = mf.getOriginalFilename(); // 원본 파일 명
+			long fileSize = mf.getSize(); // 파일 사이즈
 
 			System.out.println("originFileName : " + originFileName);
 			System.out.println("fileSize : " + fileSize);
@@ -85,21 +92,22 @@ public class MainController {
 		return "redirect:/";
 	}
 
-	//�α��� 
+	//로그인 
+
 		@RequestMapping(value = "/login/loginForm.do",method = RequestMethod.GET)
 		public String loginForm(Locale locale, Model model) {
 			 logger.info("Welcome Login Form! ");
 			return "login/loginForm";
 		}
 
-	// ���ٱ��� 
+	// 접근금지 
 		@RequestMapping(value = "/login/accessDenied.do",method = RequestMethod.GET)
 		public String accessDenied(Locale locale, Model model) {
 			logger.info("Welcome Access Denied");
 			return "login/accessDenied";
 		}
 
-		// ������ 
+		// 관리자 
 
 			@RequestMapping(value = "/admin/adminHome.do", method = RequestMethod.GET)
 			public String home(Locale locale, Model model) {
@@ -108,17 +116,17 @@ public class MainController {
 				return "admin/adminHome";
 			}
 			
-			//ȸ������ �� 
+			//회원가입 폼 
 			@RequestMapping( value ="/guest/registForm.do",method = RequestMethod.GET)
 			public String registerForm(Locale locale, Model model) {
-				logger.info("ȸ������ ��  ");
+				logger.info("회원가입 폼  ");
 				return "guest/registForm";
 			}
 			
-			//ȸ������ �Ϸ� 
+			//회원가입 완료 
 			@RequestMapping(value ="/regist.do",method = RequestMethod.POST )
 			public String regist(@ModelAttribute AdminDto dto) {
-				logger.info("ȸ������  ");
+				logger.info("회원가입  ");
 
 				
 				String encPassword = passwordEncoder.encode(dto.getMember_pw());
@@ -127,7 +135,6 @@ public class MainController {
 
 				System.out.println("");
 
-				//��� ���̵�� ȸ�����԰� ���ÿ� �������̺� ���� �ο� 
 				String member_id = dto.getMember_id();
 
 				
@@ -137,7 +144,8 @@ public class MainController {
 				return "redirect: user/registForm.do";
 			}
 			
-			//���̵� �ߺ�üũ 
+
+			//아이디 중복체크 
 			/*
 			@ResponseBody
 			@RequestMapping(value ="idchk.do",method = RequestMethod.GET)
