@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1>강사인증 페이지</h1>
-	<form action="reviewupdate.do" method="post">
+	<form action="reviewupdate.do" method="get">
 	<input type="hidden" name="member_id" value="${dto.member_id }"/>
 	<input type="hidden" name="member_no" value="${dto.member_no }"/>
 	<table border="1">

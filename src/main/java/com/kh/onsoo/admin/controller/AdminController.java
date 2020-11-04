@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kh.onsoo.admin.model.biz.AdminBiz;
 import com.kh.onsoo.admin.model.biz.AdminReportBiz;
@@ -51,11 +52,10 @@ public class AdminController {
 		logger.info("AdminController reviewdetail");
 		AdminDto dto = abiz.selectOne(member_id);
 		model.addAttribute("dto",dto);
-		System.out.println(dto.getMember_no());
 		return "reviewdetail";
 	}
 	
-	@RequestMapping("/reviewupdate.do")
+	@RequestMapping(value="/reviewupdate.do",method = {RequestMethod.GET, RequestMethod.POST})
 	public String Reviewupdate(Model model, AdminDto dto) {
 		logger.info("AdminController reviewupdate");
 		int res = abiz.update(dto);
