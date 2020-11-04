@@ -50,7 +50,7 @@
 				<th></th>
 				<td>
 					<input type="radio" name="class_smallcategory" value="web">web
-					<input type="radio" name="class_smallcategory" value="algorism">알고리즘
+					<input type="radio" name="class_smallcategory" value="algorithm">알고리즘
 				</td>
 			</tr>
 			<tr>

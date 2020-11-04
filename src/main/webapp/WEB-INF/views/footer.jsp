@@ -16,7 +16,7 @@
 	<div class=footer>
 		<div class="footer-wrapper">
 			<div class="footer-first">
-				<div class="footer-title">On : soo</div>
+				<div class="footer-title">On:Soo</div>
 
 				<div class="footer-fisrt-container">
 					<div class="footer-mail">
@@ -25,7 +25,7 @@
 					<div class="footer-address">
 						<a>Seoul Korea</a>
 					</div>
-					<div class="footer-policy">Policy</div>
+					<div class="footer-policy">Privacy Policy</div>
 				</div>
 			</div>
 			<div class="footer-second">
@@ -37,7 +37,7 @@
 					<div>02-0000-0000</div></div>
 				<div>실시간상담
 				<i></i></div> -->
-				<div class="second-title"> copyrightⓒ 2020 All rights reserved by OnSoo</div>
+				<div class="second-title"> On:Soo Copyrightⓒ 2020 All rights reserved by AriSoo</div>
 				
 			</div>
 			<div class="footer-third">

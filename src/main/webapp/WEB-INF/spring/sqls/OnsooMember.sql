@@ -100,9 +100,10 @@ CREATE TABLE MEMBER(
    -- 회원 정지일자 (NOT NULL X)
    MEMBER_BDATE DATE, 
    
-   --권한설정=1
-   enabled    NUMBER    NULL ,
-   --integer nummber
+   -- 권한 설정 = 1
+   ENABLED NUMBER NULL,
+   
+   -- integer nummber
    -- 회원 ID : PK
    CONSTRAINT ID_MEMBER_PK PRIMARY KEY(MEMBER_ID), 
    
@@ -126,10 +127,7 @@ SELECT * FROM MEMBER;
 INSERT INTO MEMBER 
 
 VALUES(MEMBERSEQ.NEXTVAL, 'admin', 'admin', '관리자', 'M', '010-0000-0000', 
-   'admin@onsoo.com', '서울 강남구 역삼동', '1019', 'A', SYSDATE, NULL, NULL,1);
-
-
-
+   'admin@onsoo.com', '서울 강남구 역삼동', '1019', 'A', SYSDATE, NULL, NULL, 1);
 
 DROP TABLE authorities CASCADE CONSTRAINTS;
 

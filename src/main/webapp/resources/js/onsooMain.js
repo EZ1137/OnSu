@@ -5,6 +5,10 @@ const header = document.querySelector("#header");
 const headerHeight = header.getBoundingClientRect().height;
 const arrow = document.querySelector("#arrow")
 
+function arrowUp() {
+	$('body').scrollTop(0);
+}
+
 document.addEventListener("scroll", () => {
 
 /*  console.log(window.scrollY);
