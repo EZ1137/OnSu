@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
 <!DOCTYPE html>
 <html>
@@ -88,10 +89,14 @@
 						</tr>
 					</c:when>
 					<c:otherwise>
-						<tr>
-							<td colspan="6" class="qbtnbar" style="text-align: right;"><input
-								type="button" value="WRITE" onclick="loginAlert()" /></td>
-						</tr>
+						<sec:authorize access="isAuthenticated()">
+							<form:form action="${pageContext.request.contextPath}/logout" method="POST">
+    							<input type="submit" value="로그아웃" />
+    							 <td colspan="6" class="qbtnbar" style="text-align: right;"><input
+								type="button" value="WRITE" onclick="location.href='freeinsert.do'" /></td>
+    							
+							</form:form>
+						</sec:authorize>
 					</c:otherwise>
 				</c:choose>
 

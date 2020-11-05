@@ -82,9 +82,8 @@
         -->
         
         
-        <!--csrf 값 활용하겠다. 
-        <csrf disabled="ture" />
-         -->
+        <!--csrf 값 활용하겠다.  -->
+        <csrf disabled="true" />
         
 		<!--  세션이 풀릴 경우 가게되는 url-->
 		<session-management invalid-session-url="/main.do">

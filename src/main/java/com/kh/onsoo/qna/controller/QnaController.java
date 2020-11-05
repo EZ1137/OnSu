@@ -1,14 +1,14 @@
 package com.kh.onsoo.qna.controller;
 
-import java.security.Principal;
+//import java.security.Principal;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.Authentication;
+//import org.springframework.security.core.context.SecurityContext;
+//import org.springframework.security.core.context.SecurityContextHolder;
+//import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,31 +26,31 @@ public class QnaController {
 	@Autowired
 	private QnaBiz qnaBiz;
 	
-	@Autowired
-	private AdminBiz adminBiz;
+//	@Autowired
+//	private AdminBiz adminBiz;
 
 	@RequestMapping(value = "/qna.do")
-	public String selectList(Model model, Principal princopal) {
+	public String selectList(Model model) {
 		
 		logger.info("QnaController.selectList");
 		model.addAttribute("qna", qnaBiz.selectList());
-		//
-		model.addAttribute(princopal);
-	      //시큐리티 컨텍스트 객체를 얻습니다.
-	      SecurityContext context = SecurityContextHolder.getContext();
-	      
-	      //인증객체를 얻습니다. 
-	      Authentication authentication = 
-	                              context.getAuthentication();
-	                              // context에 있는 인증정보를 getAuthentication()으로 갖고온다.
-	      //로그인한 사용자 정보를 가진 객체를 얻습니다.
-	      UserDetails principal = (UserDetails)authentication.getPrincipal();
-	                        //authentication에 있는  get Princinpal 객체애 유저정보를 담는다. 
-	                        //유저객체는 UserDetails를 implement 함 
-	      
-	      String username = principal.getUsername();  //사용자 이름 
-	      System.out.println("username : " + username);
-	    //
+		
+//		// 주석 처리 안하면 qna.do 진입 불가
+//		model.addAttribute(princopal);
+//	      //시큐리티 컨텍스트 객체를 얻습니다.
+//	      SecurityContext context = SecurityContextHolder.getContext();
+//	      
+//	      //인증객체를 얻습니다. 
+//	      Authentication authentication = context.getAuthentication();
+//	                              // context에 있는 인증정보를 getAuthentication()으로 갖고온다.
+//	      //로그인한 사용자 정보를 가진 객체를 얻습니다.
+//	      UserDetails principal = (UserDetails)authentication.getPrincipal();
+//	                        //authentication에 있는  get Princinpal 객체애 유저정보를 담는다. 
+//	                        //유저객체는 UserDetails를 implement 함 
+//	      
+//	      String username = principal.getUsername();  //사용자 이름 
+//	      System.out.println("username : " + username);
+//	    //
 		
 		return "qnalist";
 	}
@@ -82,6 +82,19 @@ public class QnaController {
 			return "qna.do";
 		} else {
 			return "qnainsertform.do";	
+		}
+	}
+
+	@RequestMapping(value = "/qnasetsecret.do")
+	public String setSecret(Model model, QnaDto qnaDto) {
+		
+		logger.info("QnaController.insertForm");
+		int res = qnaBiz.setsecret(qnaDto);
+		
+		if (res > 0) {
+			return "qna.do";
+		} else {
+			return "qnaone.do?qnano=" + qnaDto.getQnano();	
 		}
 	}
 

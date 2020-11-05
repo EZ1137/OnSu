@@ -27,7 +27,7 @@ public class QnaDaoImpl implements QnaDao {
 			list = sqlSession.selectList(NAMESPACE + "selectList");
 			
 		} catch (Exception e) {
-			logger.info("[ERROR] selectList in QNA");
+			logger.info("[ERROR] SelectList in QNA");
 			e.printStackTrace();
 			
 		} 
@@ -42,7 +42,7 @@ public class QnaDaoImpl implements QnaDao {
 			qnaOne = sqlSession.selectOne(NAMESPACE + "selectOne", qnano);
 			
 		} catch (Exception e) {
-			logger.info("[ERROR] selectOne in QNA");
+			logger.info("[ERROR] SelectOne in QNA");
 			e.printStackTrace();
 			
 		}
@@ -57,7 +57,22 @@ public class QnaDaoImpl implements QnaDao {
 			res = sqlSession.insert(NAMESPACE + "insert", qnaDto);
 			
 		} catch (Exception e) {
-			logger.info("[ERROR] insert in QNA");
+			logger.info("[ERROR] Insert in QNA");
+			e.printStackTrace();
+			
+		}
+		return res;
+	}
+
+	@Override
+	public int setsecret(QnaDto qnaDto) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.update(NAMESPACE + "setsecret", qnaDto);
+			
+		} catch (Exception e) {
+			logger.info("[ERROR] Set Secret in QNA");
 			e.printStackTrace();
 			
 		}
@@ -72,7 +87,7 @@ public class QnaDaoImpl implements QnaDao {
 			res = sqlSession.update(NAMESPACE + "update", qnaDto);
 			
 		} catch (Exception e) {
-			logger.info("[ERROR] update in QNA");
+			logger.info("[ERROR] Update in QNA");
 			e.printStackTrace();
 			
 		}
@@ -87,7 +102,7 @@ public class QnaDaoImpl implements QnaDao {
 			res = sqlSession.update(NAMESPACE + "answer", qnaDto);
 			
 		} catch (Exception e) {
-			logger.info("[ERROR] answer in QNA");
+			logger.info("[ERROR] Answer in QNA");
 			e.printStackTrace();
 			
 		}
@@ -105,7 +120,7 @@ public class QnaDaoImpl implements QnaDao {
 				sqlSession.commit();
 			}
 		} catch (Exception e) {
-			logger.info("[ERROR] delete in QNA");
+			logger.info("[ERROR] Delete in QNA");
 			e.printStackTrace();
 			
 		}

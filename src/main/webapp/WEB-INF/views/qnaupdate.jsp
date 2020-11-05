@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>On:Soo - Q&amp;A</title>
+<title>On:Soo - QnA</title>
 <link href="${pageContext.request.contextPath}/resources/css/qna.css" rel="stylesheet" >
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 </head>
@@ -56,7 +56,7 @@
 					<thead>
 						<tr>
 							<th>WRITER</th>
-							<td><input type="text" value="${qnadto.qnaqwriter}" readonly="readonly"></td>
+							<td><input type="text" value="${qnadto.qnawriter}" readonly="readonly"></td>
 							<th>DATE</th>
 							<td><input type="text" value="${qnadto.qnaqregdate}" readonly="readonly"></td>
 						</tr>
