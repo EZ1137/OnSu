@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>On:Soo - Q&amp;A</title>
+<title>On:Soo - QnA</title>
 <link href="${pageContext.request.contextPath}/resources/css/qna.css" rel="stylesheet" >
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 </head>
@@ -22,7 +22,7 @@
     <section class="section area">
     	<!-- 타이틀 -->
 		<div class="qna_board_title">
-			<p>Q&amp;A</p>
+			<p>QnA</p>
 		</div>
 		
 		<!-- 게시글 수정하기 -->

@@ -5,14 +5,13 @@
 <%@ page import="com.kh.onsoo.admin.model.dto.AuthDto" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>	
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>header</title>
-<link href="${pageContext.request.contextPath}/resources/css/header.css?after"
-	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/header.css?after" rel="stylesheet">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript">
 	function menu() {
@@ -42,39 +41,7 @@
 				
 				<ul class="header-menu">
 				<!-- 권한 없을시 페이지   -->
-				<%-- <sec:authorize access="isAnonymous()">
-					<li>
-						<a href="<c:url value="/login/loginForm.do" />">
-							<span class="login">
-								<button id="loginbtn">Log In</button>
-							</span>
-						</a>
-					</li>
-					</sec:authorize>
-					 --%>
-				<!--로그인 권한 있을시  페이지   -->
-				<!-- 
-						<li>
-						<sec:authorize access="isAuthenticated()">
-							<form:form action="${pageContext.request.contextPath}/logout" method="POST">
-	   							 <input type="submit" id="loginbtn" value="LogOut" />
-							</form:form>
-						</sec:authorize>
-							
-						</li>		
-						<li>
-							<sec:authorize access="isAnonymous()">
-							<a href="<c:url value="/guest/registForm.do" />">
-								<span class="regist">
-									<button id="registbtn">Sign Up</button>
-								</span>
-							</a>
-							</sec:authorize>
-						</li>
-					</c:if>
-					<c:if test="${admindto.member_role eq 'T' || admindto.member_role eq 'S'}">
-
-				-->
+				
 					<c:if test="${admindto eq null}">
 
 						<li>
@@ -133,7 +100,7 @@
 						<p class="sideAsset" onclick="location.href='about.do'">A B O U T</p>
 						<p class="sideAsset" onclick="location.href=''">V I D E O</p>
 						<p class="sideAsset" onclick="location.href='streaming.do'">1 : 1 C L A S S</p>
-						<p class="sideAsset" onclick="location.href='qna.do'">Q &amp; A</p>
+						<p class="sideAsset" onclick="location.href='qna.do'">Q n A</p>
 						<p class="sideAsset" onclick="location.href='notice.do'">N O T I C E</p>
 						<p class="sideAsset" onclick="location.href='contact.do'">C O N T A C T</p>
 						<p class="sideAsset" onclick="location.href='admin.do'">A D M I N</p>
