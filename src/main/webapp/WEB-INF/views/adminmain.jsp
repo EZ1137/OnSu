@@ -35,6 +35,7 @@
 					<td>${dto.member_email }</td>
 				</tr>
 			</c:forEach>
+		
 			
 	</table>
 	<h3><a href="memberlist.do">더 보기</a></h3>
