@@ -71,7 +71,7 @@
 										</p>
 									</c:if>
 								</td>
-								<td>${qnadto.qnaqwriter}</td>
+								<td>${qnadto.qnawriter}</td>
 								<td><fmt:formatDate value="${qnadto.qnaqregdate}" pattern="yyyy-MM-dd" /></td>
 							</tr>
 						</c:forEach>

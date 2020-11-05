@@ -14,6 +14,8 @@ public interface QnaDao {
 
 	public int insert(QnaDto qnaDto);
 
+	public int setsecret(QnaDto qnaDto);
+
 	public int update(QnaDto qnaDto);
 	
 	public int answer(QnaDto qnaDto);
