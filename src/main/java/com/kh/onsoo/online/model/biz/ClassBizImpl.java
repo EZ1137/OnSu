@@ -18,5 +18,9 @@ public class ClassBizImpl implements ClassBiz {
 	public List<ClassDto> search(String search) {
 		return classDao.search(search);
 	}
+	
+	public ClassDto selectOne(int class_no) {
+		return classDao.selectOne(class_no);
+	}
 
 }

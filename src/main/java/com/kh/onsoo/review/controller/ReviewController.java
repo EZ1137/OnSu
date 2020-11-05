@@ -1,4 +1,4 @@
-package com.kh.onsoo.mypage.controller;
+package com.kh.onsoo.review.controller;
 
 import java.security.Principal;
 
@@ -12,33 +12,25 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.onsoo.admin.model.biz.AdminBiz;
-import com.kh.onsoo.calendar.model.biz.CalendarBiz;
-import com.kh.onsoo.listen.model.biz.ListenVideoBiz;
-import com.kh.onsoo.listen.model.biz.ListenWithBiz;
+import com.kh.onsoo.review.model.biz.ReviewBiz;
+import com.kh.onsoo.review.model.dto.ReviewDto;
 
 @Controller
-public class MyPageController {
+public class ReviewController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(MyPageController.class);
+	private static final Logger logger = LoggerFactory.getLogger(ReviewController.class);
 	
 	@Autowired
-	private ListenVideoBiz listenVideoBiz;
-	@Autowired
-	private ListenWithBiz listenWithBiz;
-	@Autowired
-	private CalendarBiz calendarBiz;
+	private ReviewBiz reviewBiz;
 	@Autowired
 	private AdminBiz adminBiz;
 	
-	@RequestMapping(value = "mypage.do", method = RequestMethod.GET)
-	public String myPage(Model model, Principal principal) {
-		logger.info("[mypage.do]");
-		
-		model.addAttribute("lvlist", listenVideoBiz.selectList());
-		model.addAttribute("lwlist", listenWithBiz.selectList());
+	@RequestMapping("/review.do")
+	public String review(Model model, Principal principal) {
+		model.addAttribute("relist", reviewBiz.selectList());
 		
 		model.addAttribute(principal);
 	      //시큐리티 컨텍스트 객체를 얻습니다.
@@ -54,11 +46,36 @@ public class MyPageController {
 	                        //유저객체는 UserDetails를 implement 함 
 	      
 	      String member_id = principal1.getUsername();  //사용자 이름 
-	      
 	      model.addAttribute("mlist", adminBiz.selectOne2(member_id));
-	      model.addAttribute("callist", calendarBiz.schedule(member_id));
-		
-		return "/user/mypage";
-		
+	      
+		return "/user/review";
 	}
+	
+	@RequestMapping("/reviewInsert.do")
+	public String reviewInsert(Model model, @RequestParam String member_id) {
+		logger.info("[reviewInsert.do]");
+		
+		model.addAttribute("member_id", member_id);
+		
+		return "/user/reviewinsert";
+	}
+	
+	@RequestMapping("/reviewInsertRes.do")
+	public String reviewInsertRes(ReviewDto dto, @RequestParam String review_id, String review_content, int review_classno, int review_star) {
+		logger.info("[reviewInsertRes.do]");
+		
+		int res = reviewBiz.insert(new ReviewDto(review_id, review_content, review_classno, review_star));
+		
+		
+		return "/user/reviewInsert.do";
+	}
+
 }
+
+
+
+
+
+
+
+

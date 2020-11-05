@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="review">
+
+	<select id="selectList" resultType="ReviewDto">
+		SELECT REVIEW_NO, REVIEW_ID, REVIEW_CONTENT, REVIEW_CLASSNO, REVIEW_STAR, REVIEW_DATE, REVIEW_UPDATE
+		FROM REVIEW
+		ORDER BY REVIEW_NO
+	</select>
+	
+	<select id="selectOne" resultType="ReviewDto">
+		SELECT REVIEW_NO, REVIEW_ID, REVIEW_CONTENT, REVIEW_CLASSNO, REVIEW_STAR, REVIEW_DATE, REVIEW_UPDATE
+		FROM REVIEW
+		WHERE REVIEW_NO = #{review_no}
+	</select>
+	
+	<insert id="insert" parameterType="calendarDto">
+		INSERT INTO REVIEW
+		VALUES(REVIEWSEQ.NEXTVAL, #{review_id}, #{review_content}, #{review_classno}, #{review_star}, SYSDATE)
+	</insert>
+	
+	<update id="update" parameterType="ReviewDto">
+		UPDATE REVIEW
+		SET REVIEW_CONTENT = #{review_content}, REVIEW_STAR = #{review_star}, REVIEW_UPDATE = SYSDATE
+		WHERE REVIEW_NO = #{review_no}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM REVIEW
+		WHERE REVIEW_NO = #{review_no}
+	</delete>
+
+</mapper>

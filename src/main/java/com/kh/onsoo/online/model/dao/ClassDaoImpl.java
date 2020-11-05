@@ -20,7 +20,6 @@ public class ClassDaoImpl implements ClassDao {
 	
 	public List<ClassDto> search(String search) {
 		List<ClassDto> list = new ArrayList<ClassDto>();
-		
 		try {
 			list = sqlSession.selectList(NAMESPACE+"search", search);
 		} catch (Exception e) {
@@ -31,4 +30,16 @@ public class ClassDaoImpl implements ClassDao {
 		return list;
 	}
 
+	public ClassDto selectOne(int class_no) {
+		ClassDto dto = new ClassDto();
+		
+		try {
+			dto = sqlSession.selectOne(NAMESPACE+"selectOne", class_no);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
 }
