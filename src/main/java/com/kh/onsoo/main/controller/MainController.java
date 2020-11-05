@@ -145,27 +145,12 @@ public class MainController {
 			}
 			
 
-			//아이디 중복체크 
-			/*
-			@ResponseBody
-			@RequestMapping(value ="idchk.do",method = RequestMethod.GET)
-			public int idchk(@RequestParam("member_id")String member_id) {
-				System.out.println(member_id);
-				
-				int res = 0 ;
-				
-				return res;
-			}
-			
-			*/
 			
 			@ResponseBody
 			@RequestMapping(value = "/guest/idchk.do", method=RequestMethod.POST)
-			public int idchk(AdminDto dto, HttpSession session){
-				System.out.println(dto);
-				System.out.println(session);
+			public int idchk(String member_id, HttpSession session){
 				logger.info("아이디 체크 ");
-				int res = adminBiz.idchk(dto);
+				int res = adminBiz.idchk(member_id);
 				return res;
 			}
 
