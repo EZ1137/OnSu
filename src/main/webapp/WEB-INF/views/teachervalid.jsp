@@ -6,11 +6,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>On:Soo - Valid</title>
 <link href="${pageContext.request.contextPath}/resources/css/teachervalid.css" rel="stylesheet" >
 <!-- <script type="text/javascript">
-
 	$("input[type='file']").on("change", function() {
 		const selector = this;
 		const ext =  selector.files[0].name.substr(selector.files[0].name.lastIndexOf(".") + 1);
@@ -19,7 +17,6 @@
 			returnl
 		}
 	});
-	
 </script> -->
 </head>
 <body>
@@ -39,7 +36,7 @@
 			<table class="valid_list">
 				<thead>
 					<tr>
-						<td style="text-align:left; padding: 30px 0 40px 80px;">
+						<td style="text-align:left; padding: 20px 0 30px 80px;">
 							<p class="valid_semi_title">
 								저희 <b>On:Soo</b>와 <br>
 								함께 해 주실 선생님들을 모시기에 앞서, <br>
@@ -58,10 +55,11 @@
 					<tr>
 						<td style="text-align:left; padding: 20px 0 20px 80px;">
 							<p>
-								1. <b>주민등록등본</b> 1부 (주민등록번호 뒷자리는 나오지 않도록)<br><br>
-								2. <b>졸업(재학)증명서</b> (또는 관련 기타 자격 증명) 1부<br><br>
-								3. <b>강의계획서</b> 1부 (자유 형식)<br><br>
-								4. <b>통장 사본</b> 1부
+								<b>주민등록등본</b>, <b>졸업(재학)증명서</b>, <b>강의계획서</b>, <b>통장 사본</b> 각 1부<br><br>
+								1. 주민등록번호 뒷자리는 나오지 않도록 해 주세요.<br>
+								2. 졸업(재학)증명서 또는 경력 등을 증명할 수 있는 포트폴리오, 경력기술서 등의 기타 증빙 서류를 준비 해 주세요.<br>
+								3. 수업하실 내용을 알 수 있는 자유 형식의 강의계획서를 보여 주세요.<br>
+								4. 추후 정산을 위한 통장 사본 또는 계좌 정보를 알려 주세요.
 							</p>
 						</td>
 					</tr>
@@ -69,7 +67,7 @@
 				<tfoot>
 					<tr>
 						<td style="display:flex; padding: 10px; align-items:center; border-top:1px solid var(--color-light-grey);">
-							<form name="fileForm" action="requestupload2" method="post" enctype="multipart/form-data">
+							<form name="fileForm" action="tvalidup.do" method="post" enctype="multipart/form-data">
 								<input multiple="multiple" type="file" name="file" />
 								<input type="text" name="src" />
 								<input type="reset" value="RESET" />

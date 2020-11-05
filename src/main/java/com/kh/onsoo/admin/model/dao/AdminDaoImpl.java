@@ -33,11 +33,11 @@ public class AdminDaoImpl implements AdminDao {
 	}
 
 	@Override
-	public AdminDto selectOne(int member_no) {
+	public AdminDto selectOne(String member_id) {
 		AdminDto dto = new AdminDto();
 		
 		try {
-			dto = sqlSession.selectOne(NAMESPACE + "selectOne", member_no);
+			dto = sqlSession.selectOne(NAMESPACE + "selectOne", member_id);
 		} catch (Exception e) {
 			logger.info("AdminDaoImpl selectOne[error]");
 			e.printStackTrace();
@@ -86,18 +86,22 @@ public class AdminDaoImpl implements AdminDao {
 	}
 	
 	
-	//아이디 중복체크 
 	@Override
-	public int idchk(AdminDto dto) {
+	public int idchk(String member_id) {
 		int res= 0;
 		try {
-			res=sqlSession.selectOne(NAMESPACE+"idchk",dto);
+			res=sqlSession.selectOne(NAMESPACE+"idchk",member_id);
 		} catch (Exception e) {
+
 			e.printStackTrace();
 		}
 		return res;
 	}
 	
+	
+	
+	
+	@Override
 	public AdminDto selectOne2(String member_id) {
 		AdminDto dto = new AdminDto();
 		
@@ -110,5 +114,19 @@ public class AdminDaoImpl implements AdminDao {
 		
 		return dto;
 	} 
+	
+	
+	@Override
+	public int emailchk(String member_email) {
+		int res = 0 ;
+		
+		try {
+			res = sqlSession.selectOne(NAMESPACE+"emailchk",member_email);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
 
 }

@@ -43,7 +43,7 @@
 					<td>${dto.member_blockdate }</td>
 					<td>첨부파일(졸증,경증)</td>
 					<td>${dto.member_role }</td>
-					<td><input type="button" value="수정" onclick="location.href='reviewdetail.do?member_no=${dto.member_no}'"></td>
+					<td><input type="button" value="수정" onclick="location.href='reviewdetail.do?member_id=${dto.member_id}'"></td>
 				</tr>
 			</c:forEach>
 			

@@ -32,11 +32,9 @@ public class MainController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
-	//��ȣȭ
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
-	//ȸ������
 	@Autowired
 	private AdminBiz adminBiz;
 	
@@ -53,6 +51,11 @@ public class MainController {
 		return "about";
 	}
 	
+	@RequestMapping(value = "/streaming.do", method = RequestMethod.GET)
+	public String streaming(Model model) {			
+		return "streaming";
+	}
+	
 	@RequestMapping(value = "/tvalid.do", method = RequestMethod.GET)
 	public String tvalid(Locale locale, Model model) {			
 		return "teachervalid";
@@ -67,8 +70,8 @@ public class MainController {
 		String path = "C:\\image\\";
 
 		for (MultipartFile mf : fileList) {
-			String originFileName = mf.getOriginalFilename(); // ���� ���� ��
-			long fileSize = mf.getSize(); // ���� ������
+			String originFileName = mf.getOriginalFilename(); // 원본 파일 명
+			long fileSize = mf.getSize(); // 파일 사이즈
 
 			System.out.println("originFileName : " + originFileName);
 			System.out.println("fileSize : " + fileSize);
@@ -85,21 +88,21 @@ public class MainController {
 		return "redirect:/";
 	}
 
-	//�α��� 
+	//로그인 
 		@RequestMapping(value = "/login/loginForm.do",method = RequestMethod.GET)
 		public String loginForm(Locale locale, Model model) {
 			 logger.info("Welcome Login Form! ");
 			return "login/loginForm";
 		}
 
-	// ���ٱ��� 
+	// 접근금지 
 		@RequestMapping(value = "/login/accessDenied.do",method = RequestMethod.GET)
 		public String accessDenied(Locale locale, Model model) {
 			logger.info("Welcome Access Denied");
 			return "login/accessDenied";
 		}
 
-		// ������ 
+		// 관리자 
 
 			@RequestMapping(value = "/admin/adminHome.do", method = RequestMethod.GET)
 			public String home(Locale locale, Model model) {
@@ -108,17 +111,17 @@ public class MainController {
 				return "admin/adminHome";
 			}
 			
-			//ȸ������ �� 
-			@RequestMapping( value ="/guest/registForm.do",method = RequestMethod.GET)
+			//회원가입 폼 
+			@RequestMapping( value ="/registForm.do",method = RequestMethod.GET)
 			public String registerForm(Locale locale, Model model) {
-				logger.info("ȸ������ ��  ");
-				return "guest/registForm";
+				logger.info("회원가입 폼  ");
+				return "registForm";
 			}
 			
-			//ȸ������ �Ϸ� 
+			//회원가입 완료 
 			@RequestMapping(value ="/regist.do",method = RequestMethod.POST )
 			public String regist(@ModelAttribute AdminDto dto) {
-				logger.info("ȸ������  ");
+				logger.info("회원가입  ");
 
 				
 				String encPassword = passwordEncoder.encode(dto.getMember_pw());
@@ -127,7 +130,7 @@ public class MainController {
 
 				System.out.println("");
 
-				//��� ���̵�� ȸ�����԰� ���ÿ� �������̺� ���� �ο� 
+				//멤버 아이디로 회원가입과 동시에 권한테이블에 권한 부여 
 				String member_id = dto.getMember_id();
 
 				
@@ -137,29 +140,23 @@ public class MainController {
 				return "redirect: user/registForm.do";
 			}
 			
-			//���̵� �ߺ�üũ 
-			/*
+	
 			@ResponseBody
-			@RequestMapping(value ="idchk.do",method = RequestMethod.GET)
-			public int idchk(@RequestParam("member_id")String member_id) {
-				System.out.println(member_id);
-				
-				int res = 0 ;
-				
-				return res;
-			}
-			
-			*/
-			
-			@ResponseBody
-			@RequestMapping(value = "/guest/idchk.do", method=RequestMethod.POST)
-			public int idchk(AdminDto dto, HttpSession session){
-				System.out.println(dto);
-				System.out.println(session);
+			@RequestMapping(value = "idChk.do", method=RequestMethod.POST)
+			public int idchk(String member_id){
 				logger.info("아이디 체크 ");
-				int res = adminBiz.idchk(dto);
+				int res = adminBiz.idchk(member_id);
 				return res;
 			}
+			
+			@ResponseBody
+			@RequestMapping(value = "/emailchk.do",method = RequestMethod.POST)
+			public int emailchk(String member_id) {
+				logger.info("이메일 중복체크 ");
+				int res = adminBiz.emailchk(member_id);
+				return res;
+			}
+			
 
 			@RequestMapping(value = "/login/idpwFind.do",method =RequestMethod.GET)
 			public String IdPwfind(Locale locale,Model model) {

@@ -121,6 +121,7 @@ SELECT * FROM MEMBER;
 
 --관리자 계정
 INSERT INTO MEMBER 
+
 VALUES(MEMBERSEQ.NEXTVAL, 'admin', 'admin', '관리자', 'M', '010-0000-0000', 
    'admin@onsoo.com', '서울 강남구 역삼동', '1019', 'A', SYSDATE, NULL, NULL,1);
 
