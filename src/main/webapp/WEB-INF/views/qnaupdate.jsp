@@ -22,7 +22,7 @@
     <section class="section area">
     	<!-- 타이틀 -->
 		<div class="qna_board_title">
-			<p>QnA</p>
+			<p>Q&amp;A</p>
 		</div>
 		
 		<!-- 게시글 수정하기 -->
