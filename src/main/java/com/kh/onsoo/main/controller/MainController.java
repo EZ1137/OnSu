@@ -32,9 +32,12 @@ public class MainController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
+
+	//암호화
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
+	//회원정보
 	@Autowired
 	private AdminBiz adminBiz;
 	
@@ -70,6 +73,7 @@ public class MainController {
 		String path = "C:\\image\\";
 
 		for (MultipartFile mf : fileList) {
+
 			String originFileName = mf.getOriginalFilename(); // 원본 파일 명
 			long fileSize = mf.getSize(); // 파일 사이즈
 
@@ -89,6 +93,7 @@ public class MainController {
 	}
 
 	//로그인 
+
 		@RequestMapping(value = "/login/loginForm.do",method = RequestMethod.GET)
 		public String loginForm(Locale locale, Model model) {
 			 logger.info("Welcome Login Form! ");
@@ -112,10 +117,10 @@ public class MainController {
 			}
 			
 			//회원가입 폼 
-			@RequestMapping( value ="/registForm.do",method = RequestMethod.GET)
+			@RequestMapping( value ="/guest/registForm.do",method = RequestMethod.GET)
 			public String registerForm(Locale locale, Model model) {
 				logger.info("회원가입 폼  ");
-				return "registForm";
+				return "guest/registForm";
 			}
 			
 			//회원가입 완료 
@@ -130,7 +135,6 @@ public class MainController {
 
 				System.out.println("");
 
-				//멤버 아이디로 회원가입과 동시에 권한테이블에 권한 부여 
 				String member_id = dto.getMember_id();
 
 				
@@ -140,23 +144,30 @@ public class MainController {
 				return "redirect: user/registForm.do";
 			}
 			
-	
+
+			//아이디 중복체크 
+			/*
 			@ResponseBody
-			@RequestMapping(value = "idChk.do", method=RequestMethod.POST)
-			public int idchk(String member_id){
+			@RequestMapping(value ="idchk.do",method = RequestMethod.GET)
+			public int idchk(@RequestParam("member_id")String member_id) {
+				System.out.println(member_id);
+				
+				int res = 0 ;
+				
+				return res;
+			}
+			
+			*/
+			
+			@ResponseBody
+			@RequestMapping(value = "/guest/idchk.do", method=RequestMethod.POST)
+			public int idchk(AdminDto dto, HttpSession session){
+				System.out.println(dto);
+				System.out.println(session);
 				logger.info("아이디 체크 ");
-				int res = adminBiz.idchk(member_id);
+				int res = adminBiz.idchk(dto);
 				return res;
 			}
-			
-			@ResponseBody
-			@RequestMapping(value = "/emailchk.do",method = RequestMethod.POST)
-			public int emailchk(String member_id) {
-				logger.info("이메일 중복체크 ");
-				int res = adminBiz.emailchk(member_id);
-				return res;
-			}
-			
 
 			@RequestMapping(value = "/login/idpwFind.do",method =RequestMethod.GET)
 			public String IdPwfind(Locale locale,Model model) {
