@@ -28,11 +28,11 @@ public class ListenVideoDaoImpl implements ListenVideoDao {
 	}
 
 	@Override
-	public ListenVideoDto selectOne(int listen_vno) {
+	public ListenVideoDto selectOne(int listen_vclassno) {
 		ListenVideoDto dto = new ListenVideoDto();
 		
 		try {
-			dto = sqlSession.selectOne(NAMESPACE+"selectOne", listen_vno);
+			dto = sqlSession.selectOne(NAMESPACE+"selectOne", listen_vclassno);
 		} catch (Exception e) {
 			logger.info("[ERROR] selectOne");
 			e.printStackTrace();
@@ -69,11 +69,11 @@ public class ListenVideoDaoImpl implements ListenVideoDao {
 	}
 
 	@Override
-	public int delete(int listen_vno) {
+	public int delete(int listen_vclassno) {
 		int res = 0;
 		
 		try {
-			res = sqlSession.delete(NAMESPACE+"delete", listen_vno);
+			res = sqlSession.delete(NAMESPACE+"delete", listen_vclassno);
 		} catch (Exception e) {
 			logger.info("[ERROR] delete");
 			e.printStackTrace();

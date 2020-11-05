@@ -43,7 +43,7 @@ public class CalendarBizImpl implements CalendarBiz {
 		return calendarDao.calendarList(yyyyMMdd);
 	}
 	
-	public List<CalendarDto> schedule() {
-		return calendarDao.schedule();
+	public List<CalendarDto> schedule(String member_id) {
+		return calendarDao.schedule(member_id);
 	}
 }

@@ -1,6 +1,7 @@
 package com.kh.onsoo.listen.model.dto;
 
 import java.util.Date;
+import com.kh.onsoo.online.model.dto.ClassDto;
 
 public class ListenWithDto {
 	
@@ -10,15 +11,18 @@ public class ListenWithDto {
 	private int listen_wcount;
 	private String listen_wclasstitle;
 	
+	private ClassDto ClassDto;
+	
 	public ListenWithDto() {}
 	
 	public ListenWithDto(int listen_wno, String listen_wmemberid, int listen_wclassno,
-			int listen_wcount, String listen_wclasstitle) {
+			int listen_wcount, String listen_wclasstitle, ClassDto ClassDto) {
 		this.listen_wno = listen_wno;
 		this.listen_wmemberid = listen_wmemberid;
 		this.listen_wclassno = listen_wclassno;
 		this.listen_wcount = listen_wcount;
 		this.listen_wclasstitle = listen_wclasstitle;
+		ClassDto = ClassDto;
 	}
 
 	public int getListen_wno() {
@@ -59,6 +63,14 @@ public class ListenWithDto {
 
 	public void setListen_wclasstitle(String listen_wclasstitle) {
 		this.listen_wclasstitle = listen_wclasstitle;
+	}
+	
+	public ClassDto getClassDto() {
+		return ClassDto;
+	}
+	
+	public ClassDto setClassDto(ClassDto ClassDto) {
+		return ClassDto = ClassDto;
 	}
 
 }

@@ -22,6 +22,12 @@
 	int min = cal.get(Calendar.MINUTE);
 %>
 
+	<!-- header -->
+    <header id="header" class="area">
+    	<%@ include file="/WEB-INF/views/header.jsp"%>
+    </header>
+
+	<section>
 	<h1>일정 작성</h1>
 	<form action="calendarInsertRes.do" method="post">
 		<table border="1">
@@ -99,6 +105,14 @@
 			</tr>
 		</table>
 	</form>
+	</section>
+	
+	<!-- footer -->
+	<footer id="footerarea" class="area">
+		<footer>
+			<%@ include file="/WEB-INF/views/footer.jsp"%>
+		</footer>
+	</footer>
 
 </body>
 </html>

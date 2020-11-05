@@ -7,5 +7,12 @@
 		FROM CLASS
 		WHERE CLASS_TITLE LIKE '%'||#{search}||'%'
 	</select>
+	
+	<select id="selectOne" resultType="ClassDto">
+		SELECT CLASS_NO, CLASS_TITLE, CLASS_TEACHERID, CLASS_TEACHERNAME, CLASS_TYPE,
+		CLASS_BIGCATEGORY, CLASS_SMALLCATEGORY, CLASS_INFO, CLASS_PRICE
+		FROM CLASS
+		WHERE CLASS_NO = #{class_no}
+	</select>
 
 </mapper>
