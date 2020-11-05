@@ -32,9 +32,9 @@
     		
     		
     		
-        <intercept-url pattern="/guest/registForm.do" access="permitAll" />
         <intercept-url pattern="/login/loginForm.do" access="permitAll" />
         <intercept-url pattern="/main.do" access="permitAll" />
+        <intercept-url pattern="/**" access="permitAll" />
         
         <!--member만  -->
         <intercept-url pattern="/user/**" access="hasRole('USER')" />
