@@ -69,6 +69,7 @@
 								<td>${freeboardDto.free_writer}</td>
 								<td><fmt:formatDate value="${freeboardDto.free_date}"
 										pattern="yyyy-MM-dd" /></td>
+								
 							</tr>
 						</c:forEach>
 					</c:otherwise>
@@ -78,19 +79,18 @@
 
 			<tfoot>
 				<c:choose>
-
-					<c:when test="${logindto ne null }">
+					<c:when test="${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username ne null }">
 						<!--로그인했을때  -->
 						<tr>
-							<td colspan="6" class="qbtnbar" style="text-align: right;"><input
-								type="button" value="WRITE"
+							<td colspan="6" class="qbtnbar" style="text-align: right;">
+							<input type="button" value="WRITE"
 								onclick="location.href='freeinsert.do'" /></td>
 						</tr>
 					</c:when>
 					<c:otherwise>
 						<tr>
-							<td colspan="6" class="qbtnbar" style="text-align: right;"><input
-								type="button" value="WRITE" onclick="loginAlert()" /></td>
+							<td colspan="6" class="qbtnbar" style="text-align: right;">
+							<input type="button" value="WRITE" onclick="loginAlert()" /></td>
 						</tr>
 					</c:otherwise>
 				</c:choose>

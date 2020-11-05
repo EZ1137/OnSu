@@ -14,7 +14,7 @@
 	
 	<select id="insert" parameterType="freeDto">
 		INSERT INTO FREE
-		VALUES(FREE_SEQ.NEXTVAL,'test',#{free_title},#{free_content},SYSDATE)
+		VALUES(FREE_SEQ.NEXTVAL,#{free_writer},#{free_title},#{free_content},SYSDATE)
 	</select>
 	
 	<update id="update" parameterType="freeDto">
