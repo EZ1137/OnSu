@@ -103,6 +103,10 @@
 							<input type="button" value="LIST" onclick="location.href='qna.do'"/>
 							<!-- 수정은 작성자 본인만 -->
 							<c:if test="${qnadto.qnaqwriter eq admindto.member_id}">
+								<form action="qnasetsecret.do" method="post">
+									<input type="hidden" name="qnano" value="${qnadto.qnano}"/>
+									<input type="submit" value="SECRET"/>
+								</form>
 								<input type="button" value="EDIT" onclick="location.href='qnaupdateform.do?qnano=${qnadto.qnano}'"/>
 							</c:if>
 							<!-- 삭제는 관리자와 작성자 본인만 -->

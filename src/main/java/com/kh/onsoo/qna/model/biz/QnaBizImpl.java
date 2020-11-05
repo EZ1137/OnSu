@@ -30,6 +30,11 @@ public class QnaBizImpl implements QnaBiz {
 	}
 
 	@Override
+	public int setsecret(QnaDto qnaDto) {
+		return qnaDao.setsecret(qnaDto);
+	}
+
+	@Override
 	public int update(QnaDto qnaDto) {
 		return qnaDao.update(qnaDto);
 	}

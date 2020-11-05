@@ -1,7 +1,5 @@
 package com.kh.onsoo.admin.model.dto;
 
-import java.sql.Date;
-
 public class AdminReportDto {
 
 	private int report_no;

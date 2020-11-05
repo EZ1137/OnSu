@@ -35,6 +35,8 @@
 					<td>${dto.member_email }</td>
 				</tr>
 			</c:forEach>
+		
+			
 	</table>
 	<h3><a href="memberlist.do">더 보기</a></h3>
 	<h1>강사인증 신청목록</h1>
