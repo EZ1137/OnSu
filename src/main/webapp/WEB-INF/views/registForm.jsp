@@ -9,37 +9,7 @@
 <title>onsoo 회원가입</title>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type="text/javascript">
-function idchk(){
-	  var memberid = $("#member_id").val().trim();
-	console.log(memberid);
-	
-	if(memberid == null || memberid == ""){
-		alert("ID를 작성해주세요");
-	}else{
-	  
-	$.ajax({
-		url:"/guest/idchk.do",
-		type:"get",
-		dataType:"json",
-		data:{
-			"member_id":$("#member_id").val().trim()
-		},
-		success: function(data){
-			console.log(data);
-			alert("성공"+data);
-		},
-		error: function(){
-			alert("통신실패");
-		}
-		
-	});
-	}
-}	
-
-
-
-</script>
+<script type="text/javascript" src="/resoure"></script>
 </head>
 <link href="${pageContext.request.contextPath}/resources/css/registform.css" rel="stylesheet" >
 <body>
@@ -58,12 +28,11 @@ function idchk(){
 			<table>
 				<tr>
 					<th>아이디</th>
-					<td>
-					<input type="text" name="member_id" id="member_id"   placeholder="아이디를 입력해주세요">
-					<input type="button" onclick="idchk();" value="중복확인" />
-					<p id="id_chk"></p>
-					</td>
-						
+						<td>
+							<input type="text" name="member_id" id="member_id"   placeholder="아이디를 입력해주세요">
+							<input type="button" onclick="idchk();" value="중복확인" />
+							<p id="id_chk"></p>
+						</td>
 				</tr>
 				<tr>
 					<th>비밀번호</th>
@@ -78,6 +47,10 @@ function idchk(){
 					<td><input type="text" name="member_name" placeholder="이름을 입력해주세요"></td>
 				</tr>
 				<tr>
+					<th>생년월일</th>
+					<td><input type="date" name="member_birth" id="member_birth" ></td>
+				</tr>
+				<tr>
 					<th>성별</th>
 					<td style="text-align: left;">
 						남<input type="radio" name="member_gender" value="M" />
@@ -90,7 +63,10 @@ function idchk(){
 				</tr>
 				<tr>
 					<th>이메일</th>
-					<td><input type="text" name="member_email"></td>
+					<td>
+					<input type="email" name="member_email" id="member_email">
+					<input type="button" onclick="emailchk();" value="중복확인" >
+					</td>
 				</tr>
 				<tr>
 					<th>주소</th>
