@@ -11,6 +11,11 @@
 </head>
 <body>
 
+	<!-- header -->
+    <header id="header" class="area">
+    	<%@ include file="/WEB-INF/views/header.jsp"%>
+    </header>
+
 	<div>
 	<jsp:useBean id="utils" class="com.kh.onsoo.utils.Utils" />
 		<table border="1">
@@ -54,6 +59,13 @@
 		</table>
 	</form>
    </div>
+   
+   <!-- footer -->
+	<footer id="footerarea" class="area">
+		<footer>
+			<%@ include file="/WEB-INF/views/footer.jsp"%>
+		</footer>
+	</footer>
 
 </body>
 </html>

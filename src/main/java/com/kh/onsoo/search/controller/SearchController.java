@@ -23,9 +23,12 @@ public class SearchController {
 	@Autowired
 	private ClassBiz classBiz;
 	
-	@RequestMapping(value = "classsearch.do", method = RequestMethod.GET)
+	@RequestMapping(value = "classSearch.do", method = RequestMethod.GET)
 	public String searchClass(Model model, @RequestParam String search) {
+		logger.info("[classSearch.do]");
+		
 		model.addAttribute("list", classBiz.search(search));
+		System.out.println(search);
 		
 		return "/classsearch";
 		

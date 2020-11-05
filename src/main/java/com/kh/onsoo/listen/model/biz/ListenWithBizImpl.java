@@ -19,8 +19,8 @@ public class ListenWithBizImpl implements ListenWithBiz {
 	}
 
 	@Override
-	public ListenWithDto selectOne(int listen_wno) {
-		return listenDao.selectOne(listen_wno);
+	public ListenWithDto selectOne(int listen_wclassno) {
+		return listenDao.selectOne(listen_wclassno);
 	}
 
 	@Override
@@ -34,8 +34,8 @@ public class ListenWithBizImpl implements ListenWithBiz {
 	}
 
 	@Override
-	public int delete(int listen_wno) {
-		return listenDao.delete(listen_wno);
+	public int delete(int listen_wclassno) {
+		return listenDao.delete(listen_wclassno);
 	}
 
 }

@@ -33,7 +33,7 @@
 			</div>
 			<nav>
 				<!-- 통합검색 -->
-				<form id="searchzone" action="classsearch.do">
+				<form id="searchzone" action="classSearch.do">
 					<input type="hidden" name="class_title" value="class_title">
 					<input type="text" name="search" id="headsearch" required="required" placeholder="찾으시는 강의를 검색하세요"> 
 				</form>

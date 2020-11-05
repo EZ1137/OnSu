@@ -26,11 +26,11 @@ public class ListenWithDaoImpl implements ListenWithDao {
 		return list;
 	}
 	
-	public ListenWithDto selectOne(int listen_wno) {
+	public ListenWithDto selectOne(int listen_wclassno) {
 		ListenWithDto dto = new ListenWithDto();
 		
 		try {
-			dto = sqlSession.selectOne(NAMESPACE+"selectOne", listen_wno);
+			dto = sqlSession.selectOne(NAMESPACE+"selectOne", listen_wclassno);
 		} catch (Exception e) {
 			logger.info("[ERROR] selectOne");
 			e.printStackTrace();
@@ -61,10 +61,10 @@ public class ListenWithDaoImpl implements ListenWithDao {
 		return res;
 	}
 	
-	public int delete(int listen_wno) {
+	public int delete(int listen_wclassno) {
 		int res = 0;
 		try {
-			res = sqlSession.delete(NAMESPACE+"delete", listen_wno);
+			res = sqlSession.delete(NAMESPACE+"delete", listen_wclassno);
 		} catch (Exception e) {
 			logger.info("[ERROR] delete");
 			e.printStackTrace();
