@@ -56,7 +56,7 @@
 				<thead>
 					<tr>
 						<th>WRITER</th>
-						<td>${qnadto.qnaqwriter}</td>
+						<td>${qnadto.qnawriter}</td>
 						<th>DATE</th>
 						<td><fmt:formatDate value="${qnadto.qnaqregdate}" pattern="yyyy-MM-dd" /></td>
 					</tr>

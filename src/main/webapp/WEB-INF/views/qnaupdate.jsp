@@ -56,7 +56,7 @@
 					<thead>
 						<tr>
 							<th>WRITER</th>
-							<td><input type="text" value="${qnadto.qnaqwriter}" readonly="readonly"></td>
+							<td><input type="text" value="${qnadto.qnawriter}" readonly="readonly"></td>
 							<th>DATE</th>
 							<td><input type="text" value="${qnadto.qnaqregdate}" readonly="readonly"></td>
 						</tr>
