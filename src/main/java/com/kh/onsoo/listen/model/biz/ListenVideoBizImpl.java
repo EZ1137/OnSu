@@ -20,8 +20,8 @@ public class ListenVideoBizImpl implements ListenVideoBiz {
 	}
 
 	@Override
-	public ListenVideoDto selectOne(int listen_no) {
-		return listenDao.selectOne(listen_no);
+	public ListenVideoDto selectOne(int listen_vclassno) {
+		return listenDao.selectOne(listen_vclassno);
 	}
 
 	@Override
@@ -35,8 +35,8 @@ public class ListenVideoBizImpl implements ListenVideoBiz {
 	}
 
 	@Override
-	public int delete(int listen_no) {
-		return listenDao.delete(listen_no);
+	public int delete(int listen_vclassno) {
+		return listenDao.delete(listen_vclassno);
 	}
 
 }

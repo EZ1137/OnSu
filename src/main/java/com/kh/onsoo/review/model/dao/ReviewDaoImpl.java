@@ -1,4 +1,4 @@
-package com.kh.onsoo.calendar.model.dao;
+package com.kh.onsoo.review.model.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,18 +9,18 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.kh.onsoo.calendar.model.dto.CalendarDto;
+import com.kh.onsoo.review.model.dto.ReviewDto;
 
 @Repository
-public class CalendarDaoImpl implements CalendarDao {
+public class ReviewDaoImpl implements ReviewDao {
 
 	@Autowired
 	private SqlSessionTemplate sqlSession;
-	private Logger logger = LoggerFactory.getLogger(CalendarDaoImpl.class);
+	private Logger logger = LoggerFactory.getLogger(ReviewDaoImpl.class);
 	
 	@Override
-	public List<CalendarDto> selectList() {
-		List<CalendarDto> list = new ArrayList<CalendarDto>();
+	public List<ReviewDto> selectList() {
+		List<ReviewDto> list = new ArrayList<ReviewDto>();
 		
 		try {
 			list = sqlSession.selectList(NAMESPACE+"selectList");
@@ -28,26 +28,24 @@ public class CalendarDaoImpl implements CalendarDao {
 			logger.info("[ERROR] selectList");
 			e.printStackTrace();
 		}
-		
 		return list;
 	}
 
 	@Override
-	public CalendarDto selectOne(int calendar_no) {
-		CalendarDto dto = new CalendarDto();
+	public ReviewDto selectOne(int review_no) {
+		ReviewDto dto = new ReviewDto();
 		
 		try {
-			dto = sqlSession.selectOne(NAMESPACE+"selectOne", calendar_no);
+			dto = sqlSession.selectOne(NAMESPACE+"selectOne", review_no);
 		} catch (Exception e) {
 			logger.info("[ERROR] selectOne");
 			e.printStackTrace();
 		}
-		
 		return dto;
 	}
 
 	@Override
-	public int insert(CalendarDto dto) {
+	public int insert(ReviewDto dto) {
 		int res = 0;
 		
 		try {
@@ -61,7 +59,7 @@ public class CalendarDaoImpl implements CalendarDao {
 	}
 
 	@Override
-	public int update(CalendarDto dto) {
+	public int update(ReviewDto dto) {
 		int res = 0;
 		
 		try {
@@ -70,42 +68,20 @@ public class CalendarDaoImpl implements CalendarDao {
 			logger.info("[ERROR] update");
 			e.printStackTrace();
 		}
-		
 		return res;
 	}
 
 	@Override
-	public int delete(int calendar_no) {
+	public int delete(int review_no) {
 		int res = 0;
 		
 		try {
-			res = sqlSession.delete(NAMESPACE+"delete", calendar_no);
+			res = sqlSession.delete(NAMESPACE+"delete", review_no);
 		} catch (Exception e) {
 			logger.info("[ERROR] delete");
 			e.printStackTrace();
 		}
 		return res;
-	}
-	
-	public List<CalendarDto> calendarList(String yyyyMMdd) {
-		List<CalendarDto> list = new ArrayList<CalendarDto>();
-		
-		list = sqlSession.selectList(NAMESPACE+"calendarList", yyyyMMdd);
-		
-		return list;
-	}
-	
-	public List<CalendarDto> schedule(String member_id) {
-		List<CalendarDto> list = new ArrayList<CalendarDto>();
-		
-		try {
-			list = sqlSession.selectList(NAMESPACE+"schedule", member_id);
-		} catch (Exception e) {
-			logger.info("[ERROR] schedule");
-			e.printStackTrace();
-		}
-		
-		return list;
 	}
 
 }

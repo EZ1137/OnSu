@@ -67,23 +67,19 @@
 				<c:choose>
 					<c:when test="${empty lwlist && empty lvlist }">
 						<tr>
-							<th>수강 중인 강의가 없습니다.</th>
+							<td>수강 중인 강의가 없습니다.</td><input type="button" value="dd" onclick="location.href='listenVInsert.do?member_id=${mlist.member_id }'">
 						</tr>	
 					</c:when>
 					<c:otherwise>
-					<c:forEach items="${lwlist }" var="listenWithdto">
+					<c:forEach items="${lwlist }" var="listenWithDto">
 						<tr>
-							<td>1</td>
-							<td></td>
-							<td><a href=""></a></td>
+							<td><a href="listenWDetail.do?listen_wclassno=${listenWithDto.listen_wclassno }&member_id=${mlist.member_id}">${listenWithDto.listen_wclasstitle}</a></td>
 							<td></td>
 						</tr>
 					</c:forEach>
-					<c:forEach items="${lvlist }" var="listenVideodto">
+					<c:forEach items="${lvlist }" var="listenVideoDto">
 						<tr>
-							<td>2</td>
-							<td></td>
-							<td><a href=""></a></td>
+							<td><a href="listenVDetail.do?listen_vclassno=${listenVideoDto.listen_vclassno }&member_id=${mlist.member_id}"">${listenVideoDto.listen_vclasstitle}</a></td>
 							<td></td>
 						</tr>
 					</c:forEach>					
@@ -119,9 +115,9 @@
 				for(int i = 1; i <= lastDay; i++) {
 				%>
 				<td>
-					<a class="countView" href="calendarListView.do?year=<%=year%>&month=<%=month%>&date=<%=i%>"  style="color:<%=Utils.fontColor(i, dayOfWeek)%>" ><%=i %></a>
+					<a class="countView" href="calendarListView.do?year=<%=year%>&month=<%=month%>&date=<%=i%>&member_id=${mlist.member_id }"  style="color:<%=Utils.fontColor(i, dayOfWeek)%>" ><%=i %></a>
 				
-					<a href="calendarInsert.do?year=<%=year%>&month=<%=month%>&date=<%=i%>&lastday=<%=lastDay%>">
+					<a href="calendarInsert.do?year=<%=year%>&month=<%=month%>&date=<%=i%>&lastday=<%=lastDay%>&member_id=${mlist.member_id }">
 						<img alt="일정 추가" src="resources/img/pen.png" width="10" height="10" />
 					</a>
 				</td>
@@ -148,7 +144,7 @@
 						<c:choose>
 					<c:when test="${empty callist }">
 						<tr>
-							<th>오늘, 내일은 일정이 없습니다.</th>
+							<td colspan="2">오늘, 내일은 일정이 없습니다.</td>
 						</tr>	
 					</c:when>
 					<c:otherwise>

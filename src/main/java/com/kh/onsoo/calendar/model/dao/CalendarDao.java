@@ -14,6 +14,6 @@ public interface CalendarDao {
 	public int update(CalendarDto dto);
 	public int delete(int calendar_no);
 	public List<CalendarDto> calendarList(String yyyyMMdd);
-	public List<CalendarDto> schedule();
+	public List<CalendarDto> schedule(String member_id);
 
 }

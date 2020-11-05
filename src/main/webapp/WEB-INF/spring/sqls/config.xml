@@ -4,30 +4,17 @@
 <configuration>
 	<typeAliases>
 
-		<typeAlias type="com.kh.onsoo.study.model.dto.StudyDto"
-			alias="studyDto" />
-		<typeAlias type="com.kh.onsoo.admin.model.dto.AdminDto"
-			alias="AdminDto" />
-		<typeAlias
-			type="com.kh.onsoo.admin.model.dto.AdminReportDto"
-			alias="AdminReportDto" />
-		<typeAlias type="com.kh.onsoo.notice.model.dto.NoticeDto"
-			alias="NoticeDto" />
-		<typeAlias
-			type="com.kh.onsoo.calendar.model.dto.CalendarDto"
-			alias="CalendarDto" />
-		<typeAlias type="com.kh.onsoo.qna.model.dto.QnaDto"
-			alias="QnaDto" />
-		<typeAlias type="com.kh.onsoo.online.model.dto.ClassDto"
-			alias="ClassDto" />
-		<typeAlias
-			type="com.kh.onsoo.listen.model.dto.ListenWithDto"
-			alias="ListenWithDto" />
-		<typeAlias
-			type="com.kh.onsoo.listen.model.dto.ListenVideoDto"
-			alias="ListenVideoDto" />
-		<typeAlias type="com.kh.onsoo.free.model.dto.FreeboardDto"
-			alias="freeDto" />
+		<typeAlias type="com.kh.onsoo.study.model.dto.StudyDto" alias="studyDto" />
+		<typeAlias type="com.kh.onsoo.admin.model.dto.AdminDto" alias="AdminDto" />
+		<typeAlias type="com.kh.onsoo.admin.model.dto.AdminReportDto" alias="AdminReportDto" />
+		<typeAlias type="com.kh.onsoo.notice.model.dto.NoticeDto" alias="NoticeDto" />
+		<typeAlias type="com.kh.onsoo.calendar.model.dto.CalendarDto" alias="CalendarDto" />
+		<typeAlias type="com.kh.onsoo.qna.model.dto.QnaDto" alias="QnaDto" />
+		<typeAlias type="com.kh.onsoo.online.model.dto.ClassDto" alias="ClassDto" />
+		<typeAlias type="com.kh.onsoo.listen.model.dto.ListenWithDto" alias="ListenWithDto" />
+		<typeAlias type="com.kh.onsoo.listen.model.dto.ListenVideoDto" alias="ListenVideoDto" />
+		<typeAlias type="com.kh.onsoo.free.model.dto.FreeboardDto" alias="freeDto" />
+		<typeAlias type="com.kh.onsoo.review.model.dto.ReviewDto" alias="ReviewDto"/>
 
 
 	</typeAliases>
@@ -44,5 +31,6 @@
 		<mapper resource="/mybatis/listenwith-mapper.xml" />
 		<mapper resource="/mybatis/listenvideo-mapper.xml" />
 		<mapper resource="/mybatis/freeboard-mapper.xml" />
+		<mapper resource="/mybatis/review-mapper.xml" />
 	</mappers>
 </configuration>

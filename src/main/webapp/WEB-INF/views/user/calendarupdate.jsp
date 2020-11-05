@@ -10,6 +10,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+	
+	<!-- header -->
+    <header id="header" class="area">
+    	<%@ include file="/WEB-INF/views/header.jsp"%>
+    </header>
 
 	<section class="secssion">   	
 	<div id="box">
@@ -42,6 +47,13 @@
 		</form>
 	</div>
    </section>
+   
+   <!-- footer -->
+	<footer id="footerarea" class="area">
+		<footer>
+			<%@ include file="/WEB-INF/views/footer.jsp"%>
+		</footer>
+	</footer>
 
 </body>
 </html>
