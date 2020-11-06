@@ -51,7 +51,7 @@
 							</a>
 						</li>
 						<li>
-							<a href="<c:url value="/guest/registForm.do" />">
+							<a href="<c:url value="/registForm.do" />">
 								<span class="regist">
 									<button id="registbtn">Sign Up</button>
 								</span>
@@ -84,7 +84,7 @@
 								</a>
 							</li>
 							<li>
-								<a href="<c:url value="/guest/registForm.do" />">
+								<a href="<c:url value="/registForm.do" />">
 									<span class="regist">
 										<button id="registbtn">Admin Page</button>
 									</span>
