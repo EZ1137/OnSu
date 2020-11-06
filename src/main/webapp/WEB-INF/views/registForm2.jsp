@@ -8,9 +8,11 @@
 <meta charset="UTF-8">
 <title>onsoo 회원가입</title>
 
+
 <!--다음 api 주소 같이 있어야 사용가능   -->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
+
 function sample6_execDaumPostcode() {
    new daum.Postcode({
        oncomplete: function(data) {
@@ -56,6 +58,9 @@ function sample6_execDaumPostcode() {
 }
 	
 </script>	
+
+
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="resources/js/registForm.js">
 </script>
@@ -71,49 +76,49 @@ function sample6_execDaumPostcode() {
 
 
 	<fieldset id="registform">
-		<legend><h3>OnSoo: 회원가입</h3></legend>
+		<legend><h3>OnSoo-SNS: 회원가입</h3></legend>
 		<c:url value="/regist.do" var="addUserUrl" />
 		<form:form action="${addUserUrl}" method="POST">
 			<table>
 				<tr>
 					<th>아이디</th>
 						<td>
-							<input type="text" name="member_id" id="memberid"   required="required"  placeholder="아이디를 입력해주세요">
+							<input type="text" name="member_id" id="memberid"  required="required"  value="${dto.member_id }">
 							<input type="button" onclick="idchk();" value="중복확인" />
 							<p id="id_chk"></p>
 						</td>
 				</tr>
 				<tr>
 					<th>비밀번호</th>
-					<td><input type="password" id="password1" name="member_pw" placeholder="비밀번호 입력해주세요"  required="required"  maxlength="15"></td>
+					<td><input type="password" id="password1" name="member_pw"  required="required"  placeholder="비밀번호 입력해주세요" maxlength="15"></td>
 				</tr>
 				<tr>
 					<th>비밀번호확인</th>
 					<td>
-					<input type="password" id="password2" placeholder="비밀번호 확인해주세요" maxlength="15"  required="required"  onkeyup="fn_compare_pwd();" >
+					<input type="password" id="password2" placeholder="비밀번호 확인해주세요"  required="required"  maxlength="15" onkeyup="fn_compare_pwd();" >
 					</td>
 					<td>
-						<span id="s_result" style="color:red">비밀번호가 일치하지 않습니다.</span>	
+						<span id="s_result" >비밀번호가 일치하지 않습니다.</span>	
 					<td>	
 				</tr>
 				<tr>
 					<th>이름</th>
-					<td><input type="text" name="member_name"  required="required"  placeholder="이름을 입력해주세요"></td>
+					<td><input type="text" name="member_name"   required="required" value="${dto.member_name }"></td>
 				</tr>
 				<tr>
 					<th>생년월일</th>
-					<td><input type="date" name="member_birth"  required="required"  id="member_birth" ></td>
+					<td><input type="date" name="member_birth" id="member_birth"  required="required"  ></td>
 				</tr>
 				<tr>
 					<th>성별</th>
 					<td>
-						남<input type="radio" name="member_gender" value="M" />
-						여<input type="radio" name="member_gender" value="F" />
+						남<input type="radio" name="member_gender" value="M"   />
+						여<input type="radio" name="member_gender" value="F"  />
 					</td>
 				</tr>
 				<tr>
 					<th>핸드폰번호</th>
-					<td><input type="text" onKeyup="inputPhoneNumber(this);" name="member_phone" maxlength="13" style="text-align:center;" /></td>
+					<td><input type="text" onKeyup="inputPhoneNumber(this);" name="member_phone" maxlength="13" style="text-align:center;"  required="required" /></td>
 				</tr>
 				<tr>
 					<th>이메일</th>
@@ -121,15 +126,16 @@ function sample6_execDaumPostcode() {
 					<input type="email" name="member_email" id="memberemail"  required="required" >
 					<input type="button" onclick="emailchk();" value="중복확인" >
 					</td>
+					
 				</tr>
-					<tr>
-				<th class="text-center">주소</th>
-				<td>
-				<input type="text" id="sample6_postcode" class="addr1" name="member_addr" placeholder="우편번호" readonly="readonly">
-				<input class="btn btn-secondary btn-sm" type="button" onclick="sample6_execDaumPostcode();"   id="daumaddr" value="우편번호 찾기" >
+				<tr>
+					<th class="text-center">주소</th>
+					<td>
+					<input type="text" id="sample6_postcode" class="addr1" name="member_addr" placeholder="우편번호" readonly="readonly">
+					<input class="btn btn-secondary btn-sm" type="button" onclick="sample6_execDaumPostcode();"   id="daumaddr" value="우편번호 찾기" >
 				<br>
-				<input type="text" id="sample6_address"  class="addr1" name="member_addr" placeholder="주소" readonly="readonly"><br>
-				<input type="text" id="sample6_detailAddress"  class="addr1" name="member_addr" placeholder="상세주소" required="required">
+					<input type="text" id="sample6_address"  class="addr1" name="member_addr" placeholder="주소" readonly="readonly"><br>
+					<input type="text" id="sample6_detailAddress"  class="addr1" name="member_addr" placeholder="상세주소" required="required">
 				</td>
 				<tr>
 					<td><button type="submit">가입하기</button></td>

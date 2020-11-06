@@ -6,7 +6,6 @@ DROP TABLE authorities CASCADE CONSTRAINTS;
 
 
 
-
 --회원테이블 
 SELECT * FROM MEMBER;
 
