@@ -64,39 +64,6 @@ public class MainController {
 	public String streaming(Model model) {			
 		return "streaming";
 	}
-	
-	@RequestMapping(value = "/tvalid.do", method = RequestMethod.GET)
-	public String tvalid(Locale locale, Model model) {			
-		return "teachervalid";
-	}
-	
-	@RequestMapping(value = "/tvalidup.do")
-	public String requestupload2(MultipartHttpServletRequest mtfRequest) {
-		List<MultipartFile> fileList = mtfRequest.getFiles("file");
-		String src = mtfRequest.getParameter("src");
-		System.out.println("src value : " + src);
-
-		String path = "C:\\image\\";
-
-		for (MultipartFile mf : fileList) {
-
-			String originFileName = mf.getOriginalFilename(); // 원본 파일 명
-			long fileSize = mf.getSize(); // 파일 사이즈
-
-			System.out.println("originFileName : " + originFileName);
-			System.out.println("fileSize : " + fileSize);
-
-			String safeFile = path + System.currentTimeMillis() + originFileName;
-			try {
-				mf.transferTo(new File(safeFile));
-			} catch (IllegalStateException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		return "redirect:/";
-	}
 
 	//로그인 
 
