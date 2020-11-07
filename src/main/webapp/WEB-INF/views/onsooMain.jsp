@@ -304,4 +304,9 @@
 	</footer> --%>
 </body>
 
+	<!-- 알림(새로고침 시) -->
+	<div>
+		<%@ include file="/WEB-INF/views/noti.jsp" %>
+	</div>
+
 </html>

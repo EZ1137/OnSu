@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="${pageContext.request.contextPath}/resources/css/calendar.css" rel="stylesheet" >
 </head>
 <body>
 
@@ -15,10 +16,15 @@
     <header id="header" class="area">
     	<%@ include file="/WEB-INF/views/header.jsp"%>
     </header>
-
-	<div>
-	<jsp:useBean id="utils" class="com.kh.onsoo.utils.Utils" />
-		<table border="1">
+	
+	
+	<section>
+	<div class="title">
+		<p>일정 목록</p>
+	</div>
+		<div>
+		<jsp:useBean id="utils" class="com.kh.onsoo.utils.Utils" />
+		<table class="list">
 			<col width="50px" />
 			<col width="250px" />
 			<col width="200px" />
@@ -52,13 +58,14 @@
 				</c:otherwise>
 			</c:choose>
 			<tr>
-				<td colspan="4" align="right">
-					<input class="btn btn-secondary mb-3" type="button" value="달력 보기" onclick="location.href='calendarList.do'" />
+				<td colspan="4"  style="text-align:right;">
+					<input class="btn btn-secondary mb-3" type="button" value="달력 보기" onclick="location.href='calendar.do'" />
 				</td>
 			</tr>
 		</table>
-	</form>
-   </div>
+   		</div>
+	</section>
+	
    
    <!-- footer -->
 	<footer id="footerarea" class="area">
