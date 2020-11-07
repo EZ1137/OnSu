@@ -65,7 +65,7 @@
 		WHERE MEMBER_ID = #{member_id}
 	</select>
 	
-	<select id="emailchk" resultType="int">
+	<select id="emailchk" resultType="_int">
 		SELECT COUNT(member_email)
 		FROM MEMBER
 		WHERE MEMBER_EMAIL = #{member_email}

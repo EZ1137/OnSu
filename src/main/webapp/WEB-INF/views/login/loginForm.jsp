@@ -41,7 +41,8 @@
     <!-- csrf 토근도 같이 전송이 된다. 서버에서 미리 토근을 받아서 체크한다. --> 
 </form:form>
 	<p>
-		<a href="#"><h3>카카오로그인</h3></a><a href="#"><h3>네이버로그인</h3></a>
+		<a href="${naver}"><img width="223" src="${pageContext.request.contextPath}/resources/img/네이버_아이디로_로그인_완성형_Green.PNG"/></a>
+		<a href="#"><h3>카카오로그인</h3></a>
 	</p>
 	<p>
 		<h4><a href='<c:url value="/login/idpwFind.do"/>'>아이디/비밀번호찾기</a></h4>
