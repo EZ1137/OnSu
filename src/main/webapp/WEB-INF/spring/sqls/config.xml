@@ -2,8 +2,8 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
 
 <configuration>
-	<typeAliases>
 
+	<typeAliases>
 		<typeAlias type="com.kh.onsoo.study.model.dto.StudyDto" alias="studyDto" />
 		<typeAlias type="com.kh.onsoo.admin.model.dto.AdminDto" alias="AdminDto" />
 		<typeAlias type="com.kh.onsoo.admin.model.dto.AdminReportDto" alias="AdminReportDto" />
@@ -14,11 +14,10 @@
 		<typeAlias type="com.kh.onsoo.listen.model.dto.ListenWithDto" alias="ListenWithDto" />
 		<typeAlias type="com.kh.onsoo.listen.model.dto.ListenVideoDto" alias="ListenVideoDto" />
 		<typeAlias type="com.kh.onsoo.free.model.dto.FreeboardDto" alias="freeDto" />
+		<typeAlias type="com.kh.onsoo.reply.dto.ReplyDto" alias="ReplyDto" />
 		<typeAlias type="com.kh.onsoo.review.model.dto.ReviewDto" alias="ReviewDto"/>
-
-
 	</typeAliases>
-
+	
 	<mappers>
 		<mapper resource="/mybatis/study-mapper.xml" />
 		<mapper resource="/mybatis/admin-mapper.xml" />
@@ -31,6 +30,8 @@
 		<mapper resource="/mybatis/listenwith-mapper.xml" />
 		<mapper resource="/mybatis/listenvideo-mapper.xml" />
 		<mapper resource="/mybatis/freeboard-mapper.xml" />
+		<mapper resource="/mybatis/reply-mapper.xml" />
 		<mapper resource="/mybatis/review-mapper.xml" />
 	</mappers>
+	
 </configuration>
