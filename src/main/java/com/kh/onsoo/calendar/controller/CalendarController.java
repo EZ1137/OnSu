@@ -36,13 +36,12 @@ public class CalendarController {
 	@Autowired
 	private AdminBiz adminBiz;
 	
-	@RequestMapping(value = "calendarList.do")
+	@RequestMapping(value = "calendar.do")
 	public String calendarList(Model model, Principal principal) {
-		logger.info("[calendarList.do]");
+		logger.info("[calendar.do]");
 		
 		model.addAttribute("lvlist", listenVideoBiz.selectList());
 		model.addAttribute("lwlist", listenWithBiz.selectList());
-		model.addAttribute("callist", calendarBiz.schedule());
 		
 		model.addAttribute(principal);
 	      //시큐리티 컨텍스트 객체를 얻습니다.
@@ -60,7 +59,8 @@ public class CalendarController {
 	      String member_id = principal1.getUsername();  //사용자 이름 
 	      
 	      model.addAttribute("mlist", adminBiz.selectOne2(member_id));
-		
+	      model.addAttribute("callist", calendarBiz.schedule(member_id));
+	      
 		return "/user/mypage";
 		
 	}
@@ -75,8 +75,10 @@ public class CalendarController {
 	}
 	
 	@RequestMapping(value = "/calendarInsert.do")
-	public String insert() {
+	public String insert(Model model, @RequestParam String member_id) {
 		logger.info("[calendarInsert.do]");
+		
+		model.addAttribute("member_id", member_id);
 		
 		return "/user/calendarinsert";
 	}
@@ -91,7 +93,7 @@ public class CalendarController {
 		int res = calendarBiz.insert(new CalendarDto(0, calendar_title, calendar_content, calendar_mdate, null, member_id));
 		
 		if(res > 0) {
-			return "redirect:calendarList.do";
+			return "redirect:calendar.do";
 		}
 		return "/user/calendarinsert";
 	}
@@ -123,7 +125,7 @@ public class CalendarController {
 		
 		int res = calendarBiz.delete(calendar_no);
 		if(res > 0) {
-			return "redirect:calendarList.do";
+			return "redirect:calendar.do";
 		}
 		return "redirect:listenDetail.do?calendar_no=" + calendar_no;
 	}

@@ -37,7 +37,8 @@ public class ReplyController {
     @ResponseBody
     private int mCommentServiceInsert(@RequestParam int reply_boardno, @RequestParam String reply_title, HttpSession session) throws Exception{
     	logger.info("댓글 작성 ");
-    	//User user_dto = (User) session.getAttribute("login");
+    	//User user_dto = (User) session.getAttribute("SPRING_SECURITY_CONTEXT.authentication.principal");
+    	//logger.info(user_dto.toString());
     	
         ReplyDto replydto = new ReplyDto();
         

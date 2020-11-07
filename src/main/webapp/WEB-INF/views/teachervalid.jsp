@@ -6,7 +6,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>On:Soo - Valid</title>
 <link href="${pageContext.request.contextPath}/resources/css/teachervalid.css" rel="stylesheet" >
 <!-- <script type="text/javascript">
