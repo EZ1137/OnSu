@@ -2,6 +2,8 @@ package com.kh.onsoo.free.controller;
 
 
 
+import java.security.Principal;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +11,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.kh.onsoo.admin.model.biz.AdminBiz;
 import com.kh.onsoo.free.model.biz.FreeboardBiz;
 import com.kh.onsoo.free.model.dto.FreeboardDto;
+import com.kh.onsoo.reply.biz.ReplyBiz;
+
 
 
 @Controller
@@ -20,10 +26,20 @@ public class FreeboardController {
 
 	@Autowired
 	private FreeboardBiz freeBiz;
+	
+	@Autowired
+	private AdminBiz  adminBiz;
+	
+	@Autowired
+	private ReplyBiz replybiz;
+
 
 	@RequestMapping("/freelist.do")
-	public String freeList(Model model) {
+	public String freeList(Model model,Principal principal) {
+		
 		model.addAttribute("list", freeBiz.selectList());
+		
+	      
 		return "/user/freeList";
 	}
 
@@ -49,6 +65,7 @@ public class FreeboardController {
 	@RequestMapping("/freedetail.do")
 	public String freeDeatil(Model model, int free_seq) {
 		model.addAttribute("freeboardDto", freeBiz.selectOne(free_seq));
+		
 		return "/user/freeDetail";
 	}
 
