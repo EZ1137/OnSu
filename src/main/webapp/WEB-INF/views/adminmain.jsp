@@ -4,18 +4,44 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+	#first_area{
+		margin-top: 20px;
+	}
+	.area{
+		margin-top: 20px;
+		position: static;
+	}
+	.first_table_name{
+		margin-left: 7.5%;
+	}
+	.admin_first_table{
+		margin-left: 7.5%;
+		margin-right: 7.5%;
+		width:35%;
+		float:left;
+	}
+	.second_table_name{
+		margin-
+	}
+	.admin_second_table{
+		width:50%;
+		float:right;
+	}
+</style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
 </head>
 <body>
 	<!-- header -->
+	<div class="header_area">
 	<header id="header" class="area">
 		<%@ include file="/WEB-INF/views/header.jsp"%>
 	</header>
-	<div class=".admin_area">
-	<h1>전체 회원조회</h1>
-	
+	</div>
+	<div id="first_area">
+	<div class="first_table_name">전체 회원조회</div>
 	<table class="admin_first_table" border="1">
 		<col width="50"/>
 		<col width="100"/>
@@ -35,12 +61,14 @@
 					<td>${dto.member_email }</td>
 				</tr>
 			</c:forEach>
-		
-			
 	</table>
-	<h3><a href="memberlist.do">더 보기</a></h3>
-	<h1>강사인증 신청목록</h1>
-	<table class="admin_first_table" border="1">
+	<div class="more">
+		<a href="memberlist.do">더 보기</a>
+	</div>
+	</div>
+	<div>
+	<div class="second_table_name">강사인증 신청목록</div>
+	<table class="admin_second_table" border="1">
 		<col width="50"/>
 		<col width="100"/>
 		<col width="100"/>
@@ -60,10 +88,11 @@
 				</tr>
 			</c:forEach>
 	</table>
+		<a href="reviewlist.do">더 보기</a>
 	</div>
-	<h3><a href="reviewlist.do">더 보기</a></h3>
+	<div id="second_area">
 	<h1>신고된 회원조회</h1>
-	<table class="admin_second_table" border="1">
+	<table class="admin_third_table" border="1">
 		<col width="50"/>
 		<col width="100"/>
 		<col width="100"/>
@@ -86,7 +115,7 @@
 	</table>
 	<h3><a href="reportlist.do">더보기</a></h3>
 	<h1>동영상 심의 신청조회</h1>
-	<table class="admin_second_table" border="1">
+	<table class="admin_fore_table" border="1">
 		<col width="50"/>
 		<col width="100"/>
 		<col width="100"/>
@@ -109,7 +138,7 @@
 		 -->
 	</table>
 	<h3><a href="videoreviewlist.do">더 보기</a></h3>
-	
+	</div>
 	<footer id="footerarea" class="area">
 		<%@ include file="/WEB-INF/views/footer.jsp"%>
 	</footer>

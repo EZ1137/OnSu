@@ -2,10 +2,8 @@ package com.kh.onsoo.main.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -16,7 +14,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -26,6 +23,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.kh.onsoo.admin.model.biz.AdminBiz;
 import com.kh.onsoo.admin.model.biz.AuthBiz;
 import com.kh.onsoo.admin.model.dto.AdminDto;
+import com.kh.onsoo.admin.snslogin.NaverLoginBo;
 
 @Controller
 public class MainController {
@@ -44,6 +42,14 @@ public class MainController {
 	@Autowired
 	private AuthBiz authBiz;
 	
+	@Autowired
+	private NaverLoginBo naverloginbo;
+	
+	private void setNaverLoginBo(NaverLoginBo naverLoginBo) {
+		this.naverloginbo=naverLoginBo;
+	}
+	
+	
 	@RequestMapping(value = "/contact.do", method = RequestMethod.GET)
 	public String contact(Model model) {
 		return "contact";
@@ -58,46 +64,18 @@ public class MainController {
 	public String streaming(Model model) {			
 		return "streaming";
 	}
-	
-	@RequestMapping(value = "/tvalid.do", method = RequestMethod.GET)
-	public String tvalid(Locale locale, Model model) {			
-		return "teachervalid";
-	}
-	
-	@RequestMapping(value = "/tvalidup.do")
-	public String requestupload2(MultipartHttpServletRequest mtfRequest) {
-		List<MultipartFile> fileList = mtfRequest.getFiles("file");
-		String src = mtfRequest.getParameter("src");
-		System.out.println("src value : " + src);
-
-		String path = "C:\\image\\";
-
-		for (MultipartFile mf : fileList) {
-
-			String originFileName = mf.getOriginalFilename(); // 원본 파일 명
-			long fileSize = mf.getSize(); // 파일 사이즈
-
-			System.out.println("originFileName : " + originFileName);
-			System.out.println("fileSize : " + fileSize);
-
-			String safeFile = path + System.currentTimeMillis() + originFileName;
-			try {
-				mf.transferTo(new File(safeFile));
-			} catch (IllegalStateException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		return "redirect:/";
-	}
 
 	//로그인 
 
 		@RequestMapping(value = "/login/loginForm.do",method = RequestMethod.GET)
-		public String loginForm(Locale locale, Model model) {
+		public String loginForm(Locale locale, Model model, HttpSession session) {
 			 logger.info("Welcome Login Form! ");
-			return "login/loginForm";
+			
+			 String naverlogin= naverloginbo.getAuthorizationUrl(session);
+				
+				model.addAttribute("naver",naverlogin);
+			 
+			 return "login/loginForm";
 		}
 
 	// 접근금지 
@@ -117,10 +95,10 @@ public class MainController {
 			}
 			
 			//회원가입 폼 
-			@RequestMapping( value ="/guest/registForm.do",method = RequestMethod.GET)
+			@RequestMapping( value ="/registForm.do",method = RequestMethod.GET)
 			public String registerForm(Locale locale, Model model) {
 				logger.info("회원가입 폼  ");
-				return "guest/registForm";
+				return "registForm";
 			}
 			
 			//회원가입 완료 
@@ -145,29 +123,23 @@ public class MainController {
 			}
 			
 
-			//아이디 중복체크 
-			/*
-			@ResponseBody
-			@RequestMapping(value ="idchk.do",method = RequestMethod.GET)
-			public int idchk(@RequestParam("member_id")String member_id) {
-				System.out.println(member_id);
-				
-				int res = 0 ;
-				
-				return res;
-			}
-			
-			*/
 			
 			@ResponseBody
-			@RequestMapping(value = "/guest/idchk.do", method=RequestMethod.POST)
-			public int idchk(AdminDto dto, HttpSession session){
-				System.out.println(dto);
-				System.out.println(session);
+			@RequestMapping(value = "/idChk.do", method=RequestMethod.POST)
+			public int idchk(String member_id, HttpSession session){
 				logger.info("아이디 체크 ");
-				int res = adminBiz.idchk(dto);
+				int res = adminBiz.idchk(member_id);
 				return res;
 			}
+			
+			@ResponseBody
+			@RequestMapping(value = "/emailchk.do",method = RequestMethod.POST)
+			public int emailchk(String member_email,HttpSession session) {
+				logger.info("이메일 체크");
+				int res = adminBiz.emailchk(member_email);
+				return res;
+			}
+			
 
 			@RequestMapping(value = "/login/idpwFind.do",method =RequestMethod.GET)
 			public String IdPwfind(Locale locale,Model model) {

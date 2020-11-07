@@ -6,7 +6,6 @@ DROP TABLE authorities CASCADE CONSTRAINTS;
 
 
 
-
 --회원테이블 
 SELECT * FROM MEMBER;
 
@@ -117,6 +116,3 @@ CREATE TABLE authorities(
 
 ALTER TABLE authorities ADD CONSTRAINT IDX_authorities_PK PRIMARY KEY (MEMBER_ID, authority);
 ALTER TABLE authorities ADD CONSTRAINT IDX_authorities_FK0 FOREIGN KEY (MEMBER_ID) REFERENCES MEMBER (MEMBER_ID);
-
-
-

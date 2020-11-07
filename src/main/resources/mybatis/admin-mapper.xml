@@ -18,7 +18,7 @@
 	</resultMap>
 	
 	<select id="selectList" resultMap="AdminDtoMap">
-		SELECT * FROM MEMBER
+		SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_GENDER, MEMBER_EMAIL, MEMBER_ADDR, MEMBER_PHONE, MEMBER_BIRTH, MEMBER_ROLE, MEMBER_DELETEDATE, MEMBER_BLOCKDATE FROM MEMBER
 	</select>
 	
 	<!--회원가입  -->
@@ -32,7 +32,7 @@
 				#{member_phone},
 				#{member_email},
 				#{member_addr},
-				'0901',
+				#{member_birth},
 				'S',
 				SYSDATE,
 				NULL,
@@ -40,7 +40,6 @@
 				1)
 	</insert>
 	
-
 	<select id="selectOne" parameterType="String" resultType="AdminDto">
 		SELECT * 
 		FROM MEMBER 
@@ -52,20 +51,25 @@
 		SET MEMBER_ROLE = #{member_role} 
 		WHERE MEMBER_ID = #{member_id}
 	</update>
-	 
-
+	
 	<select id="selectOne2" resultMap="AdminDtoMap">
 		SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_GENDER, MEMBER_EMAIL, MEMBER_ADDR, MEMBER_PHONE, MEMBER_BIRTH, MEMBER_ROLE, MEMBER_DELETEDATE, MEMBER_BLOCKDATE
 		FROM MEMBER
 		WHERE MEMBER_ID = #{MEMBER_ID}
 	</select>
 	
-	<!--아이디 체크 
-	<select id="idchk"  parameterType="String" resultType="int">
-	SELECT 	COUNT(*) FROM MEMBER 
-	WHERE MEMBER_ID =#{member_id}
+
+	<select id="idchk"  resultType="_int">
+		SELECT COUNT(member_id)
+		FROM MEMBER 
+		WHERE MEMBER_ID = #{member_id}
 	</select>
-	  -->
+	
+	<select id="emailchk" resultType="_int">
+		SELECT COUNT(member_email)
+		FROM MEMBER
+		WHERE MEMBER_EMAIL = #{member_email}
+	</select>
 	
 	
 	

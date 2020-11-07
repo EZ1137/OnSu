@@ -95,11 +95,11 @@ public class CalendarDaoImpl implements CalendarDao {
 		return list;
 	}
 	
-	public List<CalendarDto> schedule() {
+	public List<CalendarDto> schedule(String member_id) {
 		List<CalendarDto> list = new ArrayList<CalendarDto>();
 		
 		try {
-			list = sqlSession.selectList(NAMESPACE+"schedule");
+			list = sqlSession.selectList(NAMESPACE+"schedule", member_id);
 		} catch (Exception e) {
 			logger.info("[ERROR] schedule");
 			e.printStackTrace();

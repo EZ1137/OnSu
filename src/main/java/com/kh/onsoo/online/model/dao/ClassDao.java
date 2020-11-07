@@ -9,5 +9,6 @@ public interface ClassDao {
 	String NAMESPACE = "class.";
 	
 	public List<ClassDto> search(String search);
+	public ClassDto selectOne(int class_no);
 
 }

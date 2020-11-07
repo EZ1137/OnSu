@@ -39,7 +39,6 @@ public class MyPageController {
 		
 		model.addAttribute("lvlist", listenVideoBiz.selectList());
 		model.addAttribute("lwlist", listenWithBiz.selectList());
-		model.addAttribute("callist", calendarBiz.schedule());
 		
 		model.addAttribute(principal);
 	      //시큐리티 컨텍스트 객체를 얻습니다.
@@ -57,6 +56,7 @@ public class MyPageController {
 	      String member_id = principal1.getUsername();  //사용자 이름 
 	      
 	      model.addAttribute("mlist", adminBiz.selectOne2(member_id));
+	      model.addAttribute("callist", calendarBiz.schedule(member_id));
 		
 		return "/user/mypage";
 		
