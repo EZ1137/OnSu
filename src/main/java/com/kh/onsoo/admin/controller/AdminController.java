@@ -27,6 +27,7 @@ public class AdminController {
 		logger.info("AdminController selectList");
 		
 		model.addAttribute("list", abiz.selectList());
+		model.addAttribute("teacherlist", abiz.teacherList());
 		model.addAttribute("reportlist",rbiz.selectList());
 		return "adminmain";
 	}
