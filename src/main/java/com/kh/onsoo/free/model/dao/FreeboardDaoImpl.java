@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.kh.onsoo.free.model.dto.FreeboardDto;
+import com.kh.onsoo.utils.PagingVO;
 
 @Repository
 public class FreeboardDaoImpl implements FreeboardDao {
@@ -33,12 +34,12 @@ public class FreeboardDaoImpl implements FreeboardDao {
 	}
 
 	@Override
-	public FreeboardDto selectOne(int free_seq) {
+	public FreeboardDto selectOne(int free_no) {
 
 		FreeboardDto dto = null;
 
 		try {
-			dto = sqlSession.selectOne(NAMESPACE + "selectOne", free_seq);
+			dto = sqlSession.selectOne(NAMESPACE + "selectOne", free_no);
 		} catch (Exception e) {
 			logger.info("[Error] freeboard selectOne");
 			e.printStackTrace();
@@ -73,18 +74,45 @@ public class FreeboardDaoImpl implements FreeboardDao {
 	}
 
 	@Override
-	public int delete(int free_seq) {
+	public int delete(int free_no) {
 		
 		int res = 0;
 		
 		try {
-			res = sqlSession.delete(NAMESPACE+"delete",free_seq);
+			res = sqlSession.delete(NAMESPACE+"delete",free_no);
 		} catch (Exception e) {
 			logger.info("[ERROR] freeboard delete");
 			e.printStackTrace();
 		}
 		
 		return res;
+	}
+
+	@Override
+	public int countBoard() {
+		
+	  int res = 0;
+	   try {
+		res = sqlSession.selectOne(NAMESPACE+"countboard");
+	} catch (Exception e) {
+		logger.info("[ERROR] freeboard delete");
+		e.printStackTrace();
+	}
+	   return res;
+	}
+
+	@Override
+	public List<FreeboardDto> selectBoard(PagingVO vo) {
+		
+		List<FreeboardDto> list = new ArrayList<FreeboardDto>();
+		try {
+			list = sqlSession.selectList(NAMESPACE + "selectBoard");
+		} catch (Exception e) {
+			logger.info("[ERROR] freeboard selectBoard");
+			e.printStackTrace();
+		}
+
+		return list;
 	}
 
 }

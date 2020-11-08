@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <script> 	
-var reply_boardno = '${freeboardDto.free_seq}'; //게시글 번호
+var reply_boardno = '${freeboardDto.free_no}'; //게시글 번호
  
 $('[name=replyInsertBtn]').click(function(){ //댓글 등록 버튼 클릭시 
     var insertData = $('[name=replyInsertForm]').serialize(); //replyInsertForm의 내용을 가져옴

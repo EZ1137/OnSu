@@ -31,6 +31,18 @@ public class AdminDaoImpl implements AdminDao {
 		}
 		return list;
 	}
+	
+	@Override
+	public List<AdminDto> teacherList(){
+		List<AdminDto> list = new ArrayList<AdminDto>();
+		try {
+			list = sqlSession.selectList(NAMESPACE + "teacherList");
+		} catch (Exception e) {
+			logger.info("AdminDaoImpl teacherList[error]");
+			e.printStackTrace();
+		}
+		return list;
+	}
 
 	@Override
 	public AdminDto selectOne(String member_id) {
@@ -73,11 +85,11 @@ public class AdminDaoImpl implements AdminDao {
 	}
 
 	@Override
-	public int delete(int member_no) {
+	public int delete(String member_id) {
 		int res = 0;
 		
 		try {
-			res = sqlSession.delete(NAMESPACE+"delete",member_no);
+			res = sqlSession.delete(NAMESPACE+"delete",member_id);
 		} catch (Exception e) {
 			logger.info("AdminDaoImpl delete[error]");
 			e.printStackTrace();
