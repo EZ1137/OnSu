@@ -5,7 +5,7 @@ import java.util.Date;
 public class FreeboardDto {
 	
 	
-	private int free_seq;
+	private int free_no;
 	private String free_title;
 	private String free_writer;
 	private String free_content;
@@ -15,21 +15,21 @@ public class FreeboardDto {
 		//defqult constructor;
 	}
 
-	public FreeboardDto(int free_seq, String free_title, String free_writer, String free_content, Date free_date) {
+	public FreeboardDto(int free_no, String free_title, String free_writer, String free_content, Date free_date) {
 		super();
-		this.free_seq = free_seq;
+		this.free_no = free_no;
 		this.free_title = free_title;
 		this.free_writer = free_writer;
 		this.free_content = free_content;
 		this.free_date = free_date;
 	}
 
-	public int getFree_seq() {
-		return free_seq;
+	public int getFree_no() {
+		return free_no;
 	}
 
-	public void setFree_seq(int free_seq) {
-		this.free_seq = free_seq;
+	public void setFree_no(int free_no) {
+		this.free_no = free_no;
 	}
 
 	public String getFree_title() {

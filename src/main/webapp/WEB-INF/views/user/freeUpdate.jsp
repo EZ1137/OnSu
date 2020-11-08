@@ -27,8 +27,8 @@
 
 		<!-- 게시글 상세보기 -->
 		<form action="freeupdateres.do">
-			<input type="hidden" name="free_seq"
-				value="${freeboardDto.free_seq }" />
+			<input type="hidden" name="free_no"
+				value="${freeboardDto.free_no }" />
 			<table class="free_one">
 				<colgroup>
 					<col width="15%" />
@@ -65,7 +65,7 @@
 						<td colspan="6" style="text-align: right;">
 						<input type="button" value="LIST" onclick="location.href='freelist.do'" />
 							<input type="submit" value="EDIT" />
-							<input type="button" value="DELETE" onclick="location.href='freedelete.do?free_seq=${freeboardDto.free_seq}'" />
+							<input type="button" value="DELETE" onclick="location.href='freedelete.do?free_no=${freeboardDto.free_no}'" />
 
 						</td>
 					</tr>

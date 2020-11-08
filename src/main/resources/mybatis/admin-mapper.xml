@@ -30,22 +30,23 @@
 	
 	<!--회원가입  -->
 	<insert id="insert" parameterType="AdminDto">
-		INSERT INTO MEMBER
-		VALUES(MEMBERSEQ.NEXTVAL,
-				#{member_id},		
-				#{member_pw},
-				#{member_name},
-				#{member_gender},
-				#{member_phone},
-				#{member_email},
-				#{member_addr},
-				#{member_birth},
-				'S',
-				SYSDATE,
-				NULL,
-				NULL,
-				1)
-	</insert>
+        INSERT INTO MEMBER
+        VALUES(MEMBERSEQ.NEXTVAL,
+                #{member_id},
+                #{member_pw},
+                #{member_name},
+                #{member_gender},
+                #{member_phone},
+                #{member_email},
+                #{member_addr},
+                #{member_birth},
+                'S',
+                SYSDATE,
+                NULL,
+                NULL,
+                NULL,
+                1)
+    </insert>
 	
 	<select id="selectOne" parameterType="String" resultType="AdminDto">
 		SELECT * 

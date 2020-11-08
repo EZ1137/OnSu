@@ -119,7 +119,8 @@ public class MainController {
 				if(adminBiz.insert(dto)>0 && authBiz.insert(member_id)>0 ) {
 					return "redirect: login/loginForm.do";
 				}
-				return "redirect: /registForm.do";
+  				return "redirect:registForm.do";
+
 			}
 			
 
