@@ -44,16 +44,16 @@
 
 		<div class="report_box">
 			<div class="report_table">
-				<form action="reportinsertres.do" method="post">
+				<form action="reportinsertres.do" method="post" enctype="multipart/form-data">
 					<div>
 						<div>
 							<div class="report id">신고자 아이디</div>
 							<c:choose>
 								<c:when test="${member_id ne null }">
-									<input type="text" name="report_id" value="${dto.member_id}"></input>
+									<input type="text" name="report_id" value="${member_id}"></input>
 								</c:when>
 								<c:otherwise>
-									<div>로그인해주세요</div>
+									<input type="text" value="로그인해주세요">
 								</c:otherwise>
 							</c:choose>
 
@@ -67,20 +67,20 @@
 						<div>
 							<div class="report category">카테고리(하나씩 선택)</div>
 							<div>
-								<input type="radio" name="report_category" value="B" required>
-								욕설/비방 <input type="radio" name="report_category" value="T">
-								시간미준수 <input type="radio" name="report_category" value="S">
-								음란 <input type="radio" name="report_category" value="Q">
-								수업의 질이 떨어짐 <input type="radio" name="report_category" value="P">
-								개인정보 관련
+								<input type="radio" name="report_category" value="B" required>욕설/비방
+								<input type="radio" name="report_category" value="T"> 시간미준수
+								<input type="radio" name="report_category" value="S"> 음란
+								<input type="radio" name="report_category" value="Q"> 수업의 질이 떨어짐
+								<input type="radio" name="report_category" value="P"> 개인정보 관련
 							</div>
 						</div>
 						<div>
 							<div class="report title">
 								신고내용
 								<div>
-									<textarea name="report_content" id="editor1" rows="10"
-										cols="80"></textarea>
+									<textarea name="report_content" id="editor1" rows="10" cols="80"></textarea>
+									<input multiple="multiple" type="file" value="파일 선택" name="file" accept=".jpg, .png" />
+									<input multiple="multiple" type="file" value="파일 선택" name="file" accept=".jpg, .png" />
 									<input class="reportbtn" type="submit" value="신고 제출" required>
 								</div>
 							</div>
