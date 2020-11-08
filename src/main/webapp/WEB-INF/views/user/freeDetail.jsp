@@ -12,9 +12,9 @@
 	rel="stylesheet">
 <script>
 
-function delChk(free_seq) {
+function delChk(free_no) {
 	if (confirm("삭제하시겠습니까?")) {
-		location.href="freedelete.do?free_seq=${freeboardDto.free_seq}";
+		location.href="freedelete.do?free_no=${freeboardDto.free_no}";
 	}
 }
 
@@ -72,8 +72,8 @@ function delChk(free_seq) {
 				<tr>
 					<td colspan="6" style="text-align: right;">
 					<input type="button" value="LIST" onclick="location.href='freelist.do'" />
-					<input type="button" value="EDIT" onclick="location.href='freeupdateform.do?free_seq=${freeboardDto.free_seq}'" />
-					<input type="button" value="DELETE" onclick="delChk(${freeboardDto.free_seq});" /></td>
+					<input type="button" value="EDIT" onclick="location.href='freeupdateform.do?free_no=${freeboardDto.free_no}'" />
+					<input type="button" value="DELETE" onclick="delChk(${freeboardDto.free_no});" /></td>
 				</tr>
 			</tfoot>
 		</table>
@@ -85,7 +85,7 @@ function delChk(free_seq) {
 			<label for="content">comment</label>
 			<form name="replyInsertForm">
 				<div class="input-group">
-					<input type="hidden" name="reply_boardno" value="${freeboardDto.free_seq}" />
+					<input type="hidden" name="reply_boardno" value="${freeboardDto.free_no}" />
 					<input type="text" class="form-control" id="reply_title" name="reply_title" placeholder="내용을 입력하세요.">
 					<span class="input-group-btn">
 						<button class="btn btn-default" type="button" name="replyInsertBtn">등록</button>

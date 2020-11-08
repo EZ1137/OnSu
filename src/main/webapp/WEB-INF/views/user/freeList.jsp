@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 
 <!DOCTYPE html>
 <html>
@@ -63,14 +64,14 @@
 					<c:otherwise>
 						<c:forEach items="${list }" var="freeboardDto">
 							<tr>
-								<td>${freeboardDto.free_seq }</td>
+								<td>${freeboardDto.free_no }</td>
 								<td><a
-									href="freedetail.do?free_seq=${freeboardDto.free_seq }">${freeboardDto.free_title }</a></td>
+									href="freedetail.do?free_no=${freeboardDto.free_no }">${freeboardDto.free_title }</a></td>
 
 								<td>${freeboardDto.free_writer}</td>
 								<td><fmt:formatDate value="${freeboardDto.free_date}"
 										pattern="yyyy-MM-dd" /></td>
-								
+
 							</tr>
 						</c:forEach>
 					</c:otherwise>
@@ -80,26 +81,31 @@
 
 			<tfoot>
 				<c:choose>
-					<c:when test="${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username ne null }">
+					<c:when
+						test="${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username ne null }">
 						<!--로그인했을때  -->
 						<tr>
 							<td colspan="6" class="qbtnbar" style="text-align: right;">
-							<input type="button" value="WRITE"
-								onclick="location.href='freeinsert.do'" /></td>
+								<input type="button" value="WRITE"
+								onclick="location.href='freeinsert.do'" />
+							</td>
 						</tr>
 					</c:when>
 					<c:otherwise>
 
 						<tr>
 							<td colspan="6" class="qbtnbar" style="text-align: right;">
-							<input type="button" value="WRITE" onclick="loginAlert()" /></td>
+								<input type="button" value="WRITE" onclick="loginAlert()" />
+							</td>
 						</tr>
 
 						<sec:authorize access="isAuthenticated()">
-							<form:form action="${pageContext.request.contextPath}/logout" method="POST">
-    							<input type="submit" value="로그아웃" />
-    							 <td colspan="6" class="qbtnbar" style="text-align: right;"><input
-								type="button" value="WRITE" onclick="location.href='freeinsert.do'" /></td>							
+							<form:form action="${pageContext.request.contextPath}/logout"
+								method="POST">
+								<input type="submit" value="로그아웃" />
+								<td colspan="6" class="qbtnbar" style="text-align: right;"><input
+									type="button" value="WRITE"
+									onclick="location.href='freeinsert.do'" /></td>
 							</form:form>
 						</sec:authorize>
 
@@ -108,6 +114,30 @@
 
 			</tfoot>
 		</table>
+		
+		<div style="display: block; text-align: center;">
+			<c:if test="${paging.startPage != 1 }">
+				<a
+					href="/boardList?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+			</c:if>
+			<c:forEach begin="${paging.startPage }" end="${paging.endPage }"
+				var="p">
+				<c:choose>
+					<c:when test="${p == paging.nowPage }">
+						<b>${p }</b>
+					</c:when>
+					<c:when test="${p != paging.nowPage }">
+						<a href="/boardList?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+					</c:when>
+				</c:choose>
+			</c:forEach>
+			<c:if test="${paging.endPage != paging.lastPage}">
+				<a
+					href="/boardList?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+			</c:if>
+		</div>
+		
+		
 	</section>
 
 	<!-- footer -->

@@ -9,13 +9,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.onsoo.admin.model.biz.AdminBiz;
 import com.kh.onsoo.free.model.biz.FreeboardBiz;
 import com.kh.onsoo.free.model.dto.FreeboardDto;
 import com.kh.onsoo.reply.biz.ReplyBiz;
+import com.kh.onsoo.utils.PagingVO;
 
 
 
@@ -63,17 +66,17 @@ public class FreeboardController {
 	}
 
 	@RequestMapping("/freedetail.do")
-	public String freeDeatil(Model model, int free_seq) {
-		model.addAttribute("freeboardDto", freeBiz.selectOne(free_seq));
+	public String freeDeatil(Model model, int free_no) {
+		model.addAttribute("freeboardDto", freeBiz.selectOne(free_no));
 		
 		return "/user/freeDetail";
 	}
 
 	@RequestMapping(value = "/freeupdateform.do")
-	public String freeupdateForm(Model model, int free_seq) {
+	public String freeupdateForm(Model model, int free_no) {
 
 		logger.info("freeController>>updateForm");
-		model.addAttribute("freeboardDto", freeBiz.selectOne(free_seq));
+		model.addAttribute("freeboardDto", freeBiz.selectOne(free_no));
 		return "/user/freeUpdate";
 	}
 
@@ -87,19 +90,39 @@ public class FreeboardController {
 		}
 
 		logger.info("[error] freeboard update res");
-		return "redirect:freeupdateform.do?free_seq=" + dto.getFree_seq();
+		return "redirect:freeupdateform.do?free_no=" + dto.getFree_no();
 	}
 
 	@RequestMapping("/freedelete.do")
-	public String freeDelete(int free_seq) {
+	public String freeDelete(int free_no) {
 
-		int res = freeBiz.delete(free_seq);
+		int res = freeBiz.delete(free_no);
 
 		if (res > 0) {
 			return "redirect:freelist.do";
 		}
 		logger.info("[error] freeboard delete");
-		return "redirect:freedetail.do?free_seq=" + free_seq;
+		return "redirect:freedetail.do?free_no=" + free_no;
+	}
+	
+	@GetMapping("/boardList")
+	public String boardList(PagingVO vo, Model model
+			, @RequestParam(value="nowPage", required=false)String nowPage
+			, @RequestParam(value="cntPerPage", required=false)String cntPerPage) {
+		
+		int total = freeBiz.countBoard();
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "5";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) { 
+			cntPerPage = "5";
+		}
+		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		model.addAttribute("paging", vo);
+		model.addAttribute("viewAll", freeBiz.selectBoard(vo));
+		return "boardPaging";
 	}
 
 }

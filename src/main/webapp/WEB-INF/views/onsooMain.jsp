@@ -258,7 +258,8 @@
 						<div class="fifth-sub">
 							궁금한 점이 있다면 언제든 연락 주세요!
 							<div>
-								<a href="reportinsert.do"><button class="contactbtn">문의하러가기</button></a>
+								<input type="button" value="신고" onclick="location.href='reportinsert.do?member_id=${dto.member_id}'">
+								<a href="reportinsert.do?member_id=${dto.member_id}'"><button class="contactbtn" >문의하러가기</button></a>
 							</div>
 						</div>
 					</div>

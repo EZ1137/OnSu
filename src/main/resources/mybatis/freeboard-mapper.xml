@@ -4,12 +4,12 @@
 	
 	<select id="selectList" resultType="freeDto">
 		SELECT * FROM FREE
-		ORDER BY FREE_SEQ DESC
+		ORDER BY FREE_NO DESC
 	</select>
 
 	<select id="selectOne" resultType="freeDto" parameterType="int">
 		SELECT * FROM FREE
-		WHERE FREE_SEQ = #{free_seq}
+		WHERE FREE_NO = #{free_no}
 	</select>
 	
 	<select id="insert" parameterType="freeDto">
@@ -21,12 +21,31 @@
 		UPDATE FREE
 		SET FREE_TITLE = #{free_title},
 			FREE_CONTENT = #{free_content}
-		WHERE FREE_SEQ = #{free_seq}
+		WHERE FREE_NO = #{free_no}
 	</update>
 			
 	<delete id="delete" parameterType="int">
 		DELETE FROM FREE
-		WHERE FREE_SEQ = #{free_seq}
+		WHERE FREE_NO = #{free_no}
 	</delete>
+
+	<!--총 게시글 갯수 출력-->
+	<select id="countBoard" resultType="int">
+		SELECT COUNT(*) FROM FREE
+	</select>
+
+	<!--페이징 처리 후 게시글 조회-->
+	<select id="selectBoard" resultType="freeDto">
+		SELECT * 
+		FROM (
+			SELECT ROWNUM RN, A.* 
+				FROM (
+						SELECT * 
+						FROM FREE 
+						ORDER BY FREE_NO DESC 
+						) A
+				)
+	WHERE RN BETWEEN #{start} AND #{end}
+	</select>
 
 </mapper>

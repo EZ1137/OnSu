@@ -20,4 +20,10 @@
 		FROM REPORT
 		WHERE REPORT_NO = #{report_no}
 	</select>
+	
+	<select id="insert" parameterType="AdminReportDto">
+		INSERT INTO REPORT
+		VALUES(REPORT_SEQ.NEXTVAL,#{report_content},SYSDATE,NULL,#{report_id},#{report_ided},#{report_category} )
+	</select>
+	
 </mapper>

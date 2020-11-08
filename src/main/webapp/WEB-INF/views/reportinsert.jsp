@@ -1,17 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>On:Soo-report</title>
 <!-- Editor's Dependecy Style -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.css" />
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.css" />
 <!-- Editor's Style -->
-<link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+<link rel="stylesheet"
+	href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
 <link
 	href="${pageContext.request.contextPath}/resources/css/reportinsert.css?after"
 	rel="stylesheet">
+<script>
+	window.onload = function() {
+		ck = CKEDITOR
+				.replace(
+						"editor1",
+						{
+							filebrowserImageUploadUrl : '${pageContext.request.contextPath}/ImageUpload.do',
+							customConfig : '${pageContext.request.contextPath}/js/lib/ckeditor/config_oboe.js'
+						});
+	};
+</script>
 </head>
 <body>
 	<!-- header -->
@@ -30,22 +47,21 @@
 				<form action="reportinsertres.do" method="post">
 					<div>
 						<div>
-							<div class="report no">신고번호</div>
-							<div>
-								<input type="text" name="report_no">
-							</div>
+							<div class="report id">신고자 아이디</div>
+							<c:choose>
+								<c:when test="${member_id ne null }">
+									<input type="text" name="report_id" value="${dto.member_id}"></input>
+								</c:when>
+								<c:otherwise>
+									<div>로그인해주세요</div>
+								</c:otherwise>
+							</c:choose>
+
 						</div>
 						<div>
-							<div class="report id">신고자이름</div>
+							<div class="report ided">강사아이디</div>
 							<div>
-								<input type="text" name="report_id"
-									value="${logindto.member_id }">
-							</div>
-						</div>
-						<div>
-							<div class="report ided">강사이름</div>
-							<div>
-								<input type="text" name="report_ided">
+								<input type="text" name="report_ided"></input>
 							</div>
 						</div>
 						<div>
@@ -63,30 +79,9 @@
 							<div class="report title">
 								신고내용
 								<div>
-									<div id="editor"></div>
-									<input class="reportbtn" type="submit" name="report_content"  value="신고 제출" onclick="formSubmit()" required>
-
-									<!-- 토스트 ui -->
-									<script
-										src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
-									<script>
-										const editor = new toastui.Editor({
-											el : document
-													.querySelector('#editor'),
-											previewStyle : 'tab',
-											height : '400px',
-											language : 'ko',
-											initialEditType : 'wysiwyg'
-										});
-
-										function formSubmit() {
-											let content = editor.getMarkdown();
-											localStorage.setItem("content",
-													content);
-											location.href = "reportinsertres.jsp";
-										}
-									</script>
-
+									<textarea name="report_content" id="editor1" rows="10"
+										cols="80"></textarea>
+									<input class="reportbtn" type="submit" value="신고 제출" required>
 								</div>
 							</div>
 						</div>
