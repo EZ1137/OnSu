@@ -19,7 +19,6 @@
 		<col width="100"/>
 		<col width="100"/>
 		<tr>
-			<th>번호</th>
 			<th>아이디</th>
 			<th>이름</th>
 			<th>이메일</th>
@@ -30,13 +29,12 @@
 		</tr>
 			<c:forEach items="${list }" var="dto">
 				<tr>
-					<td>${dto.member_no }</td>
 					<td>${dto.member_id }</td>
 					<td>${dto.member_name }</td>
 					<td>${dto.member_email }</td>
 					<td>${dto.member_phone }</td>
-					<td>${dto.member_deletedate }</td>
-					<td>${dto.member_blockdate }</td>
+					<td>${dto.member_ddate }</td>
+					<td>${dto.member_bdate }</td>
 					<td>${dto.member_role }</td>
 				</tr>
 			</c:forEach>

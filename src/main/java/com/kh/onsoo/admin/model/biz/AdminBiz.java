@@ -7,10 +7,11 @@ import com.kh.onsoo.admin.model.dto.AdminDto;
 public interface AdminBiz {
 	
 	public List<AdminDto> selectList();
+	public List<AdminDto> teacherList();
 	public AdminDto selectOne(String member_id);
 	public int insert (AdminDto dto);
 	public int update (AdminDto dto);
-	public int delete(int member_no);
+	public int delete(String member_id);
 	public AdminDto selectOne2(String member_id);
 
 	public int idchk(String member_id);

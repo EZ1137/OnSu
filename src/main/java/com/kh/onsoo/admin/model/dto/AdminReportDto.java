@@ -9,13 +9,14 @@ public class AdminReportDto {
 	private String report_filename;
 	private String report_id;
 	private String report_ided;
+	private String report_category;
 	
 	public AdminReportDto() {
 		
 	}
 
 	public AdminReportDto(int report_no, String report_title, String report_content, String report_date,
-			String report_filename, String report_id, String report_ided) {
+			String report_filename, String report_id, String report_ided, String report_category) {
 		super();
 		this.report_no = report_no;
 		this.report_title = report_title;
@@ -24,6 +25,7 @@ public class AdminReportDto {
 		this.report_filename = report_filename;
 		this.report_id = report_id;
 		this.report_ided = report_ided;
+		this.report_category = report_category;
 	}
 
 	public int getReport_no() {
@@ -80,6 +82,14 @@ public class AdminReportDto {
 
 	public void setReport_ided(String report_ided) {
 		this.report_ided = report_ided;
+	}
+
+	public String getReport_category() {
+		return report_category;
+	}
+
+	public void setReport_category(String report_category) {
+		this.report_category = report_category;
 	}
 	
 }

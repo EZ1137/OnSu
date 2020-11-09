@@ -18,6 +18,11 @@ public class AdminBizImpl implements AdminBiz {
 	public List<AdminDto> selectList() {
 		return dao.selectList();
 	}
+	
+	@Override
+	public List<AdminDto> teacherList(){
+		return dao.teacherList();
+	}
 
 	@Override
 	public AdminDto selectOne(String member_id) {
@@ -35,8 +40,8 @@ public class AdminBizImpl implements AdminBiz {
 	}
 
 	@Override
-	public int delete(int member_no) {
-		return dao.delete(member_no);
+	public int delete(String member_id) {
+		return dao.delete(member_id);
 	}
 	
 	public AdminDto selectOne2(String member_id) {
