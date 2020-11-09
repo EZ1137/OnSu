@@ -108,7 +108,7 @@ public class FreeboardDaoImpl implements FreeboardDao {
 		try {
 			list = sqlSession.selectList(NAMESPACE + "selectBoard");
 		} catch (Exception e) {
-			logger.info("[ERROR] freeboard selectBoard");
+			logger.info("[ERROR] freeboard paging with selectBoard");
 			e.printStackTrace();
 		}
 
