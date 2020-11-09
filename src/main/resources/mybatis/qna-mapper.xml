@@ -4,7 +4,7 @@
 
 	<resultMap type="qnadto" id="qnaDtoResultMap">
 		<result property="qnano" column="QNANO"></result>
-		<result property="qnawriter" column="QNAQWRITER"></result>
+		<result property="qnawriter" column="QNAWRITER"></result>
 		<result property="qnatitle" column="QNATITLE"></result>
 		<result property="qnaqcontent" column="QNAQCONTENT"></result>
 		<result property="qnaqregdate" column="QNAQREGDATE"></result>
@@ -18,7 +18,7 @@
 	<select id="selectList" resultType="QnaDto">
 		SELECT QNANO, QNAWRITER, QNATITLE, QNASECRET, QNARESPONSE, QNAQREGDATE
 		FROM QNA
-		ORDER BY QNANO, QNAQREGDATE
+		ORDER BY QNANO, QNAQREGDATE DESC
 	</select>
 	
 	<!-- 상세 보기 -->
@@ -30,7 +30,7 @@
 	
 	<!-- 질문 작성 -->
 	<insert id="insert" parameterType="qnadto">
-		INSERT INTO QNA
+		INSERT INTO QNA(QNANO, QNAWRITER, QNATITLE, QNAQCONTENT, QNAQREGDATE, QNASECRET, QNARESPONSE, QNAACONTENT, QNAAREGDATE)
 		VALUES(QNANOSEQ.NEXTVAL, #{qnawriter}, #{qnatitle}, #{qnaqcontent}, SYSDATE, 'N', 'N', NULL, SYSDATE)
 	</insert>
 	
