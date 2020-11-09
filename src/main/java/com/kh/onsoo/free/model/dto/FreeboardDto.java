@@ -12,7 +12,7 @@ public class FreeboardDto {
 	private Date free_date;
 	
 	public FreeboardDto() {
-		//defqult constructor;
+		//default constructor;
 	}
 
 	public FreeboardDto(int free_no, String free_title, String free_writer, String free_content, Date free_date) {
