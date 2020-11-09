@@ -132,6 +132,18 @@ td > input[type="button"],input[type="reset"],input[type="submit"] {
   box-shadow: var(--btn-shadow);
 }
 
+div > input[type="button"],input[type="reset"],input[type="submit"] {
+  /* 로그인 */
+  margin: 4px 4px;
+  padding: 5px 10px 0 10px;
+  background: var(--color-white);
+  color: var(--color-dark-grey);
+  height: 30px;
+  border: none;
+  border-radius: var(--border-radi-btn);
+  box-shadow: var(--btn-shadow);
+}
+
 td > input[type="button"]:hover {
   background-color: var(--color-light-blue);
   color: var(--color-black);

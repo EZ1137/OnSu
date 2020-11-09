@@ -55,11 +55,9 @@
 					<tr>
 						<td style="text-align:left; padding: 20px 0 20px 80px;">
 							<p>
-								<b>주민등록등본</b>, <b>졸업(재학)증명서</b>, <b>강의계획서</b>, <b>통장 사본</b> 각 1부<br><br>
-								1. 주민등록번호 뒷자리는 나오지 않도록 해 주세요.<br>
-								2. 졸업(재학)증명서 또는 경력 등을 증명할 수 있는 포트폴리오, 경력기술서 등의 기타 증빙 서류를 준비 해 주세요.<br>
-								3. 수업하실 내용을 알 수 있는 자유 형식의 강의계획서를 보여 주세요.<br>
-								4. 추후 정산을 위한 통장 사본 또는 계좌 정보를 알려 주세요.
+								<b>졸업(재학)증명서</b>, <b>강의계획서</b> 각 1부<br><br>
+								1. 졸업(재학)증명서 또는 경력 등을 증명할 수 있는 포트폴리오, 경력기술서 등의 증빙 서류를 준비 해 주세요.<br>
+								2. 수업하실 내용을 알 수 있는 자유 형식의 강의계획서를 보여 주세요.
 							</p>
 						</td>
 					</tr>
@@ -68,10 +66,10 @@
 					<tr>
 						<td style="display:flex; padding: 10px; align-items:center; border-top:1px solid var(--color-light-grey);">
 							<form name="fileForm" action="tvalidup.do" method="post" enctype="multipart/form-data">
-								<input multiple="multiple" type="file" name="file" />
-								<input type="text" name="src" />
-								<input type="reset" value="RESET" />
-								<input type="submit" value="UPLOAD" />
+							    <input multiple="multiple" type="file" value="SELECT" name="file"/>		<!--  accept=".jpg, .png" -->
+							    <input multiple="multiple" type="file" value="SELECT" name="file"/>
+								<input type="reset" value="RESET"/>
+								<input type="submit" value="UPLOAD"/>
 							</form>
 						</td>
 					</tr>
