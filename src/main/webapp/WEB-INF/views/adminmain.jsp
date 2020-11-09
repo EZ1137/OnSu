@@ -25,10 +25,15 @@
 	.second_table_name{
 		margin-right: 30%;
 		float: right;
+		margin-top: 35%;
 	}
 	.admin_second_table{
 		width: 35%;
 		float: right;
+		margin-top : 35%;
+	}
+	.more{
+		margin-top : 35%;
 	}
 </style>
 
@@ -38,11 +43,11 @@
 </head>
 <body>
 	<!-- header -->
-	<!-- <div class="header_area">
+	<div class="header_area">
 	<header id="header" class="area">
 		<%@ include file="/WEB-INF/views/header.jsp"%>
 	</header>
-	</div> -->
+	</div>
 	<div id="first_area">
 	<div class="first_table_all">
 	<div class="first_table_name">전체 회원조회</div>
