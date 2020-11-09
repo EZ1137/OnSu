@@ -60,6 +60,7 @@ header {
   margin-left: auto;
   margin-right: auto;
 }
+video { width: 100%; }
 
 .first {	
   display: flex;
@@ -68,6 +69,7 @@ header {
   background: var(--color-white);
   flex-direction: column;
   background-repeat : no-repeat;
+  overflow: hidden;
 }
 
 .first-wrapper {
@@ -77,6 +79,9 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: left;
+  position: relative;
+  overflow: hidden;
+	margin: 0px auto;
 }
 
 .first h1 {
@@ -87,11 +92,23 @@ header {
 }
 
 .maintext {
-  margin-left: 4%;
-  width: 50rem;
-  font-size: var(--font-medium);
-}
 
+  margin-left: 4%;
+  border:2px solid black;
+  font-size: var(--font-medium);
+  position:aboulute;
+  position: absolute;
+  width:30%;
+  padding:20px;
+  border-radius: var(--border-radi-btn);
+ 
+}
+.mainTitle{
+	font-size:var(--font-large);
+}
+.subTitle{
+	font-size:var(--font-medium);
+}
 .second {
   width: 100%;
   height: 100vh;
@@ -303,16 +320,20 @@ hr {
 .fifth {
 	margin: 120px auto 0 auto;
 	width: 70%;
-	height: 500px;
+	height: 100vh;
 	border-radius: 10px;
 	box-shadow: 5px 5px 10px #e6e6e6, -5px -5px 10px #ffffff;
 }
 
+.footer{
+	height:30vh;
+}
+
 .fifth-wrapper{
 	width: 70%;
-	height: 320px;
+	height: 60vh;
 	border-radius: 10px;
-	box-shadow: 5px 5px 10px #e6e6e6, -5px -5px 10px #ffffff;
+	/* box-shadow: 5px 5px 10px #e6e6e6, -5px -5px 10px #ffffff; */
 	display: flex;
 	margin-left: 15%;
 	justify-content: space-around;
