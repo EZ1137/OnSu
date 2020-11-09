@@ -16,6 +16,7 @@
 		<typeAlias type="com.kh.onsoo.free.model.dto.FreeboardDto" alias="freeDto" />
 		<typeAlias type="com.kh.onsoo.reply.dto.ReplyDto" alias="ReplyDto" />
 		<typeAlias type="com.kh.onsoo.review.model.dto.ReviewDto" alias="ReviewDto"/>
+		<typeAlias type="com.kh.onsoo.pay.model.dto.PayDto" alias="PayDto"/>
 	</typeAliases>
 	
 	<mappers>
@@ -32,6 +33,7 @@
 		<mapper resource="/mybatis/freeboard-mapper.xml" />
 		<mapper resource="/mybatis/reply-mapper.xml" />
 		<mapper resource="/mybatis/review-mapper.xml" />
+		<mapper resource="/mybatis/pay-mapper.xml" />
 	</mappers>
 	
 </configuration>

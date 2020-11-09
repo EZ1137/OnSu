@@ -14,7 +14,7 @@
 		WHERE REVIEW_NO = #{review_no}
 	</select>
 	
-	<insert id="insert" parameterType="calendarDto">
+	<insert id="insert" parameterType="ReviewDto">
 		INSERT INTO REVIEW
 		VALUES(REVIEWSEQ.NEXTVAL, #{review_id}, #{review_content}, #{review_classno}, #{review_star}, SYSDATE)
 	</insert>
