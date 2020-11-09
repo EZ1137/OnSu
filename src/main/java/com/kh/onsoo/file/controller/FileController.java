@@ -1,11 +1,11 @@
 package com.kh.onsoo.file.controller;
 
 import java.io.File;
-import java.io.FileOutputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.util.List;
 import java.util.Locale;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -20,14 +20,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.util.WebUtils;
 
-import com.kh.onsoo.file.model.dto.UploadFile;
+import com.kh.onsoo.admin.model.dto.AdminDto;
+//import com.kh.onsoo.file.model.dto.UploadFile;
 import com.kh.onsoo.file.model.validate.FileValidator;
+//import com.kh.onsoo.utils.UploadFileUtils;
 
 @Controller
 public class FileController {
@@ -45,6 +49,90 @@ public class FileController {
 		return "teachervalid";
 	}
 	
+	// 다중 파일
+	@RequestMapping(value = "/tvalidup.do", method = RequestMethod.POST)
+	public String uploadMany(MultipartHttpServletRequest multifile, Model model, HttpServletRequest request, BindingResult result, AdminDto admindto) throws IOException {
+		
+		logger.info("FileController.fileUpload");
+		
+		fileValidator.validate(multifile, result);
+		
+		if (result.hasErrors()) {
+			return "upload";
+		}
+		
+		List<MultipartFile> fileList = multifile.getFiles("file");
+		
+		try {
+			String path = WebUtils.getRealPath(request.getSession().getServletContext(), "/resources/storage");
+			File storage = new File(path);
+			
+			// 폴더 생성
+			if (!storage.exists()) {
+				storage.mkdir();
+			}
+			
+			for (MultipartFile file : fileList) {
+				
+				String filename = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
+
+	            if (file.getSize() != 0) {
+	               File target = new File(path, filename);
+	               FileCopyUtils.copy(file.getBytes(), target);
+	            }
+	        }
+			if (fileList != null) {
+				admindto.setMember_role("I");
+			}
+			
+		} catch (FileNotFoundException e) {
+	         e.printStackTrace();
+		}
+		return "tvalidres.do";
+	}
+	
+	@RequestMapping(value = "/tvalidres.do", method = RequestMethod.GET)
+	public String tvalidres(Locale locale, Model model) {	
+		
+		logger.info("FileController.tvalidres");
+		
+		return "tvalidres";
+	}
+
+	/*
+	@RequestMapping(value = "/tvalidup.do")
+	public String requestupload2(MultipartHttpServletRequest mtfRequest) {
+		
+		logger.info("FileController.requestupload2");
+		
+		List<MultipartFile> fileList = mtfRequest.getFiles("file");
+		String src = mtfRequest.getParameter("src");
+		System.out.println("src value : " + src);
+
+		String path = "C:\\image\\";
+
+		for (MultipartFile mf : fileList) {
+
+			String originFileName = mf.getOriginalFilename(); // 원본 파일 명
+			long fileSize = mf.getSize(); // 파일 사이즈
+
+			System.out.println("originFileName : " + originFileName);
+			System.out.println("fileSize : " + fileSize);
+
+			String safeFile = path + System.currentTimeMillis() + originFileName;
+			try {
+				mf.transferTo(new File(safeFile));
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return "redirect:/";
+	}
+	*/
+
+	/*
 	@RequestMapping(value = "/tvalidup.do")
 	public String fileUpload(HttpServletRequest request, Model model, UploadFile uploadFile, BindingResult result) {
 		
@@ -105,37 +193,6 @@ public class FileController {
 		model.addAttribute("fileObj", fileObj);
 		
 		return "download";
-	}
-	/*
-	@RequestMapping(value = "/tvalidup.do")
-	public String requestupload2(MultipartHttpServletRequest mtfRequest) {
-		
-		logger.info("FileController.requestupload2");
-		
-		List<MultipartFile> fileList = mtfRequest.getFiles("file");
-		String src = mtfRequest.getParameter("src");
-		System.out.println("src value : " + src);
-
-		String path = "C:\\image\\";
-
-		for (MultipartFile mf : fileList) {
-
-			String originFileName = mf.getOriginalFilename(); // 원본 파일 명
-			long fileSize = mf.getSize(); // 파일 사이즈
-
-			System.out.println("originFileName : " + originFileName);
-			System.out.println("fileSize : " + fileSize);
-
-			String safeFile = path + System.currentTimeMillis() + originFileName;
-			try {
-				mf.transferTo(new File(safeFile));
-			} catch (IllegalStateException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		return "redirect:/";
 	}
 	*/
 }

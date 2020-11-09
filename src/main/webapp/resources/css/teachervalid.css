@@ -85,6 +85,11 @@ td {
 	text-align: center;
 }
 
+input[type="file"] > #file-upload-button {
+	height: 80%;
+	background-color: var(--color-light-white);
+}
+
 input[type="button"],input[type="reset"],input[type="submit"],input[type="file"] {
   /* 로그인 */
   margin: 4px 4px;

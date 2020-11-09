@@ -43,7 +43,7 @@
 		
 		<!-- 답변 작성 (X) -->
 		<c:if test="${qnadto.qnaresponse eq 'N'}">
-			<form action="qnaupdateres.do">
+			<form action="qnaupdateres.do" method="post">
 				<input type="hidden" name="qnano" value="${qnadto.qnano}"/>
 				<table class="qna_one">
 					<colgroup>

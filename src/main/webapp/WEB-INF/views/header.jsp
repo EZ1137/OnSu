@@ -96,15 +96,15 @@
 				<div class="sidenav">
 					<i id="hamburger" class="fas fa-bars fa-2x" onclick="menu()"></i>
 					<div id="mySidenav">
-						<p class="sideAsset" onclick="location.href='about.do'">A B O U T</p>
-						<p class="sideAsset" onclick="location.href=''">V I D E O</p>
-						<p class="sideAsset" onclick="location.href='streaming.do'">1 : 1 C L A S S</p>
-						<p class="sideAsset" onclick="location.href='qna.do'">Q n A</p>
-						<p class="sideAsset" onclick="location.href='notice.do'">N O T I C E</p>
-						<p class="sideAsset" onclick="location.href='contact.do'">C O N T A C T</p>
-						<p class="sideAsset" onclick="location.href='admin.do'">A D M I N</p>
-						<p class="sideAsset" onclick="location.href='mypage.do'">M Y P A G E</p>
-						<p class="sideAsset" onclick="location.href='freelist.do'">F R E E</p>
+						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/about.do'">A B O U T</p>
+						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}'">V I D E O</p>
+						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/streaming.do'">1 : 1 C L A S S</p>
+						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/qna.do'">Q n A</p>
+						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/notice.do'">N O T I C E</p>
+						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/contact.do'">C O N T A C T</p>
+						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/admin.do'">A D M I N</p>
+						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/mypage.do'">M Y P A G E</p>
+						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/freelist.do'">F R E E</p>
 					</div>
 				</div>
 			</nav>
