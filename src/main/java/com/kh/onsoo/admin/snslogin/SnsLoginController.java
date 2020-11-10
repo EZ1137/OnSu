@@ -1,6 +1,7 @@
 package com.kh.onsoo.admin.snslogin;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 import javax.servlet.http.HttpSession;
 
@@ -64,7 +65,6 @@ public class SnsLoginController {
 		@RequestMapping(value="/callback.do",method = {RequestMethod.GET,RequestMethod.POST})
 		public String callback(Model model, @RequestParam String code, @RequestParam String state,HttpSession session) throws IOException, ParseException{
 			
-				
 			
 			System.out.println("callback 통과");
 			
@@ -111,8 +111,11 @@ public class SnsLoginController {
 			
 		}
 	
-	
-	
+		@RequestMapping(value = "/oauth2callback.do", method ={RequestMethod.GET,RequestMethod.POST} )
+		public String googleCallback(@RequestParam("code") String code,HttpSession session) throws IOException,InterruptedException,ExecutionException{
+		
+			return "registForm2";
+		}
 	
 	
 	

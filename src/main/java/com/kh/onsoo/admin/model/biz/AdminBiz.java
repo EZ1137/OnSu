@@ -17,4 +17,12 @@ public interface AdminBiz {
 	public int idchk(String member_id);
 	
 	public int emailchk(String member_email);
+	
+	public AdminDto idfind(AdminDto dto);
+	public int pwfind(AdminDto dto);
+	
+	
+	public AdminDto updatechk(AdminDto dto);
+	
+	public int registUpdate(AdminDto dto);
 }

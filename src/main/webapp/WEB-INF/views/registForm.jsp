@@ -151,6 +151,9 @@
 									id="memberemail" required="required"> <input
 									class="registbtn" type="button" onclick="emailchk();"
 									value="중복확인">
+								<input type="text" id="randomchk" onkeyup="codechk();" 
+								placeholder="인증번호를 입력해주세요" required="required">
+								<input type="hidden" pattern="random" id="random" >	
 							</div>
 						</div>
 						<div>
@@ -171,7 +174,7 @@
 						</div>
 						<div class="registBottom">
 							<div>
-								<button class="submitbtn" type="submit">가입하기</button>
+								<button class="submitbtn" id="submit" type="submit">가입하기</button>
 							</div>
 							<div>
 							<!--a태그를 button으로 바꾸고 싶었는데 url value몰라서 그냥 뒀어요!  -->

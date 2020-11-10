@@ -36,9 +36,25 @@
         <beans:property name="defaultEncoding" value="UTF-8"/>
     </beans:bean>
     
+        <!-- google Class Bean설정 추가 -->
+<!-- 클라이언트ID와 보안비밀 세팅-->
+<beans:bean id="googleConnectionFactory"
+	class="org.springframework.social.google.connect.GoogleConnectionFactory">
+	<beans:constructor-arg value="280875782408-fgdk2fhddtgn6f2874a7drcrj2lfn92q.apps.googleusercontent.com" />
+	<beans:constructor-arg value="Os9swjiLF9j3qtOYNhH7jFEO" />
+</beans:bean>
+<!-- 승인된 자바스크립트 원본과 승인된 리디렉션 URI -->
+<beans:bean id="googleOAuth2Parameters" class="org.springframework.social.oauth2.OAuth2Parameters">
+	<beans:property name="scope" value="https://www.googleapis.com/auth/plus.login" />
+	<beans:property name="redirectUri" value="http://localhost:8787/onsoo/oauth2callback.do" />
+	</beans:bean>
+   
+    
+    
     <!-- 파일 업로드를 위한 디렉토리 설정 -->
 	<beans:bean id="uploadPath" class="java.lang.String">
 		<beans:constructor-arg value=""/> <!-- 배포 후 경로 입력할 부분 -->
 	</beans:bean>
    
 </beans:beans>
+   

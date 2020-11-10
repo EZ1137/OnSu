@@ -16,7 +16,6 @@
 	</header>
 
 
-
 <section class="section">
 			<h1 id="qnatitle">공지사항페이지입니다</h1>
 		<form id="notice" action="" method="post">

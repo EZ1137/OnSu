@@ -44,6 +44,7 @@ public class AdminBizImpl implements AdminBiz {
 		return dao.delete(member_id);
 	}
 	
+	@Override
 	public AdminDto selectOne2(String member_id) {
 		return dao.selectOne2(member_id);
 	}
@@ -52,9 +53,29 @@ public class AdminBizImpl implements AdminBiz {
 	public int idchk(String member_id) {
 		return dao.idchk(member_id);
 	}
-	
+	@Override
 	public int emailchk(String member_email) {
 		return dao.emailchk(member_email);
+	}
+	
+	@Override
+	public AdminDto idfind(AdminDto dto) {
+		return dao.idfind(dto);
+	}
+	
+	@Override
+	public int pwfind(AdminDto dto) {
+		return dao.pwfind(dto);
+	}
+	
+	@Override
+	public AdminDto updatechk(AdminDto dto) {
+		return dao.updatechk(dto);
+	}
+	
+	@Override
+	public int registUpdate(AdminDto dto) {
+		return dao.registUpdate(dto);
 	}
 	
 	

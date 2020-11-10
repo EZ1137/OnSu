@@ -20,5 +20,11 @@ public interface AdminDao {
 	
 	
 	public AdminDto selectOne2(String member_id);
+	
+	public AdminDto idfind(AdminDto dto);
+	public int pwfind(AdminDto dto);
+	public AdminDto updatechk(AdminDto dto);
+	
+	public int registUpdate(AdminDto dto);
 
 }
