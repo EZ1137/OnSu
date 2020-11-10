@@ -32,17 +32,25 @@ $(function () {
 </head>
 <body>
 	
-	<h1>리뷰 작성</h1>
-	<form action="reviewInsertRes.do" method="post">
-	<input type="hidden" name="review_classno" value="1" />
-		<table border="1">
+	<!-- header -->
+    <header id="header" class="area">
+    	<%@ include file="/WEB-INF/views/header.jsp"%>
+    </header>
+	
+	<section>
+	<div class="title">
+		<p>리뷰 작성</p>
+	</div>
+		<form action="reviewInsertRes.do" method="post">
+		<input type="hidden" name="review_classno" value="1" />
+		<table class="insert">
+		<colgroup>
+			<col width="15%"/>
+			<col width="85%"/>
+		</colgroup>
 			<tr>
 				<th>작성자</th>
 				<td><input type="text" name="review_id" value="${member_id }" readonly="readonly"></td>
-			<tr>
-			<tr>
-				<th>내용</th>
-				<td><textarea cols="60" row="20" name="review_content" style="resize:none;"></textarea></td>
 			</tr>
 			<tr>
 				<th>별점</th>
@@ -63,13 +71,27 @@ $(function () {
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" align="right">
+				<th>내용</th>
+				<td class="content">
+					<textarea cols="60" row="20" name="review_content" style="resize:none; width:100%; height:300px;" placeholder="내용을 입력하세요."></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" style="text-align:right;">
 					<input type="submit" value="작성">
-					<input type="button" value="취소" onclick="location.href='mypage.do'">
+					<input type="button" value="취소" onclick="location.href='main.do'">
 				</td>
 			</tr>
 		</table>
 	</form>
+	</section>
+	
+	<!-- footer -->
+	<footer id="footerarea" class="area">
+		<footer>
+			<%@ include file="/WEB-INF/views/footer.jsp"%>
+		</footer>
+	</footer>
 	
 </body>
 </html>

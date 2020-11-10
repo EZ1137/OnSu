@@ -105,6 +105,7 @@
 						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/admin.do'">A D M I N</p>
 						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/mypage.do'">M Y P A G E</p>
 						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/freelist.do'">F R E E</p>
+						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/review.do'">R E V I E W</p>
 					</div>
 				</div>
 			</nav>

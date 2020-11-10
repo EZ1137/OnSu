@@ -32,13 +32,17 @@ $(function () {
     
     <section>
     	<div class="title">
-    		<p></p>
+    		<p>리뷰 상세보기</p>
     	</div>
     	<div>
     		<form action="reviewUpdate.do" method="post">
     		<input type="hidden" name="review_no" value="${dto.review_no }">
     		<input type="hidden" name="member_id" value="${member_id }" />
     		<table class="one">
+    		<colgroup>
+				<col width="15%"/>
+				<col width="85%"/>
+			</colgroup>
     			<tr>
     				<th>작성자</th>
     				<td style="text-align:left;" type="text" name="review_id" readonly="readonly">${dto.review_id}</td>
@@ -76,11 +80,11 @@ $(function () {
     			<tr>
     				<th>댓글 내용</th>
     				<td>
-    					<textarea type="text" name="review_content" readonly="readonly" style="resize:none;">${dto.review_content }</textarea>
+    					<textarea type="text" name="review_content" readonly="readonly" style="resize:none; width:100%; height:300px;">${dto.review_content }</textarea>
     				</td>
     			</tr>
     			<tr>
-    				<td>
+    				<td colspan="2" style="text-align:right;">
     					<input type="submit" value="수정" />
     					<input type="button" value="삭제" onclick="location.href='reviewDelete.do?review_no=${dto.review_no }&member_id=${member_id }'" />
 						<input type="button" value="취소" onclick="location.href='review.do'" />

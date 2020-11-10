@@ -19,13 +19,63 @@ $(function () {
 	})
 });
 
+$(function () {
+	
+	$('.starRev span').click(function(){
+		  $(this).parent().children('span').removeClass('on');
+		  $(this).addClass('on').prevAll('span').addClass('on');
+		  var star = $(this).children().val();
+		  $("#starVal").prop("value",star);
+		  
+		  console.log($("#starVal").val());
+		  
+		});
+	
+	$('.starRev span').click(function () {
+	})
+	
+})
+
 </script>
 </head>
 <body>
 
+	<!-- header -->
+    <header id="header" class="area">
+    	<%@ include file="/WEB-INF/views/header.jsp"%>
+    </header>
+
 	<section>
+		<div>
+			<form action="review" method="post">
+			<input type="hidden" name="review_classno" value="1" />
+			<input type="hidden" name="review_id" value="${member_id }" />
+				<table border=1>
+					<td>
+						<textarea name="" style="resize:none; width:100%; height:100px;" placeholder="내용을 입력하세요."></textarea>
+					</td>
+					<td>
+						<div class="starRev">
+					  		<span class="starR1"><input type="hidden" value="1"/></span>
+					  		<span class="starR2"><input type="hidden" value="2"/></span>
+					 	 	<span class="starR1"><input type="hidden" value="3"/></span>
+					 	 	<span class="starR2"><input type="hidden" value="4"/></span>
+					 	 	<span class="starR1"><input type="hidden" value="5"/></span>
+					 	 	<span class="starR2"><input type="hidden" value="6"/></span>
+					 	 	<span class="starR1"><input type="hidden" value="7"/></span>
+					 	 	<span class="starR2"><input type="hidden" value="8"/></span>
+					 	 	<span class="starR1"><input type="hidden" value="9"/></span>
+					  		<span class="starR2"><input type="hidden" value="10"/></span>
+						</div>
+					<input type="hidden" id="starVal" name="review_star" value="0"/>
+					</td>
+					<td>
+						<input type="submit" value="등록">
+					</td>
+				</table>
+			</form>
+		</div>
 		<div class="ldiv">
-			<h1>강의</h1>
 			<table>
 				<c:choose>
 					<c:when test="${empty relist }">
@@ -53,19 +103,22 @@ $(function () {
 					 				<input type="hidden" class="starList" value="${ReviewDto.review_star }"/>
 								</div>
 							</td>
-							<td><fmt:formatDate value="${ReviewDto.review_date }" pattern="yyyy-MM-dd"/></td>
-							<td><fmt:formatDate value="${ReviewDto.review_update }" pattern="yyyy-MM-dd"/></td>
+							<td style="text-align:left;">작성일 : <fmt:formatDate value="${ReviewDto.review_date }" pattern="yyyy-MM-dd"/></td>
+							<td style="text-align:left;">수정일 : <fmt:formatDate value="${ReviewDto.review_update }" pattern="yyyy-MM-dd"/></td>
 						</tr>
-					</c:forEach>
-						<td align="right">
-							<input type="button" value="작성하기" onclick="location.href='reviewInsert.do?member_id=${mlist.member_id }'" />
-							<input type="button" value="뒤로" onclick="location.href='main.do'" />
-						</td>					
+					</c:forEach>				
 					</c:otherwise>	
 				</c:choose>
 			</table>
 		</div>
 	</section>
+	
+	<!-- footer -->
+	<footer id="footerarea" class="area">
+		<footer>
+			<%@ include file="/WEB-INF/views/footer.jsp"%>
+		</footer>
+	</footer>
 
 </body>
 </html>

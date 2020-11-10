@@ -126,7 +126,7 @@ public class CalendarController {
 		if(res > 0) {
 			return "redirect:calendar.do";
 		}
-		return "redirect:listenDetail.do?calendar_no=" + calendar_no;
+		return "redirect:calendarDetail.do?calendar_no=" + calendar_no;
 	}
 	
 	@RequestMapping(value = "/calendarListView.do")

@@ -93,7 +93,10 @@ public class ReviewController {
 		if(member_id.equals(dto.getReview_id())) {
 			return "/user/reviewupdate";
 		}
-		return "redirect:reviewDetail.do?review_no=" + dto.getReview_no();
+		model.addAttribute("msg", "작성자와 다른 id 입니다.");
+		model.addAttribute("url", "/reviewDetail.do?review_no=" + dto.getReview_no() + "&member_id=" + member_id);
+		
+		return "redirect";
 	}
 	
 	@RequestMapping("/reviewUpdateRes")
@@ -107,6 +110,24 @@ public class ReviewController {
 		}
 		
 		return "redirect:reviewUpdate.do?review_no=" + dto.getReview_no();
+	}
+	
+	@RequestMapping("/reviewDelete")
+	public String delete(Model model, int review_no, @RequestParam String member_id) {
+		logger.info("[reveiwDelete]");
+		
+		ReviewDto dto = reviewBiz.selectOne(review_no);
+		
+		if(member_id.equals(dto.getReview_id())) {
+			int res = reviewBiz.delete(review_no);
+			if(res > 0) {
+				return "redirect:review.do";
+			}
+		}
+		model.addAttribute("msg", "작성자와 다른 id 입니다.");
+		model.addAttribute("url", "/reviewDetail.do?review_no=" + dto.getReview_no() + "&member_id=" + member_id);
+		
+		return "redirect";
 	}
 }
 

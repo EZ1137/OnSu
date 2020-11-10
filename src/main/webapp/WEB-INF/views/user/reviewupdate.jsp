@@ -47,19 +47,19 @@ $(function () {
     	<%@ include file="/WEB-INF/views/header.jsp"%>
     </header>
     
-    <br/><br/><br/><br/><br/>
-    <br/><br/><br/><br/><br/>
-    <br/><br/><br/><br/><br/>
-    
     <section>
     	<div class="title">
-    		<p></p>
+    		<p>리뷰 수정</p>
     	</div>
     	<div>
     		<form action="reviewUpdateRes.do" method="post">
     		<input type="hidden" name="review_no" value="${dto.review_no }">
     		<input type="hidden" name="member_id" value="${member_id }">
     		<table class="one">
+    		<colgroup>
+				<col width="20%"/>
+				<col width="80%"/>
+			</colgroup>
     			<tr>
     				<th>작성자</th>
     				<td style="text-align:left;" type="text" name="review_id" readonly="readonly">${dto.review_id}</td>
@@ -78,20 +78,20 @@ $(function () {
 			  				<span class="starR2" id="s8"><input type="hidden" value="8"/></span>
 					  		<span class="starR1" id="s9"><input type="hidden" value="9"/></span>
 					  		<span class="starR2" id="s10"><input type="hidden" value="10"/></span>
-							<input type="hidden" class="starList" name="review_star" value="${dto.review_star }"/>
+							<input type="hidden" class="starList" id="starVal" name="review_star" value="${dto.review_star }"/>
 						</div>
 					</td>
     			</tr>
     			<tr>
     				<th>댓글 내용</th>
     				<td>
-    					<textarea type="text" name="review_content" style="resize:none;">${dto.review_content }</textarea>
+    					<textarea type="text" name="review_content" style="resize:none; width:100%; height:300px;">${dto.review_content }</textarea>
     				</td>
     			</tr>
     			<tr>
-    				<td>
+    				<td colspan="2" style="text-align:right;">
     					<input type="submit" value="수정" />
-    					<input type="button" value="삭제" onclick="location.href='reviewDelete.do?review_no=${dto.review_no }'" />
+    					<input type="button" value="삭제" onclick="location.href='reviewDelete.do?review_no=${dto.review_no }&member_id=${member_id }'" />
 						<input type="button" value="취소" onclick="location.href='review.do'" />
     				</td>
     			</tr>
