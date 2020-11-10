@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.onsoo.free.model.dao.FreeboardDao;
 import com.kh.onsoo.free.model.dto.FreeboardDto;
-import com.kh.onsoo.utils.PagingVO;
+
 
 @Service
 public class FreeboardBizImpl implements FreeboardBiz {
@@ -40,17 +40,5 @@ public class FreeboardBizImpl implements FreeboardBiz {
 		return freeboardDao.delete(free_no);
 	}
 
-	//	페이징
-	
-	@Override
-	public int countBoard() {
-		return freeboardDao.countBoard();
-	}
-
-	@Override
-	public List<FreeboardDto> selectBoard(PagingVO vo) {
-		return freeboardDao.selectBoard(vo);
-		
-	}
 
 }

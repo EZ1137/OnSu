@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.kh.onsoo.free.model.dto.FreeboardDto;
-import com.kh.onsoo.utils.PagingVO;
+
 
 @Repository
 public class FreeboardDaoImpl implements FreeboardDao {
@@ -88,31 +88,6 @@ public class FreeboardDaoImpl implements FreeboardDao {
 		return res;
 	}
 
-	@Override
-	public int countBoard() {
-		
-	  int res = 0;
-	   try {
-		res = sqlSession.selectOne(NAMESPACE+"countboard");
-	} catch (Exception e) {
-		logger.info("[ERROR] freeboard delete");
-		e.printStackTrace();
-	}
-	   return res;
-	}
 
-	@Override
-	public List<FreeboardDto> selectBoard(PagingVO vo) {
-		
-		List<FreeboardDto> list = new ArrayList<FreeboardDto>();
-		try {
-			list = sqlSession.selectList(NAMESPACE + "selectBoard");
-		} catch (Exception e) {
-			logger.info("[ERROR] freeboard paging with selectBoard");
-			e.printStackTrace();
-		}
-
-		return list;
-	}
 
 }
