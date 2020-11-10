@@ -18,10 +18,10 @@ public class ListenWithDaoImpl implements ListenWithDao {
 	private SqlSessionTemplate sqlSession;
 	private Logger logger = LoggerFactory.getLogger(ListenWithDaoImpl.class);
 	
-	public List<ListenWithDto> selectList() {
+	public List<ListenWithDto> selectList(String member_id) {
 		List<ListenWithDto> list = new ArrayList<ListenWithDto>();
 		
-		list = sqlSession.selectList(NAMESPACE+"selectList");
+		list = sqlSession.selectList(NAMESPACE+"selectList", member_id);
 		
 		return list;
 	}

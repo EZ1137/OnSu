@@ -6,7 +6,7 @@ import com.kh.onsoo.listen.model.dto.ListenWithDto;
 
 public interface ListenWithBiz {
 	
-	public List<ListenWithDto> selectList();
+	public List<ListenWithDto> selectList(String member_id);
 	public ListenWithDto selectOne(int listen_wclassno);
 	public int insert(ListenWithDto dto);
 	public int update(ListenWithDto dto);

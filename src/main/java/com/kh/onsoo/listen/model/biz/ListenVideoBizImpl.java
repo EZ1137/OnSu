@@ -15,8 +15,8 @@ public class ListenVideoBizImpl implements ListenVideoBiz {
 	private ListenVideoDao listenDao;
 
 	@Override
-	public List<ListenVideoDto> selectList() {
-		return listenDao.selectList();
+	public List<ListenVideoDto> selectList(String member_id) {
+		return listenDao.selectList(member_id);
 	}
 
 	@Override

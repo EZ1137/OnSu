@@ -28,7 +28,6 @@ public class SearchController {
 		logger.info("[classSearch.do]");
 		
 		model.addAttribute("list", classBiz.search(search));
-		System.out.println(search);
 		
 		return "/classsearch";
 		

@@ -5,7 +5,7 @@
 	<select id="selectList" resultType="ReviewDto">
 		SELECT REVIEW_NO, REVIEW_ID, REVIEW_CONTENT, REVIEW_CLASSNO, REVIEW_STAR, REVIEW_DATE, REVIEW_UPDATE
 		FROM REVIEW
-		ORDER BY REVIEW_NO
+		ORDER BY REVIEW_NO DESC
 	</select>
 	
 	<select id="selectOne" resultType="ReviewDto">
@@ -14,9 +14,9 @@
 		WHERE REVIEW_NO = #{review_no}
 	</select>
 	
-	<insert id="insert" parameterType="calendarDto">
+	<insert id="insert" parameterType="ReviewDto">
 		INSERT INTO REVIEW
-		VALUES(REVIEWSEQ.NEXTVAL, #{review_id}, #{review_content}, #{review_classno}, #{review_star}, SYSDATE)
+		VALUES(REVIEWSEQ.NEXTVAL, #{review_id}, #{review_content}, #{review_classno}, #{review_star}, SYSDATE, NULL)
 	</insert>
 	
 	<update id="update" parameterType="ReviewDto">

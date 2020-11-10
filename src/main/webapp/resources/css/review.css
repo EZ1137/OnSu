@@ -40,46 +40,8 @@ header {
 
 section {
 	width: 100%;
-	height:100vh;
+	height: 100vh;
 	padding-top: 100px;
-}
-
-h1 {
-	text-align : center;
-}
-
-.ldiv {
-	float : left;
-	width: 40%;
-	height: 70%;
-}
-
-.rdiv {
-	float : right;
-	width: 60%;
-	height: 70%;
-}
-
-.cdiv {
-	width: 100%;
-	height: 70%;
-}
-
-#cal {
-	width: 40%;
-	height: 100%;
-	text-align : center;
-}
-
-.htitle {
-	margin: 0px auto 20px auto;
-	padding: 10px 0 0 60px;
-	width: 90%;
-	height: 50px;
-	float: center;
-	background-color: var(--color-light-white);
-	filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.1));
-	border-radius: 10px;
 }
 
 textarea {
@@ -100,6 +62,17 @@ th {
 
 td {
 	text-align: center;
+}
+
+.title {
+	margin: 0px auto 20px auto;
+	padding: 10px 0 0 60px;
+	width: 70%;
+	height: 50px;
+	float: center;
+	background-color: var(--color-light-white);
+	filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.1));
+	border-radius: 10px;
 }
 
 .title > p {
@@ -128,20 +101,32 @@ td > input[type="button"], input[type="submit"] {
   box-shadow: var(--btn-shadow);
 }
 
-.list {
+.insert, .list, .one {
 	margin: 10px auto 30px auto;
-	width: 90%;
+	width: 70%;
 	align-items: center;
 }
 
-
-
-
-
-
-
-
-
+.starR1{
+    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat -52px 0;
+    background-size: auto 100%;
+    width: 15px;
+    height: 30px;
+    float:left;
+    text-indent: -9999px;
+    cursor: pointer;
+}
+.starR2{
+    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
+    background-size: auto 100%;
+    width: 15px;
+    height: 30px;
+    float:left;
+    text-indent: -9999px;
+    cursor: pointer;
+}
+.starR1.on{background-position:0 0;}
+.starR2.on{background-position:-15px 0;}
 
 
 

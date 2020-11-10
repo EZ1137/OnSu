@@ -14,8 +14,8 @@ public class ListenWithBizImpl implements ListenWithBiz {
 	@Autowired
 	private ListenWithDao listenDao;
 	
-	public List<ListenWithDto> selectList() {
-		return listenDao.selectList();
+	public List<ListenWithDto> selectList(String member_id) {
+		return listenDao.selectList(member_id);
 	}
 
 	@Override

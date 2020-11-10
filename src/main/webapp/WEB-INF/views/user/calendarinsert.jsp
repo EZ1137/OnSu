@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="${pageContext.request.contextPath}/resources/css/calendar.css" rel="stylesheet" >
 </head>
 <body>
 <%
@@ -28,12 +29,18 @@
     </header>
 
 	<section>
-	<h1>일정 작성</h1>
+	<div class="title">
+		<p>일정 작성</p>
+	</div>
 	<form action="calendarInsertRes.do" method="post">
-		<table border="1">
+		<table class="insert">
+		<colgroup>
+			<col width="15%"/>
+			<col width="85%"/>
+		</colgroup>
 			<tr>
 				<th>일정</th>
-				<td>
+				<td style="text-align:left;">
 					<select name="year">
 <%
 					for(int i = year-5; i <= year+5; i++) {
@@ -87,19 +94,21 @@
 			</tr>
 			<tr>
 				<th>제목</th>
-				<td><input type="text" name="calendar_title" /></td>
+				<td><input type="text" name="calendar_title" placeholder="제목을 입력하세요." /></td>
 			</tr>
 			<tr>
 				<th>작성자</th>
-				<td><input type="text" name="member_id" value="" readonly="readonly"></td>
+				<td><input type="text" name="member_id" value="${member_id }" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td><textarea cols="60" row="20" name="calendar_content" style="resize:none;"></textarea></td>
+				<td class="content">
+					<textarea name="calendar_content" style="resize:none; width:100%; height:300px;" placeholder="내용을 입력하세요."></textarea>
+				</td>
 			</tr>
 			<tr>
-				<td colspan="2" align="right">
-					<input type="button" value="취소" onclick="location.href='calendarList.do'">
+				<td colspan="2" style="text-align:right;">
+					<input type="button" value="취소" onclick="location.href='calendar.do'">
 					<input type="submit" value="글등록">
 				</td>
 			</tr>

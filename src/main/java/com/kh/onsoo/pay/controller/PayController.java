@@ -1,4 +1,4 @@
-package com.kh.onsoo.mypage.controller;
+package com.kh.onsoo.pay.controller;
 
 import java.security.Principal;
 
@@ -12,31 +12,24 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.onsoo.admin.model.biz.AdminBiz;
-import com.kh.onsoo.calendar.model.biz.CalendarBiz;
-import com.kh.onsoo.listen.model.biz.ListenVideoBiz;
-import com.kh.onsoo.listen.model.biz.ListenWithBiz;
+import com.kh.onsoo.pay.model.biz.PayBiz;
+import com.kh.onsoo.pay.model.dto.PayDto;
 
 @Controller
-public class MyPageController {
+public class PayController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(MyPageController.class);
+	private static final Logger logger = LoggerFactory.getLogger(PayController.class);
 	
-	@Autowired
-	private ListenVideoBiz listenVideoBiz;
-	@Autowired
-	private ListenWithBiz listenWithBiz;
-	@Autowired
-	private CalendarBiz calendarBiz;
 	@Autowired
 	private AdminBiz adminBiz;
+	@Autowired
+	private PayBiz payBiz;
 	
-	@RequestMapping(value = "mypage.do", method = RequestMethod.GET)
-	public String myPage(Model model, Principal principal) {
-		logger.info("[mypage.do]");
+	@RequestMapping("/pay.do")
+	public String Pay(Model model, Principal principal) {
 		
 		model.addAttribute(principal);
 	    //시큐리티 컨텍스트 객체를 얻습니다.
@@ -52,14 +45,28 @@ public class MyPageController {
 	                        //유저객체는 UserDetails를 implement 함 
 	      
 	    String member_id = principal1.getUsername();  //사용자 이름 
-	      
-		model.addAttribute("lvlist", listenVideoBiz.selectList(member_id));
-		model.addAttribute("lwlist", listenWithBiz.selectList(member_id));
+	    
+	    String pay_memberid = member_id;
+	    int pay_classno = 22;
+	    
 	    model.addAttribute("mlist", adminBiz.selectOne2(member_id));
-	    model.addAttribute("callist", calendarBiz.schedule(member_id));
+	    model.addAttribute("pay_memberid", pay_memberid);
+	    model.addAttribute("pay_classno", pay_classno);
+	      
+	    int res = payBiz.insert(new PayDto(0, pay_memberid, pay_classno, null));
+	    if(res > 0) {
+	    	return "redirect:payRes.do";
+	    }
 		
-		return "/user/mypage";
-		
+		return "redirect:main.do";
 	}
 	
+	@RequestMapping("/payRes.do")
+	public String payRes(Model model, @RequestParam String pay_memberid, int pay_classno) {
+		
+		model.addAttribute("dto", payBiz.selectPay(pay_memberid, pay_classno));
+		
+		return "pay";
+	}
+
 }
