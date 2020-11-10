@@ -16,11 +16,11 @@
 		<typeAlias type="com.kh.onsoo.free.model.dto.FreeboardDto" alias="freeDto" />
 		<typeAlias type="com.kh.onsoo.reply.dto.ReplyDto" alias="ReplyDto" />
 		<typeAlias type="com.kh.onsoo.review.model.dto.ReviewDto" alias="ReviewDto"/>
-		<typeAlias type="com.kh.onsoo.pay.model.dto.PayDto" alias="PayDto"/>
+		<typeAlias type="com.kh.onsoo.study.image.model.dto.UploadDto" alias="imageDto"/>
+		<typeAlias type="com.kh.onsoo.study.model.dto.StudyImageDto" alias="studyImageDto"/>
 	</typeAliases>
 	
 	<mappers>
-		<mapper resource="/mybatis/study-mapper.xml" />
 		<mapper resource="/mybatis/admin-mapper.xml" />
 		<mapper resource="/mybatis/report-mapper.xml" />
 		<mapper resource="/mybatis/notice-mapper.xml" />
@@ -33,7 +33,9 @@
 		<mapper resource="/mybatis/freeboard-mapper.xml" />
 		<mapper resource="/mybatis/reply-mapper.xml" />
 		<mapper resource="/mybatis/review-mapper.xml" />
-		<mapper resource="/mybatis/pay-mapper.xml" />
+		<mapper resource="/mybatis/studyVideo-mapper.xml"/>
+		<mapper resource="/mybatis/studyWith-mapper.xml"/>
+		<mapper resource="/mybatis/imageUpload-mapper.xml"/>
 	</mappers>
 	
 </configuration>

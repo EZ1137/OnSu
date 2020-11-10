@@ -27,11 +27,12 @@
     		
     		denyAll 모두 접근 불가 
     		-->
-    		
-    		
-    		
-    		
-    		
+    	
+    	<!-- iframe 안되는걸 방지 -->
+    	<headers>
+    		<frame-options policy="SAMEORIGIN"/>
+    	</headers>	
+    			
         <intercept-url pattern="/login/loginForm.do" access="permitAll" />
         <intercept-url pattern="/main.do" access="permitAll" />
         <intercept-url pattern="/**" access="permitAll" />

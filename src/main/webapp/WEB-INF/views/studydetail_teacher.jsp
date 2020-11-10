@@ -117,15 +117,13 @@
 				<h5 class="card-header">수업 신청</h5>
 					<h5>1개월 수강권</h5>
 					<h6>${studyDto.class_price }원/월</h6>
-				<div class="card-body">
-				</div>
+				<div class="card-body"></div>
 			</div>
 			<div class="btns">
 				<div>
 					<button class="btn btn-primary"
-						onclick="location.href='#'">찜</button>
-					<button class="btn btn-primary"
-						onclick="location.href='#'">수강신청</button>
+						onclick="location.href='studyupdate.do?class_no=${studyDto.class_no}'">수정</button>
+					<button class="btn btn-primary" onclick="location.href='studydelete.do?class_no=${studyDto.class_no}'">삭제</button>
 				</div>
 			</div>
 		</div>

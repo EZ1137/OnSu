@@ -37,8 +37,8 @@
 		</tr>
 	</table>
 	</form>
-	<embed class="previewimg" src="./resources/img/sample2.pdf" type="application/pdf" width="35%" height="300px" />
-	<input type="button" value="관리자페이지 메인이동" onclick="location.href='list.do'">
-
+	<input type="button" value="관리자페이지 메인이동" onclick="location.href='admin.do'">
+	<embed class="previewimg" src="./resources/img/sample3.pdf" type="application/pdf" width="35%" height="300px" />
+	
 </body>
 </html>
