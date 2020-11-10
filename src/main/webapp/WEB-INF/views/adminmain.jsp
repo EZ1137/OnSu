@@ -5,35 +5,38 @@
 <html>
 <head>
 <style>
+
 	#first_area{
 		margin-top: 20px;
 	}
 	.area{
 		margin-top: 20px;
-		position: static;
 	}
 	.first_table_name{
 		margin-left: 7.5%;
 		float: left;
-		position: static;
 	}
 	.admin_first_table{
 		margin-left: 7.5%;
 		margin-right: 7.5%;
 		width: 35%;
 		float: left;
-		position: absolute;
 	}
 	.second_table_name{
 		margin-right: 30%;
 		float: right;
+		margin-top: 35%;
 	}
 	.admin_second_table{
 		width: 35%;
 		float: right;
-		position: absolute;
+		margin-top : 35%;
+	}
+	.more{
+		margin-top : 35%;
 	}
 </style>
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
@@ -68,9 +71,9 @@
 				</tr>
 			</c:forEach>
 	</table>
-	<!-- <div class="more">
+	 <div class="more">
 		<a href="memberlist.do">더 보기</a>
-	</div> -->
+	</div>
 	</div>
 	<div class="second_table_all">
 	<div class="second_table_name">강사인증 신청목록</div>
@@ -94,12 +97,12 @@
 				</tr>
 			</c:forEach>
 	</table>
-	<!-- <div class="more">
+	<div class="more">
 		<a href="reviewlist.do">더 보기</a>
-	</div>  -->
+	</div> 
 	</div>
 	</div>	
-	<!-- 
+	
 	<div id="second_area">
 	<h1>신고된 회원조회</h1>
 	<table class="admin_third_table" border="1">
@@ -124,6 +127,7 @@
 			</c:forEach>
 	</table>
 	<h3><a href="reportlist.do">더보기</a></h3>
+	
 	<h1>동영상 심의 신청조회</h1>
 	<table class="admin_fore_table" border="1">
 		<col width="50"/>
@@ -149,7 +153,7 @@
 	</table>
 	<h3><a href="videoreviewlist.do">더 보기</a></h3>
 	</div>
-	 -->
+	 
 	<footer id="footerarea" class="area">
 		<%@ include file="/WEB-INF/views/footer.jsp"%>
 	</footer>

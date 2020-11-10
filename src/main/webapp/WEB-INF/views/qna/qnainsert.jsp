@@ -26,6 +26,7 @@
 		
 		<!-- 게시글 작성하기 -->
 		<form action="qnainsertres.do" method="post">
+			<input type="hidden" name="qnawriter" value="${member_id}">
 			<table class="qna_insert">
 				<colgroup>
 					<col width="15%"/>
