@@ -19,10 +19,44 @@ function idchk(){
 			 success:function(data){
 				 console.log(data);
 				if(data == 1){
-					alert("중복");
+					alert("중복된 이메일입니다.");
 				}else{
-					alert("새로운아이디");
+					alert("아이디 사용이 가능합니다.");
 				}
+			 },
+			 error: function(data){
+				 console.log(data)
+			 }
+		 });
+	 }
+	 
+	}
+
+//이메일 중복체크 
+function emailchk(){
+	 var memberemail = $("#memberemail").val().trim();
+	 
+	 console.log(memberemail);
+	 
+	 if(memberemail == null || memberemail == ""){
+		 alert("이메일을 입력해주세여");
+	 }else{
+		 $.ajax({
+			 url:"emailchk.do",
+			 type:"post",
+			 data:{
+              "member_email": memberemail
+          },
+			 success:function(data){
+				 if(data != null){
+					 alert("사용가능한 이메일 입니다\n\n 입력된 이메일로 인증번호를 발송했습니다.")
+					 
+				 $("#random").val(data);
+				 $("#randomchk").show();
+				 $("#randomname").show();
+				 }else{
+					 alert("이메일을 다시 입력해주세요");
+				 }
 			 },
 			 error: function(data){
 				 console.log(data)
@@ -33,36 +67,29 @@ function idchk(){
 	 
 	}
 
-//이메일 중복체크 
-function emailchk(){
-	var memberemail = $("#memberemail").val().trim();
-	console.log(memberemail);
+
+//인증번호 체크 
+function codechk(){
+	var ran = $("#random").val();
+	var userran = $("#randomchk").val().trim();
 	
-	if(memberemail == null || memberemail == ""){
-		alert("이메일을 입력해주세요");
+	
+	console.log(ran);
+	console.log(userran);
+	
+	if(ran != userran){
+		alert("인증번호가 올바르지 않습니다.");
+		$("#randomchk").focus();
+		$("#submit").hide();
 	}else{
-		$.ajax({
-			url: "emailchk.do",
-			type:"post",
-			data:{
-				"member_email":memberemail				
-			},
-			success: function(data){
-				console.log(data);
-				if(data == 1){
-					alert("중복된 이메일 입니다.");
-				}else{
-					alert("사용 가능한 이메일입니다.");
-				}
-			},
-			error: function(data){
-				console.log(data);
-				alert("데이터실패");
-			}
-		});
+		alert("이메일 인증 되었습니다.");
+		$("#submit").show();
 	}
 	
+	
+	
 }
+
 
 
 //비밀번호 유효성검사 
@@ -93,6 +120,7 @@ function fn_compare_pwd(){
 		$("#s_result").focus();
 		}
 
+}	
 
 //핸드폰 번호 지정 
 function inputPhoneNumber(obj) {
@@ -120,4 +148,3 @@ function inputPhoneNumber(obj) {
   }
   obj.value = phone;
 }
-}	

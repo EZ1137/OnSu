@@ -65,7 +65,9 @@
         
         <!-- 로그아웃 설정   -->
         <logout logout-url="/logout"
-                logout-success-url="/main.do" />
+                logout-success-url="/main.do"
+                invalidate-session="true"
+                 />
          <!--
          logout-url 로그아웃  요청에 대한 URL (버튼을 눌렀을떄 발생하는 URL)
          logout-success-url 로그아웃 완료되면 보내줄 URL

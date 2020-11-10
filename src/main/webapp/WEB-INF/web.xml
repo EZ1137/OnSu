@@ -23,6 +23,7 @@
 		<param-value>
 		/WEB-INF/spring/appServlet/applicationContext.xml
 		/WEB-INF/spring/appServlet/securityContext.xml
+		/WEB-INF/spring/appServlet/email-config.xml
 		</param-value>
 	</context-param>
 	

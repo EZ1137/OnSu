@@ -140,5 +140,65 @@ public class AdminDaoImpl implements AdminDao {
 		
 		return res;
 	}
+	
+	
+	@Override
+	public AdminDto idfind(AdminDto dto) {
+		AdminDto res = null;
+		
+		try {
+			res=sqlSession.selectOne(NAMESPACE+"idfind",dto);
+		} catch (Exception e) {
+			logger.info("아이디 찾기 오류");
+			e.printStackTrace();
+		}
+		
+		return res;
+		
+	}
+	
+	@Override
+	public int pwfind(AdminDto dto) {
+		int res = 0;
+		
+		
+		try {
+			res=sqlSession.update(NAMESPACE+"pwfind",dto);
+		} catch (Exception e) {
+			logger.info("비밀번호찾기 오류");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+	
+	@Override
+	public AdminDto updatechk(AdminDto dto) {
+		AdminDto res = null;
+		
+		try {
+			res = sqlSession.selectOne(NAMESPACE+"updatechk",dto);
+		} catch (Exception e) {
+			logger.info("수정페이지 확인");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+	
+	@Override
+	public int registUpdate(AdminDto dto) {
+		int res =0;
+		
+		try {
+			res = sqlSession.update(NAMESPACE+"registUpdate",dto);
+		} catch (Exception e) {
+			logger.info("registUpdate 부분");
+			e.printStackTrace();
+		}
+		
+		return res;
+		
+	}
 
 }

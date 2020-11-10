@@ -45,7 +45,7 @@
 							<!-- csrf 토근도 같이 전송이 된다. 서버에서 미리 토근을 받아서 체크한다. -->
 						</form:form>
 											<div class="findId">
-						<a href='<c:url value="/login/idpwFind.do"/>'>아이디/비밀번호찾기</a>
+						<a href='<c:url value="/idpwFind.do"/>'>아이디/비밀번호찾기</a>
 					</div>
 
 					</div>
@@ -53,10 +53,10 @@
 						<div>
 							<a href="${naver}"> <img width="200"
 								src="${pageContext.request.contextPath}/resources/img/네이버_아이디로_로그인_완성형_Green.PNG" /></a>
-
 						</div>
 						<div>
-							<a href="#">카카오로그인</a>
+							<a href="${goolge_url}"><img width="223" 
+								src="${pageContext.request.contextPath}/resources/img/구글로그인.png"/></a>
 						</div>
 					</div>
 
