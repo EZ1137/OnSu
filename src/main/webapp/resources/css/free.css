@@ -88,6 +88,10 @@ td {
 	padding-top: 5px;
 	color: var(--color-dark-blue);
 }
+a{
+	color: var(--color-light-grey);
+	margin:5px;
+}
 
 td > a {
 	padding: 5px;
@@ -166,4 +170,22 @@ td > input[type="submit"]:hover {
   width:70%;
  
  
+}
+
+.off-screen {
+   display: none;
+}
+
+.eval-contents {
+   cursor: pointer;
+}
+
+
+
+#nav.paging{
+	
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	
 }
