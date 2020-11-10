@@ -10,22 +10,38 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.onsoo.study.model.dto.StudyDto;
+import com.kh.onsoo.study.model.dto.StudyImageDto;
+import com.kh.onsoo.study.model.dao.StudyWithDao;
 
 @Repository
-public class StudyDaoImpl implements StudyDao {
+public class StudyWithDaoImpl implements StudyWithDao {
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	private Logger logger = LoggerFactory.getLogger(StudyDaoImpl.class);
+	private Logger logger = LoggerFactory.getLogger(StudyWithDaoImpl.class);
 	
 	@Override
-	public List<StudyDto> selectList() {
-		
+	public List<StudyDto> selectListTeacher() {
 		List<StudyDto> list = new ArrayList<StudyDto>();
 		
 		try {
-			list = sqlSession.selectList(NAMESPACE + "selectList");
+			list = sqlSession.selectList(NAMESPACE_WITH + "selectList_teacher");
+		} catch (Exception e) {
+			logger.info("[ERROR selectList]");
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
+	@Override
+	public List<StudyImageDto> selectList() {
+		
+		List<StudyImageDto> list = new ArrayList<StudyImageDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE_WITH + "selectList");
 		} catch (Exception e) {
 			logger.info("[ERROR selectList]");
 			e.printStackTrace();
@@ -40,7 +56,7 @@ public class StudyDaoImpl implements StudyDao {
 		StudyDto dto = null;
 		
 		try {
-			dto = sqlSession.selectOne(NAMESPACE + "selectOne", class_no);
+			dto = sqlSession.selectOne(NAMESPACE_WITH + "selectOne", class_no);
 		} catch (Exception e) {
 			logger.info("[ERROR selectOne]");
 			e.printStackTrace();
@@ -50,12 +66,27 @@ public class StudyDaoImpl implements StudyDao {
 	}
 
 	@Override
+	public int selectNum() {
+		
+		int res = 0;
+		
+		try {
+			res = sqlSession.selectOne(NAMESPACE_WITH + "selectNum");
+		} catch (Exception e) {
+			logger.info("[ERROR get class_no]");
+			e.printStackTrace();
+		}
+		return res;
+	}
+	
+	
+	@Override
 	public int insert(StudyDto dto) {
 		
 		int res = 0;
 		
 		try {
-			res = sqlSession.insert(NAMESPACE + "insert", dto);
+			res = sqlSession.insert(NAMESPACE_WITH + "insert", dto);
 		} catch (Exception e) {
 			logger.info("[ERROR insert]");
 			e.printStackTrace();
@@ -69,7 +100,7 @@ public class StudyDaoImpl implements StudyDao {
 		int res = 0;
 		
 		try {
-			res = sqlSession.update(NAMESPACE + "update", dto);
+			res = sqlSession.update(NAMESPACE_WITH + "update", dto);
 		} catch (Exception e) {
 			logger.info("[ERROR update]");
 			e.printStackTrace();
@@ -83,7 +114,7 @@ public class StudyDaoImpl implements StudyDao {
 		int res = 0;
 		
 		try {
-			res = sqlSession.delete(NAMESPACE + "delete", class_no);
+			res = sqlSession.delete(NAMESPACE_WITH + "delete", class_no);
 		} catch (Exception e) {
 			logger.info("[ERROR delete]");
 			e.printStackTrace();

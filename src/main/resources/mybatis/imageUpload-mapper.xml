@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.onsoo.study.upload">
+
+	<select id="select" resultType="imageDto">
+		SELECT * FROM CLASSIMAGE
+		WHERE CLASS_NO = #{class_no}
+		ORDER BY IMAGE_NO 
+	</select>
+	
+	<select id="thumbnail" parameterType="int" resultType="imageDto">
+		SELECT * FROM CLASSIMAGE
+		WHERE CLASS_NO = #{class_no} AND ROWNUM=1
+		ORDER BY IMAGE_NO
+	</select>
+	
+	<insert id="insert" parameterType="java.util.List"> 
+	
+		INSERT INTO CLASSIMAGE(image_no, image_directory, class_no)
+		SELECT IMAGESEQ.NEXTVAL AS image_no, A.* FROM(
+		<foreach collection="list" item="i" separator="UNION ALL">
+			SELECT #{i.image_directory} as image_directory,
+				   #{i.class_no} as class_no
+			from dual
+		</foreach>
+		)A
+	</insert>
+	
+</mapper>

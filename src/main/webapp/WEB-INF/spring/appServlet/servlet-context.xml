@@ -33,7 +33,13 @@
         <beans:property name="maxUploadSize" value="-1" /> <!-- 파일의 용량을 제한 없이 업로드 -->
         <!-- max size of file in memory (in bytes) -->
         <beans:property name="maxInMemorySize" value="377759039" /> <!-- 디스크에 임시 파일 생성하기 전에  메모리에 보관되는 크기 -->
+        <beans:property name="defaultEncoding" value="UTF-8"/>
     </beans:bean>
+    
+    <!-- 파일 업로드를 위한 디렉토리 설정 -->
+	<beans:bean id="uploadPath" class="java.lang.String">
+		<beans:constructor-arg value=""/> <!-- 배포 후 경로 입력할 부분 -->
+	</beans:bean>
    
 </beans:beans>
    

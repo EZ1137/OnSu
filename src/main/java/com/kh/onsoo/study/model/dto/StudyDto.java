@@ -1,5 +1,7 @@
 package com.kh.onsoo.study.model.dto;
 
+import java.util.Date;
+
 public class StudyDto {
 
 	private int class_no;
@@ -102,6 +104,5 @@ public class StudyDto {
 	public void setClass_price(int class_price) {
 		this.class_price = class_price;
 	}
-	
 	
 }
