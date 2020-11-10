@@ -1,55 +1,60 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<link
+	href="${pageContext.request.contextPath}/resources/css/studylist.css?after"
+	rel="stylesheet">
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+	rel="stylesheet">
+<!--CDN 링크 -->
+
 </head>
 <body>
-	<h1>강의 리스트</h1>
-	
-	<table border="1">
-		<colgroup>
-			<col width="50">
-			<col width="100">
-			<col width="100">
-			<col width="500">
-		</colgroup>
-		
-		<tr>
-			<th>강의 번호</th>
-			<th>강의명</th>
-			<th>강사명</th>
-			<th>강의 내용</th>
-			
-		</tr>
-		
+
+	<section class="section second area">
+		<div class="vod_cards_title">
+			<p>동영상 강의</p>
+		</div>
 		<c:choose>
 			<c:when test="${empty list }">
-				<tr>
-					<th colspan="4">------------ 강의가 없습니다 ----------------</th>
-				</tr>
+				<div class="class_row">
+					<div class="class_card">
+						<div class="class_title">
+							<h3>준비 중</h3>
+						</div>
+					</div>
+				</div>
 			</c:when>
 			<c:otherwise>
-				<c:forEach items="${list }" var="dto">
-					<tr>
-						<td>${dto.class_no }</td>
-						<td><a href="studydetail.do?class_no=${dto.class_no }">${dto.class_title }</a></td>
-						<td><a href="memberdetail.do?member_no=${dto.class_teacherid }">${dto.class_teachername }</a></td>
-						<td>${dto.class_info }</td>
-						
-					</tr>
-				</c:forEach>
+				<div class="class_row">
+					<c:forEach items="${list }" var="dto">
+						<div class="class_card" onclick="location.href='#'">
+							<img id="test" src="${dto.uploadDto.image_directory }"/>
+							
+							<div class="class_title">
+								<h6 id="test" class="class_font"># ${dto.studyDto.class_bigcategory } &nbsp # ${dto.studyDto.class_smallcategory }</h6>
+								<h5 class="class_font">${dto.studyDto.class_teachername }</h5>
+								<h4 class="class_font">${dto.studyDto.class_title }</h4>
+								<h5 class="class_font">별점</h5>
+							</div>
+							
+						</div>
+					</c:forEach>
+				</div>
 			</c:otherwise>
 		</c:choose>
-		
-		<tr>
-			<td colspan="4" align="right">
-				<input type="button" value="글작성" onclick="location.href='studyinsert.do'"/>
-			</td>
-		</tr>
-	</table>
+	</section>
+
+	<!-- footer -->
+	<footer id="footerarea" class="area">
+		<%@ include file="/WEB-INF/views/footer.jsp"%>
+	</footer>
 </body>
 </html>

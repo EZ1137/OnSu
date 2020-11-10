@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.onsoo.study.with">
+
+	<resultMap type="com.kh.onsoo.study.model.dto.StudyDto"
+		id="studyDto">
+		<id property="class_no" column="class_no" />
+		<id property="class_title" column="class_title" />
+		<id property="class_teacherid" column="class_teacherid" />
+		<id property="class_teachername" column="class_teachername" />
+		<id property="class_type" column="class_type" />
+		<id property="class_bigcategory" column="class_bigcategory" />
+		<id property="class_smallcategory" column="class_smallcategory" />
+		<id property="class_info" column="class_info" />
+		<id property="class_price" column="class_price" />
+	</resultMap>
+
+	<resultMap
+		type="com.kh.onsoo.study.image.model.dto.UploadDto" id="uploadDto">
+		<id property="image_no" column="image_no" />
+		<id property="image_directory" column="image_directory" />
+		<id property="class_no" column="class_no" />
+	</resultMap>
+
+	<resultMap type="com.kh.onsoo.study.model.dto.StudyImageDto"
+		id="studyImageDto">
+		<collection property="studyDto" resultMap="studyDto" />
+		<collection property="uploadDto" resultMap="uploadDto" />
+	</resultMap>
+
+	<select id="selectList" resultMap="studyImageDto">
+		SELECT C.CLASS_NO, CLASS_TITLE, CLASS_TEACHERID, CLASS_TEACHERNAME, 
+		   CLASS_BIGCATEGORY, CLASS_SMALLCATEGORY, CLASS_PRICE,
+		   IMAGE_DIRECTORY FROM CLASS C INNER JOIN
+			(SELECT * FROM CLASSIMAGE WHERE IMAGE_NO 
+			IN (SELECT MIN(IMAGE_NO) FROM CLASSIMAGE GROUP BY CLASS_NO)) CI
+			ON C.CLASS_NO = CI.CLASS_NO 
+			WHERE CLASS_TYPE = 'W'
+			ORDER BY CLASS_NO DESC
+	</select>
+
+	<select id="selectNum" resultType="int">
+		SELECT MAX(CLASS_NO) FROM CLASS
+	</select>
+	
+	<select id="selectList_teacher" resultType="studyDto">
+		SELECT * FROM CLASS
+		WHERE CLASS_TYPE = 'W' <!-- AND CLASS_TEACHERID = #{class_teacherid} -->
+		ORDER BY CLASS_NO DESC
+	</select>
+	
+	<select id="selectOne" resultType="studyDto" parameterType="int">
+		SELECT * FROM CLASS
+		WHERE CLASS_NO = #{class_no}
+	</select>
+	
+	<insert id="insert" parameterType="studyDto">
+		INSERT INTO CLASS
+		VALUES(CLASSSEQ.NEXTVAL, #{class_title}, 'test', #{class_teachername}, 'W', 
+			   #{class_bigcategory}, #{class_smallcategory}, #{class_info}, #{class_price})
+	</insert>
+	
+	<update id="update" parameterType="studyDto">
+		UPDATE CLASS
+		SET CLASS_TITLE = #{class_title}, CLASS_TYPE = #{class_type}, CLASS_BIGCATEGORY = #{class_bigcategory}, 
+			CLASS_SMALLCATEGORY = #{class_smallcategory}, CLASS_INFO = #{class_info}, CLASS_PRICE = #{class_price},
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM CLASS
+		WHERE CLASS_NO = #{class_no}
+	</delete>
+</mapper>
