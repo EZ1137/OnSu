@@ -84,7 +84,7 @@ public class ReviewDto {
 	}
 	
 	public Date getReview_update() {
-		return review_date;
+		return review_update;
 	}
 
 	public void setReview_update(Date review_update) {

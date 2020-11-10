@@ -19,10 +19,10 @@ public class ListenVideoDaoImpl implements ListenVideoDao {
 	private Logger logger = LoggerFactory.getLogger(ListenVideoDaoImpl.class);
 
 	@Override
-	public List<ListenVideoDto> selectList() {
+	public List<ListenVideoDto> selectList(String member_id) {
 		List<ListenVideoDto> list = new ArrayList<ListenVideoDto>();
 		
-		list = sqlSession.selectList(NAMESPACE+"selectList");
+		list = sqlSession.selectList(NAMESPACE+"selectList", member_id);
 		
 		return list;
 	}

@@ -1,0 +1,45 @@
+/*!
+ * Start Bootstrap - Blog Post (https://startbootstrap.com/templates/blog-post)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-blog-post/blob/master/LICENSE)
+ */
+
+@media (max-width: 1000px) {
+	.div_middle {
+		width: 80%;
+		margin-top: 50px;
+	}
+	
+	.div_side {
+		width: 80%;
+		margin-top: 90%;
+		
+	}
+}
+
+.div_main {
+	width: 100%;
+}
+
+.div_middle {
+	width: 50%;
+	float: left;
+	margin-left: 12%;
+	margin-top: 50px;
+}
+
+.div_side {
+	
+	width: 22%;
+	position: fixed;
+	float: right;
+	margin-left: 68%;
+	margin-top: 100px;
+	
+}
+
+.btns{
+	display:flex;
+	flex-direction:row-reverse;
+}
+

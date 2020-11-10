@@ -44,6 +44,10 @@ section {
 	padding-top: 100px;
 }
 
+h1 {
+	text-align : center;
+}
+
 .ldiv {
 	float : left;
 	width: 40%;
@@ -66,6 +70,80 @@ section {
 	height: 100%;
 	text-align : center;
 }
+
+.htitle {
+	margin: 0px auto 20px auto;
+	padding: 10px 0 0 60px;
+	width: 90%;
+	height: 50px;
+	float: center;
+	background-color: var(--color-light-white);
+	filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.1));
+	border-radius: 10px;
+}
+
+textarea {
+	padding: 10px;
+	border: none;
+	overflow: auto;
+	background-color: rgba(255,255,255,0);
+}
+
+tr {
+	height: 30px;
+}
+
+th {
+	background-color: var(--color-light-white);
+	color: var(--color-dark-blue);
+}
+
+td {
+	text-align: center;
+}
+
+.title > p {
+	font-size: var(--font-medium);
+	font-weight: bold;
+	color: var(--color-dark-blue);
+}
+
+td > input[type="text"] {
+	width: 100%;
+	height: 100%;
+	padding-left: 10px;
+	border: none;
+	background-color: rgba(255,255,255,0);
+}
+
+td > input[type="button"], input[type="submit"] {
+  /* 로그인 */
+  margin: 4px 4px;
+  padding: 5px 10px 0 10px;
+  background: var(--color-white);
+  color: var(--color-dark-grey);
+  height: 30px;
+  border: none;
+  border-radius: var(--border-radi-btn);
+  box-shadow: var(--btn-shadow);
+}
+
+.list {
+	margin: 10px auto 30px auto;
+	width: 90%;
+	align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 

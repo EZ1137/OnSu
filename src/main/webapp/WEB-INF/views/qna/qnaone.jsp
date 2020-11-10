@@ -27,7 +27,7 @@
 
 		<!-- 게시글 상세보기 -->
 		<!-- 비밀글 (O) && 등급 (Admin X) && ID!=작성자 -->
-		<c:if test="${qnadto.qnasecret eq 'Y' && admindto.member_role ne 'A' && qnadto.qnaqwriter ne admindto.member_id}">
+		<c:if test="${qnadto.qnasecret eq 'Y' && admindto.member_role ne 'A' && qnadto.qnawriter ne admindto.member_id}">
 			<table class="qna_one" style="margin:80px auto;">
 				<tr>
 					<th style="height:80px;">현재 글은 비밀글입니다.</th>
@@ -42,7 +42,7 @@
 		</c:if>
 		
 		<!-- 비밀글 (X) -->
-		<c:if test="${qnadto.qnasecret eq 'N'}">
+		<c:if test="${qnadto.qnasecret eq 'N' || admindto.member_role eq 'A' || qnadto.qnawriter eq admindto.member_id}">
 			<table class="qna_one">
 				<colgroup>
 					<col width="15%"/>
@@ -55,7 +55,7 @@
 				<thead>
 					<tr>
 						<th>WRITER</th>
-						<td><input type="text" value="${qnadto.qnaqwriter}" readonly="readonly"></td>
+						<td><input type="text" value="${qnadto.qnawriter}" readonly="readonly"></td>
 						<th>DATE</th>
 						<td><input type="text" value="<fmt:formatDate value="${qnadto.qnaqregdate}" pattern="yyyy-MM-dd" />" readonly="readonly"></td>
 					</tr>
@@ -78,7 +78,7 @@
 					<thead>
 						<tr>
 							<th>WRITER</th>
-							<td><input type="text" value="${qnadto.qnaawriter}" readonly="readonly"></td>
+							<td><input type="text" value="admin" readonly="readonly"></td>
 							<th>DATE</th>
 							<td><input type="text" value="<fmt:formatDate value="${qnadto.qnaaregdate}" pattern="yyyy-MM-dd" />" readonly="readonly"></td>
 						</tr>
@@ -100,23 +100,28 @@
 				<tfoot>
 					<tr>
 						<td colspan="6" style="text-align:right;">
-							<input type="button" value="LIST" onclick="location.href='qna.do'"/>
-							<!-- 수정은 작성자 본인만 -->
-							<c:if test="${qnadto.qnaqwriter eq admindto.member_id}">
-								<form action="qnasetsecret.do" method="post">
-									<input type="hidden" name="qnano" value="${qnadto.qnano}"/>
-									<input type="submit" value="SECRET"/>
-								</form>
-								<input type="button" value="EDIT" onclick="location.href='qnaupdateform.do?qnano=${qnadto.qnano}'"/>
-							</c:if>
-							<!-- 삭제는 관리자와 작성자 본인만 -->
-							<c:if test="${admindto.member_role eq 'A' || qnadto.qnaqwriter eq admindto.member_id}">
-								<input type="button" value="DELETE" onclick="location.href='qnadelete.do?qnano=${qnadto.qnano}'"/>
-							</c:if>
-							<!-- 답변은 관리자만 -->
-							<c:if test="${admindto.member_role eq 'A'}">
-								<input type="button" value="ANSWER" onclick="location.href='qnaanswerform.do?qnano=${qnadto.qnano}'"/>
-							</c:if>
+							<div style="display:flex; align:right;">
+								<input type="button" value="LIST" onclick="location.href='qna.do'"/>
+								<!-- 비밀글 기능은 작성자 본인만 -->
+								<c:if test="${qnadto.qnasecret eq 'N' && qnadto.qnawriter eq admindto.member_id}">
+									<form action="qnasetsecret.do" method="post">
+										<input type="hidden" name="qnano" value="${qnadto.qnano}"/>
+										<input type="submit" value="SECRET"/>
+									</form>
+								</c:if>
+								<!-- 수정은 작성자 본인만 -->
+								<c:if test="${qnadto.qnawriter eq admindto.member_id}">
+									<input type="button" value="EDIT" onclick="location.href='qnaupdateform.do?qnano=${qnadto.qnano}'"/>
+								</c:if>
+								<!-- 삭제는 관리자와 작성자 본인만 -->
+								<c:if test="${admindto.member_role eq 'A' || qnadto.qnawriter eq admindto.member_id}">
+									<input type="button" value="DELETE" onclick="location.href='qnadelete.do?qnano=${qnadto.qnano}'"/>
+								</c:if>
+								<!-- 답변은 관리자만 -->
+								<c:if test="${admindto.member_role eq 'A'}">
+									<input type="button" value="ANSWER" onclick="location.href='qnaanswerform.do?qnano=${qnadto.qnano}'"/>
+								</c:if>
+							</div>
 						</td>
 					</tr>
 				</tfoot>

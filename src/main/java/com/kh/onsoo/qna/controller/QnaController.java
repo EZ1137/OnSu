@@ -2,8 +2,6 @@ package com.kh.onsoo.qna.controller;
 
 import java.security.Principal;
 
-//import java.security.Principal;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +9,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-//import org.springframework.security.core.Authentication;
-//import org.springframework.security.core.context.SecurityContext;
-//import org.springframework.security.core.context.SecurityContextHolder;
-//import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,7 +45,7 @@ public class QnaController {
 		
 		logger.info("QnaController.selectOne");
 		
-		/* 또큐리티... */
+		/*  */
 		model.addAttribute(principal);
 		
 		// 시큐리티 컨텍스트 객체를 얻습니다.
@@ -92,9 +86,9 @@ public class QnaController {
 		int res = qnaBiz.insert(qnaDto);
 		
 		if (res > 0) {
-			return "qna.do";
+			return "redirect: qna.do";
 		} else {
-			return "qnainsertform.do";	
+			return "redirect: qnainsert.do";	
 		}
 	}
 
@@ -105,7 +99,7 @@ public class QnaController {
 		int res = qnaBiz.setsecret(qnaDto);
 		
 		if (res > 0) {
-			return "qna.do";
+			return "redirect: qna.do";
 		} else {
 			return "qnaone.do?qnano=" + qnaDto.getQnano();	
 		}
@@ -127,9 +121,9 @@ public class QnaController {
 		int res = qnaBiz.update(qnaDto);
 		
 		if (res > 0) {
-			return "qnaone.do?qnano=" + qnaDto.getQnano();
+			return "redirect: qnaone.do?qnano=" + qnaDto.getQnano();
 		} else {
-			return "qnaupdate.do?qnano=" + qnaDto.getQnano();	
+			return "redirect: qnaupdate.do?qnano=" + qnaDto.getQnano();	
 		}
 	}
 
@@ -149,9 +143,9 @@ public class QnaController {
 		int res = qnaBiz.update(qnaDto);
 		
 		if (res > 0) {
-			return "qnaone.do?qnano=" + qnaDto.getQnano();
+			return "redirect: qnaone.do?qnano=" + qnaDto.getQnano();
 		} else {
-			return "qnaanswer.do?qnano=" + qnaDto.getQnano();	
+			return "redirect: qnaanswer.do?qnano=" + qnaDto.getQnano();	
 		}
 	}
 
@@ -162,7 +156,7 @@ public class QnaController {
 		int res = qnaBiz.delete(qnano);
 		
 		if (res > 0) {
-			return "qna.do";
+			return "redirect: qna.do";
 		} else {
 			return "qnaone.do?qnano=" + qnano;	
 		}

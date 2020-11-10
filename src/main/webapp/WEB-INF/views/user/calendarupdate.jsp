@@ -40,7 +40,7 @@
 				<td colspan="2" align="right">
 					<input type="submit" value="수정" />
 					<input type="button" value="삭제" onclick="location.href='calendarDelete.do?calendar_no=${dto.calendar_no }'" />
-					<input type="button" value="취소" onclick="location.href='calendarList.do'" />
+					<input type="button" value="취소" onclick="location.href='calendar.do'" />
 				</td>	
 			</tr>
 		</table>

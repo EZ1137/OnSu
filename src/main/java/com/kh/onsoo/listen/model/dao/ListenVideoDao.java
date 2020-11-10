@@ -8,7 +8,7 @@ public interface ListenVideoDao {
 	
 	String NAMESPACE="listenVideo.";
 	
-	public List<ListenVideoDto> selectList();
+	public List<ListenVideoDto> selectList(String member_id);
 	public ListenVideoDto selectOne(int listen_vclassno);
 	public int insert(ListenVideoDto dto);
 	public int update(ListenVideoDto dto);

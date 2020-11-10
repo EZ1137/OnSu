@@ -66,10 +66,69 @@ public class ReviewController {
 		
 		int res = reviewBiz.insert(new ReviewDto(review_id, review_content, review_classno, review_star));
 		
-		
-		return "/user/reviewInsert.do";
+		if(res > 0) {
+			return "redirect:review.do";
+		}
+		return "redirect:reviewInsert.do";
 	}
-
+	
+	@RequestMapping("/reviewDetail.do")
+	public String reviewDetail(Model model, int review_no, @RequestParam String member_id) {
+		logger.info("[reviewDetail.do]");
+		
+		model.addAttribute("dto", reviewBiz.selectOne(review_no));
+		model.addAttribute("member_id", member_id);
+		
+		return "user/reviewdetail";
+	}
+	
+	@RequestMapping("/reviewUpdate.do")
+	public String reviewUpate(Model model, int review_no, @RequestParam String member_id) {
+		logger.info("[reviewUpdate.do]");
+		
+		ReviewDto dto = reviewBiz.selectOne(review_no);
+		model.addAttribute("dto", dto);
+		model.addAttribute("member_id", member_id);
+		
+		if(member_id.equals(dto.getReview_id())) {
+			return "/user/reviewupdate";
+		}
+		model.addAttribute("msg", "작성자와 다른 id 입니다.");
+		model.addAttribute("url", "/reviewDetail.do?review_no=" + dto.getReview_no() + "&member_id=" + member_id);
+		
+		return "redirect";
+	}
+	
+	@RequestMapping("/reviewUpdateRes")
+	public String reviewUpdateRes(Model model, ReviewDto dto, @RequestParam String member_id) {
+		logger.info("[reviewUpdateRes]");
+		
+		int res = reviewBiz.update(dto);
+		if(res > 0) {
+			model.addAttribute("member_id", member_id);
+			return "redirect:reviewDetail.do?review_no=" + dto.getReview_no();
+		}
+		
+		return "redirect:reviewUpdate.do?review_no=" + dto.getReview_no();
+	}
+	
+	@RequestMapping("/reviewDelete")
+	public String delete(Model model, int review_no, @RequestParam String member_id) {
+		logger.info("[reveiwDelete]");
+		
+		ReviewDto dto = reviewBiz.selectOne(review_no);
+		
+		if(member_id.equals(dto.getReview_id())) {
+			int res = reviewBiz.delete(review_no);
+			if(res > 0) {
+				return "redirect:review.do";
+			}
+		}
+		model.addAttribute("msg", "작성자와 다른 id 입니다.");
+		model.addAttribute("url", "/reviewDetail.do?review_no=" + dto.getReview_no() + "&member_id=" + member_id);
+		
+		return "redirect";
+	}
 }
 
 

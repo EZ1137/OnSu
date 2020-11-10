@@ -4,13 +4,14 @@
     pageEncoding="UTF-8"%>
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="${pageContext.request.contextPath}/resources/css/mypage.css?after" rel="stylesheet" >
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -58,12 +59,20 @@
     </header>
 	
 	<section>
-		<div class="mypage_title">
-			<h1>나의 온수 <a href="">개인 정보 수정</a></h1>
-		</div>
+	<div class="htitle">
+		<h1>나의 온수</h1>
+	</div>
 		<div class="ldiv">
 			<h1>수강 중인 강의 목록</h1>
-			<table>
+			<table class="list">
+			<colgroup>
+				<col width="70%" />
+				<col width="30%" />
+			</colgroup>
+			<tr>
+				<th>강의 제목</th>
+				<th>강의 횟수/시작일</th>
+			</tr>
 				<c:choose>
 					<c:when test="${empty lwlist && empty lvlist }">
 						<tr>
@@ -73,14 +82,14 @@
 					<c:otherwise>
 					<c:forEach items="${lwlist }" var="listenWithDto">
 						<tr>
-							<td><a href="listenWDetail.do?listen_wclassno=${listenWithDto.listen_wclassno }&member_id=${mlist.member_id}">${listenWithDto.listen_wclasstitle}</a></td>
-							<td></td>
+							<td style="text-align:left;" ><a href="listenWDetail.do?listen_wclassno=${listenWithDto.listen_wclassno }&member_id=${mlist.member_id}">${listenWithDto.listen_wclasstitle}</a></td>
+							<td style="text-align:left;" >${listenWithDto.listen_wcount }</td>
 						</tr>
 					</c:forEach>
 					<c:forEach items="${lvlist }" var="listenVideoDto">
 						<tr>
-							<td><a href="listenVDetail.do?listen_vclassno=${listenVideoDto.listen_vclassno }&member_id=${mlist.member_id}"">${listenVideoDto.listen_vclasstitle}</a></td>
-							<td></td>
+							<td style="text-align:left;" ><a href="listenVDetail.do?listen_vclassno=${listenVideoDto.listen_vclassno }&member_id=${mlist.member_id}"">${listenVideoDto.listen_vclasstitle}</a></td>
+							<td style="text-align:left;" >${listenVideoDto.listen_vdate }</td>
 						</tr>
 					</c:forEach>					
 					</c:otherwise>	
@@ -134,8 +143,13 @@
 				%>
 				</table>
 			<div class="rdiv">
-				<table>
+			<jsp:useBean id="utils" class="com.kh.onsoo.utils.Utils" />
+				<table style="width:90%;">
 				<caption>오늘, 내일 남은 일정</caption>
+				<colgroup>
+					<col width="40%" />
+					<col width="60%" />
+				</colgroup>
 					<tr>
 						<th>일정</th>
 						<th>시간</th>
@@ -144,14 +158,17 @@
 						<c:choose>
 					<c:when test="${empty callist }">
 						<tr>
-							<td colspan="2">오늘, 내일은 일정이 없습니다.</td>
+							<td colspan="2" style="font-weight:bold;">오늘, 내일은 일정이 없습니다.</td>
 						</tr>	
 					</c:when>
 					<c:otherwise>
 					<c:forEach items="${callist }" var="calendardto">
 						<tr>
-							<td><a style="color:blue;" href="calendarDetail.do?calendar_no=${calendardto.calendar_no }">${calendardto.calendar_title }</a></td>
-							<td>${calendardto.calendar_mdate }</td>
+							<td style="text-align:left;"><a style="color:blue;" href="calendarDetail.do?calendar_no=${calendardto.calendar_no }">${calendardto.calendar_title }</a></td>
+							<td>
+								<jsp:setProperty property="toDates" name="utils" value="${calendardto.calendar_mdate }" />
+								<jsp:getProperty property="toDates" name="utils" />
+							</td>
 						</tr>
 					</c:forEach>
 					</c:otherwise>	
@@ -169,7 +186,11 @@
 			<%@ include file="/WEB-INF/views/footer.jsp"%>
 		</footer>
 	</footer>
-
+	
+	<!-- 알림(새로고침 시) -->
+	<div>
+		<%@ include file="/WEB-INF/views/noti.jsp" %>
+	</div>
 </body>
 </html>
 
