@@ -21,8 +21,8 @@
 			<td>${dto.member_role }</td>
 		</tr>
 		<tr>
-			<th>첨부파일 미리보기</th>
-			<td><textarea rows="10" cols="60" >첨부파일</textarea></td>
+			<th>첨부파일<br>미리보기</th>
+			<td><embed class="previewimg" src="./resources/img/sample3.pdf" type="application/pdf" width="100%" height="300px" /></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="right">
@@ -38,7 +38,6 @@
 	</table>
 	</form>
 	<input type="button" value="관리자페이지 메인이동" onclick="location.href='admin.do'">
-	<embed class="previewimg" src="./resources/img/sample3.pdf" type="application/pdf" width="35%" height="300px" />
 	
 </body>
 </html>

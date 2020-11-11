@@ -35,7 +35,7 @@
 			<c:otherwise>
 				<div class="class_row">
 					<c:forEach items="${list }" var="dto">
-						<div class="class_card" onclick="location.href='#'">
+						<div class="class_card" onclick="location.href='studydetail.do?${dto.class_no}'">
 							<img id="test" src="${dto.uploadDto.image_directory }"/>
 							
 							<div class="class_title">
