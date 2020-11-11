@@ -104,12 +104,8 @@ UPDATE MEMBER SET MEMBER_ROLE = 'A' WHERE MEMBER_ID = 'qkrwlstjr'
 
 --관리자 계정
 INSERT INTO MEMBER 
-VALUES(MEMBERSEQ.NEXTVAL, 'admin', 'admin', '관리자', 'M', 'admin@onsoo.com',
-   '서울 강남구 역삼동', '010-0000-0000', '1019', 'A', NULL, NULL);
-
-INSERT INTO MEMBER 
-VALUES(MEMBERSEQ.NEXTVAL, 'admin', 'admin', '관리자', 'M', 'admin@onsoo.com',
-   '서울 강남구 역삼동', '010-0000-0000', '1019', 'A', SYSDATE, NULL,NULL,NULL,1);
+VALUES(MEMBERSEQ.NEXTVAL, 'admin', 'admin', '관리자', 'M', '010-0000-0000',
+   '서울 강남구 역삼동', '010-0000-0000', '1019', 'A', NULL, NULL);	
    
 --권한테이블 추가 
 CREATE TABLE AUTHORITIES(
