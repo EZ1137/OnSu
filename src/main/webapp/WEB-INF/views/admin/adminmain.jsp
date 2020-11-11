@@ -4,155 +4,129 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-
-	#first_area{
-		margin-top: 20px;
-	}
-	.area{
-		margin-top: 20px;
-	}
-	.first_table_name{
-		margin-left: 7.5%;
-		float: left;
-	}
-	.admin_first_table{
-		margin-left: 7.5%;
-		margin-right: 7.5%;
-		width: 35%;
-		float: left;
-	}
-	.second_table_name{
-		margin-right: 30%;
-		float: right;
-		margin-top: 35%;
-	}
-	.admin_second_table{
-		width: 35%;
-		float: right;
-		margin-top : 35%;
-	}
-	.more{
-		margin-top : 35%;
-	}
-</style>
-
 <meta charset="UTF-8">
-<title>Insert title here</title>
-
+<title>On:Soo - Admin Main</title>
+<link href="${pageContext.request.contextPath}/resources/css/admin.css?after" rel="stylesheet">
 </head>
 <body>
 	<!-- header -->
-	<div class="header_area">
 	<header id="header" class="area">
 		<%@ include file="/WEB-INF/views/header.jsp"%>
 	</header>
-	</div>
-	<div id="first_area">
-	<div class="first_table_all">
-	<div class="first_table_name">전체 회원조회</div>
-	<table class="admin_first_table" border="1">
-		<col width="100"/>
-		<col width="100"/>
-		<col width="50"/>
-		<col width="100"/>
-		<tr>
-			<th>아이디</th>
-			<th>이름</th>
-			<th>성별</th>
-			<th>이메일</th>
-		</tr>
-			<c:forEach items="${list }" var="dto">
-				<tr>
-					<td>${dto.member_id }</td>
-					<td>${dto.member_name }</td>
-					<td>${dto.member_gender }</td>
-					<td>${dto.member_email }</td>
-				</tr>
-			</c:forEach>
-	</table>
-	 <div class="more">
-		<a href="memberlist.do">더 보기</a>
-	</div>
-	</div>
-	<div class="second_table_all">
-	<div class="second_table_name">강사인증 신청목록</div>
-	<table class="admin_second_table" border="1">
-		<col width="100"/>
-		<col width="100"/>
-		<col width="100"/>
-		<col width="50"/>
-		<tr>
-			<th>아이디</th>
-			<th>이름</th>
-			<th>이메일</th>
-			<th>현재권한</th>
-		</tr>
-			<c:forEach items="${teacherlist }" var="dto">
-				<tr>
-					<td>${dto.member_id }</td>
-					<td>${dto.member_name }</td>
-					<td>${dto.member_email }</td>
-					<td>${dto.member_role }</td>
-				</tr>
-			</c:forEach>
-	</table>
-	<div class="more">
-		<a href="reviewlist.do">더 보기</a>
-	</div> 
-	</div>
-	</div>	
 	
-	<div id="second_area">
-	<h1>신고된 회원조회</h1>
-	<table class="admin_third_table" border="1">
-		<col width="100"/>
-		<col width="100"/>
-		<col width="100"/>
-		<col width="100"/>
-		<tr>
-			<th>신고 제목</th>
-			<th>신고 사유</th>
-			<th>신고일</th>
-			<th>신고받은사람</th>
-		</tr>
+	<section>
+		<div class="admin_title">
+			<p>ADMIN</p>
+		</div>
 		
-			<c:forEach items="${reportlist }" var="rdto">
-				<tr>
-					<td>${rdto.report_title }</td>
-					<td>${rdto.report_category }</td>
-					<td>${rdto.report_date }</td>
-					<td>${rdto.report_ided }</td>
-				</tr>
-			</c:forEach>
-	</table>
-	<h3><a href="reportlist.do">더보기</a></h3>
-	
-	<h1>동영상 심의 신청조회</h1>
-	<table class="admin_fore_table" border="1">
-		<col width="50"/>
-		<col width="100"/>
-		<col width="100"/>
-		<col width="100"/>
-		<tr>
-			<th>아이디</th>
-			<th>성별</th>
-			<th>가입 일자</th>
-			<th>현재 권한</th>
-		</tr>
-		 
-			<c:forEach items="${list }" var="dto">
-				<tr>
-					<td>${dto.member_id }</td>
-					<td>${dto.member_gender }</td>
-					<td>${dto.member_regdate }</td>
-					<td>${dto.member_role }</td>
-				</tr>
-			</c:forEach>
-		 
-	</table>
-	<h3><a href="videoreviewlist.do">더 보기</a></h3>
-	</div>
+		<div id="first_area">
+			<div class="first_table_all" onclick="location.href='memberlist.do'">
+				<p class="first_table_name">전체 회원 조회</p>
+				<table class="admin_first_table">
+					<col width="25%"/>
+					<col width="15%"/>
+					<col width="10%"/>
+					<col width="50%"/>
+					<tr>
+						<th>ID</th>
+						<th>NAME</th>
+						<th>F/M</th>
+						<th>EMAIL</th>
+					</tr>
+					
+				<c:forEach items="${list }" var="dto">
+					<tr>
+						<td>${dto.member_id }</td>
+						<td>${dto.member_name }</td>
+						<td>${dto.member_gender }</td>
+						<td>${dto.member_email }</td>
+					</tr>
+				</c:forEach>
+				
+				</table>
+			</div>
+			
+			<div class="second_table_all" onclick="location.href='reviewlist.do'">
+				<p class="second_table_name">강사 인증 신청</p>
+				<table class="admin_second_table">
+					<col width="25%"/>
+					<col width="15%"/>
+					<col width="45%"/>
+					<col width="15%"/>
+					<tr>
+						<th>ID</th>
+						<th>NAME</th>
+						<th>EMAIL</th>
+						<th>ROLE</th>
+					</tr>
+					
+				<c:forEach items="${teacherlist }" var="dto">
+					<tr>
+						<td>${dto.member_id }</td>
+						<td>${dto.member_name }</td>
+						<td>${dto.member_email }</td>
+						<td>${dto.member_role }</td>
+					</tr>
+				</c:forEach>
+				
+				</table>
+			</div>
+		</div>	
+		
+		<div id="second_area">
+			<div class="third_table_all" onclick="location.href='reportlist.do'">
+				<p class="third_table_name">신고 회원 조회</p>
+				<table class="admin_third_table">
+					<col width="50%"/>
+					<col width="10%"/>
+					<col width="15%"/>
+					<col width="25%"/>
+					<tr>
+						<th>TITLE</th>
+						<th>R.R</th>	<!-- Report Reason -->
+						<th>DATE</th>
+						<th>ID</th>
+					</tr>
+					
+				<c:forEach items="${reportlist }" var="rdto">
+					<tr>
+						<td>${rdto.report_title }</td>
+						<td>${rdto.report_category }</td>
+						<td>${rdto.report_date }</td>
+						<td>${rdto.report_ided }</td>
+					</tr>
+				</c:forEach>
+				
+				</table>
+			</div>
+			
+			<div class="forth_table_all" onclick="location.href='videoreviewlist.do'">
+				<p class="forth_table_name">동영상 심의 신청</p>
+				<table class="admin_forth_table">
+					<col width="30%"/>
+					<col width="15%"/>
+					<col width="35%"/>
+					<col width="15%"/>
+					<tr>
+						<th>ID</th>
+						<th>F/M</th>
+						<th>REGDATE</th>
+						<th>ROLE</th>
+					</tr>
+					 
+				<c:forEach items="${list }" var="dto">
+					<tr>
+						<td>${dto.member_id }</td>
+						<td>${dto.member_gender }</td>
+						<td>${dto.member_regdate }</td>
+						<td>${dto.member_role }</td>
+					</tr>
+				</c:forEach>
+					 
+				</table>
+			</div>
+		</div>
+	</section>
 	 
 	<footer id="footerarea" class="area">
 		<%@ include file="/WEB-INF/views/footer.jsp"%>
