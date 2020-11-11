@@ -116,11 +116,11 @@ public class MainController {
 
 		// 관리자 
 
-			@RequestMapping(value = "/admin/adminHome.do", method = RequestMethod.GET)
+			@RequestMapping(value = "/admin/adminpage.do", method = RequestMethod.GET)
 			public String home(Locale locale, Model model) {
 				logger.info("Welcome Admin Home!");
 				
-				return "admin/adminHome";
+				return "admin/adminmain";
 			}
 			
 			//회원가입 폼 
@@ -211,17 +211,29 @@ public class MainController {
 				
 				iddto =adminBiz.idfind(dto);
 				
-				System.out.println(iddto.getMember_id()+"리턴되는 값");
-				System.out.println(iddto.getMember_name());
 				model.addAttribute("iddto",iddto);
 				
-				return "idresult";
+				if(iddto == null) {
+					model.addAttribute("msg","이름과 이메일에 맞는 계정이 없습니다.");
+					model.addAttribute("url","/idpwFind.do");
+					return "redirect";
+				}else {
+					
+					return "idresult";
+				}
 			}
 			
 			//비번초기화
 			@RequestMapping(value = "pwfind.do",method = RequestMethod.POST)
 			public String pdfind(AdminDto dto ,Model model) {
 				logger.info("비밀번호 초기화창 ");
+				
+				int res = 0;
+				
+				res =adminBiz.pwfind(dto);
+				System.out.println(res+"res값 찾아라");
+				
+				if(res > 0) {
 				
 				//랜덤객체 만들어서 ran 담기 
 				RandomCode  randomcode = new RandomCode();
@@ -241,19 +253,16 @@ public class MainController {
 				//메일에 보낸 랜덤 값 넣기 
 				dto.setMember_pw(random);
 				
-				System.out.println(dto.getMember_pw());
-				
-				
-				int res = 0;
-				
-				res =adminBiz.pwfind(dto);
-				
-				System.out.println(res+"res 값");
-				
-				if(res == 0) {
-					return "idpwFind";
+					model.addAttribute("msg","이메일로 임시 비밀번호를 보냈습니다.");
+					model.addAttribute("url","main.do");
+					return "redirect";
+					
 				}else {
-					return "redirect: main.do";
+						logger.info("비밀번호 초기화 실패");
+					 model.addAttribute("msg", "해당하는 계정이 없습니다 \n 다시입력해주세요");
+					 model.addAttribute("url","/idpwFind.do");
+					return "redirect";
+					
 				}
 				
 			}
@@ -309,7 +318,6 @@ public class MainController {
 				logger.info("수정페이지 ㄱ");
 				return "/user/registUpdate";
 			}else{
-				
 				logger.info("수정페이지 실패");
 				return "redirect: /user/registUdpatechk.do";
 				
@@ -328,11 +336,14 @@ public class MainController {
 			
 			int res = adminBiz.registUpdate(dto);
 			if(res>0) {
-				 session.setAttribute("msg", "수정완료");
-				
-				 return "onsooMain";
+				model.addAttribute("msg","회원 정보가 수정되었습니다");	
+				model.addAttribute("url","/main.do");	
+				 return "redirect";
+			}else {
+				 model.addAttribute("msg", "회원정보를 다시 입력해주세요");
+				 model.addAttribute("url","/user/registUpdate.do");
+				return "redirect";
 			}
-			return "redirect: /user/registUpdate.do";
-			}
+	 }
 	
 }

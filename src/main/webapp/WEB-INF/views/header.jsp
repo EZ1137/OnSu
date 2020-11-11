@@ -41,8 +41,8 @@
 				<ul class="header-menu">
 				<!-- 권한 없을시 페이지   -->
 				
-					<c:if test="${admindto eq null}">
 
+						<sec:authorize access="isAnonymous()">
 						<li>
 							<a href="<c:url value="/login/loginForm.do" />">
 								<span class="login">
@@ -57,15 +57,14 @@
 								</span>
 							</a>
 						</li>
-					</c:if>
-					<c:if test="${admindto ne null}">
-						<c:if test="${authdto.author eq 'ROLL_USER'}">
+						</sec:authorize>
+							<sec:authorize access="hasRole('USER')">
 							<li>
-								<a href="<c:url value="/login/loginForm.do" />">
 									<span class="login">
-										<button id="loginbtn">Log Out</button>
+										<form:form action="${pageContext.request.contextPath}/logout" method="POST">
+    										<input type="submit" id="loginbtn" value="Log Out" />
+										</form:form>
 									</span>
-								</a>
 							</li>
 							<li>
 								<a href="<c:url value="/user/registUdpatechk.do" />">
@@ -74,24 +73,17 @@
 									</span>
 								</a>
 							</li>
-						</c:if>
-						<c:if test="${authdto.author eq 'ROLL_ADMIN'}">
+							</sec:authorize>
+					
+							<sec:authorize access="hasRole('ADMIN')">
 							<li>
-								<a href="<c:url value="/login/loginForm.do" />">
-									<span class="login">
-										<button id="loginbtn">Log Out</button>
-									</span>
-								</a>
-							</li>
-							<li>
-								<a href="<c:url value="/registForm.do" />">
+								<a href="<c:url value="admin/adminpage.do" />">
 									<span class="regist">
 										<button id="registbtn">Admin Page</button>
 									</span>
 								</a>
 							</li>
-						</c:if>
-					</c:if>
+							</sec:authorize>
 				</ul>
 				<div class="sidenav">
 					<i id="hamburger" class="fas fa-bars fa-2x" onclick="menu()"></i>
