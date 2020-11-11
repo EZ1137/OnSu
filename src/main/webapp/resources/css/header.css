@@ -183,3 +183,18 @@ nav {
   color: var(�봠olor-black);
   background-color: var(--color-light-white);
 }
+#loginbtn{
+	  margin: 7px 10px 0 10px;
+  padding: 5px 20px;
+  background: var(--color-white);
+  color: var(--color-dark-grey);
+  height: 34px;
+  border: none;
+  border-radius: var(--border-radi-btn);
+  box-shadow: var(--btn-shadow);
+}
+#loginbtn:hover {
+  background-color: var(--color-light-blue);
+  color: var(--color-black);
+  border: none;
+}
