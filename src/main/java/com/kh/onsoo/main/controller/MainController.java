@@ -166,8 +166,11 @@ public class MainController {
 			@RequestMapping(value = "/emailchk.do",method = RequestMethod.POST)
 			public String emailchk(String member_email,HttpSession session) {
 				logger.info("이메일 체크");
+				System.out.println(member_email);
+				
 				
 				int res = adminBiz.emailchk(member_email);
+				
 				
 				RandomCode randomcode = new RandomCode();
 				
@@ -178,7 +181,8 @@ public class MainController {
 				sb.append("귀하의 인증 코드는 "+ran+"입니다.");
 				System.out.println(res+"컨트롤러 res 값 확인 ");
 				
-				if(res == 0) {
+				if(res != 0) {
+					
 					logger.info("이메일 발송");
 					mailService.send(subject, sb.toString(), 
 							"dhtmdals@naver.com", member_email, null, ran);
@@ -228,33 +232,35 @@ public class MainController {
 			public String pdfind(AdminDto dto ,Model model) {
 				logger.info("비밀번호 초기화창 ");
 				
-				int res = 0;
-				
-				res =adminBiz.pwfind(dto);
-				System.out.println(res+"res값 찾아라");
-				
-				if(res > 0) {
-				
+			
 				//랜덤객체 만들어서 ran 담기 
 				RandomCode  randomcode = new RandomCode();
 				String ran = randomcode.excuteGenerate();
 				String member_email =dto.getMember_email();
 
-				//메일보내기
-				String subject = "비밀번호 초기화입니다.";
-				StringBuilder sb = new StringBuilder();
-				sb.append("초기화 된 비밀번호는 "+ran+"입니다.");
-				
-				mailService.send(subject, sb.toString(), 
-						"dhtmdals@naver.com", member_email,null,ran);
-				System.out.println(ran+"비밀번호 넣기전");
-				
+			
 				String random = passwordEncoder.encode(ran);
 				//메일에 보낸 랜덤 값 넣기 
 				dto.setMember_pw(random);
 				
+				int res = 0;
+				
+				res =adminBiz.pwfind(dto);
+				
+				System.out.println(res+"res값 찾아라");
+				
+				
+				if(res > 0) {
+					//메일보내기
+					String subject = "비밀번호 초기화입니다.";
+					StringBuilder sb = new StringBuilder();
+					sb.append("초기화 된 비밀번호는 "+ran+"입니다.");
+					
+					mailService.send(subject, sb.toString(), 
+							"dhtmdals@naver.com", member_email,null,ran);
+					
 					model.addAttribute("msg","이메일로 임시 비밀번호를 보냈습니다.");
-					model.addAttribute("url","main.do");
+					model.addAttribute("url","/main.do");
 					return "redirect";
 					
 				}else {
@@ -264,6 +270,7 @@ public class MainController {
 					return "redirect";
 					
 				}
+				
 				
 			}
 		
@@ -318,9 +325,10 @@ public class MainController {
 				logger.info("수정페이지 ㄱ");
 				return "/user/registUpdate";
 			}else{
-				logger.info("수정페이지 실패");
-				return "redirect: /user/registUdpatechk.do";
 				
+				model.addAttribute("msg","메일을 다시 입력해주세요");
+				model.addAttribute("url","user/registUdpatechk.do");
+				return "redirect";
 			}
 		}
 		
