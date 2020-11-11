@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<link href="${pageContext.request.contextPath}/resources/css/free.css" rel="stylesheet" >
+<link href="${pageContext.request.contextPath}/resources/css/study.css" rel="stylesheet" >
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
@@ -119,7 +119,7 @@
 			</tr>
 			<tr id="upload">
 				<th>썸네일 및 이미지</th>
-				<td><input type="file" value="파일 선택" name="file" required="required"/> <input type="button" value="+" onclick="insertUpload()"/> </td>
+				<td><input multiple="multiple" type="file" value="파일 선택" name="file" required="required" accept=".gif, .jpg, .png"/> <input type="button" value="+" onclick="insertUpload()"/> </td>
 			</tr>
 			<tr id="editor">
 				<td colspan="2" class="free_content">

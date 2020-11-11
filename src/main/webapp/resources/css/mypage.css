@@ -26,6 +26,8 @@
   --font-micro: 14px;
   
   --border-radi: 2px;
+    --box-shadow: 7px 7px 14px #b6b6b6, 
+             -7px -7px 14px #ffffff;
 }
 
 * {
@@ -40,54 +42,62 @@ header {
 
 section {
 	width: 100%;
-	height:100vh;
+	height: 100vh;
 	padding-top: 100px;
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
 }
-
-h1 {
-	text-align : center;
-}
-
-.ldiv {
-	float : left;
-	width: 40%;
-	height: 70%;
-}
-
-.rdiv {
-	float : right;
-	width: 60%;
-	height: 70%;
-}
-
-.cdiv {
-	width: 100%;
-	height: 70%;
-}
-
-#cal {
-	width: 40%;
-	height: 100%;
-	text-align : center;
-}
-
 .htitle {
 	margin: 0px auto 20px auto;
 	padding: 10px 0 0 60px;
-	width: 90%;
+	width: 70%;
 	height: 50px;
 	float: center;
 	background-color: var(--color-light-white);
 	filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.1));
 	border-radius: 10px;
 }
-
-textarea {
-	padding: 10px;
-	border: none;
-	overflow: auto;
-	background-color: rgba(255,255,255,0);
+.htitle > p {
+	font-size: var(--font-medium);
+	font-weight: bold;
+	color: var(--color-dark-blue);
 }
+
+.mypageBox{
+
+	display:flex;
+	padding:10px;
+	height:70vh;
+	width:70%;
+	border: none;
+  	border-radius: var(--border-radi-btn);
+  	box-shadow: var(--box-shadow);
+}
+
+
+.ldiv {
+ padding:10px;
+ 	
+	height:100%;
+	width:100%;
+
+}
+
+.rdiv {
+
+	width:100%;
+	height:90%;
+
+}
+
+.cdiv {
+
+	height:100%;
+}
+
+
 
 tr {
 	height: 30px;
@@ -129,17 +139,21 @@ td > input[type="button"], input[type="submit"] {
 }
 
 .list {
-	margin: 10px auto 30px auto;
-	width: 90%;
+	margin: 10px 0 30px 0;
+	
 	align-items: center;
+	width:100%;
 }
 
 
-
-
-
-
-
+.myp_subtitle{
+	width:200px;
+	font-size: var(--font-regular);
+	font-weight:bold;
+	border: none;
+	margin: 5px;
+	
+}
 
 
 
