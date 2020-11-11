@@ -31,3 +31,79 @@
   padding: 0px;
   box-sizing: border-box;
 }
+
+section {
+	height: 100vh;
+	padding-top: 100px;
+}
+
+.admin_title {
+	/* border:1px solid blue; */
+	margin: 0 auto 60px auto;
+	padding: 10px 0 0 60px;
+	width: 70%;
+	height: 50px;
+	float: center;
+	background-color:  var( --color-gradi);
+	border-radius: var(--border-radi-title);
+	box-shadow: var(--box-shadow);
+}
+
+.admin_title > p {
+	/* border:1px solid blue; */
+	font-size: var(--font-medium);
+	font-weight: bold;
+	color: var(--color-dark-blue);
+	z-index: 10;
+}
+
+#first_area, #second_area {
+	width: 70%;
+	height: 200px;
+	margin: 0 auto 20px auto;
+	display: flex;
+}
+
+.first_table_all, .third_table_all {
+	margin-right: 2%;
+	width: 49%;
+	height: 100%;
+	cursor: pointer;
+	border-radius: var(--border-radi-btn);
+	box-shadow: 5px 5px 10px #e6e6e6, -5px -5px 10px #ffffff;
+}
+
+.second_table_all, .forth_table_all {
+	width: 49%;
+	height: 100%;
+	cursor: pointer;
+	border-radius: var(--border-radi-btn);
+	box-shadow: 5px 5px 10px #e6e6e6, -5px -5px 10px #ffffff;
+}
+
+.first_table_all:hover, .third_table_all:hover, .second_table_all:hover, .forth_table_all:hover {
+	box-shadow: 5px 5px 10px var(--color-light-grey), -5px -5px 10px #ffffff;
+}
+
+.first_table_name, .second_table_name, .third_table_name, .forth_table_name {
+	font-size: 36px;
+	font-weight: bold;
+	margin: 16px 0 0 10%;
+	color: var(--color-dark-blue);
+}
+
+table {
+	margin: auto;
+	width: 80%;
+}
+
+th {
+	height: 24px;
+	background-color: var(--color-blue);
+	color: white;
+}
+
+td {
+	height: 22px;
+	color: var(--color-blue);
+}
