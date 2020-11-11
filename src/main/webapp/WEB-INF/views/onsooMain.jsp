@@ -158,78 +158,9 @@ video {
 				</section>
 
 				<section class="section third area swiper-slide">
-					<div class="rtc_cards_title">
-						<p>실시간 강의</p>
-						<span class="more_btn"> <a href="#">더 보기</a>
-						</span>
-					</div>
-					<div class="class_row">
-						<div class="class_card">
-							<div class="class_title">
-								<p>class_title</p>
-								<div class="class_info" onclick="location.href=''">
-									<p>자세히 보기</p>
-								</div>
-							</div>
-						</div>
-						<div class="class_card">
-							<div class="class_title">
-								<p>class_title</p>
-								<div class="class_info" onclick="location.href=''">
-									<p>자세히 보기</p>
-								</div>
-							</div>
-						</div>
-						<div class="class_card">
-							<div class="class_title">
-								<p>class_title</p>
-								<div class="class_info" onclick="location.href=''">
-									<p>자세히 보기</p>
-								</div>
-							</div>
-						</div>
-						<div class="class_card">
-							<div class="class_title">
-								<p>class_title</p>
-								<div class="class_info" onclick="location.href=''">
-									<p>자세히 보기</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="class_row">
-						<div class="class_card">
-							<div class="class_title">
-								<p>class_title</p>
-								<div class="class_info" onclick="location.href=''">
-									<p>자세히 보기</p>
-								</div>
-							</div>
-						</div>
-						<div class="class_card">
-							<div class="class_title">
-								<p>class_title</p>
-								<div class="class_info" onclick="location.href=''">
-									<p>자세히 보기</p>
-								</div>
-							</div>
-						</div>
-						<div class="class_card">
-							<div class="class_title">
-								<p>class_title</p>
-								<div class="class_info" onclick="location.href=''">
-									<p>자세히 보기</p>
-								</div>
-							</div>
-						</div>
-						<div class="class_card">
-							<div class="class_title">
-								<p>class_title</p>
-								<div class="class_info" onclick="location.href=''">
-									<p>자세히 보기</p>
-								</div>
-							</div>
-						</div>
+					<div class="rtc_main_area">
+						<p>실시간 스트리밍 강의</p>
+						<input type="button" class="more_rtc" value="수강하기" onclick="location.href=''"/>
 					</div>
 				</section>
 				<section class="section fourth area swiper-slide">
@@ -250,37 +181,37 @@ video {
 								<ul class="swiper-wrapper">
 									<li class="swiper-slide">
 										<div>
-											<h3>Slide #1</h3>
-											<span>Sub-title #1</span>
-										</div> <img src="https://fakeimg.pl/600x400/960a96/000?text=11111">
+											<h3>1. 회원 가입</h3>
+											<span>온수에 가입하세요!</span>
+										</div> <img class="slideimg" src="resources/img/11.jpg"/>
 									</li>
 
 									<li class="swiper-slide">
 										<div>
-											<h3>Slide #2</h3>
-											<span>Sub-title #2</span>
-										</div> <img src="https://fakeimg.pl/600x400/D27328/000?text=22222">
+											<h3>2. 간단한 인증</h3>
+											<span>온수는 안전한 인증시스템을 제공합니다 :)</span>
+										</div> <img class="slideimg" src="resources/img/22.jpg"/>
 									</li>
 
 									<li class="swiper-slide">
 										<div>
-											<h3>Slide #3</h3>
-											<span>Sub-title #3</span>
-										</div> <img src="https://fakeimg.pl/600x400/FF607F/000?text=33333">
+											<h3>3. 인증 심의 과정</h3>
+											<span>온수에서는 안전한 강의를 위해 심의를 거칩니다 :)</span>
+										</div> <img class="slideimg" src="resources/img/33.jpg"/>
 									</li>
 
 									<li class="swiper-slide">
 										<div>
-											<h3>Slide #4</h3>
-											<span>Sub-title #4</span>
-										</div> <img src="https://fakeimg.pl/600x400/0A6E0A/000?text=44444">
+											<h3>4. 인증 완료</h3>
+											<span>안전한 강의를 위한 심의가 완료 되었습니다 :)</span>
+										</div> <img class="slideimg" src="resources/img/44.jpg"/>
 									</li>
 
 									<li class="swiper-slide">
 										<div>
-											<h3>Slide #5</h3>
-											<span>Sub-title #5</span>
-										</div> <img src="https://fakeimg.pl/600x400/0064CD/000?text=55555">
+											<h3>5. 준비 끝!</h3>
+											<span>온수와 함께 즐거운 수업을 시작하세요 :)</span>
+										</div> <img class="slideimg" src="resources/img/55.jpg"/>
 									</li>
 								</ul>
 

@@ -199,24 +199,43 @@ video { width: 100%; }
   z-index: 0;
 }
 
-.rtc_cards_title {
+.rtc_main_area {
 	margin: 120px auto 20px auto;
 	padding-top: 10px;
 	width: 70%;
-	height: 50px;
+	height: 500px;
 	float: center;
-	background-color: var(--color-light-white);
 	border-radius: 10px;
 	box-shadow: 5px 5px 10px #e6e6e6, -5px -5px 10px #ffffff;
-	display: flex;
 	justify-content: center;
+	background-image: url('../img/66.jpg');
+	background-size: cover;
 }
 
-.rtc_cards_title > p {
-	font-size: var(--font-medium);
+.rtc_main_area > p {
+	font-size: var(--font-large);
 	font-weight: bold;
-	text-align: center;
-	color: var(--color-dark-blue);
+	text-align: right;
+	color: var(--color-white);
+	margin: 24% 10% 0 0;
+	text-shadow: 2px 2px 4px var(--color-light-grey);
+} 
+
+.more_rtc {
+	float: right;
+	margin: 2% 10% 0 0;
+	padding: 5px 20px;
+	color: var(--color-black);
+	border: none;
+	cursor: pointer;
+	border-radius: var(--border-radi-btn);
+	background-color: var(--color-white);
+	box-shadow: 2px 2px 6px var(--color-light-grey), -2px -2px 6px #ffffff;
+}
+
+.more_rtc:hover {
+	font-weight: bold;
+	background-color: var(--color-orange);
 }
 
 .fourth {
