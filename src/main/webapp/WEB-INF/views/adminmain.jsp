@@ -6,35 +6,7 @@
 <head>
 <style>
 
-	#first_area{
-		margin-top: 20px;
-	}
-	.area{
-		margin-top: 20px;
-	}
-	.first_table_name{
-		margin-left: 7.5%;
-		float: left;
-	}
-	.admin_first_table{
-		margin-left: 7.5%;
-		margin-right: 7.5%;
-		width: 35%;
-		float: left;
-	}
-	.second_table_name{
-		margin-right: 30%;
-		float: right;
-		margin-top: 35%;
-	}
-	.admin_second_table{
-		width: 35%;
-		float: right;
-		margin-top : 35%;
-	}
-	.more{
-		margin-top : 35%;
-	}
+	
 </style>
 
 <meta charset="UTF-8">

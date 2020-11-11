@@ -80,7 +80,6 @@
 								<div>
 									<textarea name="report_content" id="editor1" rows="10" cols="80"></textarea>
 									<input multiple="multiple" type="file" value="파일 선택" name="file" accept=".jpg, .png" />
-									<input multiple="multiple" type="file" value="파일 선택" name="file" accept=".jpg, .png" />
 									<input class="reportbtn" type="submit" value="신고 제출" required>
 								</div>
 							</div>
