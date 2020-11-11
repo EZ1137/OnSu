@@ -68,13 +68,16 @@ video {
 							<source src="${pageContext.request.contextPath}/resources/video/Coffee.mp4" type="video/mp4">
 						</video>
 						<div class="maintext">
-							<div class="maintTitle">온수 : 따뜻한 온라인 수업</div>
-							<div class="subTitle">Lorem ipsum dolor sit amet,
-							consectetur adipiscing elit,
-							<br>
-							sed do eiusmod tempor incididunt ut
-							labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-							</div>
+							<p class="maintTitle" style="font-size:62px; font-weight:bold; color:white; text-shadow: 2px 2px 4px var(--color-light-grey);">
+								On:Soo
+							</p> 
+							<p class="subTitle" style="font-size:var(--font-regular); color:white; margin:4px 0 40px 0;">
+								당신의 가장 따뜻한 온라인 수업
+							</p>
+							<p class="nonTitle" style="font-size:var(--font-medium); color:white; line-height:40px; text-shadow: 1px 1px 2px var(--color-light-grey);">
+								제약을 넘어 가르침과 배움을 잇는 학습 플랫폼,<br>
+								<b>온수</b>와 함께 하세요 :D
+							</p>
 						</div>
 					</div>
 
@@ -84,74 +87,49 @@ video {
 				<section class="section second area swiper-slide">
 					<div class="vod_cards_title">
 						<p>동영상 강의</p>
-						<span class="more_btn"> <a href="#">더 보기</a>
-						</span>
+						<span class="more_btn" onclick="location.href=''">강의 더 보기</span>
 					</div>
 					<div class="class_row">
-						<div class="class_card">
+						<div class="class_card class1">
 							<div class="class_title">
 								<p>class_title</p>
-								<div class="class_info" onclick="location.href=''">
-									<p>자세히 보기</p>
-								</div>
 							</div>
 						</div>
-						<div class="class_card">
+						<div class="class_card class2">
 							<div class="class_title">
 								<p>class_title</p>
-								<div class="class_info" onclick="location.href=''">
-									<p>자세히 보기</p>
-								</div>
 							</div>
 						</div>
-						<div class="class_card">
+						<div class="class_card class3">
 							<div class="class_title">
 								<p>class_title</p>
-								<div class="class_info" onclick="location.href=''">
-									<p>자세히 보기</p>
-								</div>
 							</div>
 						</div>
-						<div class="class_card">
+						<div class="class_card class4">
 							<div class="class_title">
 								<p>class_title</p>
-								<div class="class_info" onclick="location.href=''">
-									<p>자세히 보기</p>
-								</div>
 							</div>
 						</div>
 					</div>
 					<div class="class_row">
-						<div class="class_card">
+						<div class="class_card class5">
 							<div class="class_title">
 								<p>class_title</p>
-								<div class="class_info" onclick="location.href=''">
-									<p>자세히 보기</p>
-								</div>
 							</div>
 						</div>
-						<div class="class_card">
+						<div class="class_card class6">
 							<div class="class_title">
 								<p>class_title</p>
-								<div class="class_info" onclick="location.href=''">
-									<p>자세히 보기</p>
-								</div>
 							</div>
 						</div>
-						<div class="class_card">
+						<div class="class_card class7">
 							<div class="class_title">
 								<p>class_title</p>
-								<div class="class_info" onclick="location.href=''">
-									<p>자세히 보기</p>
-								</div>
 							</div>
 						</div>
-						<div class="class_card">
+						<div class="class_card class8">
 							<div class="class_title">
 								<p>class_title</p>
-								<div class="class_info" onclick="location.href=''">
-									<p>자세히 보기</p>
-								</div>
 							</div>
 						</div>
 					</div>
