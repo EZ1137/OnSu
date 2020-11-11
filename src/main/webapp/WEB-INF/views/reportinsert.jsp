@@ -44,13 +44,13 @@
 
 		<div class="report_box">
 			<div class="report_table">
-				<form action="reportinsertres.do" method="post" enctype="multipart/form-data">
+				<form action="reportinsretres.do" method="POST" enctype="multipart/form-data">
 					<div>
 						<div>
 							<div class="report id">신고자 아이디</div>
 							<c:choose>
 								<c:when test="${member_id ne null }">
-									<input type="text" name="report_id" value="${member_id}"></input>
+									<input type="text" name="report_id" readonly="readonly" value="${member_id}"></input>
 								</c:when>
 								<c:otherwise>
 									<input type="text" value="로그인해주세요">
@@ -65,7 +65,7 @@
 							</div>
 						</div>
 						<div>
-							<div class="report category">카테고리(하나씩 선택)</div>
+							<div class="report category" >카테고리(하나씩 선택)</div>
 							<div>
 								<input type="radio" name="report_category" value="B" required>욕설/비방
 								<input type="radio" name="report_category" value="T"> 시간미준수
@@ -79,13 +79,11 @@
 								신고내용
 								<div>
 									<textarea name="report_content" id="editor1" rows="10" cols="80"></textarea>
-									<input multiple="multiple" type="file" value="파일 선택" name="file" accept=".jpg, .png" />
+									<input type="file" value="파일 선택" name="report_filename" />
 									<input class="reportbtn" type="submit" value="신고 제출" required>
 								</div>
 							</div>
 						</div>
-
-
 					</div>
 				</form>
 			</div>

@@ -1,5 +1,7 @@
 package com.kh.onsoo.report.model.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,9 +24,11 @@ public class ReportDaoImpl implements ReportDao {
 		try {
 			res = sqlSession.insert(NAMESPACE + "insert", dto);
 		} catch (Exception e) {
+			System.out.println(dto);
 			logger.info("[ERROR repport insert]");
 			e.printStackTrace();
 		}
+		System.out.println(res);
 		return res;
 	}
 

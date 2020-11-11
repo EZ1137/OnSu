@@ -1,11 +1,13 @@
 package com.kh.onsoo.admin.model.dto;
 
+import java.sql.Date;
+
 public class AdminReportDto {
 
 	private int report_no;
 	private String report_title;
 	private String report_content;
-	private String report_date;
+	private Date report_date;
 	private String report_filename;
 	private String report_id;
 	private String report_ided;
@@ -15,7 +17,7 @@ public class AdminReportDto {
 		
 	}
 
-	public AdminReportDto(int report_no, String report_title, String report_content, String report_date,
+	public AdminReportDto(int report_no, String report_title, String report_content, Date report_date,
 			String report_filename, String report_id, String report_ided, String report_category) {
 		super();
 		this.report_no = report_no;
@@ -52,11 +54,11 @@ public class AdminReportDto {
 		this.report_content = report_content;
 	}
 
-	public String getReport_date() {
+	public Date getReport_date() {
 		return report_date;
 	}
 
-	public void setReport_date(String report_date) {
+	public void setReport_date(Date report_date) {
 		this.report_date = report_date;
 	}
 

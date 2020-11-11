@@ -8,22 +8,27 @@ public class ReportDto {
 	private String report_title;
 	private String report_content;
 	private Date report_date;
+	private String report_filename;
 	private String report_id;
 	private String report_ided;
+	private String report_category;
+
 
 	public ReportDto() {
 		// default constructor
 	}
 
-	public ReportDto(int report_no, String report_title, String report_content, Date report_date, String report_id,
-			String report_ided) {
+	public ReportDto(int report_no, String report_title, String report_content, Date report_date, String report_filename,String report_id,
+			String report_ided, String report_category) {
 		super();
 		this.report_no = report_no;
 		this.report_title = report_title;
 		this.report_content = report_content;
 		this.report_date = report_date;
+		this.report_filename = report_filename;
 		this.report_id = report_id;
 		this.report_ided = report_ided;
+		this.report_category = report_category;
 	}
 
 	public int getReport_no() {
@@ -57,7 +62,15 @@ public class ReportDto {
 	public void setReport_date(Date report_date) {
 		this.report_date = report_date;
 	}
+	
+	public String getReport_filename() {
+		return report_filename;
+	}
 
+	public void setReport_filename(String report_filename) {
+		this.report_filename = report_filename;
+	}
+	
 	public String getReport_id() {
 		return report_id;
 	}
@@ -73,5 +86,12 @@ public class ReportDto {
 	public void setReport_ided(String report_ided) {
 		this.report_ided = report_ided;
 	}
+	
+	public String getReport_category() {
+		return report_category;
+	}
 
+	public void setReport_category(String report_category) {
+		this.report_category = report_category;
+	}
 }

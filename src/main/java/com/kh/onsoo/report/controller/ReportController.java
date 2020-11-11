@@ -4,9 +4,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -19,6 +22,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,10 +40,15 @@ public class ReportController {
 	@Autowired
 	private AdminBiz adminBiz;
 
-	private static final Logger logger = LoggerFactory.getLogger(ReportController.class);
-
 	@Autowired
 	private ReportBiz reportBiz;
+	
+	private static final Logger logger = LoggerFactory.getLogger(ReportController.class);
+
+	//이게 지금 없음 bean에 추가 완료
+	@Resource(name = "reportuploadPath")
+	private String reportuploadPath;
+	
 
 	@RequestMapping(value = "/reportinsert.do")
 	public String insertForm(Model model, Principal principal) {
@@ -64,12 +73,13 @@ public class ReportController {
 	}
 
 	@RequestMapping(value = "/reportinsretres.do", method = RequestMethod.POST)
-	public String reportInsert(Model model, ReportDto dto, @RequestParam("file") MultipartHttpServletRequest multifile, HttpServletRequest request) throws IOException {
+	public String reportInsert(@RequestParam("file")Model model, MultipartFile file, HttpServletRequest request) throws IOException {
+		System.out.println("res오냐");
+
+//		List<MultipartFile> fileList = multifile.getFiles("file");
+//		List<ReportDto> list = new ArrayList<ReportDto>();
+		String filename = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
 		
-		int res = reportBiz.insert(dto);
-
-		List<MultipartFile> fileList = multifile.getFiles("file");
-
 		try {
 
 			String path = WebUtils.getRealPath(request.getSession().getServletContext(), "/resources/storage");
@@ -81,22 +91,42 @@ public class ReportController {
 				storage.mkdir();
 			}
 
-			for (MultipartFile file : fileList) {
-				String filename = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
-
-				if (file.getSize() != 0) {
-					File target = new File(path, filename);
-					FileCopyUtils.copy(file.getBytes(), target);
-				}
+//			for (MultipartFile file : fileList) {
+//				ReportDto reportDto = null;
+//				String filename = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
+//
+//				if (file.getSize() != 0) {
+//					File target = new File(path, filename);
+//					FileCopyUtils.copy(file.getBytes(), target);
+//				}
+//				int report_no = 0;
+//				String report_title = "";
+//				String report_content = "";
+//				Date report_date = null;
+//				String report_filename = path + "/" + filename;
+//				String report_id = "";
+//				String report_ided = "";
+//				String report_category = "";
+//				reportDto = new ReportDto(report_no, report_title, report_content, report_date, report_filename, report_id, report_ided, report_category);
+//				list.add(reportDto);
+//			}
+			if(file.getSize() != 0) {
+				File target = new File(path, filename);
+				FileCopyUtils.copy(file.getBytes(), target);
+				System.out.println();
 			}
 		} catch (FileNotFoundException e) {
 
 			e.printStackTrace();
 		}
-		if (res > 0) {
-			return "redirect:main.do";
-		}
-
-		return "reportinsert";
+		
+//		int res = reportBiz.insert(list);
+//		
+//		if (res > list.size()) {
+//			return "redirect:main.do";
+//		}
+//		logger.info("응 안됨");
+		
+		return "redirect:main.do";
 	}
 }

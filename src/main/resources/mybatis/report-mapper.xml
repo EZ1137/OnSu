@@ -10,6 +10,7 @@
 		<result property="report_filename" column="REPORT_FILENAME"/>
 		<result property="report_id" column="REPORT_ID"/>
 		<result property="report_ided" column="REPORT_IDED"/>
+		<result property="report_category" column="REPORT_CATEGORY"/>
 	</resultMap>
 	
 	<select id="selectList" resultMap="AdminReportDtoMap">
@@ -22,9 +23,20 @@
 		WHERE REPORT_NO = #{report_no}
 	</select>
 	
-	<select id="insert" parameterType="AdminReportDto">
-		INSERT INTO REPORT
-		VALUES(REPORT_SEQ.NEXTVAL,#{report_content},SYSDATE,NULL,#{report_id},#{report_ided},#{report_category} )
-	</select>
+	<insert id="insert" parameterType="java.util.List">
+		INSERT INTO REPORT		
+		VALUES(REPORT_SEQ.NEXTVAL,NULL,#{report_content},SYSDATE,#{report_filename},#{report_id},#{report_ided},#{report_category} )
+	</insert>
+
+	<!-- <insert id="insert" parameterType="java.util.List"> 
 	
+		INSERT INTO CLASSIMAGE(image_no, image_directory, class_no)
+		SELECT IMAGESEQ.NEXTVAL AS image_no, A.* FROM(
+		<foreach collection="list" item="i" separator="UNION ALL">
+			SELECT #{i.image_directory} as image_directory,
+				   #{i.class_no} as class_no
+			from dual
+		</foreach>
+		)A
+	</insert>  -->
 </mapper>

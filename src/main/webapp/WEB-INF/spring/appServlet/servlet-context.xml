@@ -55,6 +55,11 @@
 	<beans:bean id="uploadPath" class="java.lang.String">
 		<beans:constructor-arg value=""/> <!-- 배포 후 경로 입력할 부분 -->
 	</beans:bean>
+	
+	<!-- 신고 파일 업로드를 위한 디렉토리 설정 -->
+	<beans:bean id="reportuploadPath" class="java.lang.String">
+		<beans:constructor-arg value=""/>
+	</beans:bean>
    
 </beans:beans>
    
