@@ -65,7 +65,7 @@ video {
 					</div> -->
 					<div class="first-wrapper">
 						<video muted autoplay loop>
-							<source src="${pageContext.request.contextPath}/resources/video/Pencil.mp4" type="video/mp4">
+							<source src="${pageContext.request.contextPath}/resources/video/Coffee.mp4" type="video/mp4">
 						</video>
 						<div class="maintext">
 							<div class="maintTitle">온수 : 따뜻한 온라인 수업</div>
