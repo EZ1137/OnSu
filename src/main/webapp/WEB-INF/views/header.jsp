@@ -58,7 +58,12 @@
 							</a>
 						</li>
 						</sec:authorize>
+						
 							<sec:authorize access="hasRole('USER')">
+							<li>
+									<sec:authentication property="principal.username" var="user_id"  />
+									<div id="user_id">안녕하세요. ${user_id}</div>
+							</li>
 							<li>
 									<span class="login">
 										<form:form action="${pageContext.request.contextPath}/logout" method="POST">
