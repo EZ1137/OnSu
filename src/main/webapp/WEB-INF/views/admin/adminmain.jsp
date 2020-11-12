@@ -20,7 +20,7 @@
 		</div>
 		
 		<div id="first_area">
-			<div class="first_table_all" onclick="location.href='memberlist.do'">
+			<div class="first_table_all" onclick="location.href='<c:url value="admin/memberlist.do"/>'">
 				<p class="first_table_name">전체 회원 조회</p>
 				<table class="admin_first_table">
 					<col width="25%"/>

@@ -2,50 +2,35 @@ package com.kh.onsoo.report.model.dto;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class ReportDto {
 
-	private int report_no;
-	private String report_title;
 	private String report_content;
 	private Date report_date;
-	private String report_filename;
+	private String report_savename;
 	private String report_id;
 	private String report_ided;
 	private String report_category;
-
+	
+	private MultipartFile report_filename;
 
 	public ReportDto() {
 		// default constructor
 	}
 
-	public ReportDto(int report_no, String report_title, String report_content, Date report_date, String report_filename,String report_id,
+	public ReportDto(String report_content, String report_savename, Date report_date, MultipartFile report_filename, String report_id,
 			String report_ided, String report_category) {
 		super();
-		this.report_no = report_no;
-		this.report_title = report_title;
 		this.report_content = report_content;
 		this.report_date = report_date;
+		this.report_savename = report_savename;
 		this.report_filename = report_filename;
 		this.report_id = report_id;
 		this.report_ided = report_ided;
 		this.report_category = report_category;
 	}
 
-	public int getReport_no() {
-		return report_no;
-	}
-
-	public void setReport_no(int report_no) {
-		this.report_no = report_no;
-	}
-
-	public String getReport_title() {
-		return report_title;
-	}
-
-	public void setReport_title(String report_title) {
-		this.report_title = report_title;
-	}
 
 	public String getReport_content() {
 		return report_content;
@@ -63,11 +48,19 @@ public class ReportDto {
 		this.report_date = report_date;
 	}
 	
-	public String getReport_filename() {
+	public String getReport_savename() {
+		return report_savename;
+	}
+	
+	public void setReport_savename(String report_savename) {
+		this.report_savename = report_savename;
+	}
+	
+	public MultipartFile getReport_filename() {
 		return report_filename;
 	}
 
-	public void setReport_filename(String report_filename) {
+	public void setReport_filename(MultipartFile report_filename) {
 		this.report_filename = report_filename;
 	}
 	

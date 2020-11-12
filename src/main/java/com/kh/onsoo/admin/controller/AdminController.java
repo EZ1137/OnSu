@@ -29,10 +29,10 @@ public class AdminController {
 		model.addAttribute("list", abiz.selectList());
 		model.addAttribute("teacherlist", abiz.teacherList());
 		model.addAttribute("reportlist",rbiz.selectList());
-		return "adminmain";
+		return "admin/adminmain";
 	}
 	
-	@RequestMapping("/memberlist.do")
+	@RequestMapping(value="admin/memberlist.do", method = RequestMethod.GET)
 	public String MemberselectList(Model model) {
 		logger.info("AdminController memberselectList");
 		model.addAttribute("list",abiz.selectList());
@@ -45,7 +45,7 @@ public class AdminController {
 		logger.info("AdminController reviewselectList");
 		model.addAttribute("list",abiz.selectList());
 		
-		return "reviewlist";
+		return "admin/reviewlist";
 	}
 	
 	@RequestMapping("/reviewdetail.do")
@@ -53,7 +53,7 @@ public class AdminController {
 		logger.info("AdminController reviewdetail");
 		AdminDto dto = abiz.selectOne(member_id);
 		model.addAttribute("dto",dto);
-		return "reviewdetail";
+		return "admin/reviewdetail";
 	}
 	
 	@RequestMapping(value="/reviewupdate.do",method = {RequestMethod.GET, RequestMethod.POST})
