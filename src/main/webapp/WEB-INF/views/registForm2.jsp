@@ -85,7 +85,8 @@
 							<tr>
 								<th class="registLabel">ID</th>
 								<td>
-									<input class="onRegist" type="text" name="member_id" id="memberid" required="required" placeholder="아이디를 입력해주세요" value="${dto.member_id }">
+									<!-- readonly 다시 넣음! -->
+									<input class="onRegist" type="text" name="member_id" id="memberid" required="required" placeholder="아이디를 입력해주세요" readonly="readonly" value="${dto.member_id }">
 									<p id="id_chk"></p>
 								</td>
 								<td colspan="4">
@@ -135,6 +136,7 @@
 									<input class="onRegist" type="email" name="member_email" id="memberemail" placeholder="이메일을 입력해주세요" required="required" value="${dto.member_email}"/> 
 								</td>
 								<td colspan="2">
+								<!-- 이메일 중복 확인 없앨거면 여기 있는 input 4개 다 지우면 됨! -->
 									<input class="registbtn" type="button" onclick="emailchk();" value="중복 확인"/>
 									<input class="onRegist" type="text" id="randomchk" onkeyup="codechk();" placeholder="인증번호 입력" style="width:90px;" required="required"/>
 									<input type="hidden" pattern="random" id="random"/>	
