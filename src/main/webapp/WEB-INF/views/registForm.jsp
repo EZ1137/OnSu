@@ -6,11 +6,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>onsoo 회원가입</title>
+<title>On:Soo - Sign Up</title>
 
 <!--다음 api 주소 같이 있어야 사용가능   -->
-<script
-	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
 	function sample6_execDaumPostcode() {
 		new daum.Postcode(
@@ -61,143 +60,119 @@
 				}).open();
 	}
 </script>
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type="text/javascript" src="resources/js/registForm.js">
-	
-</script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="resources/js/registForm.js"></script>
+<link href="${pageContext.request.contextPath}/resources/css/registform.css" rel="stylesheet">
 </head>
-<link
-	href="${pageContext.request.contextPath}/resources/css/registform.css"
-	rel="stylesheet">
 <body>
+
 	<!-- header -->
 	<header id="header">
 		<%@ include file="/WEB-INF/views/header.jsp"%>
 	</header>
+	
 	<section>
 		<div id="content">
-
-
 			<div id="registform">
-				<div>
-					<div class="registTitle">OnSoo: 회원가입</div>
-				</div>
+				<p class="registTitle">On:Soo 회원가입</p>
 				<c:url value="/regist.do" var="addUserUrl" />
 				<form:form action="${addUserUrl}" method="POST">
-					<div class="generalRegist">
-						<div>
-							<div class="registLabel">아이디</div>
-							<div>
-								<input class="onRegist" type="text" name="member_id"
-									id="memberid" required="required" placeholder="아이디를 입력해주세요">
-								<input class="registbtn" type="button" onclick="idchk();"
-									value="중복확인" />
-								<p id="id_chk"></p>
-							</div>
-						</div>
-						<div>
-							<div class="registLabel">비밀번호</div>
-							<div>
-								<input class="onRegist" type="password" id="password1"
-									name="member_pw" placeholder="비밀번호 입력해주세요" required="required"
-									maxlength="15">
-							</div>
-						</div>
-						<div>
-							<div class="registLabel">비밀번호확인</div>
-							<div>
-								<input class="onRegist" type="password" id="password2"
-									placeholder="비밀번호 확인해주세요" maxlength="15" required="required"
-									onkeyup="fn_compare_pwd();">
-							</div>
-						</div>
-
-						<div id="s_result" style="color: #fe5f55;">비밀번호가 일치하지 않습니다.</div>
-
-						<div>
-							<div class="registLabel">이름</div>
-							<div>
-								<input class="onRegist" type="text" name="member_name"
-									required="required" placeholder="이름을 입력해주세요">
-							</div>
-						</div>
-						<div>
-							<div class="registLabel">생년월일</div>
-							<div>
-								<input class="onRegist" type="date" name="member_birth"
-									required="required" id="member_birth">
-							</div>
-						</div>
-						<div>
-							<div class="registLabel">성별</div>
-							<div>
-								남<input type="radio" name="member_gender" value="M" /> 여<input
-									type="radio" name="member_gender" value="F" />
-							</div>
-						</div>
-						<div>
-							<div class="registLabel">핸드폰번호</div>
-							<div>
-								<input class="onRegist" type="text"
-									onKeyup="inputPhoneNumber(this);" name="member_phone"
-									maxlength="13" style="text-align: center;" />
-							</div>
-						</div>
-						<div>
-							<div class="registLabel">이메일</div>
-							<div>
-								<input class="onRegist" type="email" name="member_email"
-									id="memberemail" required="required"> <input
-									class="registbtn" type="button" onclick="emailchk();"
-									value="중복확인">
-								<input type="text" id="randomchk" onkeyup="codechk();" 
-								placeholder="인증번호를 입력해주세요" required="required">
-								<input type="hidden" pattern="random" id="random" >	
-							</div>
-						</div>
-						<div>
-							<div class="text-center">주소</div>
-							<div>
-								<input class="onRegist" type="text" id="sample6_postcode"
-									class="addr1" name="member_addr" placeholder="우편번호"
-									readonly="readonly"> <input class="registbtn"
-									type="button" onclick="sample6_execDaumPostcode();"
-									id="daumaddr" value="우편번호 찾기"> <input class="onRegist"
-									type="text" id="sample6_address" class="addr1"
-									name="member_addr" placeholder="주소" readonly="readonly">
-								<input class="onRegist" type="text" id="sample6_detailAddress"
-									class="addr1" name="member_addr" placeholder="상세주소"
-									required="required">
-							</div>
-
-						</div>
-						<div class="registBottom">
-							<div>
-								<button class="submitbtn" id="submit" type="submit">가입하기</button>
-							</div>
-							<div>
-							<!--a태그를 button으로 바꾸고 싶었는데 url value몰라서 그냥 뒀어요!  -->
-								<a class="cancletbtn" href="<c:url value="/main.do" />">취소</a>
-							</div>
-						</div>
-					</div>
-
+					<table class="generalRegist">
+						<colgroup>
+							<col width="10%"/>
+							<col width="20%"/>
+							<col width="15%"/>
+							<col width="20%"/>
+							<col width="10%"/>
+							<col width="25%"/>
+						</colgroup>
+						<tbody>
+							<tr>
+								<th class="registLabel">ID</th>
+								<td>
+									<input class="onRegist" type="text" name="member_id" id="memberid" required="required" placeholder="아이디를 입력해주세요"/>
+									<p id="id_chk"></p>
+								</td>
+								<td colspan="4">
+									<input class="registbtn" type="button" onclick="idchk();" value="중복 확인"/>
+								</td>
+							</tr><tr><td colspan="6" class="line_height"></td></tr>
+							
+							<tr>
+								<th class="registLabel">비밀번호</th>
+								<td>
+									<input class="onRegist" type="password" id="password1" name="member_pw" placeholder="비밀번호를 입력해주세요" required="required" maxlength="15"/>
+								</td>
+								<th class="registLabel">비밀번호 확인</th>
+								<td>
+									<input class="onRegist" type="password" id="password2" name="member_pw_chk" placeholder="비밀번호를 확인해주세요" maxlength="15" required="required" onkeyup="fn_compare_pwd();"/>
+								</td>
+								<td colspan="2">
+									<p id="s_result" style="color:#fe5f55;"></p>
+								</td>
+							</tr><tr><td colspan="6" class="line_height"></td></tr>
+							
+							<tr>
+								<th class="registLabel">이름</th>
+								<td>
+									<input class="onRegist" type="text" name="member_name" required="required" placeholder="이름을 입력해주세요"/>
+								</td>
+								<th class="registLabel">생일</th>
+								<td>
+									<input class="onRegist" type="date" name="member_birth" required="required" id="member_birth"/>
+								</td>
+								<th class="registLabel">성별</th>
+								<td style="display:flex; padding-left:4px;">
+									<p class="genderLabel">남성</p>
+									<input type="radio" class="radiobtn" name="member_gender" value="M"/> 
+									<p class="genderLabel">여성</p>
+									<input type="radio" class="radiobtn" name="member_gender" value="F"/>
+								</td>
+							</tr><tr><td colspan="6" class="line_height"></td></tr>
+							
+							<tr>
+								<th class="registLabel">연락처</th>
+								<td>
+									<input class="onRegist" type="text" onKeyup="inputPhoneNumber(this);" placeholder="전화번호를 입력해주세요" name="member_phone" maxlength="13" style="text-align: center;"/>
+								</td>
+								<th class="registLabel">EMAIL</th>
+								<td>
+									<input class="onRegist" type="email" name="member_email" id="memberemail" placeholder="이메일을 입력해주세요" required="required"/> 
+								</td>
+								<td colspan="2">
+									<input class="registbtn" type="button" onclick="emailchk();" value="중복 확인"/>
+									<input class="onRegist" type="text" id="randomchk" onkeyup="codechk();" placeholder="인증번호 입력" style="width:90px;" required="required"/>
+									<input type="hidden" pattern="random" id="random"/>	
+									<input class="onRegist" type="text" id="e_result" style="color:#fe5f55; border:none; width:60px;" readonly="readonly"/>
+								</td>
+							</tr><tr><td colspan="6" class="line_height"></td></tr>
+							
+							<tr>
+								<th class="registLabel">주소</th>
+								<td colspan="3">
+									<input class="onRegist" type="text" onclick="sample6_execDaumPostcode();" id="sample6_postcode" class="addr1" name="member_addr" style="width:100px;" placeholder="우편번호" readonly="readonly"/> 
+									<input class="onRegist" type="text" onclick="sample6_execDaumPostcode();" id="sample6_address" class="addr1" name="member_addr" placeholder="주소" readonly="readonly"/>
+									<input class="onRegist" type="text" onclick="sample6_execDaumPostcode();" id="sample6_detailAddress" class="addr1" name="member_addr" placeholder="상세주소" required="required"/>
+								</td>
+								<td colspan="2">
+									<input class="registbtn" type="button" onclick="sample6_execDaumPostcode();" id="daumaddr" value="우편번호 찾기"/> 
+								</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr class="registBottom">
+								<td colspan="6" style="padding-top:40px;">
+									<input type="reset" class="resetbtn" id="reset" value="RESET" onclick="reset_res();"/>
+									<input type="submit" class="submitbtn" id="submit" value="JOIN"/>
+									<input type="button" class="cancletbtn" id="cancle" onclick="location.href='<c:url value="/main.do"/>'" value="BACK"/>
+								</td>
+							</tr>
+						</tfoot>
+					</table>
 				</form:form>
 			</div>
-
-
 		</div>
 	</section>
-
-
-	<!-- footer -->
-	<footer id="footerarea" class="area">
-		<%@ include file="/WEB-INF/views/footer.jsp"%>
-	</footer>
-
-
-
-
+	
 </body>
 </html>
