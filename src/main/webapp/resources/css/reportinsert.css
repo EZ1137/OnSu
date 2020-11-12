@@ -65,7 +65,7 @@ section {
 .report_box {
 	margin: 20px auto;
 	width: 70%;
-	height:80vh;
+	height:75vh;
 	float: center;
 	padding: 20px;
 	background-color: var(--color-white);

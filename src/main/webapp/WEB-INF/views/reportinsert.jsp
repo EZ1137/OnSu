@@ -19,15 +19,15 @@
 	href="${pageContext.request.contextPath}/resources/css/reportinsert.css?after"
 	rel="stylesheet">
 <script>
-	//window.onload = function() {
-		//ck = CKEDITOR
-			//	.replace(
-				//		"editor1",
-					//	{
-						//	filebrowserImageUploadUrl : '${pageContext.request.contextPath}/reportinsertres.do',
-							//customConfig : '${pageContext.request.contextPath}/js/lib/ckeditor/config_oboe.js'
-						//});
-//	};
+	window.onload = function() {
+		ck = CKEDITOR
+			.replace(
+				"editor1",
+		{
+			filebrowserImageUploadUrl : '${pageContext.request.contextPath}/reportinsertres.do',
+			customConfig : '${pageContext.request.contextPath}/js/lib/ckeditor/config_oboe.js'
+		});
+	};
 </script>
 </head>
 <body>
@@ -77,7 +77,7 @@
 							<div class="report title">
 								신고내용
 								<div>
-									<textarea name="report_content" id="editor1" rows="10" cols="80"></textarea>
+									<textarea name="report_content" id="editor1" rows="8" cols="80"></textarea>
 									<input type="file" value="파일 선택" name="report_filename"/>
 									<input class="reportbtn" type="submit" value="신고 제출" required>
 								</div>
