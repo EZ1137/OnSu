@@ -138,9 +138,9 @@
 	</section>
 
 	<!-- footer -->
-	<footer id="footerarea" class="area">
+
 		<%@ include file="/WEB-INF/views/footer.jsp"%>
-	</footer>
+
 
 </body>
 </html>
