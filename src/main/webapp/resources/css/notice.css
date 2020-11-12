@@ -33,7 +33,7 @@ th ,td{
     color: #ffffff;
   }
   tbody tr:nth-child(2n) {
-    background-color: #7c7979;
+    background-color: #ffffff;
   }
   tbody tr:nth-child(2n+1) {
     background-color: #f7f7ff;

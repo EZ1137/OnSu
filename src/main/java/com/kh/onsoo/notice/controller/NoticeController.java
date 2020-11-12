@@ -19,15 +19,12 @@ public class NoticeController {
 	@Autowired
 	private NoticeBiz noticeBiz;
 	
-	//글 보기
 	@RequestMapping(value = "/notice.do")
 	public String selectList(Model model) {
 		model.addAttribute("notice",noticeBiz.selectList());
 		return "notice";
 	}
 	
-	
-	//글작성
 	@RequestMapping(value = "/noticeForm.do")
 	public String insertForm() {
 		return "noticeinsert";
@@ -43,12 +40,8 @@ public class NoticeController {
 		}else {
 			return "redirect: noticeForm.do";
 		}
-		
 	}
 	
-	
-	
-	//상세보기 
 	@RequestMapping(value = "/noticedetail.do")
 	public String selectOne(Model model, @RequestParam("notice_no") int notice_no) {
 		
@@ -57,13 +50,12 @@ public class NoticeController {
 	}
 	
 	
-	
-	//수정 
 	@RequestMapping(value ="/noticeUpdate.do")
 	public String updateform(Model model, int notice_no) {
 		model.addAttribute("dto",noticeBiz.selectOne(notice_no));
 		return "noticeupdate";
 	}
+	
 	@RequestMapping(value ="/updateRes.do")
 	public String updateRes(NoticeDto dto) {
 		int res = noticeBiz.update(dto);
@@ -76,7 +68,6 @@ public class NoticeController {
 	}
 	
 	
-	//삭제 
 	@RequestMapping(value ="/noticedelete.do" )
 	public String delete (int notice_no) {
 		int res = noticeBiz.delete(notice_no);

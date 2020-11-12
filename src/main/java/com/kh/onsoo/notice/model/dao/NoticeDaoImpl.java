@@ -27,7 +27,6 @@ public class NoticeDaoImpl implements NoticeDao {
 		try {
 			list =sqlSession.selectList(NAMESPACE+"selectList");
 		} catch (Exception e) {
-			logger.info(NAMESPACE+"selectList 오류");
 			
 			e.printStackTrace();
 		}
@@ -43,7 +42,6 @@ public class NoticeDaoImpl implements NoticeDao {
 		try {
 			dto =sqlSession.selectOne(NAMESPACE+"selectOne",notice_no);
 		} catch (Exception e) {
-			logger.info("selectOne 오류 ");
 			e.printStackTrace();
 		}
 		
@@ -58,7 +56,6 @@ public class NoticeDaoImpl implements NoticeDao {
 		try {
 			res=sqlSession.insert(NAMESPACE+"insert",dto);
 		} catch (Exception e) {
-			logger.info("insert 오류 ");
 			e.printStackTrace();
 		}
 		return res;
@@ -73,7 +70,6 @@ public class NoticeDaoImpl implements NoticeDao {
 		try {
 			res= sqlSession.update(NAMESPACE+"update",dto);
 		} catch (Exception e) {
-			logger.info("update 오류 ");
 			e.printStackTrace();
 		}
 		
@@ -84,7 +80,11 @@ public class NoticeDaoImpl implements NoticeDao {
 	public int delete(int notice_no) {
 		int res= 0;
 		
-		res=sqlSession.delete(NAMESPACE+"delete",notice_no);
+		try {
+			res=sqlSession.delete(NAMESPACE+"delete",notice_no);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		
 		return res;
