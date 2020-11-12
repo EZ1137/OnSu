@@ -26,6 +26,8 @@
   --font-micro: 14px;
   
   --border-radi: 2px;
+    --box-shadow: 7px 7px 14px #b6b6b6, 
+             -7px -7px 14px #ffffff;
 }
 
 * {
