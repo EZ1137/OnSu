@@ -33,9 +33,18 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="right">
-					<input type="button" value="수정" onclick="location.href='noticeUpdate.do?notice_no=${dto.notice_no}'"/>
-					<input type="button" value="삭제" onclick="location.href='noticedelete.do?notice_no=${dto.notice_no}'"/>
-					<input type="button" value="목록" onclick="location.href='notice.do'"/>
+					
+					<sec:authorize access="hasRole('ADMIN')">
+						<input type="button" value="수정" 
+						onclick="location.href='noticeUpdate.do?notice_no=${dto.notice_no}'"/>
+						<input type="button" value="삭제" 
+						onclick="location.href='noticedelete.do?notice_no=${dto.notice_no}'"/>
+					</sec:authorize>
+					
+					<sec:authorize access="hasRole('USER')">
+						<input type="button" value="목록" 
+						onclick="location.href='notice.do'"/>
+					</sec:authorize>
 				</td>
 			</tr>					
 		</table>

@@ -33,17 +33,11 @@
     		<frame-options policy="SAMEORIGIN"/>
     	</headers>	
     			
+        <intercept-url pattern="/user/**" access="hasRole('USER')" />
+        <intercept-url pattern="/admin/**" access="hasRole('ADMIN')" />
         <intercept-url pattern="/login/loginForm.do" access="permitAll" />
         <intercept-url pattern="/main.do" access="permitAll" />
         <intercept-url pattern="/**" access="permitAll" />
-        
-        <!--member만  -->
-        <intercept-url pattern="/user/**" access="hasRole('USER')" />
-        
-        <!-- admin 만   -->
-        <intercept-url pattern="/admin/**" access="hasRole('ADMIN')" />
-        
-        
         <!--로그인 설정   -->
         <form-login login-page="/login/loginForm.do"
                     default-target-url="/main.do"
@@ -57,13 +51,6 @@
        default-target-url 로그인에 성공하면 보내줄 페이지 
        authentication-failure-url 로그인에 실패하면 보내줄 페이지 
        --> 
-        
-        
-        
-        
-        
-        
-        
         <!-- 로그아웃 설정   -->
         <logout logout-url="/logout"
                 logout-success-url="/main.do"
@@ -75,7 +62,6 @@
          invalidate-session 세션 삭제여부
          delete-cookies 쿠키 삭제 여부 
            --> 
-          
           <!--권한이 없어서 금지된 URI 접속할떄 보여줄 페이지   -->      
         <access-denied-handler error-page="/login/accessDenied.do" />
         
@@ -83,11 +69,8 @@
         <intercept-url pattern="/loginView" access="isAnonymous()" />
 		<intercept-url pattern="/registerUserView" access="isAnonymous()" />
         -->
-        
-        
         <!--csrf 값 활용하겠다.  -->
         <csrf disabled="true" />
-        
 		<!--  세션이 풀릴 경우 가게되는 url-->
 		<session-management invalid-session-url="/main.do">
 			<!-- 
@@ -100,8 +83,6 @@
 								 error-if-maximum-exceeded="true" />					 
 		
 		</session-management>        
-        
-        
     </http>
     
     <!--db 연동 설정  -->
