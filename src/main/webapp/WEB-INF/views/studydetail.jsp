@@ -125,7 +125,7 @@
 					<button class="btn btn-primary"
 						onclick="location.href='#'">찜</button>
 					<button class="btn btn-primary"
-						onclick="location.href='#'">수강신청</button>
+						onclick="location.href='rtcConnection.do?class_no=${studyDto.class_no}'">수강신청</button>
 				</div>
 			</div>
 		</div>
