@@ -27,5 +27,19 @@ public class ReportDaoImpl implements ReportDao {
 		}
 		return res;
 	}
+	
+	
+	@Override
+	public ReportDto selectOne(String report_id) {
+		ReportDto res = null;
+		
+		try {
+			res = sqlSession.selectOne(NAMESPACE+"reportOne",report_id);
+		} catch (Exception e) {
+			logger.info("selectOne 에러 ");
+			e.printStackTrace();
+		}
+		return res;
+	}
 
 }

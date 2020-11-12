@@ -7,4 +7,6 @@ public interface ReportDao {
 	String NAMESPACE = "com.onsoo.admin.reportboard.";
 	
 	public int insert(ReportDto dto);
+	
+	public ReportDto selectOne(String report_id);
 }

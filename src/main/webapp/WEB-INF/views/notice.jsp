@@ -20,10 +20,10 @@
 <section class="section">
 			<h1 id="qnatitle">공지사항페이지입니다</h1>
 			<table id="notice" class="" style="text-align: center;">
-				<col width="100"/>
-				<col width="150"/>
-				<col width="300"/>
+				<col width="200"/>
 				<col width="250"/>
+				<col width="500"/>
+				<col width="350"/>
 				<tr>
 					<th scope="col" class="">번호</th>
 					<th scope="col" class="">작성자</th>
@@ -42,7 +42,7 @@
 							<td>${dto.notice_no}</td>
 							<td>관리자</td>
 							<td><a href="noticedetail.do?notice_no=${dto.notice_no}" style="color:black;"> ${dto.notice_title}</a></td>
-							<td><fmt:formatDate value="${dto.notice_date}" pattern="yyyy-MM-dd" /></td>
+							<td><fmt:formatDate value="${dto.notice_regdate}" pattern="yyyy-MM-dd" /></td>
 						</tr>
 					</c:forEach>
 				</c:otherwise>

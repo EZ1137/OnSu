@@ -47,11 +47,12 @@ a{
 }
 
 #notice{
-	width: 50%;
-	margin: 0 auto;
+	width: 100%;
+	padding-left: 18%;
 }
 #qnalist{
-	text-align:center
-	 
+	text-align:center;
+	height: 20%;
+	padding-bottom: 5%; 
 }
 
