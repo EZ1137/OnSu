@@ -81,15 +81,18 @@ public class SnsLoginController {
 			JSONObject jsonObj = (JSONObject)obj;
 			JSONObject resObj = (JSONObject)jsonObj.get("response");
 			
-			//id , email , 생년월일 
+			//id , email , 생년월일
 			String codename = (String)resObj.get("id");
 			String email = (String)resObj.get("email");
 			String name = (String)resObj.get("name");
+			String birth = (String)resObj.get("birth");
 			
 			AdminDto dto = new AdminDto();
 			
 			dto.setMember_id(email);
 			dto.setMember_name(name);
+			dto.setMember_email(email);
+			dto.setMember_birth(birth);
 			
 			String naverid = dto.getMember_id();
 			
@@ -101,7 +104,7 @@ public class SnsLoginController {
 				logger.info("아이디가 있을경우");
 				return "/main.do";
 			}else {
-				model.addAttribute("dto",dto);
+				model.addAttribute("dto", dto);
 				logger.info("아이디가 없을경우");
 				//네이버 로그인 성공 페이지 view 호출 
 				return "registForm2";
