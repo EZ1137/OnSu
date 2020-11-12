@@ -45,7 +45,7 @@
 				
 				</table>
 			</div>
-			<div class="second_table_all"  onclick="location.href='<c:url value="admin/reviewlist.do"/>'">
+			<div class="second_table_all"  onclick="location.href='<c:url value="/admin/reviewlist.do"/>'">
 				<p class="second_table_name">강사 인증 신청</p>
 				<table class="admin_second_table">
 					<col width="25%"/>
@@ -73,7 +73,7 @@
 		</div>	
 		
 		<div id="second_area">
-			<div class="third_table_all" onclick="location.href='reportlist.do'">
+			<div class="third_table_all" onclick="location.href='<c:url value="/admin/reportlist.do"/>'">
 				<p class="third_table_name">신고 회원 조회</p>
 				<table class="admin_third_table">
 					<col width="50%"/>
@@ -81,18 +81,18 @@
 					<col width="15%"/>
 					<col width="25%"/>
 					<tr>
-						<th>TITLE</th>
+						<th>CONTENT</th>
 						<th>R.R</th>	<!-- Report Reason -->
-						<th>DATE</th>
 						<th>ID</th>
+						<th>DATE</th>
 					</tr>
 					
 				<c:forEach items="${reportlist }" var="rdto">
 					<tr>
-						<td>${rdto.report_title }</td>
+						<td>${rdto.report_content }</td>
 						<td>${rdto.report_category }</td>
-						<td>${rdto.report_date }</td>
 						<td>${rdto.report_ided }</td>
+						<td>${rdto.report_date }</td>
 					</tr>
 				</c:forEach>
 				

@@ -33,11 +33,11 @@ public class AdminReportDaoImpl implements AdminReportDao {
 	}
 
 	@Override
-	public AdminReportDto selectOne(int report_no) {
+	public AdminReportDto selectOne(String report_id) {
 		AdminReportDto dto = new AdminReportDto();
 		
 		try {
-			dto = sqlSession.selectOne(NAMESPACE + "selectOne",report_no);
+			dto = sqlSession.selectOne(NAMESPACE + "selectOne",report_id);
 		} catch (Exception e) {
 			logger.info("ReportDaoImpl selectOne[error]");
 			e.printStackTrace();

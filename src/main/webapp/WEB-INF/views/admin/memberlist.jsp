@@ -39,6 +39,6 @@
 				</tr>
 			</c:forEach>
 	</table>
-	<input type="button" value="관리자페이지 메인이동" onclick="location.href='admin.do'">
+	<input type="button" value="관리자 메인페이지" onclick="location.href='<c:url value="/admin/admin.do"/>'">
 </body>
 </html>

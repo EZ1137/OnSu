@@ -18,22 +18,22 @@ public class AdminReportController {
 	
 	private Logger logger = LoggerFactory.getLogger(AdminReportController.class);
 	
-	@RequestMapping("/reportlist.do")
+	@RequestMapping("admin/reportlist.do")
 	public String selectList(Model model) {
 		logger.info("ReportController selectList");
 		
 		model.addAttribute("reportlist", biz.selectList());
 		
-		return "report";
+		return "admin/report";
 	}
 	
-	@RequestMapping("/reportdetail.do")
-	public String detail(Model model, int report_no) {
+	@RequestMapping("admin/reportdetail.do")
+	public String detail(Model model, String report_id) {
 		logger.info("ReportController detail");
 		
-		AdminReportDto dto = biz.selectOne(report_no);
+		AdminReportDto dto = biz.selectOne(report_id);
 		model.addAttribute("dto", dto);
-		return "reportdetail";
+		return "admin/reportdetail";
 	}
 	
 }

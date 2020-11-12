@@ -20,8 +20,8 @@ public class AdminReportBizImpl implements AdminReportBiz {
 	}
 
 	@Override
-	public AdminReportDto selectOne(int report_no) {
-		return dao.selectOne(report_no);
+	public AdminReportDto selectOne(String report_id) {
+		return dao.selectOne(report_id);
 	}
 
 	@Override
