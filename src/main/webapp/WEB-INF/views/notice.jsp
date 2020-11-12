@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,9 +19,7 @@
 
 <section class="section">
 			<h1 id="qnatitle">공지사항페이지입니다</h1>
-		<form id="notice" action="" method="post">
-			<input type="hidden" name="" value=""/>
-			<table  class="" style="text-align: center;">
+			<table id="notice" class="" style="text-align: center;">
 				<col width="100"/>
 				<col width="150"/>
 				<col width="300"/>
@@ -43,7 +42,7 @@
 							<td>${dto.notice_no}</td>
 							<td>관리자</td>
 							<td><a href="noticedetail.do?notice_no=${dto.notice_no}" style="color:black;"> ${dto.notice_title}</a></td>
-							<td>${dto.notice_date}</td>
+							<td><fmt:formatDate value="${dto.notice_date}" pattern="yyyy-MM-dd" /></td>
 						</tr>
 					</c:forEach>
 				</c:otherwise>
@@ -59,12 +58,13 @@
 						</td>
 					</tr>
 					<tr>
+						<sec:authorize access="hasRole('ADMIN')">
 						<td colspan="4" align="right">
 							<input type="button" value="글작성" onclick="location.href='noticeForm.do'"/>
 						</td>
+						</sec:authorize>
 					</tr>
 			</table>
-		</form>			
 	</section>
 	
 	<!-- footer -->

@@ -1,11 +1,13 @@
 package com.kh.onsoo.notice.model.dto;
 
+import java.util.Date;
+
 public class NoticeDto {
 	
 	private int notice_no;
 	private String notice_title;
 	private String notice_content;
-	private String notice_date;
+	private Date notice_date;
 	
 	
 	public NoticeDto() {
@@ -21,7 +23,7 @@ public class NoticeDto {
 	
 	
 	
-	public NoticeDto(int notice_no, String notice_title, String notice_content, String notice_date) {
+	public NoticeDto(int notice_no, String notice_title, String notice_content, Date notice_date) {
 		super();
 		this.notice_no = notice_no;
 		this.notice_title = notice_title;
@@ -48,10 +50,10 @@ public class NoticeDto {
 	public void setNotice_content(String notice_content) {
 		this.notice_content = notice_content;
 	}
-	public String getNotice_date() {
+	public Date getNotice_date() {
 		return notice_date;
 	}
-	public void setNotice_date(String notice_date) {
+	public void setNotice_date(Date notice_date) {
 		this.notice_date = notice_date;
 	}
 	

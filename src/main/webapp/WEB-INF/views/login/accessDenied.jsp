@@ -19,10 +19,11 @@
 <!-- 내용 입력  -->
 <section>
 
-<h1>Access Denied!</h1>
-
-<h3>[<a href="<c:url value="/main.do" />">메인페이지</a>]</h3>
-
+		<div id="access">
+			<h1>접속 권한이 없습니다 </h1>
+			
+			<h3>[<a href="<c:url value="/main.do" />">메인페이지</a>]</h3>
+		</div>
 </section>
 
 
