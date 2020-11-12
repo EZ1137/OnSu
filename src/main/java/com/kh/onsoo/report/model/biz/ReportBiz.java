@@ -7,5 +7,5 @@ public interface ReportBiz {
 
 	public int insert (ReportDto dto);
 	
-	
+	public ReportDto selectOne(String report_id);
 }

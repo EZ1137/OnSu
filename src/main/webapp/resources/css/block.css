@@ -1,0 +1,16 @@
+#block_box{
+	
+	padding-left: 5%;
+	padding-top: 10%;
+	padding-bottom: 20%;
+		
+	
+}
+h1{
+	text-align: center;
+}
+
+#block_box_content{
+	padding-top: 50px;
+	text-align: center;
+}
