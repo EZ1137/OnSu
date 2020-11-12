@@ -17,9 +17,10 @@ function delChk(free_no) {
 		location.href="freedelete.do?free_no=${freeboardDto.free_no}";
 	}
 }
-
- 
- 
+function loginAlert() {
+	alert("로그인 해주세요");
+	location.href = "${pageContext.request.contextPath}/login/loginForm.do";
+}
 </script>
 </head>
 <body>
@@ -82,13 +83,20 @@ function delChk(free_no) {
 		<!-- 댓글  -->
 		<div class="replycontainer">
 		<div class="container">
-			<label for="content">comment</label>
+			<label for="content"></label>
 			<form name="replyInsertForm">
 				<div class="input-group">
 					<input type="hidden" name="reply_boardno" value="${freeboardDto.free_no}" />
-					<input type="text" class="form-control" id="reply_title" name="reply_title" placeholder="내용을 입력하세요.">
+					<input type="text" class="form-control" id="reply_title" name="reply_title" placeholder="댓글을 입력하세요.">
 					<span class="input-group-btn">
+					<c:choose>
+							<c:when test="${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username ne null }">
 						<button class="btn btn-default" type="button" name="replyInsertBtn">등록</button>
+						</c:when>
+						<c:otherwise>
+						<button onclick="loginAlert()" class="btn btn-default" type="button" name="replyInsertBtn">등록</button>
+						</c:otherwise>
+					</c:choose>
 					</span>
 				</div>
 			</form>
@@ -108,9 +116,9 @@ function delChk(free_no) {
 
 
 	<!-- footer -->
-	<footer id="footerarea" class="area">
+	
 		<%@ include file="/WEB-INF/views/footer.jsp"%>
-	</footer>
+
 
 
 </body>

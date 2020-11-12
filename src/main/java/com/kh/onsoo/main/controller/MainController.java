@@ -181,7 +181,7 @@ public class MainController {
 				sb.append("귀하의 인증 코드는 "+ran+"입니다.");
 				System.out.println(res+"컨트롤러 res 값 확인 ");
 				
-				if(res != 0) {
+				if(res == 0) {
 					
 					logger.info("이메일 발송");
 					mailService.send(subject, sb.toString(), 
@@ -265,8 +265,8 @@ public class MainController {
 					
 				}else {
 						logger.info("비밀번호 초기화 실패");
-					 model.addAttribute("msg", "해당하는 계정이 없습니다 \n 다시입력해주세요");
-					 model.addAttribute("url","/idpwFind.do");
+					model.addAttribute("msg","정보를 다시입력해주세요");	
+					model.addAttribute("url","/idpwFind.do");
 					return "redirect";
 					
 				}
@@ -327,7 +327,7 @@ public class MainController {
 			}else{
 				
 				model.addAttribute("msg","메일을 다시 입력해주세요");
-				model.addAttribute("url","user/registUdpatechk.do");
+				model.addAttribute("url","/user/registUdpatechk.do");
 				return "redirect";
 			}
 		}
@@ -353,5 +353,44 @@ public class MainController {
 				return "redirect";
 			}
 	 }
+		
+
+		@RequestMapping(value = "block.do", method = RequestMethod.GET)
+		public String block(Principal principal,Model model) {
+			logger.info("block 유저 페이지 이동");
+			model.addAttribute(principal);
+			SecurityContext context = SecurityContextHolder.getContext();
+			Authentication authentication = context.getAuthentication();
+			
+			UserDetails principal1 = (UserDetails)authentication.getPrincipal();
+			String member_id = principal1.getUsername();
+			
+			AdminDto dto = adminBiz.selectOne2(member_id);
+			
+			
+			
+			
+			model.addAttribute("dto",dto);
+			
+			return "block/blockpage";
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	
 }

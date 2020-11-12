@@ -17,4 +17,9 @@ public class ReportBizImpl implements ReportBiz {
 		return reportDao.insert(dto);
 	}
 	
+	@Override
+	public ReportDto selectOne(String report_id) {
+		return reportDao.selectOne(report_id);
+	}
+	
 }

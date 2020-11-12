@@ -68,7 +68,7 @@
 						<div>간단한 가입 후 이용해보세요</div>
 					</div>
 
-					<a href="/registForm.do""><button class="registbtn">가입하러
+					<a href="<c:url value="/registForm.do" />"><button class="registbtn">가입하러
 							가기</button></a>
 				</div>
 			</div>
