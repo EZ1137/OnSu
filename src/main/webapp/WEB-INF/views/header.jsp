@@ -113,6 +113,7 @@
 				<div class="sidenav">
 					<i id="hamburger" class="fas fa-bars fa-2x" onclick="menu()"></i>
 					<div id="mySidenav">
+					
 						<sec:authorize access="isAnonymous()">
 						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/about.do'">A B O U T</p>
 						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}'">V I D E O</p>
