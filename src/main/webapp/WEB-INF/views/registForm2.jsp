@@ -111,7 +111,7 @@
 							<tr>
 								<th class="registLabel">이름</th>
 								<td>
-									<input class="onRegist" type="text" name="member_name" readonly="readonly" required="required" value="${dto.member_name }" />
+									<input class="onRegist" type="text" name="member_name" readonly="readonly" required="required" value="${dto.member_name}"/>
 								</td>
 								<th class="registLabel">생일</th>
 								<td>

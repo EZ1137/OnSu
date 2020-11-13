@@ -29,6 +29,12 @@
   --border-radi: 2px;
 }
 
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 
 section {
 	width: 100%;

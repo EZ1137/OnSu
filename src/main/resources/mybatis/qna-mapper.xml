@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="qna">
+<mapper namespace="com.kh.onsoo.qna">
 
 	<resultMap type="qnadto" id="qnaDtoResultMap">
 		<result property="qnano" column="QNANO"></result>
@@ -29,27 +29,27 @@
 	</select>
 	
 	<!-- 질문 작성 -->
-	<insert id="insert" parameterType="qnadto">
-		INSERT INTO QNA(QNANO, QNAWRITER, QNATITLE, QNAQCONTENT, QNAQREGDATE, QNASECRET, QNARESPONSE, QNAACONTENT, QNAAREGDATE)
-		VALUES(QNANOSEQ.NEXTVAL, #{qnawriter}, #{qnatitle}, #{qnaqcontent}, SYSDATE, 'N', 'N', NULL, SYSDATE)
+	<insert id="insert" parameterType="QnaDto">
+		INSERT INTO QNA
+		VALUES(QNASEQ.NEXTVAL, #{qnawriter}, #{qnatitle}, #{qnaqcontent}, SYSDATE, 'N', 'N', NULL, SYSDATE)
 	</insert>
 	
 	<!-- 비밀글 전환 -->
-	<update id="setsecret" parameterType="qnadto">
+	<update id="setsecret" parameterType="QnaDto">
 		UPDATE QNA
 		SET QNASECRET = 'Y'
 		WHERE QNANO = #{qnano}
 	</update>
 	
 	<!-- 수정 -->
-	<update id="update" parameterType="qnadto">
+	<update id="update" parameterType="QnaDto">
 		UPDATE QNA
 		SET QNATITLE = #{qnatitle}, QNAQCONTENT = #{qnaqcontent}
 		WHERE QNANO = #{qnano}
 	</update>
 	
 	<!-- 답변 -->
-	<update id="answer" parameterType="qnadto">
+	<update id="answer" parameterType="QnaDto">
 		UPDATE QNA
 		SET QNARESPONSE = 'Y', QNAACONTENT = #{qnaacontent}, QNAAREGDATE = SYSDATE
 		WHERE QNANO = #{qnano}
