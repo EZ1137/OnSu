@@ -122,6 +122,7 @@ td {
 	color: var(--color-dark-grey);
 	height: 30px;
 	border: none;
+	cursor: pointer;
 	border-radius: var(--border-radi-btn);
 	box-shadow: var(--btn-shadow);
 }
@@ -130,4 +131,15 @@ td {
 	background-color: var(--color-light-blue);
 	color: var(--color-black);
 	font-weight: bold;
+}
+
+.td_btn {
+	cursor: pointer;
+	background-color: var(--color-light-white);
+	color: var(--color-black);
+}
+
+.td_btn:hover {
+	font-weight: bold;
+	color: var(--color-red);
 }
