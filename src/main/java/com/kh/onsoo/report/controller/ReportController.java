@@ -29,6 +29,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.WebUtils;
 
+import com.kh.onsoo.admin.model.biz.AdminBiz;
+import com.kh.onsoo.admin.model.dto.AdminDto;
 import com.kh.onsoo.report.model.biz.ReportBiz;
 import com.kh.onsoo.report.model.dto.ReportDto;
 
@@ -37,6 +39,8 @@ public class ReportController {
 
 	@Autowired
 	private ReportBiz reportBiz;
+	@Autowired
+	private AdminBiz admibBiz;
 	
 	private static final Logger logger = LoggerFactory.getLogger(ReportController.class);
 
@@ -47,6 +51,8 @@ public class ReportController {
 	@RequestMapping(value = "/reportinsert.do")
 	public String insertForm(Model model, Principal principal) {
 
+		System.out.println(principal);
+			
 		model.addAttribute(principal);
 		// 시큐리티 컨텍스트 객체를 얻습니다.
 		SecurityContext context = SecurityContextHolder.getContext();
@@ -59,7 +65,9 @@ public class ReportController {
 		// authentication에 있는 get Princinpal 객체애 유저정보를 담는다.
 		// 유저객체는 UserDetails를 implement 함
 		String member_id = principal1.getUsername(); // 사용자 이름
-		model.addAttribute("member_id" + member_id);
+		
+		model.addAttribute("member_id", member_id);
+		
 		return "reportinsert";
 	}
 
