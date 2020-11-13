@@ -275,7 +275,7 @@ public class MainController {
 			}
 		
 		//업데이트수정 이메일
-		@RequestMapping(value ="/user/registUdpatechk.do" ,method = RequestMethod.GET)	
+		@RequestMapping(value ="/user/registUpdatechk.do" ,method = RequestMethod.GET)	
 		public String registUpdatechk(Model model ,Principal principal){
 			logger.info("수정전 비밀번호페이지 ");
 			
@@ -290,7 +290,7 @@ public class MainController {
 			System.out.println(dto.getMember_id());
 			
 			model.addAttribute("dto",dto);
-			return "user/registUdpatechk";
+			return "user/registUpdatechk";
 		}
 			
 		//정보수정페이지

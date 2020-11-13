@@ -60,24 +60,24 @@
 						</sec:authorize>
 						
 							<sec:authorize access="hasRole('USER')">
-							<li>
+								<li>
 									<sec:authentication property="principal.username" var="user_id"  />
-									<div id="user_id"> ${user_id}님 안녕하세요</div>
-							</li>
-							<li>
+									<div id="user_id">${user_id}님, 안녕하세요 :)</div>
+								</li>
+								<li>
 									<span class="login">
 										<form:form action="${pageContext.request.contextPath}/logout" method="POST">
     										<input type="submit" id="loginbtn" value="Log Out" />
 										</form:form>
 									</span>
-							</li>
-							<li>
-								<a href="<c:url value="/user/registUdpatechk.do" />">
-									<span class="regist">
-										<button id="registbtn">My Page</button>
-									</span>
-								</a>
-							</li>
+								</li>
+								<li>
+									<a href="<c:url value="/user/registUpdatechk.do" />">
+										<span class="regist">
+											<button id="registbtn">My Page</button>
+										</span>
+									</a>
+								</li>
 							</sec:authorize>
 					
 							<sec:authorize access="hasRole('ADMIN')">
