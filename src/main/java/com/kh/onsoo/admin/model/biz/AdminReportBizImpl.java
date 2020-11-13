@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.onsoo.admin.model.dao.AdminReportDao;
+import com.kh.onsoo.admin.model.dto.AdminDto;
 import com.kh.onsoo.admin.model.dto.AdminReportDto;
 
 @Service
@@ -20,8 +21,8 @@ public class AdminReportBizImpl implements AdminReportBiz {
 	}
 
 	@Override
-	public AdminReportDto selectOne(int report_no) {
-		return dao.selectOne(report_no);
+	public AdminReportDto selectOne(String report_id) {
+		return dao.selectOne(report_id);
 	}
 
 	@Override
@@ -30,7 +31,7 @@ public class AdminReportBizImpl implements AdminReportBiz {
 	}
 
 	@Override
-	public int update(AdminReportDto dto) {
+	public int update(AdminDto dto) {
 		return dao.update(dto);
 	}
 

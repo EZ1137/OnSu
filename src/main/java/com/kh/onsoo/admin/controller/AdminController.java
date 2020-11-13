@@ -64,7 +64,7 @@ public class AdminController {
 		if(res > 0) {
 			return "redirect:admin/reviewlist.do";
 		}
-		return "redirect:reviewdetail.do?member_id =" + dto.getMember_id();
+		return "redirect:admin/reviewdetail.do?member_id =" + dto.getMember_id();
 	}
 	
 }

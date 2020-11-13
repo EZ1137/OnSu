@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1>강사인증 페이지</h1>
-	<form action="reviewupdate.do" method="get">
+	<form action="${pageContext.request.contextPath}admin/reviewupdate.do" method="get">
 	<input type="hidden" name="member_id" value="${dto.member_id }"/>
 	<table border="1">
 		<tr>
@@ -22,7 +22,7 @@
 		</tr>
 		<tr>
 			<th>첨부파일<br>미리보기</th>
-			<td><embed class="previewimg" src="./resources/img/sample3.pdf" type="application/pdf" width="100%" height="300px" /></td>
+			<td><embed class="previewimg" src="<c:url value='admin/resources/img/sample3.pdf'/>" type="application/pdf" width="100%" height="300px" /></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="right">
@@ -32,12 +32,12 @@
 					<option value="S">강사인증 실패</option>
 				</select>
 				<input type="submit" value="인증완료">
-				<input type="button" value="목록" onclick="location.href='reviewlist.do'"/>
+				<input type="button" value="목록" onclick="location.href='<c:url value="/admin/reviewlist.do"/>'"/>
 			</td>
 		</tr>
 	</table>
 	</form>
-	<input type="button" value="관리자페이지 메인이동" onclick="location.href='admin.do'">
+	<input type="button" value="관리자 메인페이지" onclick="location.href='<c:url value="/admin/admin.do"/>'">
 	
 </body>
 </html>
