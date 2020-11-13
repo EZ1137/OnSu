@@ -18,7 +18,7 @@
 	<select id="selectOne" parameterType="String" resultType="AdminReportDto">
 		SELECT *
 		FROM REPORT
-		WHERE REPORT_ID = #{report_id}
+		WHERE REPORT_CONTENT = #{report_content}
 	</select>
 	
 	<insert id="insert">
@@ -26,15 +26,9 @@
 		VALUES(#{report_content}, SYSDATE, #{report_savename}, #{report_id}, #{report_ided}, #{report_category} )
 	</insert>
 
-	<!-- <insert id="insert" parameterType="java.util.List"> 
-	
-		INSERT INTO CLASSIMAGE(image_no, image_directory, class_no)
-		SELECT IMAGESEQ.NEXTVAL AS image_no, A.* FROM(
-		<foreach collection="list" item="i" separator="UNION ALL">
-			SELECT #{i.image_directory} as image_directory,
-				   #{i.class_no} as class_no
-			from dual
-		</foreach>
-		)A
-	</insert>  -->
+		<update id="update">
+		UPDATE MEMBER 
+		SET MEMBER_ROLE = #{member_role} 
+		WHERE MEMBER_ID = #{member_id}
+	</update>
 </mapper>

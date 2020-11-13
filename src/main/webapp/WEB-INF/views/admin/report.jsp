@@ -32,9 +32,10 @@
 				<td>${dto.report_ided }</td>
 				<td>${dto.report_date }</td>
 				<td>${dto.report_category }</td>
-				<td><input type="button" value="보기" onclick="location.href='<c:url value="admin/reportdetail.do?report_id=${dto.report_id}"/>'"/> </td>
+				<td><input type="button" value="보기" onclick="location.href='reportdetail.do?report_content=${dto.report_content}'"/> </td>
 			</tr>
 		</c:forEach>
 	</table>
+	<input type="button" value="관리자 메인페이지" onclick="location.href='<c:url value="/admin/admin.do"/>'">
 </body>
 </html>

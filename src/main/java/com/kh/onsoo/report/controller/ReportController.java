@@ -59,7 +59,7 @@ public class ReportController {
 		// authentication에 있는 get Princinpal 객체애 유저정보를 담는다.
 		// 유저객체는 UserDetails를 implement 함
 		String member_id = principal1.getUsername(); // 사용자 이름
-		model.addAttribute("member_id",member_id);
+		model.addAttribute("member_id" + member_id);
 		return "reportinsert";
 	}
 
