@@ -43,7 +43,7 @@
 		<div class="report_box">
 			<div class="report_table">
 				<form action="reportinsretres.do" method="POST" enctype="multipart/form-data">
-					<input type="hidden" name="report_id" value="${dto.member_id }"/>
+					<input type="hidden" name="member_id" value="${dto.member_id}" />
 					<div>
 						<div>
 							<div class="report id">신고자 아이디</div>
@@ -52,7 +52,7 @@
 									<input type="text" name="report_id" readonly="readonly" value="${member_id}"></input>
 								</c:when>
 								<c:otherwise>
-									<input type="text" value="로그인해주세요">
+									<input type="text" readonly="readonly" value="" placeholder="로그인해주세요">
 								</c:otherwise>
 							</c:choose>
 

@@ -7,5 +7,12 @@
 		INSERT INTO authorities
 		VALUES(#{member_id},'ROLE_USER')
 	</insert>
+	
+	<update id="updateb" parameterType="String">
+		UPDATE AUTHORITIES
+		SET AUTHORITY= 'ROLE_BLOCK'
+		WHERE MEMBER_ID = #{member_id}
+	</update>
+	
 		
 </mapper>
