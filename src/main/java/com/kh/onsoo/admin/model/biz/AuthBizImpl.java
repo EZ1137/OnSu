@@ -17,5 +17,10 @@ public class AuthBizImpl implements AuthBiz {
 	public int insert(String member_id) {
 		return authDao.insert(member_id);
 	}
+	
+	@Override
+	public int updateb(String member_id) {
+		return authDao.updateb(member_id);
+	}
 
 }
