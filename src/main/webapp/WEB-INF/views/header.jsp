@@ -62,7 +62,7 @@
 							<sec:authorize access="hasRole('USER')">
 							<li>
 									<sec:authentication property="principal.username" var="user_id"  />
-									<div id="user_id">안녕하세요. ${user_id}</div>
+									<div id="user_id"> ${user_id}님 안녕하세요</div>
 							</li>
 							<li>
 									<span class="login">
@@ -82,9 +82,29 @@
 					
 							<sec:authorize access="hasRole('ADMIN')">
 							<li>
-								<a href="<c:url value="admin/adminpage.do" />">
+								<a href="<c:url value="admin/admin.do" />">
 									<span class="regist">
 										<button id="registbtn">Admin Page</button>
+									</span>
+								</a>
+							</li>
+							</sec:authorize>
+							<sec:authorize access="hasRole('BLOCK')">
+							<li>
+									<sec:authentication property="principal.username" var="user_id"  />
+									<div id="user_id">안녕하세요. ${user_id}</div>
+							</li>
+							<li>
+									<span class="login">
+										<form:form action="${pageContext.request.contextPath}/logout" method="POST">
+    										<input type="submit" id="loginbtn" value="Log Out" />
+										</form:form>
+									</span>
+							</li>
+							<li>
+								<a href="<c:url value="/user/registUdpatechk.do" />">
+									<span class="regist">
+										<button id="registbtn">My Page</button>
 									</span>
 								</a>
 							</li>
@@ -93,6 +113,26 @@
 				<div class="sidenav">
 					<i id="hamburger" class="fas fa-bars fa-2x" onclick="menu()"></i>
 					<div id="mySidenav">
+					
+						<sec:authorize access="isAnonymous()">
+						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/about.do'">A B O U T</p>
+						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}'">V I D E O</p>
+						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/streaming.do'">1 : 1 C L A S S</p>
+						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/qna.do'">Q n A</p>
+						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/notice.do'">N O T I C E</p>
+						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/contact.do'">C O N T A C T</p>
+						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/admin/admin.do'">A D M I N</p>
+						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/mypage.do'">M Y P A G E</p>
+						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/freelist.do'">F R E E</p>
+						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/review.do'">R E V I E W</p>
+						</sec:authorize>
+						<sec:authorize access="hasRole('BLOCK')">
+						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/block.do'">B L O C K</p>
+						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/qna.do'">Q n A</p>
+						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/notice.do'">N O T I C E</p>
+						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/contact.do'">C O N T A C T</p>
+						</sec:authorize>
+						<sec:authorize access="hasAnyRole('USER','ADMIN' )">
 						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/about.do'">A B O U T</p>
 						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}'">V I D E O</p>
 						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/streaming.do'">1 : 1 C L A S S</p>
@@ -103,6 +143,7 @@
 						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/mypage.do'">M Y P A G E</p>
 						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/freelist.do'">F R E E</p>
 						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/review.do'">R E V I E W</p>
+						</sec:authorize>						
 					</div>
 				</div>
 			</nav>

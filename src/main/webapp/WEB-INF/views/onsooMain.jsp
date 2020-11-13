@@ -22,14 +22,16 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
 	rel="stylesheet">
 <style>
-
-
 video {
 	width: 100%;
 }
-
-
 </style>
+<script>
+	function loginAlert() {
+		alert("로그인 해주세요");
+		location.href = "${pageContext.request.contextPath}/login/loginForm.do";
+	}
+</script>
 </head>
 <body>
 
@@ -65,18 +67,20 @@ video {
 					</div> -->
 					<div class="first-wrapper">
 						<video muted autoplay loop>
-							<source src="${pageContext.request.contextPath}/resources/video/Coffee.mp4" type="video/mp4">
+							<source
+								src="${pageContext.request.contextPath}/resources/video/Coffee.mp4"
+								type="video/mp4">
 						</video>
 						<div class="maintext">
-							<p class="maintTitle" style="font-size:62px; font-weight:bold; color:white; text-shadow: 2px 2px 4px var(--color-light-grey);">
-								On:Soo
-							</p> 
-							<p class="subTitle" style="font-size:var(--font-regular); color:white; margin:4px 0 40px 0;">
-								당신의 가장 따뜻한 온라인 수업
-							</p>
-							<p class="nonTitle" style="font-size:var(--font-medium); color:white; line-height:40px; text-shadow: 1px 1px 2px var(--color-light-grey);">
-								제약을 넘어 가르침과 배움을 잇는 학습 플랫폼,<br>
-								<b>온수</b>와 함께 하세요 :D
+							<p class="maintTitle"
+								style="font-size: 62px; font-weight: bold; color: white; text-shadow: 2px 2px 4px var(- -color-light-grey);">
+								On:Soo</p>
+							<p class="subTitle"
+								style="font-size: var(- -font-regular); color: white; margin: 4px 0 40px 0;">
+								당신의 가장 따뜻한 온라인 수업</p>
+							<p class="nonTitle"
+								style="font-size: var(- -font-medium); color: white; line-height: 40px; text-shadow: 1px 1px 2px var(- -color-light-grey);">
+								제약을 넘어 가르침과 배움을 잇는 학습 플랫폼,<br> <b>온수</b>와 함께 하세요 :D
 							</p>
 						</div>
 					</div>
@@ -138,7 +142,8 @@ video {
 				<section class="section third area swiper-slide">
 					<div class="rtc_main_area">
 						<p>실시간 스트리밍 강의</p>
-						<input type="button" class="more_rtc" value="수강하기" onclick="location.href=''"/>
+						<input type="button" class="more_rtc" value="수강하기"
+							onclick="location.href=''" />
 					</div>
 				</section>
 				<section class="section fourth area swiper-slide">
@@ -161,35 +166,35 @@ video {
 										<div>
 											<h3>1. 회원 가입</h3>
 											<span>온수에 가입하세요!</span>
-										</div> <img class="slideimg" src="resources/img/11.jpg"/>
+										</div> <img class="slideimg" src="resources/img/11.jpg" />
 									</li>
 
 									<li class="swiper-slide">
 										<div>
 											<h3>2. 간단한 인증</h3>
 											<span>온수는 안전한 인증시스템을 제공합니다 :)</span>
-										</div> <img class="slideimg" src="resources/img/22.jpg"/>
+										</div> <img class="slideimg" src="resources/img/22.jpg" />
 									</li>
 
 									<li class="swiper-slide">
 										<div>
 											<h3>3. 인증 심의 과정</h3>
 											<span>온수에서는 안전한 강의를 위해 심의를 거칩니다 :)</span>
-										</div> <img class="slideimg" src="resources/img/33.jpg"/>
+										</div> <img class="slideimg" src="resources/img/33.jpg" />
 									</li>
 
 									<li class="swiper-slide">
 										<div>
 											<h3>4. 인증 완료</h3>
 											<span>안전한 강의를 위한 심의가 완료 되었습니다 :)</span>
-										</div> <img class="slideimg" src="resources/img/44.jpg"/>
+										</div> <img class="slideimg" src="resources/img/44.jpg" />
 									</li>
 
 									<li class="swiper-slide">
 										<div>
 											<h3>5. 준비 끝!</h3>
 											<span>온수와 함께 즐거운 수업을 시작하세요 :)</span>
-										</div> <img class="slideimg" src="resources/img/55.jpg"/>
+										</div> <img class="slideimg" src="resources/img/55.jpg" />
 									</li>
 								</ul>
 
@@ -210,12 +215,25 @@ video {
 						</div>
 						<div class="fifth-sub">
 							궁금한 점이 있다면 언제든 연락 주세요!
-							<div>
-								<input type="button" value="신고"
-									onclick="location.href='reportinsert.do?member_id=${dto.member_id}'">
-								<a href="reportinsert.do?member_id=${dto.member_id}'"><button
-										class="contactbtn">문의하러가기</button></a>
-							</div>
+							<c:choose>
+								<c:when
+									test="${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username ne null }">
+									<div>
+
+										<input type="button" value="신고"
+											onclick="location.href='reportinsert.do?member_id=${dto.member_id}'">
+										<a href="reportinsert.do?member_id=${dto.member_id}'"><button
+												class="contactbtn">문의하러가기</button></a>
+									</div>
+
+								</c:when>
+								<c:otherwise>
+									<div>
+										<button onclick="loginAlert()" class="contactbtn">문의하러가기</button>
+									</div>
+								</c:otherwise>
+
+							</c:choose>
 						</div>
 					</div>
 
@@ -264,9 +282,9 @@ video {
 	</footer> --%>
 </body>
 
-	<!-- 알림(새로고침 시) -->
-	<div>
-		<%@ include file="/WEB-INF/views/noti.jsp" %>
-	</div>
+<!-- 알림(새로고침 시) -->
+<div>
+	<%@ include file="/WEB-INF/views/noti.jsp"%>
+</div>
 
 </html>

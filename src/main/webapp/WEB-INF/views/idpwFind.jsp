@@ -21,7 +21,7 @@
 		<table>
 		<h3> 아이디 찾기</h3>
 			<colgroup>
-				<col width="200">
+				<col width="400">
 				<col width="350">
 			</colgroup>
 			<tr>
@@ -50,9 +50,9 @@
 		<table>
 			<h3>비밀번호 찾기</h3>
 			<colgroup>
-				<col width="200">
-				<col width="200">
-				<col width="200">
+				<col width="400">
+				<col width="300">
+				<col width="100">
 			</colgroup>
 			<tr>
 				<th>아이디</th>

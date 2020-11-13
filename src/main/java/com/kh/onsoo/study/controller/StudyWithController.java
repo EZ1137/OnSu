@@ -3,12 +3,14 @@ package com.kh.onsoo.study.controller;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,10 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.util.WebUtils;
 
 import com.kh.onsoo.study.model.dto.StudyDto;
+
+import io.socket.client.IO;
+import io.socket.client.Socket;
+
 import com.kh.onsoo.study.image.model.biz.UploadBiz;
 import com.kh.onsoo.study.image.model.dto.UploadDto;
 import com.kh.onsoo.study.model.biz.StudyWithBiz;
@@ -31,6 +37,8 @@ public class StudyWithController {
 
 	private static final Logger logger = LoggerFactory.getLogger(StudyWithController.class);
 
+	static Socket socket;
+	
 	@Autowired
 	private UploadBiz uploadBiz;
 	
@@ -172,5 +180,22 @@ public class StudyWithController {
 		} else
 			return false;
 
+	}
+	
+	@RequestMapping("/with/rtcConnection.do")
+	public String rtcConnection(Model model, int class_no) {
+
+		try {
+			socket = IO.socket("https://localhost:9001");
+			socket.connect();
+			
+			JSONObject jobj = new JSONObject();
+			jobj.put("teacherid", "test");
+			socket.emit("init", jobj);
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+
+		return "redirect:https://localhost:9001";
 	}
 }

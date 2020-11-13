@@ -1,7 +1,5 @@
 package com.kh.onsoo.report.model.biz;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +17,9 @@ public class ReportBizImpl implements ReportBiz {
 		return reportDao.insert(dto);
 	}
 	
-	
+	@Override
+	public ReportDto selectOne(String report_id) {
+		return reportDao.selectOne(report_id);
+	}
 	
 }

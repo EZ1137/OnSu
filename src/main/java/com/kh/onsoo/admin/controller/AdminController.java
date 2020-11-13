@@ -22,47 +22,47 @@ public class AdminController {
 	
 	private Logger logger = LoggerFactory.getLogger(AdminController.class);
 	
-	@RequestMapping("/admin.do")
+	@RequestMapping("admin/admin.do")
 	public String selectList(Model model) {
 		logger.info("AdminController selectList");
 		
 		model.addAttribute("list", abiz.selectList());
 		model.addAttribute("teacherlist", abiz.teacherList());
 		model.addAttribute("reportlist",rbiz.selectList());
-		return "adminmain";
+		return "admin/adminmain";
 	}
 	
-	@RequestMapping("/memberlist.do")
+	@RequestMapping(value="admin/memberlist.do", method = RequestMethod.GET)
 	public String MemberselectList(Model model) {
 		logger.info("AdminController memberselectList");
 		model.addAttribute("list",abiz.selectList());
 		
-		return "memberlist";
+		return "admin/memberlist";
 	}
 	
-	@RequestMapping("/reviewlist.do")
+	@RequestMapping("admin/reviewlist.do")
 	public String ReviewselectList(Model model) {
 		logger.info("AdminController reviewselectList");
 		model.addAttribute("list",abiz.selectList());
 		
-		return "reviewlist";
+		return "admin/reviewlist";
 	}
 	
-	@RequestMapping("/reviewdetail.do")
+	@RequestMapping("admin/reviewdetail.do")
 	public String Reviewdetail(Model model, String member_id) {
 		logger.info("AdminController reviewdetail");
 		AdminDto dto = abiz.selectOne(member_id);
 		model.addAttribute("dto",dto);
-		return "reviewdetail";
+		return "admin/reviewdetail";
 	}
 	
-	@RequestMapping(value="/reviewupdate.do",method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="admin/reviewupdate.do",method = {RequestMethod.GET, RequestMethod.POST})
 	public String Reviewupdate(Model model, AdminDto dto) {
 		logger.info("AdminController reviewupdate");
 		int res = abiz.update(dto);
 		System.out.println(res);
 		if(res > 0) {
-			return "redirect:reviewlist.do";
+			return "redirect:admin/reviewlist.do";
 		}
 		return "redirect:reviewdetail.do?member_id =" + dto.getMember_id();
 	}

@@ -121,6 +121,10 @@ CREATE TABLE AUTHORITIES(
 
 select * from AUTHORITIES;
 
+UPDATE AUTHORITIES
+SET AUTHORITY = 'ROLE_BLOCK'
+WHERE MEMBER_ID = 'block'
+
 
 INSERT INTO AUTHORITIES (MEMBER_ID, AUTHORITY) VALUES ('qkrwlstjr', 'ROLE_ADMIN');
 INSERT INTO AUTHORITIES (MEMBER_ID, AUTHORITY) VALUES ('admin', 'ROLE_USER');
@@ -173,6 +177,9 @@ CREATE TABLE CLASSIMAGE(
    FOREIGN KEY (CLASS_NO) REFERENCES CLASS (CLASS_NO)
    
 );
+
+insert into CLASSIMAGE
+values(1,'ss',1)
 
 
 
@@ -254,16 +261,12 @@ CREATE TABLE NOTICE(
 );
 
 CREATE TABLE REPORT(
-   -- 신고 번호(PK)
-   REPORT_NO NUMBER PRIMARY KEY,
-   -- 신고 제목
-   REPORT_TITLE VARCHAR2(1000) NOT NULL,
    -- 신고 내용
    REPORT_CONTENT VARCHAR2(4000) NOT NULL,
    -- 신고일
    REPORT_DATE DATE NOT NULL,
    -- 첨부파일
-   REPORT_FILENAME VARCHAR2(100),
+   REPORT_SAVENAME VARCHAR2(1000),
    -- 신고 한 사람
    REPORT_ID VARCHAR2(20) NOT NULL,
    -- 신고 받은 사람
@@ -472,6 +475,8 @@ VALUES(QNASEQ.NEXTVAL, 'student', '동영상 강의와 실시간 강의의 차�
 -- 비밀글 X, 답변 X
 INSERT INTO QNA
 VALUES(QNASEQ.NEXTVAL, 'student', '결제 방식은 어떻게 되나요?', '카드 결제 말고 다른 방법이 궁금해요!<br>어떤 방법들이 있나요?', SYSDATE, 'N', 'N', NULL, SYSDATE);
+INSERT INTO QNA
+VALUES(QNASEQ.NEXTVAL, 'admin', '결제 방식은 어떻게 되나요?', '카드 결제 말고 다른 방법이 궁금해요!<br>어떤 방법들이 있나요?', SYSDATE, 'N', 'N', NULL, SYSDATE);
 
 -- 비밀글 O, 답변 O
 INSERT INTO QNA

@@ -87,16 +87,12 @@ section {
 .contact_inner_first{
 	display:flex;
 	justify-content:space-between;
-	height:40%;
+	height:140px;
 	background-color:var( --color-gradi);
 	box-shadow:  var(--bax-shadow);
 	border-radius:  var(--border-radi-title);
 }
 
-
-.inner_area01{
-	/* border:1px solid blue; */
-}
 .inner_area01_title{
 	width: 300px;
 	font-size: var(--font-medium);

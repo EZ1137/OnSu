@@ -3,11 +3,9 @@
 <mapper namespace="com.onsoo.admin.reportboard">
 
 	<resultMap type="AdminReportDto" id="AdminReportDtoMap">
-		<result property="report_no" column="REPORT_NO"/>
-		<result property="report_title" column="REPORT_TITLE"/>
 		<result property="report_content" column="REPORT_CONTENT"/>
 		<result property="report_date" column="REPORT_DATE"/>
-		<result property="report_filename" column="REPORT_FILENAME"/>
+		<result property="report_savename" column="REPORT_SAVENAME"/>
 		<result property="report_id" column="REPORT_ID"/>
 		<result property="report_ided" column="REPORT_IDED"/>
 		<result property="report_category" column="REPORT_CATEGORY"/>
@@ -23,9 +21,9 @@
 		WHERE REPORT_NO = #{report_no}
 	</select>
 	
-	<insert id="insert" parameterType="java.util.List">
+	<insert id="insert">
 		INSERT INTO REPORT		
-		VALUES(REPORT_SEQ.NEXTVAL,NULL,#{report_content},SYSDATE,#{report_filename},#{report_id},#{report_ided},#{report_category} )
+		VALUES(#{report_content}, SYSDATE, #{report_savename}, #{report_id}, #{report_ided}, #{report_category} )
 	</insert>
 
 	<!-- <insert id="insert" parameterType="java.util.List"> 

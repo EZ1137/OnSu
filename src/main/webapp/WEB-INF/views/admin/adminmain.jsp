@@ -16,11 +16,11 @@
 	
 	<section>
 		<div class="admin_title">
-			<p>ADMIN</p>
+			<p>ADMIN MAIN</p>
 		</div>
 		
 		<div id="first_area">
-			<div class="first_table_all" onclick="location.href='memberlist.do'">
+			<div class="first_table_all" onclick="location.href='<c:url value="/admin/memberlist.do"/>'">
 				<p class="first_table_name">전체 회원 조회</p>
 				<table class="admin_first_table">
 					<col width="25%"/>
@@ -45,8 +45,7 @@
 				
 				</table>
 			</div>
-			
-			<div class="second_table_all" onclick="location.href='reviewlist.do'">
+			<div class="second_table_all"  onclick="location.href='<c:url value="admin/reviewlist.do"/>'">
 				<p class="second_table_name">강사 인증 신청</p>
 				<table class="admin_second_table">
 					<col width="25%"/>
