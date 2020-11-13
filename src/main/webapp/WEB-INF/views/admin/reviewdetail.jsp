@@ -22,7 +22,7 @@
 		</tr>
 		<tr>
 			<th>첨부파일<br>미리보기</th>
-			<td><embed class="previewimg" src="<c:url value='admin/resources/img/sample3.pdf'/>" type="application/pdf" width="100%" height="300px" /></td>
+			<td><embed class="previewimg" src="<c:url value='resources/img/sample3.pdf'/>" type="application/pdf" width="100%" height="300px" /></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="right">
