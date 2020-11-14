@@ -3,7 +3,7 @@
 <mapper namespace="class">
 
 	<select id="search" resultType="ClassDto">
-		SELECT CLASS_TITLE, CLASS_TEACHERNAME, CLASS_PRICE
+		SELECT CLASS_NO, CLASS_TITLE, CLASS_TEACHERID, CLASS_TEACHERNAME, CLASS_PRICE, CLASS_TYPE
 		FROM CLASS
 		WHERE CLASS_TITLE LIKE '%'||#{search}||'%'
 	</select>

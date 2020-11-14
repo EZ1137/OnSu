@@ -3,7 +3,7 @@
 <mapper namespace="pay">
 
 	<resultMap type="AdminDto" id="AdminDto">
-		<result column="member_no" property="member_no" />
+		<result column="seq" property="seq" />
 		<result column="member_id" property="member_id" />
 		<result column="member_name" property="member_name" />
 		<result column="member_email" property="member_email" />
@@ -21,7 +21,7 @@
 	</resultMap>
 	
 	<select id="selectPay" parameterType="map" resultMap="PayDto">
-		SELECT M.MEMBER_NO, M.MEMBER_ID, M.MEMBER_NAME, M.MEMBER_EMAIL, M.MEMBER_ADDR, C.CLASS_TITLE, C.CLASS_PRICE
+		SELECT M.SEQ, M.MEMBER_ID, M.MEMBER_NAME, M.MEMBER_EMAIL, M.MEMBER_ADDR, C.CLASS_TITLE, C.CLASS_PRICE
 		FROM MEMBER M JOIN PAY P ON M.MEMBER_ID = P.PAY_MEMBERID JOIN CLASS C ON C.CLASS_NO = P.PAY_CLASSNO
 		WHERE P.PAY_MEMBERID = #{pay_memberid}
 		AND P.PAY_CLASSNO = TO_NUMBER(#{pay_classno})

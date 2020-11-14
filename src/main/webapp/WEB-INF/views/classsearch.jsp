@@ -39,7 +39,14 @@
 					<c:otherwise>
 					<c:forEach items="${list }" var="dto">
 						<tr>
-							<td><a href="">${dto.class_title }</a></td>
+							<c:choose>
+								<c:when test="${dto.class_type eq 'V' }">
+									<td><a href="video/studydetail.do?class_no=${dto.class_no }&member_id=${member_id }">${dto.class_title }</a></td>
+								</c:when>
+								<c:otherwise>
+									<td><a href="with/studydetail.do?class_no=${dto.class_no }&member_id=${member_id }">${dto.class_title }</a></td>
+								</c:otherwise>
+							</c:choose>
 							<td>${dto.class_teacherid }</td>
 							<td>${dto.class_teachername }</td>
 							<td>${dto.class_price }</td>

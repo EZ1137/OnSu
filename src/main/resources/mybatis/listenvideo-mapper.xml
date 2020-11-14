@@ -8,5 +8,10 @@
 		WHERE LISTEN_VMEMBERID = #{member_id}
 		ORDER BY LISTEN_VNO DESC
 	</select>
+	
+	<insert id="insert" parameterType="ListenVideoDto">
+		INSERT INTO LISTEN_VIDEO
+		VALUES(LISTENVIDEOSEQ.NEXTVAL, #{listen_vmemberid}, #{listen_vclassno}, SYSDATE, #{listen_vclasstitle})
+	</insert>
 
 </mapper>

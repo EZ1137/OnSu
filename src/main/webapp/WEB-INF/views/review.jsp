@@ -22,12 +22,24 @@ function review(){
         	
             var a =''; 
             $.each(data, function(key, review){
-            	a+='<div class="reviewbox">';
+            	a += '<div class="reviewbox">';
                 a += '<div class="reviewArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
                 a += '<div class="reviewInfo'+review.review_no+'">'+'작성자 : '+review.review_id+'  작성일 : '+review.review_date+'수정일 : '+review.review_update;
                 a += '<a onclick="reviewUpdate('+review.review_no+',\''+review.review_content +'\');"> 수정 </a>';
                 a += '<a onclick="reviewDelete('+review.review_no+');"> 삭제 </a> </div>';
-                a += '<div class="reviews'+review.review_no+'">'+'별점 : ' + review.review_star;
+                a += '<div class="starRev">';
+	  			a += '<span class="starR1" id="s1"><input type="hidden" value="1"/></span>';
+  				a += '<span class="starR2" id="s2"><input type="hidden" value="2"/></span>';
+  				a += '<span class="starR1" id="s3"><input type="hidden" value="3"/></span>';
+		  		a += '<span class="starR2" id="s4"><input type="hidden" value="4"/></span>';
+		 		a += '<span class="starR1" id="s5"><input type="hidden" value="5"/></span>';			 				
+		 		a += '<span class="starR2" id="s6"><input type="hidden" value="6"/></span>';
+  				a += '<span class="starR1" id="s7"><input type="hidden" value="7"/></span>';
+  				a += '<span class="starR2" id="s8"><input type="hidden" value="8"/></span>';
+		  		a += '<span class="starR1" id="s9"><input type="hidden" value="9"/></span>';
+		  		a += '<span class="starR2" id="s10"><input type="hidden" value="10"/></span>';
+				a += '<input type="hidden" class="starList" name="review_star" value="' + review.review_star + '"/>';
+				a += '</div><br/><br/>';
                 a += '<div class="reviewContent'+review.review_no+'"> <p> 내용 : '+review.review_content +'</p>';
                 a += '</div></div>';
                 a +='</div>';
