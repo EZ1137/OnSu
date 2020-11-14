@@ -81,9 +81,11 @@
 			
 			<tfoot>
 				<tr>
+					<sec:authorize access="hasAnyRole('ADMIN','USER' )">
 					<td colspan="6" class="qbtnbar" style="text-align:right;">
 						<input type="button" value="WRITE" onclick="location.href='qnainsertform.do'"/>
 					</td>
+					</sec:authorize>
 				</tr>
 			</tfoot>
 		</table>

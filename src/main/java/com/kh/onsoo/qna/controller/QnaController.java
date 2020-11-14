@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.onsoo.admin.model.biz.AdminBiz;
+import com.kh.onsoo.admin.model.dto.AdminDto;
 import com.kh.onsoo.qna.model.biz.QnaBiz;
 import com.kh.onsoo.qna.model.dto.QnaDto;
 
@@ -72,23 +73,43 @@ public class QnaController {
 	}
 
 	@RequestMapping(value = "/qnainsertform.do")
-	public String insertForm() {
-		
+	public String insertForm(Model model, Principal principal) {
 		logger.info("QnaController.insertForm");
+		model.addAttribute(principal);
+		// 시큐리티 컨텍스트 객체를 얻습니다.
+		SecurityContext context = SecurityContextHolder.getContext();
+		// 인증 객체를 얻습니다.
+		Authentication authentication = context.getAuthentication();
+		// context에 있는 인증 정보를 getAuthentication()으로 갖고 온다.
+		// 로그인 한 사용자 정보를 가진 객체를 얻습니다.
+		UserDetails principal1 = (UserDetails)authentication.getPrincipal();
+		// authentication에 있는 get Princinpal 객체애 유저 정보를 담는다.
+		// 유저 객체는 UserDetails를 implement 함
+		String member_id = principal1.getUsername();	// 사용자 이름
 		
+		AdminDto dto =adminBiz.selectOne2(member_id);
+		
+		model.addAttribute("dto",dto);
 		return "/qna/qnainsert";
 	}
 
 	@RequestMapping(value = "/qnainsertres.do")
 	public String insertRes(Model model, QnaDto qnaDto) {
-		
 		logger.info("QnaController.insertForm");
+		System.out.println(	qnaDto.getQnawriter());
+
 		int res = qnaBiz.insert(qnaDto);
 		
 		if (res > 0) {
-			return "redirect: qna.do";
+			logger.info("글작성성공");
+			model.addAttribute("msg","글작성 완료");
+			model.addAttribute("url","/qna.do");
+			return "redirect";
 		} else {
-			return "redirect: qnainsert.do";	
+			logger.info("msg","글작성실패");
+			model.addAttribute("msg","글작성 실패");
+			model.addAttribute("url","qnainsertform.do");
+			return "redirect";	
 		}
 	}
 
