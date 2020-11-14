@@ -8,15 +8,6 @@
 <head>
 <meta charset="UTF-8">
 <title>On:Soo - Q&amp;A</title>
-<style>
-	#nav.paging{
-	
-	display:flex;
-	justify-content:center;
-	align-items:center;
-	
-}
-</style>
 <link href="${pageContext.request.contextPath}/resources/css/qna.css" rel="stylesheet" >
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 </head>
@@ -30,7 +21,7 @@
     <section class="section area">
     <div id="products">
 		<form action="" id="setRows">
-				<input type="hidden" name="rowPerPage" value="20">
+			<input type="hidden" name="rowPerPage" value="20">
 		</form>
     	<!-- 타이틀 -->
 		<div class="qna_board_title">
@@ -62,6 +53,7 @@
 							<td colspan="5" align="center">현재 작성된 Q&amp;A 글이 존재하지 않습니다.</td>
 						</tr>
 					</c:when>
+					
 					<c:otherwise>
 						<c:forEach items="${qna}" var="qnadto">
 							<tr class="eval-contents">

@@ -162,3 +162,13 @@ td > input[type="submit"]:hover {
   color: var(--color-black);
   border: none;
 }
+
+.eval-contents {
+   cursor: pointer;
+}
+
+#nav.paging {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
