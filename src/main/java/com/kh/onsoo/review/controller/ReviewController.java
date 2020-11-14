@@ -28,7 +28,7 @@ public class ReviewController {
 	@Autowired
 	private AdminBiz adminBiz;
 	
-	@RequestMapping("/review.do")
+	@RequestMapping("/user/review.do")
 	public String review(Model model, Principal principal) {
 		model.addAttribute("relist", reviewBiz.selectList());
 		
