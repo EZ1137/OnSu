@@ -8,4 +8,6 @@ import com.kh.onsoo.admin.model.dto.AuthDto;
 public interface AuthBiz {
 	public int insert(String member_id);
 
+	public int updateb(String member_id);
+
 }

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="com.kh.onsoo.qna.model.dto.QnaDto" %>
+<%@ page import="com.kh.onsoo.admin.model.dto.AdminDto" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +26,7 @@
 		
 		<!-- 게시글 작성하기 -->
 		<form action="qnainsertres.do" method="post">
-			<input type="hidden" name="qnawriter" value="${member_id}">
+			<input type="hidden" name="qnawriter" value="${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username}">
 			<table class="qna_insert">
 				<colgroup>
 					<col width="15%"/>

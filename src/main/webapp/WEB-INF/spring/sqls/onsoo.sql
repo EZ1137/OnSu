@@ -475,6 +475,8 @@ VALUES(QNASEQ.NEXTVAL, 'student', '동영상 강의와 실시간 강의의 차�
 -- 비밀글 X, 답변 X
 INSERT INTO QNA
 VALUES(QNASEQ.NEXTVAL, 'student', '결제 방식은 어떻게 되나요?', '카드 결제 말고 다른 방법이 궁금해요!<br>어떤 방법들이 있나요?', SYSDATE, 'N', 'N', NULL, SYSDATE);
+INSERT INTO QNA
+VALUES(QNASEQ.NEXTVAL, 'admin', '결제 방식은 어떻게 되나요?', '카드 결제 말고 다른 방법이 궁금해요!<br>어떤 방법들이 있나요?', SYSDATE, 'N', 'N', NULL, SYSDATE);
 
 -- 비밀글 O, 답변 O
 INSERT INTO QNA

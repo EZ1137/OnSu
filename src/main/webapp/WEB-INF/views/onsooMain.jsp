@@ -156,7 +156,7 @@ video {
 							<hr>
 							<span class="validate"> <input type="button"
 								class="validatebtn" value="인증하러 가기"
-								onclick="location.href='tvalid.do'">
+								onclick="location.href='teacherupload.do'">
 							</span>
 						</div>
 						<div class="fourth-inner02">

@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kh.onsoo.admin.model.dto.AdminDto;
 import com.kh.onsoo.admin.model.dto.AdminReportDto;
 
 @Repository
@@ -33,11 +34,11 @@ public class AdminReportDaoImpl implements AdminReportDao {
 	}
 
 	@Override
-	public AdminReportDto selectOne(int report_no) {
+	public AdminReportDto selectOne(String report_id) {
 		AdminReportDto dto = new AdminReportDto();
 		
 		try {
-			dto = sqlSession.selectOne(NAMESPACE + "selectOne",report_no);
+			dto = sqlSession.selectOne(NAMESPACE + "selectOne",report_id);
 		} catch (Exception e) {
 			logger.info("ReportDaoImpl selectOne[error]");
 			e.printStackTrace();
@@ -53,9 +54,16 @@ public class AdminReportDaoImpl implements AdminReportDao {
 	}
 
 	@Override
-	public int update(AdminReportDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int update(AdminDto dto) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.update(NAMESPACE + "update", dto);
+		} catch (Exception e) {
+			logger.info("AdminreportDaoImp update[error]");
+			e.printStackTrace();
+		}
+		return res;
 	}
 
 	@Override
