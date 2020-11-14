@@ -8,6 +8,15 @@
 <head>
 <meta charset="UTF-8">
 <title>On:Soo - Q&amp;A</title>
+<style>
+	#nav.paging{
+	
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	
+}
+</style>
 <link href="${pageContext.request.contextPath}/resources/css/qna.css" rel="stylesheet" >
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 </head>
@@ -19,6 +28,10 @@
     </header>
 
     <section class="section area">
+    <div id="products">
+		<form action="" id="setRows">
+				<input type="hidden" name="rowPerPage" value="20">
+		</form>
     	<!-- 타이틀 -->
 		<div class="qna_board_title">
 			<p>Q&amp;A</p>
@@ -51,7 +64,7 @@
 					</c:when>
 					<c:otherwise>
 						<c:forEach items="${qna}" var="qnadto">
-							<tr>
+							<tr class="eval-contents">
 								<td>${qnadto.qnano}</td>
 								<td style="height:100%; display:flex; padding-left:10px;">
 									<c:if test="${qnadto.qnasecret eq 'Y'}">
@@ -89,6 +102,7 @@
 				</tr>
 			</tfoot>
 		</table>
+		</div>
 	</section>
 	
 	<!-- footer -->
@@ -97,4 +111,6 @@
 	</footer>
 
 </body>
+ <script src="${pageContext.request.contextPath}/resources/js/paging.js"
+			type="text/javascript"></script>
 </html>

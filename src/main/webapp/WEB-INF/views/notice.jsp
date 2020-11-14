@@ -7,6 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	#nav.paging{
+	
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	
+}
+</style>
 </head>
 <link href="${pageContext.request.contextPath}/resources/css/notice.css" rel="stylesheet" >
 <body>
@@ -17,7 +26,11 @@
 	</header>
 
 
-<section class="section">
+	<section class="section">
+	<div id="products">
+		<form action="" id="setRows">
+				<input type="hidden" name="rowPerPage" value="20">
+		</form>
 			<h1 id="qnatitle">공지사항페이지입니다</h1>
 			<table id="notice" class="" style="text-align: center;">
 				<col width="200"/>
@@ -38,7 +51,7 @@
 					</c:when>
 				<c:otherwise>
 					<c:forEach items="${notice }" var="dto">
-						<tr>
+						<tr class="eval-contents">
 							<td>${dto.notice_no}</td>
 							<td>관리자</td>
 							<td><a href="noticedetail.do?notice_no=${dto.notice_no}" style="color:black;"> ${dto.notice_title}</a></td>
@@ -65,6 +78,7 @@
 						</sec:authorize>
 					</tr>
 			</table>
+			</div>
 	</section>
 	
 	<!-- footer -->
@@ -72,7 +86,7 @@
 		<%@ include file="/WEB-INF/views/footer.jsp"%>
 	</footer>
 
-
-
 </body>
+ <script src="${pageContext.request.contextPath}/resources/js/paging.js"
+			type="text/javascript"></script>
 </html>
