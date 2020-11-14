@@ -7,6 +7,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>로그인 페이지</title>
+<script>
+	function loginchk(){
+		
+	}
+</script>
 </head>
 <link href="${pageContext.request.contextPath}/resources/css/loginForm.css" rel="stylesheet">
 <body onload="document.f.id.focus();">
@@ -27,7 +32,10 @@
 						<c:url value="/login" var="loginUrl" />
 						<form:form name="f" action="${loginUrl}" method="POST">
 							<c:if test="${param.error != null}">
-								<p>ID와 비밀번호가 잘못 되었습니다.</p>
+								<script>
+									alert("ID와 비밀번호가 잘못 되었습니다.");
+								</script>
+								
 							</c:if>
 							<c:if test="${param.logout != null}">
 								<p>로그아웃 하였습니다.</p>
@@ -40,7 +48,7 @@
 							</div>
 							<input type="hidden" name="${_csrf.parameterName}"
 								value="${_csrf.token}" />
-							<button type="submit" class="loginbtn">Log In</button>
+							<button onclick="loginchk()"type="submit" class="loginbtn">Log In</button>
 							<!-- csrf 토근도 같이 전송이 된다. 서버에서 미리 토근을 받아서 체크한다. -->
 						</form:form>
 						

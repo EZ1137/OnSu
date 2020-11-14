@@ -273,13 +273,7 @@ video {
 		</script>
 	</main>
 
-	<button id="arrow" class="arrow-up" onclick="arrowUp()">
-		<i class="fas fa-arrow-up"></i>
-	</button>
-	<%-- 
-	<footer id="footerarea" class="area">
-		<%@ include file="/WEB-INF/views/footer.jsp"%>
-	</footer> --%>
+
 </body>
 
 <!-- 알림(새로고침 시) -->

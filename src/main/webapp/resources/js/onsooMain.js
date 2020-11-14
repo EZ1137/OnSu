@@ -1,7 +1,7 @@
 /* onSoomain.js */
 
 /* 내려올때 header 컬러 변경 */
-const header = document.querySelector("#header");
+/*const header = document.querySelector("#header");
 const headerHeight = header.getBoundingClientRect().height;
 const arrow = document.querySelector("#arrow")
 
@@ -14,14 +14,14 @@ document.addEventListener("scroll", () => {
 /*  console.log(window.scrollY);
   console.log(`headerHeight: ${headerHeight}`);*/
 
-  if (window.scrollY > headerHeight) {
+/*  if (window.scrollY > headerHeight) {
     header.classList.add("header--dark");
     arrow.classList.add("visible");
   } else {
     header.classList.remove("header--dark");
     arrow.classList.remove("visible");
   }
-});
+});*/
 
 jQuery(document).ready(function ($) {
 
@@ -68,3 +68,9 @@ jQuery(document).ready(function ($) {
     });
 
 });    
+
+
+// 탑스크롤
+const main = document.querySelector('.first');
+const mainHeight = main.getBoundingClientRect().height;
+
