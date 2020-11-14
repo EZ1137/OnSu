@@ -181,14 +181,15 @@ nav {
   letter-spacing: -1px;
   margin: 4px 0 0 2px;
   cursor: pointer;
-  font-size: var(�봣ont-micro);
+  font-size: var(--font-micro);
 }
 
 .sideAsset:hover {
-  color: var(�봠olor-black);
+  color: var(--color-black);
   background-color: var(--color-light-white);
 }
-#loginbtn{
+
+#loginbtn, #registbtn {
 	  margin: 7px 10px 0 10px;
   padding: 5px 20px;
   background: var(--color-white);
@@ -198,7 +199,8 @@ nav {
   border-radius: var(--border-radi-btn);
   box-shadow: var(--btn-shadow);
 }
-#loginbtn:hover {
+
+#loginbtn:hover, #registbtn:hover {
   background-color: var(--color-light-blue);
   color: var(--color-black);
   border: none;
