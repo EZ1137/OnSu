@@ -41,7 +41,7 @@ $(function () {
 	$('.starRev span').click(function () {
 	})
 	
-})
+});
 
 </script>
 
