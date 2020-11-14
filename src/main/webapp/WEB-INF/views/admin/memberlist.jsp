@@ -6,6 +6,15 @@
 <head>
 <meta charset="UTF-8">
 <title>On:Soo - Member List</title>
+<style>
+	#nav.paging{
+	
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	
+}
+</style>
 <link href="${pageContext.request.contextPath}/resources/css/admin.css?after" rel="stylesheet">
 </head>
 <body>
@@ -16,6 +25,10 @@
 	</header>
 	
 	<section>
+	<div id="products">
+		<form action="" id="setRows">
+				<input type="hidden" name="rowPerPage" value="20">
+		</form>
 		<div class="admin_title">
 			<p>전체 회원 조회</p>
 		</div>
@@ -44,7 +57,7 @@
 			
 		<c:forEach items="${list }" var="dto">
 			<tbody>
-				<tr>
+				<tr class="eval-contents">
 					<td>${dto.member_id }</td>
 					<td>${dto.member_name }</td>
 					<td>${dto.member_email }</td>
@@ -64,10 +77,12 @@
 				</tr>
 			</tfoot>
 		</table>
+		</div>
 	</section>
-	 
 	<footer id="footerarea" class="area">
 		<%@ include file="/WEB-INF/views/footer.jsp"%>
 	</footer>
 </body>
+ <script src="${pageContext.request.contextPath}/resources/js/paging.js"
+			type="text/javascript"></script>
 </html>
