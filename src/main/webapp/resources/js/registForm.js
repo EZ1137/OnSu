@@ -44,24 +44,27 @@ function emailchk() {
 			 data:{
               "member_email": memberemail
           },
-			 success:function(data){
-				 if (data != null) {
+          success:function(data){
+				 console.log(data)
+				 if (data == "test") {
+					 alert("중복된 이메일입니다 \n이메일을 다시 입력해주세요 ");
+				 }else {	 
 					 alert("사용 가능한 이메일 입니다.\n\n입력된 이메일로 인증번호를 발송했습니다.");
-					 $("#random").val(data);
-					 $("#randomchk").show();
-					 $("#randomname").show();
-				 } else {
-					 alert("이메일을 다시 입력해주세요.");
+				 $("#random").val(data);
+				 $("#randomchk").show();
+				 $("#randomname").show();
 				 }
 			 },
 			 error: function(data){
 				 console.log(data);
+				 
 				 alert("데이터 실패");
 			 }
 		 });
 	 }
 	 
 	}
+
 
 
 // 인증번호 체크 
