@@ -67,7 +67,6 @@
 						<td style="display:flex; padding: 10px; align-items:center; border-top:1px solid var(--color-light-grey);">
 							<form name="fileForm" action="tvalidup.do" method="post" enctype="multipart/form-data">
 							    <input multiple="multiple" type="file" value="SELECT" name="file"/>		<!--  accept=".jpg, .png" -->
-							    <input multiple="multiple" type="file" value="SELECT" name="file"/>
 								<input type="reset" value="RESET"/>
 								<input type="submit" value="UPLOAD"/>
 							</form>
