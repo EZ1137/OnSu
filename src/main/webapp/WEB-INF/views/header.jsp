@@ -74,7 +74,7 @@
 							<li>
 								<a href="<c:url value="/user/registUdpatechk.do" />">
 									<span class="regist">
-										<button id="registbtn">My Page</button>
+										<button id="registbtn">My Info</button>
 									</span>
 								</a>
 							</li>
@@ -104,7 +104,7 @@
 							<li>
 								<a href="<c:url value="/user/registUdpatechk.do" />">
 									<span class="regist">
-										<button id="registbtn">My Page</button>
+										<button id="registbtn">My Info</button>
 									</span>
 								</a>
 							</li>
