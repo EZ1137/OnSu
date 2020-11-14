@@ -27,7 +27,7 @@
 
 		<!-- 게시글 상세보기 -->
 		<!-- 비밀글 (O) && 등급 (Admin X) && ID!=작성자 -->
-		<c:if test="${qnadto.qnasecret eq 'Y' && admindto.member_role ne 'A' && qnadto.qnawriter ne admindto.member_id}">
+		<c:if test="${(qnadto.qnasecret eq 'Y') && (admindto.member_id ne 'admin') && (qnadto.qnawriter ne admindto.member_id)}">
 			<table class="qna_one" style="margin:80px auto;">
 				<tr>
 					<th style="height:80px;">현재 글은 비밀글입니다.</th>
@@ -42,7 +42,7 @@
 		</c:if>
 		
 		<!-- 비밀글 (X) -->
-		<c:if test="${qnadto.qnasecret eq 'N' || admindto.member_role eq 'A' || qnadto.qnawriter eq admindto.member_id}">
+		<c:if test="${(qnadto.qnasecret eq 'N') || (admindto.member_id eq 'admin') || (qnadto.qnawriter eq admindto.member_id)}">
 			<table class="qna_one">
 				<colgroup>
 					<col width="15%"/>
@@ -100,7 +100,7 @@
 				<tfoot>
 					<tr>
 						<td colspan="6" style="text-align:right;">
-							<div style="display:flex; align:right;">
+							<div style="display:flex; align:right; margin-bottom:30px;">
 								<input type="button" value="LIST" onclick="location.href='qna.do'"/>
 								<!-- 비밀글 기능은 작성자 본인만 -->
 								<c:if test="${(qnadto.qnasecret eq 'N') && (qnadto.qnawriter eq admindto.member_id)}">
