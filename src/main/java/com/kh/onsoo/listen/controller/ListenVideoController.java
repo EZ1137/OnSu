@@ -38,7 +38,7 @@ public class ListenVideoController {
 	@Autowired
 	private ClassBiz classBiz;
 	
-	@RequestMapping(value = "/listenVideo.do")
+	@RequestMapping(value = "/video/listen.do")
 	public String selectList(Model model, Principal principal) {
 		logger.info("[listenVList]");
 		
@@ -66,7 +66,7 @@ public class ListenVideoController {
 		
 	}
 	
-	@RequestMapping(value = "/listenVDetail.do")
+	@RequestMapping(value = "/video/listenDetail.do")
 	public String selectOne(Model model, int listen_vclassno, @RequestParam String member_id) {
 		logger.info("[listenVDetail]");
 		
@@ -78,38 +78,31 @@ public class ListenVideoController {
 		return "/user/listenvdetail";
 	}
 	
-	@RequestMapping(value = "listenVInsert.do")
-	public String insert(Model model, @RequestParam String member_id) {
+	@RequestMapping(value = "/video/listenInsert.do")
+	public String insert(Model model, @RequestParam String member_id, String title, int listen_classno) {
 		logger.info("[listenVInsert]");
 		
-		model.addAttribute("member_id", member_id);
+		String listen_vmemberid = member_id;
+		String listen_vclasstitle = title;
+		int listen_vclassno = listen_classno;
 		
-		return "/user/listenvinsert";
-	}
-	
-	@RequestMapping(value = "listenVInsertRes.do")
-	public String insertres(ListenVideoDto dto, Model model) {
-		logger.info("[listenVInsertRes.do]");
+		int res = listenVideoBiz.insert(new ListenVideoDto(0, listen_vmemberid, listen_vclassno, null, listen_vclasstitle));
 		
-		int res = 1;
-		
-		if (res > 0) {
-			return "redirect:listenVideo.do";
+		if(res > 0) {
+			return "redirect:/mypage.do";
 		}
-		
-		return "redirect:listenVInsert.do";
-	}
+		return "/studydetail";
+	}	
 	
-	
-	@RequestMapping(value = "/listenVDelete.do")
+	@RequestMapping(value = "/video/listenDelete.do")
 	public String delete(int listen_vclassno) {
 		logger.info("[listenVDelete.do]");
 		
 		int res = listenVideoBiz.delete(listen_vclassno);
 		if(res > 0) {
-			return "redirect:listenVList.do";
+			return "redirect:video/listenList.do";
 		}
-		return "redirect:listenVDetail.do?listen_vno=" + listen_vclassno;
+		return "redirect:video/listenDetail.do?listen_vno=" + listen_vclassno;
 	}
 }
 

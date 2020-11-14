@@ -19,11 +19,11 @@ public class ReviewDaoImpl implements ReviewDao {
 	private Logger logger = LoggerFactory.getLogger(ReviewDaoImpl.class);
 	
 	@Override
-	public List<ReviewDto> selectList() {
+	public List<ReviewDto> selectList(int review_classno) {
 		List<ReviewDto> list = new ArrayList<ReviewDto>();
 		
 		try {
-			list = sqlSession.selectList(NAMESPACE+"selectList");
+			list = sqlSession.selectList(NAMESPACE+"selectList", review_classno);
 		} catch (Exception e) {
 			logger.info("[ERROR] selectList");
 			e.printStackTrace();
