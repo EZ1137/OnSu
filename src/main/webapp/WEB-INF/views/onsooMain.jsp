@@ -91,7 +91,7 @@ video {
 				<section class="section second area swiper-slide">
 					<div class="vod_cards_title">
 						<p>동영상 강의</p>
-						<span class="more_btn" onclick="location.href=''">강의 더 보기</span>
+						<span class="more_btn" onclick="location.href='/video/studylist.do'">강의 더 보기</span>
 					</div>
 					<div class="class_row">
 						<div class="class_card class1">
@@ -142,8 +142,7 @@ video {
 				<section class="section third area swiper-slide">
 					<div class="rtc_main_area">
 						<p>실시간 스트리밍 강의</p>
-						<input type="button" class="more_rtc" value="수강하기"
-							onclick="location.href=''" />
+						<input type="button" class="more_rtc" value="수강하기" onclick="location.href='streaming.do'"/>
 					</div>
 				</section>
 				<section class="section fourth area swiper-slide">

@@ -81,6 +81,11 @@ public class MainController {
 	public String streaming(Model model) {			
 		return "streaming";
 	}
+	
+	@RequestMapping(value = "/teacherupload.do", method = RequestMethod.GET)
+	public String teacherupload(Model model) {			
+		return "teacherupload";
+	}
 
 	//로그인 
 

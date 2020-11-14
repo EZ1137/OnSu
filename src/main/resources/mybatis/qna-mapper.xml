@@ -31,7 +31,7 @@
 	<!-- 질문 작성 -->
 	<insert id="insert" parameterType="QnaDto">
 		INSERT INTO QNA
-		VALUES(QNASEQ.NEXTVAL, #{qnawriter}, #{qnatitle}, #{qnaqcontent}, SYSDATE, 'N', 'N', NULL, SYSDATE)
+		VALUES(QNASEQ.NEXTVAL, #{qnawriter}, #{qnatitle}, #{qnaqcontent}, SYSDATE, 'N', 'N', NULL, NULL)
 	</insert>
 	
 	<!-- 비밀글 전환 -->

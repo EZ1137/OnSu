@@ -101,13 +101,13 @@ public class QnaController {
 		int res = qnaBiz.insert(qnaDto);
 		
 		if (res > 0) {
-			logger.info("글작성성공");
-			model.addAttribute("msg","글작성 완료");
+			logger.info("글 작성 성공");
+			model.addAttribute("msg","글 작성 완료");
 			model.addAttribute("url","/qna.do");
 			return "redirect";
 		} else {
-			logger.info("msg","글작성실패");
-			model.addAttribute("msg","글작성 실패");
+			logger.info("msg","글 작성 실패");
+			model.addAttribute("msg","글 작성 실패");
 			model.addAttribute("url","qnainsertform.do");
 			return "redirect";	
 		}
@@ -161,7 +161,7 @@ public class QnaController {
 	public String answerRes(QnaDto qnaDto) {
 		
 		logger.info("QnaController.answerForm");
-		int res = qnaBiz.update(qnaDto);
+		int res = qnaBiz.answer(qnaDto);
 		
 		if (res > 0) {
 			return "redirect: qnaone.do?qnano=" + qnaDto.getQnano();
