@@ -90,6 +90,11 @@ header {
   box-sizing: border-box;
 }
 
+#user_id {
+	margin-left: 10px;
+	padding-top: 10px;
+}
+
 .wrapper a {
   text-decoration: none;
 }

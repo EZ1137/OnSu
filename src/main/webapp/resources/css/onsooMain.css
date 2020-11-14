@@ -397,14 +397,20 @@ hr {
 	font-size: var(--font-medium);
 }
 
-.contactbtn{
+.contactbtn, .reportbtn {
 	margin: 5px 10px 5px 5px;
 	padding: 5px 20px;
-	color: var(- -color-black);
+	color: var(--color-black);
+	cursor: pointer;
 	border: none;
 	border-radius: var(--border-radi-btn);
 	background-color: var(--color-white);
 	box-shadow: 5px 5px 10px #e6e6e6, -5px -5px 10px #ffffff;
+}
+
+.contactbtn:hover, .reportbtn:hover {
+	background-color: var(--color-orange);
+	font-weight: bold;
 }
 
 img {
