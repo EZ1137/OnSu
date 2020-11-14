@@ -219,11 +219,8 @@ video {
 								<c:when
 									test="${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username ne null }">
 									<div>
-
-										<input type="button" value="신고"
-											onclick="location.href='reportinsert.do?member_id=${dto.member_id}'">
-										<a href="reportinsert.do?member_id=${dto.member_id}'"><button
-												class="contactbtn">문의하러가기</button></a>
+										<input type="button" class="reportbtn" value="신고하러 가기" onclick="location.href='reportinsert.do?member_id=${dto.member_id}'"/>
+										<input type="button" class="contactbtn" value="문의하러 가기" onclick="location.href='reportinsert.do?member_id=${dto.member_id}'"/>
 									</div>
 
 								</c:when>
@@ -273,9 +270,9 @@ video {
 		</script>
 	</main>
 
-	<button id="arrow" class="arrow-up" onclick="arrowUp()">
+	<!-- <button id="arrow" class="arrow-up" onclick="arrowUp()">
 		<i class="fas fa-arrow-up"></i>
-	</button>
+	</button> -->
 	<%-- 
 	<footer id="footerarea" class="area">
 		<%@ include file="/WEB-INF/views/footer.jsp"%>
