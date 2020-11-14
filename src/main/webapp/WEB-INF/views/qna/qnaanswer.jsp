@@ -42,65 +42,67 @@
 		</c:if>
 		
 		<!-- 답변 작성 (X) -->
-		<form action="qnaanswerres.do" method="post">
-			<input type="hidden" name="qnano" value="${qnadto.qnano}"/>
-			<table class="qna_one">
-				<colgroup>
-					<col width="15%"/>
-					<col width="35%"/>
-					<col width="15%"/>
-					<col width="35%"/>
-				</colgroup>
+		<c:if test="${qnadto.qnaresponse eq 'N'}">
+			<form action="qnaanswerres.do" method="post">
+				<input type="hidden" name="qnano" value="${qnadto.qnano}"/>
+				<table class="qna_one">
+					<colgroup>
+						<col width="15%"/>
+						<col width="35%"/>
+						<col width="15%"/>
+						<col width="35%"/>
+					</colgroup>
+					
+					<!-- 본문 -->
+					<thead>
+						<tr>
+							<th>WRITER</th>
+							<td>${qnadto.qnawriter}</td>
+							<th>DATE</th>
+							<td><fmt:formatDate value="${qnadto.qnaqregdate}" pattern="yyyy-MM-dd" /></td>
+						</tr>
+						<tr>
+							<th>Q.</th>
+							<td colspan="3">${qnadto.qnatitle}</td>
+						</tr>
+					</thead>
+					
+					<tbody>
+						<tr>
+							<td colspan="4" class="qcontents">
+								<textarea rows="10" cols="122" readonly="readonly">${qnadto.qnaqcontent}</textarea>
+							</td>
+						</tr>
+					</tbody>
+					
+					<!-- 답변 작성 -->
+					<thead>
+						<tr>
+							<th>A. </th>
+							<td colspan="3">RE : ${qnadto.qnatitle}</td>
+						</tr>
+					</thead>
+					
+					<tbody>
+						<tr>
+							<td colspan="4" class="qcontents">
+								<textarea rows="10" cols="122" name="qnaacontent" placeholder="답변을 작성하세요."></textarea>
+							</td>
+						</tr>
+					</tbody>
 				
-				<!-- 본문 -->
-				<thead>
-					<tr>
-						<th>WRITER</th>
-						<td>${qnadto.qnawriter}</td>
-						<th>DATE</th>
-						<td><fmt:formatDate value="${qnadto.qnaqregdate}" pattern="yyyy-MM-dd" /></td>
-					</tr>
-					<tr>
-						<th>Q.</th>
-						<td colspan="3">${qnadto.qnatitle}</td>
-					</tr>
-				</thead>
-				
-				<tbody>
-					<tr>
-						<td colspan="4" class="qcontents">
-							<textarea rows="10" cols="122" readonly="readonly">${qnadto.qnaqcontent}</textarea>
-						</td>
-					</tr>
-				</tbody>
-				
-				<!-- 답변 작성 -->
-				<thead>
-					<tr>
-						<th>A. </th>
-						<td colspan="3">RE : ${qnadto.qnatitle}</td>
-					</tr>
-				</thead>
-				
-				<tbody>
-					<tr>
-						<td colspan="4" class="qcontents">
-							<textarea rows="10" cols="122" name="qnaacontent" placeholder="답변을 작성하세요."></textarea>
-						</td>
-					</tr>
-				</tbody>
-			
-				<tfoot>
-					<tr>
-						<td colspan="6" style="text-align:right;">
-							<input type="button" value="LIST" onclick="location.href='qna.do'"/>
-							<input type="reset" value="RESET"/>
-							<input type="submit" value="ANSWER"/>
-						</td>
-					</tr>
-				</tfoot>
-			</table>
-		</form>
+					<tfoot>
+						<tr>
+							<td colspan="6" style="text-align:right;">
+								<input type="button" value="LIST" onclick="location.href='qna.do'"/>
+								<input type="reset" value="RESET"/>
+								<input type="submit" value="ANSWER"/>
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</form>
+		</c:if>
 	</section>
 	
 	<!-- footer -->

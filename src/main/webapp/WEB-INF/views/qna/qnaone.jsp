@@ -103,7 +103,7 @@
 							<div style="display:flex; align:right;">
 								<input type="button" value="LIST" onclick="location.href='qna.do'"/>
 								<!-- 비밀글 기능은 작성자 본인만 -->
-								<c:if test="${qnadto.qnasecret eq 'N' && qnadto.qnawriter eq admindto.member_id}">
+								<c:if test="${(qnadto.qnasecret eq 'N') && (qnadto.qnawriter eq admindto.member_id)}">
 									<form action="qnasetsecret.do" method="post">
 										<input type="hidden" name="qnano" value="${qnadto.qnano}"/>
 										<input type="submit" value="SECRET"/>
@@ -114,11 +114,11 @@
 									<input type="button" value="EDIT" onclick="location.href='qnaupdateform.do?qnano=${qnadto.qnano}'"/>
 								</c:if>
 								<!-- 삭제는 관리자와 작성자 본인만 -->
-								<c:if test="${admindto.member_role eq 'A' || qnadto.qnawriter eq admindto.member_id}">
+								<c:if test="${(admindto.member_id eq 'admin') || (qnadto.qnawriter eq admindto.member_id)}">
 									<input type="button" value="DELETE" onclick="location.href='qnadelete.do?qnano=${qnadto.qnano}'"/>
 								</c:if>
 								<!-- 답변은 관리자만 -->
-								<c:if test="${admindto.member_role eq 'A'}">
+								<c:if test="${admindto.member_id eq 'admin'}">
 									<input type="button" value="ANSWER" onclick="location.href='qnaanswerform.do?qnano=${qnadto.qnano}'"/>
 								</c:if>
 							</div>
