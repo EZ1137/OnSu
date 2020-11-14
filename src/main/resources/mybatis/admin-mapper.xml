@@ -103,6 +103,10 @@
 		WHERE MEMBER_ID = #{member_id}
 	</update>
 	
+	<update id="teacherupload">
+	
+	</update>
+	
 	
 	
 </mapper>

@@ -7,6 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>On:Soo - Notice</title>
+<style>
+	#nav.paging{
+	
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	
+}
+</style>
 </head>
 <link href="${pageContext.request.contextPath}/resources/css/notice.css" rel="stylesheet" >
 <body>
@@ -17,6 +26,11 @@
 	</header>
 
 	<section class="section area">
+	<div id="products">
+		<form action="" id="setRows">
+				<input type="hidden" name="rowPerPage" value="20">
+		</form>
+    
     	<!-- 타이틀 -->
 		<div class="notice_board_title">
 			<p>NOTICE</p>
@@ -47,7 +61,7 @@
 			
 			<c:otherwise>
 				<c:forEach items="${notice }" var="dto">
-				<tr>
+				<tr class="eval-contents">
 					<td>${dto.notice_no}</td>
 					<td><a href="noticedetail.do?notice_no=${dto.notice_no}" style="color:black; float:left; padding-left:30px;"> ${dto.notice_title}</a></td>
 					<td>관리자</td>
@@ -81,4 +95,6 @@
 	</footer>
 
 </body>
+ <script src="${pageContext.request.contextPath}/resources/js/paging.js"
+			type="text/javascript"></script>
 </html>

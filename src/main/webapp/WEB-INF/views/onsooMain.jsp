@@ -156,7 +156,7 @@ video {
 							<hr>
 							<span class="validate"> <input type="button"
 								class="validatebtn" value="인증하러 가기"
-								onclick="location.href='tvalid.do'">
+								onclick="location.href='teacherupload.do'">
 							</span>
 						</div>
 						<div class="fourth-inner02">
@@ -269,14 +269,6 @@ video {
 			});
 		</script>
 	</main>
-
-	<!-- <button id="arrow" class="arrow-up" onclick="arrowUp()">
-		<i class="fas fa-arrow-up"></i>
-	</button> -->
-	<%-- 
-	<footer id="footerarea" class="area">
-		<%@ include file="/WEB-INF/views/footer.jsp"%>
-	</footer> --%>
 </body>
 
 <!-- 알림(새로고침 시) -->

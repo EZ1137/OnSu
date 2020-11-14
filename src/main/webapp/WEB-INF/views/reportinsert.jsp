@@ -43,7 +43,8 @@
 		<div class="report_box">
 			<div class="report_table">
 				<form action="reportinsretres.do" method="POST" enctype="multipart/form-data">
-					<input type="hidden" name="member_id" value="${dto.member_id}" />
+					<input type="hidden" name="report_id" value="${dto.member_id }"/>
+
 					<div>
 						<div>
 							<div class="report id">신고자 아이디</div>

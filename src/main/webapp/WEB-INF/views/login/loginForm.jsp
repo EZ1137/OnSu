@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>로그인 페이지</title>
+
 </head>
 <link href="${pageContext.request.contextPath}/resources/css/loginForm.css" rel="stylesheet">
 <body onload="document.f.id.focus();">
@@ -27,7 +28,10 @@
 						<c:url value="/login" var="loginUrl" />
 						<form:form name="f" action="${loginUrl}" method="POST">
 							<c:if test="${param.error != null}">
-								<p>ID와 비밀번호가 잘못 되었습니다.</p>
+								<script>
+									alert("ID와 비밀번호가 잘못 되었습니다.");
+								</script>
+								
 							</c:if>
 							<c:if test="${param.logout != null}">
 								<p>로그아웃 하였습니다.</p>

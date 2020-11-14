@@ -26,7 +26,7 @@
 		VALUES(#{report_content}, SYSDATE, #{report_savename}, #{report_id}, #{report_ided}, #{report_category} )
 	</insert>
 
-		<update id="update">
+	<update id="update">
 		UPDATE MEMBER 
 		SET MEMBER_ROLE = #{member_role} 
 		WHERE MEMBER_ID = #{member_id}

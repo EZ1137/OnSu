@@ -26,7 +26,7 @@
 		
 		<!-- 게시글 작성하기 -->
 		<form action="qnainsertres.do" method="post">
-			<input type="hidden" name="qnawriter" value="${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username}">
+		<input type="hidden" name="qnawriter" value="${dto.member_id}" />
 			<table class="qna_insert">
 				<colgroup>
 					<col width="15%"/>
