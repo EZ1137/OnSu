@@ -138,9 +138,6 @@ public class MainController {
 				
 				String encPassword = passwordEncoder.encode(dto.getMember_pw());
 				dto.setMember_pw(encPassword);
-				
-
-				System.out.println("");
 
 				String member_id = dto.getMember_id();
 
@@ -190,8 +187,8 @@ public class MainController {
 					return ran;
 				}else {
 					logger.info("이메일 발송 실패 ");
-					String fail="실패";
-					return fail;
+					String test= "test";
+					return test;
 				}
 			}
 			
