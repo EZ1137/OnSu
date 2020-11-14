@@ -18,6 +18,7 @@ import com.kh.onsoo.admin.model.biz.AdminBiz;
 import com.kh.onsoo.calendar.model.biz.CalendarBiz;
 import com.kh.onsoo.listen.model.biz.ListenVideoBiz;
 import com.kh.onsoo.listen.model.biz.ListenWithBiz;
+import com.kh.onsoo.listen.model.dto.ListenVideoDto;
 import com.kh.onsoo.listen.model.dto.ListenWithDto;
 import com.kh.onsoo.online.model.biz.ClassBiz;
 
@@ -37,7 +38,7 @@ public class ListenWithController {
 	@Autowired
 	private ClassBiz classBiz;
 	
-	@RequestMapping(value = "/listenWList.do")
+	@RequestMapping(value = "/with/listen.do")
 	public String selectList(Model model, Principal principal) {
 		logger.info("[listenWList]");
 		
@@ -65,7 +66,7 @@ public class ListenWithController {
 		
 	}
 	
-	@RequestMapping(value = "/listenWDetail.do")
+	@RequestMapping(value = "/with/listenDetail.do")
 	public String selectOne(Model model, int listen_wclassno, @RequestParam String member_id) {
 		
 		logger.info("[listenWDtail]");
@@ -78,24 +79,21 @@ public class ListenWithController {
 		return "/user/listenwdetail";
 	}
 	
-	@RequestMapping(value = "listenWInsert.do")
-	public String insert() {
-		logger.info("[listenWInsert]");
+	@RequestMapping(value = "/with/listenInsert.do")
+	public String insert(Model model, @RequestParam String member_id, String title, int listen_classno) {
+		logger.info("[listenVInsert]");
 		
-		return "";
-	}
-	
-	@RequestMapping(value="listenWInsertRes.do")
-	public String insertres(ListenWithDto dto, Model model) {
-		logger.info("[listenWInsertRes.do]");
+		String listen_wmemberid = member_id;
+		String listen_wclasstitle = title;
+		int listen_wclassno = listen_classno;
 		
-		int res = listenWithBiz.insert(dto);
+		int res = listenWithBiz.insert(new ListenWithDto(0, listen_wmemberid, listen_wclassno, 1, listen_wclasstitle));
+		
 		if(res > 0) {
-			return "";
+			return "redirect:/mypage.do";
 		}
-		
-		return "";
-	}
+		return "/studydetail";
+	}	
 	
 	@RequestMapping(value = "/listenWDelete.do")
 	public String delete(int listen_wclassno) {
