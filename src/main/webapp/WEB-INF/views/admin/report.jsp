@@ -5,37 +5,66 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>On:Soo - Report List</title>
+<link href="${pageContext.request.contextPath}/resources/css/admin.css?after" rel="stylesheet">
 </head>
 <body>
-	<h1>신고페이지</h1>
-	<table border="1">
-		<col width="100">
-		<col width="200">
-		<col width="100">
-		<col width="150">
-		<col width="50">
-		<col width="100">
-		<tr>
-			<th>ID</th>
-			<th>CONTENT</th>
-			<th>IDED</th>
-			<th>DATE</th>
-			<th>CATEGORY</th>
-			<th>DETAIL</th>
-		</tr>
+
+	<!-- header -->
+	<header id="header" class="area">
+		<%@ include file="/WEB-INF/views/header.jsp"%>
+	</header>
+	
+	<section>
+		<div class="admin_title">
+			<p>신고 회원 조회</p>
+		</div>
 		
+		<table class="page_table">
+			<colgroup>
+				<col width="20%">
+				<col width="30%">
+				<col width="20%">
+				<col width="15%">
+				<col width="5%">
+				<col width="10%">
+			</colgroup>
+			<thead>
+				<tr>
+					<th>신고자</th>
+					<th>제목</th>
+					<th>신고대상</th>
+					<th>신고일자</th>
+					<th>분류</th>
+					<th>상세보기</th>
+				</tr>
+			</thead>
+			
 		<c:forEach items="${reportlist }" var="dto">
-			<tr>
-				<td>${dto.report_id }</td>
-				<td>${dto.report_content }</td>
-				<td>${dto.report_ided }</td>
-				<td>${dto.report_date }</td>
-				<td>${dto.report_category }</td>
-				<td><input type="button" value="보기" onclick="location.href='reportdetail.do?report_content=${dto.report_content}'"/> </td>
-			</tr>
+			<tbody>
+				<tr>
+					<td>${dto.report_id }</td>
+					<td>${dto.report_title }</td>
+					<td>${dto.report_ided }</td>
+					<td>${dto.report_date }</td>
+					<td>${dto.report_category }</td>
+					<td class="td_btn" style="border:none;" onclick="location.href='reportdetail.do?report_content=${dto.report_content}'">이동</td>
+				</tr>
+			</tbody>
 		</c:forEach>
-	</table>
-	<input type="button" value="관리자 메인페이지" onclick="location.href='<c:url value="/admin/admin.do"/>'">
+		
+			<tfoot>
+				<tr>
+					<td colspan="6" style="border:none; text-align:right;">
+						<input class="admin_btn" type="button" value="관리자 메인" onclick="location.href='admin.do'">
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</section>
+	 
+	<footer id="footerarea" class="area">
+		<%@ include file="/WEB-INF/views/footer.jsp"%>
+	</footer>
 </body>
 </html>
