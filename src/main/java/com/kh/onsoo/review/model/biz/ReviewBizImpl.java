@@ -15,8 +15,8 @@ public class ReviewBizImpl implements ReviewBiz {
 	private ReviewDao reviewDao;
 	
 	@Override
-	public List<ReviewDto> selectList() {
-		return reviewDao.selectList();
+	public List<ReviewDto> selectList(int review_classno) {
+		return reviewDao.selectList(review_classno);
 	}
 
 	@Override

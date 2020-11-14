@@ -5,6 +5,7 @@
 	<select id="selectList" resultType="ReviewDto">
 		SELECT REVIEW_NO, REVIEW_ID, REVIEW_CONTENT, REVIEW_CLASSNO, REVIEW_STAR, REVIEW_DATE, REVIEW_UPDATE
 		FROM REVIEW
+		WHERE REVIEW_CLASSNO = ${review_classno}
 		ORDER BY REVIEW_NO DESC
 	</select>
 	
