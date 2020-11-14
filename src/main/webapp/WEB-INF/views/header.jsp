@@ -133,6 +133,8 @@
 						</sec:authorize>
 						<sec:authorize access="hasAnyRole('USER','ADMIN' )">
 						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/about.do'">A B O U T</p>
+						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/video/studylist.do'">V I D E O</p>
+						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/with/studylist.do'">1 : 1 C L A S S</p>
 						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/qna.do'">Q n A</p>
 						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/notice.do'">N O T I C E</p>
 						<p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/contact.do'">C O N T A C T</p>
