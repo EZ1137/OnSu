@@ -108,7 +108,7 @@ public class QnaController {
 		} else {
 			logger.info("msg","글 작성 실패");
 			model.addAttribute("msg","글 작성 실패");
-			model.addAttribute("url","qnainsertform.do");
+			model.addAttribute("url","/qnainsertform.do");
 			return "redirect";	
 		}
 	}
