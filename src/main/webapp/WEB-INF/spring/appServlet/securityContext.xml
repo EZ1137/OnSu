@@ -35,6 +35,7 @@
     			
         <intercept-url pattern="/user/**" access="hasRole('USER')" />
         <intercept-url pattern="/admin/**" access="hasRole('ADMIN')" />
+        <intercept-url pattern="/block/**" access="hasRole('BLOCK')" />
         <intercept-url pattern="/login/loginForm.do" access="permitAll" />
         <intercept-url pattern="/main.do" access="permitAll" />
         <intercept-url pattern="/**" access="permitAll" />
