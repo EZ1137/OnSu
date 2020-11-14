@@ -24,6 +24,8 @@
 		<%@ include file="/WEB-INF/views/header.jsp"%>
 	</header>
 	
+	
+	
 	<section>
 	<div id="products">
 		<form action="" id="setRows">
