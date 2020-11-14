@@ -57,6 +57,7 @@
 								</c:otherwise>
 							</c:choose>
 
+
 						</div>
 						<div>
 							<div class="report ided">강사아이디</div>
