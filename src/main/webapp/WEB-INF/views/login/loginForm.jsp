@@ -7,11 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>로그인 페이지</title>
-<script>
-	function loginchk(){
-		
-	}
-</script>
+
 </head>
 <link href="${pageContext.request.contextPath}/resources/css/loginForm.css" rel="stylesheet">
 <body onload="document.f.id.focus();">
@@ -48,7 +44,7 @@
 							</div>
 							<input type="hidden" name="${_csrf.parameterName}"
 								value="${_csrf.token}" />
-							<button onclick="loginchk()"type="submit" class="loginbtn">Log In</button>
+							<button type="submit" class="loginbtn">Log In</button>
 							<!-- csrf 토근도 같이 전송이 된다. 서버에서 미리 토근을 받아서 체크한다. -->
 						</form:form>
 						
