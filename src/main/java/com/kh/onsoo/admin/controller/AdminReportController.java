@@ -69,6 +69,8 @@ public class AdminReportController {
 				return "redirect";
 			}
 			
+			
+			
 		}else if(member_role.equals("B")) {
 		logger.info("회원 정지");
 		AdminDto dto = new AdminDto();	

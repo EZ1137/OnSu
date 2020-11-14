@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="${pageContext.request.contextPath}/resources/css/reviewdetail.css" rel="stylesheet" >
 </head>
 <body>
 <h1>강사인증 페이지</h1>
