@@ -22,7 +22,7 @@
 		</tr>
 		<tr>
 			<th>첨부파일<br>미리보기</th>
-			<td><embed class="previewimg" src="./resources/img/${rdto.report_filename }" type="application/pdf" width="200px" height="300px" /></td>
+			<td><embed class="previewimg" src="./resources/img/${rdto.report_filename }" type="application/pdf" width="500px" height="500px" /></td>
 		</tr>
 		<tr>
 			<th>신고 받은 사람</th>
