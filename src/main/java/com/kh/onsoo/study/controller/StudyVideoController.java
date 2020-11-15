@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -33,12 +34,17 @@ import com.kh.onsoo.study.model.biz.StudyVideoBiz;
 import com.kh.onsoo.study.model.biz.StudyWithBiz;
 import com.kh.onsoo.study.model.dto.StudyDto;
 import com.kh.onsoo.study.model.dto.StudyImageDto;
+import com.kh.onsoo.study.video.model.biz.VideoBiz;
+import com.kh.onsoo.study.video.model.dto.VideoDto;
 
 @Controller
 public class StudyVideoController {
 
 	private static final Logger logger = LoggerFactory.getLogger(StudyVideoController.class);
 
+	@Resource(name="uploadPath")
+	private String uploadPath;
+	
 	@Autowired
 	private UploadBiz uploadBiz;
 
@@ -48,6 +54,9 @@ public class StudyVideoController {
 	@Autowired
 	private StudyWithBiz studyWithBiz;
 
+	@Autowired
+	private VideoBiz videoBiz;
+	
 	@RequestMapping(value = "/video/studylist.do")
 	public String studyVideoList(Model model, Principal principal) {
 		model.addAttribute(principal);
@@ -74,6 +83,9 @@ public class StudyVideoController {
 	public String studyDetail(Model model, int class_no, @RequestParam String member_id) {
 		model.addAttribute("member_id", member_id);
 		model.addAttribute("studyDto", studyBiz.selectOne(class_no));
+		model.addAttribute("imageList", uploadBiz.selectList(class_no));
+		model.addAttribute("videoList", videoBiz.videoList(class_no));
+		
 		return "studydetail";
 	}
 
@@ -89,6 +101,9 @@ public class StudyVideoController {
 	@RequestMapping("/video/teacher/studydetail.do")
 	public String studyTeacherDetail(Model model, int class_no) {
 		model.addAttribute("studyDto", studyBiz.selectOne(class_no));
+		model.addAttribute("imageList", uploadBiz.selectList(class_no));
+		model.addAttribute("videoList", videoBiz.videoList(class_no));
+		
 		return "studydetail_teacher";
 	}
 
@@ -165,6 +180,99 @@ public class StudyVideoController {
 	}
 	// 음 alert 처리?
 
+	@RequestMapping("/video/teacher/videoform.do")
+	public String videoForm(Model model, int class_no) {
+
+		model.addAttribute("class_no", class_no);
+		return "videoinsert";
+	}
+
+	@RequestMapping("/video/videodetail.do")
+	public String videoShow(Model model, int video_no) {
+		model.addAttribute("videoDto", videoBiz.videoOne(video_no));
+		return "videoshow";
+	}
+
+	@RequestMapping("/video/teacher/videodetail.do")
+	public String videoTeacherShow(Model model, int video_no) {
+		model.addAttribute("videoDto", videoBiz.videoOne(video_no));
+		return "videoshow";
+	}
+	
+	// 동영상 업로드
+	@RequestMapping(value = "/video/teacher/videoinsertres.do", method = RequestMethod.POST)
+	public String upload(@RequestParam("file") MultipartFile file, Model model, HttpServletRequest request, String videoname, int class_no)
+			throws IOException {
+		String filename = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
+		VideoDto videoDto = null;
+		String insertName = null;
+		
+		try {
+
+			File storage = new File(uploadPath);
+
+			// 폴더 생성
+			if (!storage.exists()) {
+				storage.mkdir();
+			}
+
+			if (file.getSize() != 0) {
+				File target = new File(uploadPath, filename);
+				FileCopyUtils.copy(file.getBytes(), target);
+			}
+
+			insertName = filename;
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			return "redirect:videoinsert.do?class_no=" + class_no;
+		}
+		
+		videoDto = new VideoDto(0, videoname, "0", insertName, class_no);
+		
+		int res = 0;
+
+		res = videoBiz.insert(videoDto);
+		if (res > 0) {
+			return "redirect:studydetail.do?class_no=" + class_no;
+		} else
+			return "redirect:videoinsert.do?class_no=" + class_no;
+	}
+	
+	@RequestMapping("/video/teacher/videoupdateform.do")
+	public String videoUpdateForm(Model model, int video_no) {
+		
+		model.addAttribute("videoDto", videoBiz.videoOne(video_no));
+		
+		return "videoupdate";
+	}
+	
+	@RequestMapping("/video/teacher/videoupdateres.do")
+	public String videoUpdate(Model model, VideoDto videoDto, int class_no) {
+		
+		int res = videoBiz.update(videoDto);
+		
+		if(res > 0) {
+			
+			return "redirect:studydetail.do?class_no=" + class_no;
+		}
+		
+		return "videoupdate";
+	}
+	
+	@RequestMapping("/video/teacher/videodelete.do")
+	public String videoUpdate(int video_no, int class_no) {
+		
+		int res = videoBiz.delete(video_no);
+		
+		if(res > 0) {
+			
+			return "redirect:studydetail.do?class_no=" + class_no;
+		}
+		
+		return "redirect:studydetail.do?class_no=" + class_no;
+	}
+	
 	public boolean uploadMany(MultipartHttpServletRequest multifile, Model model, HttpServletRequest request, int class_no)
 			throws IOException {
 
@@ -173,9 +281,7 @@ public class StudyVideoController {
 
 		try {
 
-			String path = WebUtils.getRealPath(request.getSession().getServletContext(), "/resources/storage");
-
-			File storage = new File(path);
+			File storage = new File(uploadPath);
 
 			// 폴더 생성
 			if (!storage.exists()) {
@@ -187,11 +293,11 @@ public class StudyVideoController {
 				String filename = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
 
 				if (file.getSize() != 0) {
-					File target = new File(path, filename);
+					File target = new File(uploadPath, filename);
 					FileCopyUtils.copy(file.getBytes(), target);
 				}
 
-				String insertName = path + "/" + filename;
+				String insertName = filename;
 				uploadDto = new UploadDto(0, insertName, class_no);
 				list.add(uploadDto);
 			}

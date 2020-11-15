@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -37,6 +38,9 @@ public class StudyWithController {
 
 	private static final Logger logger = LoggerFactory.getLogger(StudyWithController.class);
 
+	@Resource(name="uploadPath")
+	private String uploadPath;
+	
 	@Autowired
 	private UploadBiz uploadBiz;
 	
@@ -161,9 +165,7 @@ public class StudyWithController {
 
 		try {
 
-			String path = WebUtils.getRealPath(request.getSession().getServletContext(), "/resources/storage");
-
-			File storage = new File(path);
+			File storage = new File(uploadPath);
 
 			// 폴더 생성
 			if (!storage.exists()) {
@@ -175,11 +177,11 @@ public class StudyWithController {
 				String filename = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
 
 				if (file.getSize() != 0) {
-					File target = new File(path, filename);
+					File target = new File(uploadPath, filename);
 					FileCopyUtils.copy(file.getBytes(), target);
 				}
 
-				String insertName = path + "/" + filename;
+				String insertName = uploadPath + "/" + filename;
 				uploadDto = new UploadDto(0, insertName, class_no);
 				list.add(uploadDto);
 			}
