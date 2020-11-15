@@ -25,7 +25,7 @@ function replyList(){
                 a += '<div class="replyInfo'+reply.reply_no+'">'+'댓글번호 : '+reply.reply_no+' / 작성자 : '+reply.reply_id;
                 a += '<a onclick="replyUpdate('+reply.reply_no+',\''+reply.reply_title +'\');"> 수정 </a>';
                 a += '<a onclick="replyDelete('+reply.reply_no+');"> 삭제 </a> </div>';
-                a += '<div class="rep	lyContent'+reply.reply_no+'"> <p> 내용 : '+reply.reply_title +'</p>';
+                a += '<div class="replyContent'+reply.reply_no+'"> <p> 내용 : '+reply.reply_title +'</p>';
                 a += '</div></div>';
                 a +='</div>';
             });
