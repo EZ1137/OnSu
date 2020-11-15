@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.onsoo.live">
+
+	<select id="liveselectOne" resultType="liveDto">
+		SELECT LIVE_NO, LIVE_ID
+		FROM LIVE
+		WHERE LIVE_NO = #{live_no}
+	</select>
+
+	
+	<insert id="liveInsert" parameterType="liveDto">
+		INSERT INTO LIVE
+		VALUES
+		(#{live_no}, #{live_id})
+	</insert>
+
+	<delete id="liveDelete" parameterType="int">
+		DELETE FROM LIVE
+		WHERE
+		LIVE_NO = #{live_no}
+	</delete>
+
+</mapper>

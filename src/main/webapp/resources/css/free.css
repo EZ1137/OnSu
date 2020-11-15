@@ -163,17 +163,53 @@ td > input[type="submit"]:hover {
 	align-items:center;
 }
 .replybox{
-  
-  width:800px;
+  height:70px;
+  width:70%;
+
+}
+.replyArea{
+	
+	margin-bottom: 15px;
 }
 
+.replyContent{
+	
+}
 .container{
   margin:0px;
   width:70%;
- 
- 
+}
+.form-control{
+	
+  width:80%;
+
+  height: 36px;
+  margin: auto;
+  padding-left: 16px;
+  border: 1px solid #ccc;
+  border-radius: 18px;
+  box-sizing: border-box;
 }
 
+.container > label{
+	
+}
+.btn-default{
+	 margin: 4px 4px;
+  padding: 5px 10px 0 10px;
+  background: var(--color-white);
+  color: var(--color-dark-grey);
+  height: 30px;
+  border: none;
+  border-radius: var(--border-radi-btn);
+  box-shadow: var(--btn-shadow);
+}
+.btn-default:hover{
+  background-color: var(--color-light-blue);
+  color: var(--color-black);
+  border: none;
+}
+/* 페이징 */
 .off-screen {
    display: none;
 }

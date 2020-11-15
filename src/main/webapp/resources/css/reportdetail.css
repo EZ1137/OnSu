@@ -79,6 +79,11 @@ section {
 	width: 80%;
 }
 
+thead > tr > td {
+	padding-left: 10px;
+	overflow: auto;
+}
+
 tr {
 	height: 30px;
 }
@@ -114,23 +119,37 @@ input[type="file"] {
 	margin: 20px 70px;
 }
 
+.previewimg {
+	width: 100%;
+	height: 300px;
+}
+
 .report {
 	margin-left: 20px;
 	font-size: var(--font-regular);
 }
 
-.reportbtn {
+select {
+	cursor: pointer;
+}
+
+.submitbtn, .listbtn {
   margin-top: 7px;
   padding: 5px 15px;
   background: var(--color-white);
   color: var(--color-dark-grey);
-  height: 34px;
+  height: 30px;
   border: none;
   border-radius: var(--border-radi-btn);
   box-shadow: var(--btn-shadow);
 }
 
-.reportbtn:hover {
-  background-color: var(--color-red);
+.submitbtn:hover {
+  background-color: var(--color-orange);
+  color: var(--color-black);
+}
+
+.listbtn:hover {
+  background-color: var(--color-light-blue);
   color: var(--color-black);
 }

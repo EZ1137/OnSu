@@ -39,7 +39,7 @@ section {
 
 .admin_title {
 	/* border:1px solid blue; */
-	margin: 0 auto 60px auto;
+	margin: 0 auto 40px auto;
 	padding: 10px 0 0 60px;
 	width: 70%;
 	height: 50px;
@@ -62,44 +62,33 @@ section {
 	width: 70%;
 }
 
-#first_area, #second_area {
+#first_area, #second_area, #third_area {
 	width: 70%;
-	height: 200px;
-	margin: 0 auto 20px auto;
-	display: flex;
-}
-
-.first_table_all, .third_table_all {
-	margin-right: 2%;
-	width: 49%;
-	height: 100%;
+	height: 160px;
+	margin: 0 auto 30px auto;
+	padding: 14px 10%;
 	cursor: pointer;
 	border-radius: var(--border-radi-btn);
 	box-shadow: 5px 5px 10px #e6e6e6, -5px -5px 10px #ffffff;
 }
-
-.second_table_all, .forth_table_all {
-	width: 49%;
-	height: 100%;
-	cursor: pointer;
-	border-radius: var(--border-radi-btn);
-	box-shadow: 5px 5px 10px #e6e6e6, -5px -5px 10px #ffffff;
+.first_table_all, .second_table_all, .third_table_all {
+	height: 126px;
+	overflow: hidden;
 }
 
-.first_table_all:hover, .third_table_all:hover, .second_table_all:hover, .forth_table_all:hover {
+#first_area:hover, #second_area:hover, #third_area:hover {
 	box-shadow: 5px 5px 10px var(--color-light-grey), -5px -5px 10px #ffffff;
 }
 
-.first_table_name, .second_table_name, .third_table_name, .forth_table_name {
-	font-size: 36px;
+.first_table_name, .second_table_name, .third_table_name {
+	font-size: 24px;
 	font-weight: bold;
-	margin: 16px 0 0 10%;
 	color: var(--color-dark-blue);
 }
 
 div > table {
 	margin: auto;
-	width: 80%;
+	width: 100%;
 }
 
 th {

@@ -12,7 +12,8 @@
 	</resultMap>
 	
 	<select id="selectList" resultMap="AdminReportDtoMap">
-		SELECT * FROM REPORT
+		SELECT * FROM REPORT 
+		ORDER BY REPORT_DATE DESC
 	</select>
 	
 
