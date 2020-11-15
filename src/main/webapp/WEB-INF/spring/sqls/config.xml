@@ -18,6 +18,9 @@
 		<typeAlias type="com.kh.onsoo.review.model.dto.ReviewDto" alias="ReviewDto"/>
 		<typeAlias type="com.kh.onsoo.study.image.model.dto.UploadDto" alias="imageDto"/>
 		<typeAlias type="com.kh.onsoo.study.model.dto.StudyImageDto" alias="studyImageDto"/>
+		<typeAlias type="com.kh.onsoo.pay.model.dto.PayDto" alias="PayDto"/>
+		<typeAlias type="com.kh.onsoo.study.video.model.dto.VideoDto" alias="videoDto"/>
+		<typeAlias type="com.kh.onsoo.live.model.dto.LiveDto" alias="liveDto"/>
 	</typeAliases>
 	
 	<mappers>
@@ -36,6 +39,10 @@
 		<mapper resource="/mybatis/studyVideo-mapper.xml"/>
 		<mapper resource="/mybatis/studyWith-mapper.xml"/>
 		<mapper resource="/mybatis/imageUpload-mapper.xml"/>
+		<mapper resource="/mybatis/pay-mapper.xml"/>
+		<mapper resource="/mybatis/videoUpload-mapper.xml"/>
+		<mapper resource="/mybatis/live-mapper.xml"/>
+
 	</mappers>
 	
 </configuration>
