@@ -63,7 +63,7 @@
 					<c:choose>
 						<c:when test="${empty list }">
 							<tr>
-								<th colspan="4">------------ 강의가 없습니다 ----------------</th>
+								<td colspan="4">------------ 작성된 게시글이 없습니다 ------------</td>
 							</tr>
 						</c:when>
 						<c:otherwise>
@@ -86,8 +86,7 @@
 
 				<tfoot>
 					<c:choose>
-						<c:when
-							test="${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username ne null }">
+						<c:when test="${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username ne null }">
 							<!--로그인했을때  -->
 							<tr>
 								<td colspan="6" class="qbtnbar" style="text-align: right;">
@@ -104,7 +103,7 @@
 								</td>
 							</tr>
 
-							<sec:authorize access="isAuthenticated()">
+		<%-- 					<sec:authorize access="isAuthenticated()">
 								<form:form action="${pageContext.request.contextPath}/logout"
 									method="POST">
 									<input type="submit" value="로그아웃" />
@@ -112,7 +111,7 @@
 										type="button" value="WRITE"
 										onclick="location.href='freeinsert.do'" /></td>
 								</form:form>
-							</sec:authorize>
+							</sec:authorize> --%>
 
 						</c:otherwise>
 					</c:choose>
@@ -124,9 +123,9 @@
 	</section>
 
 	<!-- footer -->
-	<footer id="footerarea" class="area">
+	
 		<%@ include file="/WEB-INF/views/footer.jsp"%>
-	</footer>
+	
 
 </body>
 		<script src="${pageContext.request.contextPath}/resources/js/paging.js"
