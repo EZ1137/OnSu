@@ -1,11 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>On:Soo - Member List</title>
+<style>
+	#nav.paging{
+	
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	
+}
+</style>
 <link href="${pageContext.request.contextPath}/resources/css/admin.css?after" rel="stylesheet">
 </head>
 <body>
@@ -15,7 +25,13 @@
 		<%@ include file="/WEB-INF/views/header.jsp"%>
 	</header>
 	
+	
+	
 	<section>
+	<div id="products">
+		<form action="" id="setRows">
+				<input type="hidden" name="rowPerPage" value="20">
+		</form>
 		<div class="admin_title">
 			<p>전체 회원 조회</p>
 		</div>
@@ -36,21 +52,21 @@
 					<th>이름</th>
 					<th>이메일</th>
 					<th>전화번호</th>
-					<th>탈퇴일자</th>
-					<th>정지일자</th>
+					<th>생년월일</th>
+					<th>가입일자</th>
 					<th>권한</th>
 				</tr>
 			</thead>
 			
 		<c:forEach items="${list }" var="dto">
 			<tbody>
-				<tr>
+				<tr class="eval-contents">
 					<td>${dto.member_id }</td>
 					<td>${dto.member_name }</td>
 					<td>${dto.member_email }</td>
 					<td>${dto.member_phone }</td>
-					<td>${dto.member_ddate }</td>
-					<td>${dto.member_bdate }</td>
+					<td>${dto.member_birth }</td>
+					<td><fmt:formatDate value="${dto.member_regdate }" pattern="yyyy-MM-dd" /></td>
 					<td>${dto.member_role }</td>
 				</tr>
 			</tbody>
@@ -64,10 +80,12 @@
 				</tr>
 			</tfoot>
 		</table>
+		</div>
 	</section>
-	 
 	<footer id="footerarea" class="area">
 		<%@ include file="/WEB-INF/views/footer.jsp"%>
 	</footer>
 </body>
+ <script src="${pageContext.request.contextPath}/resources/js/paging.js"
+			type="text/javascript"></script>
 </html>

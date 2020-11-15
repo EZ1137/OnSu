@@ -1,64 +1,76 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>  
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="${pageContext.request.contextPath}/resources/css/noticeAll.css" rel="stylesheet" >
+<link href="${pageContext.request.contextPath}/resources/css/notice.css" rel="stylesheet" >
 </head>
-
 <body>
-
 
 <!-- header -->
 	<header id="header">
 		<%@ include file="/WEB-INF/views/header.jsp"%>
 	</header>
 
-	
-			<h1>공지사항 디테일</h1>
-		<table>
-			<tr>
-				<th><h3>작성자</h3></th>
-				<td><input type="text" value="관리자" readonly="readonly"></td>
-			</tr>
-			<tr>
-				<th><h3>제목<h3></th>
-				<td><input type="text" value="${dto.notice_title}" readonly="readonly"></td>
-			</tr>
-			<tr>
-				<th><h3>내용</h3></th>
-				<td><textarea rows="10" cols="60" name="nocontent" readonly="readonly">${dto.notice_content}</textarea></td>
-			</tr>
-			<tr>
-				<td colspan="2" align="right">
-					
-					<sec:authorize access="hasRole('ADMIN')">
-						<input type="button" value="수정" 
-						onclick="location.href='noticeUpdate.do?notice_no=${dto.notice_no}'"/>
-						<input type="button" value="삭제" 
-						onclick="location.href='noticedelete.do?notice_no=${dto.notice_no}'"/>
-					</sec:authorize>
-					
-					<sec:authorize access="hasRole('USER')">
-						<input type="button" value="목록" 
-						onclick="location.href='notice.do'"/>
-					</sec:authorize>
-				</td>
-			</tr>					
-		</table>
+	<section>
+    	<!-- 타이틀 -->
+		<div class="notice_board_title">
+			<p>NOTICE</p>
+		</div>
 		
+		<table class="notice_detail">
+			<colgroup>
+				<col width="15%"/>
+				<col width="15%"/>
+				<col width="15%"/>
+				<col width="20%"/>
+				<col width="15%"/>
+				<col width="20%"/>
+			</colgroup>
+			<tbody>
+				<tr>
+					<th>No.</th>
+					<td>${dto.notice_no}</td>
+					<th>작성자</th>
+					<td>관리자</td>
+					<th>작성일</th>
+					<td><fmt:formatDate value="${dto.notice_regdate}" pattern="yyyy-MM-dd"/></td>
+				</tr>
+				<tr>
+					<th>제목</th>
+					<td colspan="5" style="text-align:left; padding-left:16px;">${dto.notice_title}</td>
+				</tr>
+				<tr>
+					<th>내용</th>
+					<td colspan="5">
+						<textarea rows="12" cols="103" name="nocontent" readonly="readonly">${dto.notice_content}</textarea>
+					</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="6" style="text-align:right" class="nbtnbar">
+						<sec:authorize access="hasRole('ADMIN')">
+							<input type="button" class="e_btn" value="수정" onclick="location.href='noticeUpdate.do?notice_no=${dto.notice_no}'"/>
+							<input type="button" class="d_btn" value="삭제" onclick="location.href='noticedelete.do?notice_no=${dto.notice_no}'"/>
+						</sec:authorize>
+						
+						<sec:authorize access="hasRole('USER')">
+							<input type="button" value="목록" class="l_btn" onclick="location.href='notice.do'"/>
+						</sec:authorize>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</section>
 		
 	<!-- footer -->
 	<footer id="footerarea" class="area">
 		<%@ include file="/WEB-INF/views/footer.jsp"%>
 	</footer>
-		
-		
-		
-		
-
 
 </body>
 </html>

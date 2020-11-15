@@ -34,7 +34,7 @@ public class MyPageController {
 	@Autowired
 	private AdminBiz adminBiz;
 	
-	@RequestMapping(value = "/user/mypage.do", method = RequestMethod.GET)
+	@RequestMapping(value = "mypage.do", method = RequestMethod.GET)
 	public String myPage(Model model, Principal principal) {
 		logger.info("[mypage.do]");
 		

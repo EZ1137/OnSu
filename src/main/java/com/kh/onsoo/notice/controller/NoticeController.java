@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.onsoo.notice.model.biz.NoticeBiz;
@@ -18,6 +19,7 @@ public class NoticeController {
 	
 	@Autowired
 	private NoticeBiz noticeBiz;
+	
 	
 	@RequestMapping(value = "/notice.do")
 	public String selectList(Model model) {
@@ -44,8 +46,10 @@ public class NoticeController {
 	
 	@RequestMapping(value = "/noticedetail.do")
 	public String selectOne(Model model, @RequestParam("notice_no") int notice_no) {
+		System.out.println(notice_no+"notice detail일때  들어가는 거 확인 ");
 		
 		model.addAttribute("dto",noticeBiz.selectOne(notice_no));
+		
 		return "noticedetail";
 	}
 	
@@ -78,6 +82,17 @@ public class NoticeController {
 		}
 		
 	}
+	
+	@RequestMapping(value ="noticesearch.do" , method = RequestMethod.GET)
+	public String search(Model model, @RequestParam String search) {
+		logger.info("notice 검색 ");
+		System.out.println(search+"검색테스트");
+		model.addAttribute("list",noticeBiz.Nsearch(search));
+		
+		
+		return "/noticesearch";
+	}
+	
 	
 	
 	

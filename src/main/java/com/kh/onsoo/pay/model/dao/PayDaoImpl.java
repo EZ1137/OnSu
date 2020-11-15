@@ -50,5 +50,18 @@ public class PayDaoImpl implements PayDao {
 		
 		return res;
 	}
+	
+	public int delete(PayDto dto) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.delete(NAMESPACE+"delete", dto);
+		} catch (Exception e) {
+			logger.info("[ERROR] delete");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
 
 }

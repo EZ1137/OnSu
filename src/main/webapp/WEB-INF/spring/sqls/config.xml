@@ -20,7 +20,9 @@
 		<typeAlias type="com.kh.onsoo.study.model.dto.StudyImageDto" alias="studyImageDto"/>
 		<typeAlias type="com.kh.onsoo.pay.model.dto.PayDto" alias="PayDto"/>
 		<typeAlias type="com.kh.onsoo.study.video.model.dto.VideoDto" alias="videoDto"/>
+
 		<typeAlias type="com.kh.onsoo.live.model.dto.LiveDto" alias="liveDto"/>
+
 	</typeAliases>
 	
 	<mappers>

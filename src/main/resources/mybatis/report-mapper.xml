@@ -12,13 +12,15 @@
 	</resultMap>
 	
 	<select id="selectList" resultMap="AdminReportDtoMap">
-		SELECT * FROM REPORT
+		SELECT * FROM REPORT 
+		ORDER BY REPORT_DATE DESC
 	</select>
 	
+
 	<select id="selectOne" parameterType="String" resultType="AdminReportDto">
-		SELECT *
+		SELECT REPORT_CONTENT,REPORT_DATE,REPORT_FILENAME,REPORT_ID,REPORT_IDED,REPORT_CATEGORY
 		FROM REPORT
-		WHERE REPORT_CONTENT = #{report_content}
+		WHERE REPORT_ID = #{report_id}
 	</select>
 	
 	<insert id="insert">
@@ -28,7 +30,7 @@
 
 	<update id="update">
 		UPDATE MEMBER 
-		SET MEMBER_ROLE = #{member_role} 
+		SET MEMBER_ROLE = #{member_role},MEMBER_BDATE = #{member_bdate}
 		WHERE MEMBER_ID = #{member_id}
 	</update>
 </mapper>

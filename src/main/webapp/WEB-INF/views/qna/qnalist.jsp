@@ -19,6 +19,10 @@
     </header>
 
     <section class="section area">
+    <div id="products">
+		<form action="" id="setRows">
+			<input type="hidden" name="rowPerPage" value="20">
+		</form>
     	<!-- 타이틀 -->
 		<div class="qna_board_title">
 			<p>Q&amp;A</p>
@@ -49,9 +53,10 @@
 							<td colspan="5" align="center">현재 작성된 Q&amp;A 글이 존재하지 않습니다.</td>
 						</tr>
 					</c:when>
+					
 					<c:otherwise>
 						<c:forEach items="${qna}" var="qnadto">
-							<tr>
+							<tr class="eval-contents">
 								<td>${qnadto.qnano}</td>
 								<td style="height:100%; display:flex; padding-left:10px;">
 									<c:if test="${qnadto.qnasecret eq 'Y'}">
@@ -89,6 +94,7 @@
 				</tr>
 			</tfoot>
 		</table>
+		</div>
 	</section>
 	
 	<!-- footer -->
@@ -97,4 +103,6 @@
 	</footer>
 
 </body>
+ <script src="${pageContext.request.contextPath}/resources/js/paging.js"
+			type="text/javascript"></script>
 </html>

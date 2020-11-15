@@ -13,4 +13,7 @@ public interface NoticeDao {
 	public int insert(NoticeDto dto);
 	public int update(NoticeDto dto);
 	public int delete(int notice_no);
+	
+	
+	public List<NoticeDto> Nsearch(String search);
 }

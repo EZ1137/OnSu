@@ -6,65 +6,84 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>On:Soo - Notice</title>
+<style>
+	#nav.paging{
+	
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	
+}
+</style>
 </head>
 <link href="${pageContext.request.contextPath}/resources/css/notice.css" rel="stylesheet" >
 <body>
 
-<!-- header -->
+	<!-- header -->
 	<header id="header">
 		<%@ include file="/WEB-INF/views/header.jsp"%>
 	</header>
 
-
-<section class="section">
-			<h1 id="qnatitle">공지사항페이지입니다</h1>
-			<table id="notice" class="" style="text-align: center;">
-				<col width="200"/>
-				<col width="250"/>
-				<col width="500"/>
-				<col width="350"/>
+	<section class="section area">
+	<div id="products">
+		<form action="" id="setRows">
+				<input type="hidden" name="rowPerPage" value="20">
+		</form>
+    
+    	<!-- 타이틀 -->
+		<div class="notice_board_title">
+			<p>NOTICE</p>
+		</div>
+		
+		<table id="notice" class="notice_list" style="text-align: center;">
+			<colgroup>
+				<col width="10%"/>
+				<col width="65%"/>
+				<col width="10%"/>
+				<col width="15%"/>
+			</colgroup>
+			<thead>
 				<tr>
-					<th scope="col" class="">번호</th>
-					<th scope="col" class="">작성자</th>
-					<th scope="col" class="">제목</th>
-					<th scope="col" class="">작성일</th>
+					<th>No.</th>
+					<th>제목</th>
+					<th>작성자</th>
+					<th>작성일</th>
 				</tr>
-				<c:choose>
-					<c:when test="${empty notice}">
-						<tr>
-							<th colspan="4">-------------------------------------- 작성된 글이 없습니다.-----------------------------------</th>
-						</tr>
-					</c:when>
-				<c:otherwise>
-					<c:forEach items="${notice }" var="dto">
-						<tr>
-							<td>${dto.notice_no}</td>
-							<td>관리자</td>
-							<td><a href="noticedetail.do?notice_no=${dto.notice_no}" style="color:black;"> ${dto.notice_title}</a></td>
-							<td><fmt:formatDate value="${dto.notice_regdate}" pattern="yyyy-MM-dd" /></td>
-						</tr>
-					</c:forEach>
-				</c:otherwise>
-				</c:choose>
-					<tr>
-						<td colspan="4" align="center">
-							<select name="">
-								<option value="" selected="selected">제목으로검색</option>
-								<option value="">내용으로 검색</option>
-							</select>
-							<input type="search" name="" placeholder="검색어를 입력하세요"/>
-							<button class="" type="submit">검색</button>
-						</td>
-					</tr>
-					<tr>
+			</thead>
+			<tbody>
+		<c:choose>
+			<c:when test="${empty notice}">
+				<tr>
+					<th colspan="4">현재 작성된 공지글이 존재하지 않습니다.</th>
+				</tr>
+			</c:when>
+			<c:otherwise>
+				<c:forEach items="${notice }" var="dto">
+				<tr class="eval-contents">
+					<td>${dto.notice_no}</td>
+					<td><a href="noticedetail.do?notice_no=${dto.notice_no}" style="color:black; float:left; padding-left:30px;"> ${dto.notice_title}</a></td>
+					<td>관리자</td>
+					<td><fmt:formatDate value="${dto.notice_regdate}" pattern="yyyy-MM-dd" /></td>
+				</tr>
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="4" align="center" class="nbtnbar">
+						<form action="noticesearch.do" method="get" >
+						<input type="hidden" value="notice_title" value="notice_title"/>
+						<input type="search" name="search"  placeholder="제목을 입력해주세요"/>
+						</form>
 						<sec:authorize access="hasRole('ADMIN')">
-						<td colspan="4" align="right">
-							<input type="button" value="글작성" onclick="location.href='noticeForm.do'"/>
-						</td>
+							<input type="button" class="i_btn" value="작성" onclick="location.href='noticeForm.do'"/>
 						</sec:authorize>
-					</tr>
-			</table>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
 	</section>
 	
 	<!-- footer -->
@@ -72,7 +91,7 @@
 		<%@ include file="/WEB-INF/views/footer.jsp"%>
 	</footer>
 
-
-
 </body>
+ <script src="${pageContext.request.contextPath}/resources/js/paging.js"
+			type="text/javascript"></script>
 </html>

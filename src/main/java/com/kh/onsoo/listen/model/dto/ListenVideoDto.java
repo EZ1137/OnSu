@@ -11,18 +11,15 @@ public class ListenVideoDto {
 	private Date listen_vdate;
 	private String listen_vclasstitle;
 	
-	private ClassDto ClassDto;
-	
 	public ListenVideoDto() {}
 	
 	public ListenVideoDto(int listen_vno, String listen_vmemberid, int listen_vclassno,
-			Date listen_vdate, String listen_vclasstitle, ClassDto ClassDto) {
+			Date listen_vdate, String listen_vclasstitle) {
 		this.listen_vno = listen_vno;
 		this.listen_vmemberid = listen_vmemberid;
 		this.listen_vclassno = listen_vclassno;
 		this.listen_vdate = listen_vdate;
 		this.listen_vclasstitle = listen_vclasstitle;
-		ClassDto = ClassDto;
 	}
 
 	public int getListen_vno() {
@@ -63,14 +60,6 @@ public class ListenVideoDto {
 
 	public void setListen_vclasstitle(String listen_vclasstitle) {
 		this.listen_vclasstitle = listen_vclasstitle;
-	}
-	
-	public ClassDto getClassDto() {
-		return ClassDto;
-	}
-	
-	public ClassDto setClassDto(ClassDto ClassDto) {
-		return ClassDto = ClassDto;
 	}
 
 }

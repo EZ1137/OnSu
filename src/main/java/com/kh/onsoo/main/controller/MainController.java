@@ -27,8 +27,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.kh.onsoo.admin.mail.Mailservice;
 import com.kh.onsoo.admin.mail.RandomCode;
 import com.kh.onsoo.admin.model.biz.AdminBiz;
+import com.kh.onsoo.admin.model.biz.AdminReportBiz;
 import com.kh.onsoo.admin.model.biz.AuthBiz;
 import com.kh.onsoo.admin.model.dto.AdminDto;
+import com.kh.onsoo.admin.model.dto.AdminReportDto;
 import com.kh.onsoo.admin.snslogin.NaverLoginBo;
 
 @Controller
@@ -60,6 +62,9 @@ public class MainController {
 	@Autowired
 	private OAuth2Parameters googleOAuth2Parameters;
 	
+	@Autowired
+	private AdminReportBiz adminReportBiz;
+	
 	
 	
 	private void setNaverLoginBo(NaverLoginBo naverLoginBo) {
@@ -80,6 +85,11 @@ public class MainController {
 	@RequestMapping(value = "/streaming.do", method = RequestMethod.GET)
 	public String streaming(Model model) {			
 		return "streaming";
+	}
+	
+	@RequestMapping(value = "/teacherupload.do", method = RequestMethod.GET)
+	public String teacherupload(Model model) {			
+		return "teacherupload";
 	}
 
 	//로그인 
@@ -138,9 +148,6 @@ public class MainController {
 				
 				String encPassword = passwordEncoder.encode(dto.getMember_pw());
 				dto.setMember_pw(encPassword);
-				
-
-				System.out.println("");
 
 				String member_id = dto.getMember_id();
 
@@ -190,8 +197,8 @@ public class MainController {
 					return ran;
 				}else {
 					logger.info("이메일 발송 실패 ");
-					String fail="실패";
-					return fail;
+					String test= "test";
+					return test;
 				}
 			}
 			
@@ -275,7 +282,7 @@ public class MainController {
 			}
 		
 		//업데이트수정 이메일
-		@RequestMapping(value ="/user/registUdpatechk.do" ,method = RequestMethod.GET)	
+		@RequestMapping(value ="/user/registUpdatechk.do" ,method = RequestMethod.GET)	
 		public String registUpdatechk(Model model ,Principal principal){
 			logger.info("수정전 비밀번호페이지 ");
 			
@@ -290,7 +297,7 @@ public class MainController {
 			System.out.println(dto.getMember_id());
 			
 			model.addAttribute("dto",dto);
-			return "user/registUdpatechk";
+			return "user/registUpdatechk";
 		}
 			
 		//정보수정페이지
@@ -366,9 +373,6 @@ public class MainController {
 			String member_id = principal1.getUsername();
 			
 			AdminDto dto = adminBiz.selectOne2(member_id);
-			
-			
-			
 			
 			model.addAttribute("dto",dto);
 			

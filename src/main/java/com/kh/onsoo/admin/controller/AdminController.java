@@ -56,7 +56,7 @@ public class AdminController {
 		return "admin/reviewdetail";
 	}
 	
-	@RequestMapping(value="admin/reviewupdate.do",method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/reviewupdate.do",method = {RequestMethod.GET, RequestMethod.POST})
 	public String Reviewupdate(Model model, AdminDto dto) {
 		logger.info("AdminController reviewupdate");
 		int res = abiz.update(dto);

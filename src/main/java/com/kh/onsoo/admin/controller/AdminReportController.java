@@ -1,8 +1,11 @@
 package com.kh.onsoo.admin.controller;
 
+import java.util.Date;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,18 +35,22 @@ public class AdminReportController {
 		return "admin/report";
 	}
 	
-	@RequestMapping("admin/reportdetail.do")
-	public String detail(Model model, String report_content) {
+	@RequestMapping("/reportdetail.do")
+	public String detail(Model model, String report_id) {
 		logger.info("ReportController detail");
+		System.out.println(report_id);
 		
-		AdminReportDto dto = biz.selectOne(report_content);
-		System.out.println(dto.getReport_content());
+		
+		AdminReportDto dto = biz.selectOne(report_id);
 		model.addAttribute("rdto", dto);
 		return "admin/reportdetail";
 	}
 	
+	
+	
+	
 	@RequestMapping("reportupdate.do")
-	public String update(Model model, String member_id, String member_role) {
+	public String update(Model model, String member_id, String member_role,@DateTimeFormat(pattern = "yyyy-MM-dd") Date member_bdate) {
 		logger.info("ReportController update");
 			System.out.println(member_role);
 		
@@ -52,9 +59,11 @@ public class AdminReportController {
 		logger.info("강사 정지상태");
 		AdminDto dto = new AdminDto();
 		dto.setMember_id(member_id);
-		dto.setMember_role(member_role+"등급값");
+		dto.setMember_role(member_role);
+		dto.setMember_bdate(member_bdate);
 		System.out.println(member_id+"아이디 값");
-		System.out.println(dto.getMember_id());
+		System.out.println(member_role+"등급");
+		System.out.println(member_bdate+"날짜");
 		int res = biz.update(dto);
 			if(res>0) {
 				logger.info(" S 회원 권한 성공 ");
@@ -69,11 +78,15 @@ public class AdminReportController {
 				return "redirect";
 			}
 			
+			
+			
 		}else if(member_role.equals("B")) {
 		logger.info("회원 정지");
 		AdminDto dto = new AdminDto();	
 		dto.setMember_id(member_id);
 		dto.setMember_role(member_role);
+		dto.setMember_bdate(member_bdate);
+		
 		int res = biz.update(dto);
 		int authrity = authBiz.updateb(member_id);
 		if(res>0 && authrity>0) {
@@ -82,7 +95,7 @@ public class AdminReportController {
 			return "redirect";
 			}else {
 			model.addAttribute("msg","다시 입력해주세요");
-			model.addAttribute("url","/admin/reportdetail.do");
+			model.addAttribute("url","/admin/reportdetail.do?report_id="+member_id);
 			return "redirect";
 			}
 		

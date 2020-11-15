@@ -38,11 +38,12 @@ public class AdminReportDaoImpl implements AdminReportDao {
 		AdminReportDto dto = new AdminReportDto();
 		
 		try {
-			dto = sqlSession.selectOne(NAMESPACE + "selectOne",report_id);
+			dto = sqlSession.selectOne(NAMESPACE+"selectOne",report_id);
 		} catch (Exception e) {
 			logger.info("ReportDaoImpl selectOne[error]");
 			e.printStackTrace();
 		}
+		System.out.println(dto);
 		
 		return dto;
 	}

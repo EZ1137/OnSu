@@ -1,11 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>On:Soo - Report List</title>
+<style type="text/css">
+	#nav.paging{
+	
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	
+}
+</style>
 <link href="${pageContext.request.contextPath}/resources/css/admin.css?after" rel="stylesheet">
 </head>
 <body>
@@ -16,6 +26,10 @@
 	</header>
 	
 	<section>
+	<div id = "products">
+	<form action="" id="setRows">
+				<input type="hidden" name="rowPerPage" value="20">
+		</form>
 		<div class="admin_title">
 			<p>신고 회원 조회</p>
 		</div>
@@ -32,7 +46,7 @@
 			<thead>
 				<tr>
 					<th>신고자</th>
-					<th>제목</th>
+					<th>신고내용</th>
 					<th>신고대상</th>
 					<th>신고일자</th>
 					<th>분류</th>
@@ -42,13 +56,13 @@
 			
 		<c:forEach items="${reportlist }" var="dto">
 			<tbody>
-				<tr>
+				<tr class="eval-contents">
 					<td>${dto.report_id }</td>
-					<td>${dto.report_title }</td>
+					<td>${dto.report_content }</td>
 					<td>${dto.report_ided }</td>
-					<td>${dto.report_date }</td>
+					<td><fmt:formatDate value="${dto.report_date}" pattern="yyyy-MM-dd" /></td>
 					<td>${dto.report_category }</td>
-					<td class="td_btn" style="border:none;" onclick="location.href='reportdetail.do?report_content=${dto.report_content}'">이동</td>
+					<td class="td_btn" style="border:none;"><a href="<c:url value="/reportdetail.do?report_id=${dto.report_id}" />">이동</a></td>
 				</tr>
 			</tbody>
 		</c:forEach>
@@ -61,10 +75,13 @@
 				</tr>
 			</tfoot>
 		</table>
+		</div>
 	</section>
 	 
 	<footer id="footerarea" class="area">
 		<%@ include file="/WEB-INF/views/footer.jsp"%>
 	</footer>
 </body>
+ <script src="${pageContext.request.contextPath}/resources/js/paging.js"
+			type="text/javascript"></script>
 </html>

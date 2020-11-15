@@ -6,7 +6,7 @@ import com.kh.onsoo.review.model.dto.ReviewDto;
 
 public interface ReviewBiz {
 	
-	public List<ReviewDto> selectList();
+	public List<ReviewDto> selectList(int review_classno);
 	public ReviewDto selectOne(int review_no);
 	public int insert(ReviewDto dto);
 	public int update(ReviewDto dto);
