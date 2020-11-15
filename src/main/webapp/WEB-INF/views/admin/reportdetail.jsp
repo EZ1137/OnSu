@@ -34,6 +34,7 @@
 		</tr>
 		<tr>
 			<td colspan="2" align="right">
+				<input type="date" name="member_bdate" />
 				<select name="member_role">
 					<option >-----선택-----</option>
 					<option value="S">강사자격 정지</option>

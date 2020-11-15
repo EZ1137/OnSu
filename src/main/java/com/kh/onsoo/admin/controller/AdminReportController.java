@@ -1,8 +1,11 @@
 package com.kh.onsoo.admin.controller;
 
+import java.util.Date;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,7 +50,7 @@ public class AdminReportController {
 	
 	
 	@RequestMapping("reportupdate.do")
-	public String update(Model model, String member_id, String member_role) {
+	public String update(Model model, String member_id, String member_role,@DateTimeFormat(pattern = "yyyy-MM-dd") Date member_bdate) {
 		logger.info("ReportController update");
 			System.out.println(member_role);
 		
@@ -57,8 +60,10 @@ public class AdminReportController {
 		AdminDto dto = new AdminDto();
 		dto.setMember_id(member_id);
 		dto.setMember_role(member_role);
+		dto.setMember_bdate(member_bdate);
 		System.out.println(member_id+"아이디 값");
 		System.out.println(member_role+"등급");
+		System.out.println(member_bdate+"날짜");
 		int res = biz.update(dto);
 			if(res>0) {
 				logger.info(" S 회원 권한 성공 ");
@@ -80,6 +85,7 @@ public class AdminReportController {
 		AdminDto dto = new AdminDto();	
 		dto.setMember_id(member_id);
 		dto.setMember_role(member_role);
+		dto.setMember_bdate(member_bdate);
 		
 		int res = biz.update(dto);
 		int authrity = authBiz.updateb(member_id);
