@@ -90,28 +90,6 @@
 				</table>
 			</div>
 			
-			<div class="forth_table_all" onclick="location.href='videoreviewlist.do'">
-				<p class="forth_table_name">동영상 심의 신청</p>
-				<table class="admin_forth_table">
-					<col width="35%"/>
-					<col width="40%"/>
-					<col width="20%"/>
-					<tr>
-						<th>ID</th>
-						<th>REGDATE</th>
-						<th>ROLE</th>
-					</tr>
-					 
-				<c:forEach items="${list }" var="dto">
-					<tr>
-						<td style="overflow:auto;">${dto.member_id }</td>
-						<td>${dto.member_regdate }</td>
-						<td style="overflow:auto;">${dto.member_role }</td>
-					</tr>
-				</c:forEach>
-					 
-				</table>
-			</div>
 		</div>
 	</section>
 	 

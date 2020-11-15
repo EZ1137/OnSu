@@ -51,8 +51,8 @@
 					<th>이름</th>
 					<th>이메일</th>
 					<th>전화번호</th>
-					<th>탈퇴일자</th>
-					<th>정지일자</th>
+					<th>생년월일</th>
+					<th>가입일자</th>
 					<th>권한</th>
 				</tr>
 			</thead>
@@ -64,8 +64,8 @@
 					<td>${dto.member_name }</td>
 					<td>${dto.member_email }</td>
 					<td>${dto.member_phone }</td>
-					<td>${dto.member_ddate }</td>
-					<td>${dto.member_bdate }</td>
+					<td>${dto.member_birth }</td>
+					<td>${dto.member_regdate }</td>
 					<td>${dto.member_role }</td>
 				</tr>
 			</tbody>
