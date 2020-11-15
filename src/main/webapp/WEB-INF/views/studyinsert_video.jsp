@@ -80,11 +80,6 @@
 				<th>강의명</th>
 				<td><input type="text" name="class_title" required="required"></td>
 			</tr>
-			<tr>
-				<th>강사명</th>
-				<!-- 로그인 정보 받아서 거기서 이름 받아 넣어주자 -->
-				<td><input type="text" name="class_teachername" required="required"></td>
-			</tr>
 			
 			<tr>
 				<th>카테고리(하나씩 선택)</th>

@@ -62,7 +62,7 @@
 			<p>1:1 강의 등록</p>
 		</div>
 	
-	<form action="studyinsertres.do" method="post">
+	<form action="studyupdateres.do" method="post">
 		<table class="free_insert">
 			<colgroup>
 				<col width="30%">

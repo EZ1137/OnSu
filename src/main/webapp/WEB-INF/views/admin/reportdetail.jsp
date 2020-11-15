@@ -10,7 +10,7 @@
 <link href="${pageContext.request.contextPath}/resources/css/reportdetail.css?after" rel="stylesheet"/>
 </head>
 <body>
-
+  
 	<!-- header -->
 	<header id="header" class="area">
 		<%@ include file="/WEB-INF/views/header.jsp"%>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +37,7 @@
             <div class="class_row">
                <c:forEach items="${list }" var="dto">
                   <div class="class_card" onclick="location.href='studydetail.do?class_no=${dto.studyDto.class_no}&member_id=${member_id }'">
-                     <img id="test" src="${dto.uploadDto.image_directory }"/>
+                     <img id="thumbnail" src="<spring:url value='http://localhost:8787/image/${dto.uploadDto.image_directory }'/>" />
                      
                      <div class="class_title">
                         <h6 id="test" class="class_font"># ${dto.studyDto.class_bigcategory } &nbsp # ${dto.studyDto.class_smallcategory }</h6>

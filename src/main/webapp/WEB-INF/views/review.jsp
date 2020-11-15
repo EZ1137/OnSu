@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<link href="${pageContext.request.contextPath}/resources/css/reviewlist.css" rel="stylesheet" >
 <script>
 
-var review_classno = ${studyDto.class_no};
+var review_classno = parseInt(${studyDto.class_no});
 var member_id = "${member_id}";
 
 
@@ -36,9 +35,7 @@ function review(){
             	if(review.review_update != null) {
             		a += '<div class="reviewbox">';
                     a += '<div class="reviewArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
-                    a += '<div class="reviewInfo'+review.review_no+'">'+'작성자 : '+review.review_id+' ㅣ 작성일 : '+ date +' ㅣ 수정일 : '+update;
-                    a += '<a onclick="reviewUpdate('+review.review_no+',\''+review.review_content +'\');"> 수정 </a>';
-                    a += '<a onclick="reviewDelete('+review.review_no+');"> 삭제 </a> </div>';
+                    a += '<div class="reviewInfo'+review.review_no+'">'+'작성자 : '+review.review_id+' ㅣ 작성일 : '+ date +' ㅣ 수정일 : '+update + " ㅣ ";
                     a += '<div class="starRev">';
     	  			a += '<span class="starR1" id="s1"><input type="hidden" value="1"/></span>';
       				a += '<span class="starR2" id="s2"><input type="hidden" value="2"/></span>';
@@ -51,17 +48,19 @@ function review(){
     		  		a += '<span class="starR1" id="s9"><input type="hidden" value="9"/></span>';
     		  		a += '<span class="starR2" id="s10"><input type="hidden" value="10"/></span>';
     				a += '<input type="hidden" class="starList" value="' + review.review_star + '"/>';
-    				a += '</div><br/><br/>';
-                    a += '<div class="reviewContent'+review.review_no+'"> <p> 내용 : '+review.review_content +'</p>';
-                    a += '</div></div>';
+    				a += '</div>';
+                    a += '<div class="reviewContent'+review.review_no+'"> <p>'+review.review_content +'</p></div>';
+                    if(review.review_id == member_id) {
+                         a += '<a onclick="reviewUpdate('+review.review_no+',\''+review.review_content +'\');"> 수정 ㅣ  </a>';
+                         a += '<a onclick="reviewDelete('+review.review_no+');"> 삭제 </a>';
+                         a += '</div>';
+                    }
+                    a += '</div>';
                     a +='</div>';
             	} else {
             		update = "수정 전 ㅣ";
             		a += '<div class="reviewbox">';
                     a += '<div class="reviewArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
-                    a += '<div class="reviewInfo'+review.review_no+'">'+'작성자 : '+review.review_id+' ㅣ 작성일 : '+ date +' ㅣ수정일 : '+ update;
-                    a += '<a onclick="reviewUpdate('+review.review_no+',\''+review.review_content +'\');"> 수정 ㅣ </a>';
-                    a += '<a onclick="reviewDelete('+review.review_no+');"> 삭제 </a> </div>';
                     a += '<div class="starRev">';
     	  			a += '<span class="starR1" id="s1"><input type="hidden" value="1"/></span>';
       				a += '<span class="starR2" id="s2"><input type="hidden" value="2"/></span>';
@@ -75,8 +74,14 @@ function review(){
     		  		a += '<span class="starR2" id="s10"><input type="hidden" value="10"/></span>';
     				a += '<input type="hidden" class="starList" value="' + review.review_star + '"/>';
     				a += '</div><br/><br/>';
-                    a += '<div class="reviewContent'+review.review_no+'"> <p> 내용 : '+review.review_content +'</p>';
-                    a += '</div></div>';
+                    a += '<div class="reviewContent'+review.review_no+'"> <p>'+review.review_content +'</p></div>';
+                    a += '<div class="reviewInfo'+review.review_no+'">'+'작성자 : '+review.review_id+' ㅣ 작성일 : '+ date +' ㅣ수정일 : '+ update;
+                    if(review.review_id == member_id) {
+                        a += '<a onclick="reviewUpdate('+review.review_no+',\''+review.review_content +'\');"> 수정 ㅣ </a>';
+                        a += '<a onclick="reviewDelete('+review.review_no+');"> 삭제 </a>';
+                        a += '</div>';
+                   }
+                    a += '</div>';
                     a +='</div>';
             	}
             });

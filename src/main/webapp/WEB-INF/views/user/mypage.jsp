@@ -87,14 +87,14 @@
 								<tr>
 									<td style="text-align: left;">
 									<a
-										href="listenWDetail.do?listen_wclassno=${listenWithDto.listen_wclassno }&member_id=${mlist.member_id}">${listenWithDto.listen_wclasstitle}</a></td>
+										href="with/studydetail.do?class_no=${listenWithDto.listen_wclassno }&member_id=${mlist.member_id}">${listenWithDto.listen_wclasstitle}</a></td>
 									<td style="text-align: left;">${listenWithDto.listen_wcount }</td>
 								</tr>
 							</c:forEach>
 							<c:forEach items="${lvlist }" var="listenVideoDto">
 								<tr>
 									<td style="text-align: left;"><a
-										href="listenVDetail.do?listen_vclassno=${listenVideoDto.listen_vclassno }&member_id=${mlist.member_id}">${listenVideoDto.listen_vclasstitle}</a></td>
+										href="video/studydetail.do?class_no=${listenVideoDto.listen_vclassno }&member_id=${mlist.member_id}">${listenVideoDto.listen_vclasstitle}</a></td>
 									<td style="text-align: left;">${listenVideoDto.listen_vdate }</td>
 								</tr>
 							</c:forEach>

@@ -3,6 +3,7 @@
 
 <script>    
 var reply_boardno = '${freeboardDto.free_no}'; //게시글 번호
+var member_id = '${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username}';
  
 $('[name=replyInsertBtn]').click(function(){ //댓글 등록 버튼 클릭시 
     var insertData = $('[name=replyInsertForm]').serialize(); //replyInsertForm의 내용을 가져옴
@@ -23,8 +24,10 @@ function replyList(){
                a+='<div class="replybox">';
                 a += '<div class="replyArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
                 a += '<div class="replyInfo'+reply.reply_no+'">'+'댓글번호 : '+reply.reply_no+' / 작성자 : '+reply.reply_id;
-                a += '<a onclick="replyUpdate('+reply.reply_no+',\''+reply.reply_title +'\');"> 수정 </a>';
-                a += '<a onclick="replyDelete('+reply.reply_no+');"> 삭제 </a> </div>';
+                if(reply.reply_id == member_id) {
+                	a += '<a onclick="replyUpdate('+reply.reply_no+',\''+reply.reply_title +'\');"> 수정 </a>';
+                    a += '<a onclick="replyDelete('+reply.reply_no+');"> 삭제 </a> </div>';
+                }
                 a += '<div class="replyContent'+reply.reply_no+'"> <p> 내용 : '+reply.reply_title +'</p>';
                 a += '</div></div>';
                 a +='</div>';

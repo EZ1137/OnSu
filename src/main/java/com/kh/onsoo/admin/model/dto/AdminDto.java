@@ -1,6 +1,6 @@
 package com.kh.onsoo.admin.model.dto;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class AdminDto {
 	

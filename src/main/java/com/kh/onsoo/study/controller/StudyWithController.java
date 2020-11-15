@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -28,6 +29,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.util.WebUtils;
 
 import com.kh.onsoo.study.model.dto.StudyDto;
+import com.kh.onsoo.admin.model.biz.AdminBiz;
+import com.kh.onsoo.admin.model.dto.AdminDto;
+import com.kh.onsoo.pay.model.biz.PayBiz;
 import com.kh.onsoo.study.image.model.biz.UploadBiz;
 import com.kh.onsoo.study.image.model.dto.UploadDto;
 import com.kh.onsoo.study.model.biz.StudyWithBiz;
@@ -37,12 +41,21 @@ public class StudyWithController {
 
 	private static final Logger logger = LoggerFactory.getLogger(StudyWithController.class);
 
+	@Resource(name="uploadPath")
+	private String uploadPath;
+	
 	@Autowired
 	private UploadBiz uploadBiz;
 	
 	@Autowired
 	private StudyWithBiz studyBiz;
 
+	@Autowired
+	private AdminBiz adminBiz;
+	
+	@Autowired
+	private PayBiz payBiz;
+	
 	@RequestMapping(value = "/with/studylist.do")
 	public String studyList(Model model, Principal principal) {
 		model.addAttribute(principal);
@@ -67,9 +80,13 @@ public class StudyWithController {
 
 	@RequestMapping("/with/studydetail.do")
 	public String studyDetail(Model model, int class_no, @RequestParam String member_id) {
+		int pay_classno = class_no;
+		String pay_memberid = member_id;
 		
 		model.addAttribute("member_id", member_id);
 		model.addAttribute("studyDto", studyBiz.selectOne(class_no));
+		model.addAttribute("payDto", payBiz.selectPay(pay_memberid, pay_classno));
+		
 		return "studydetail";
 	}
 	
@@ -85,11 +102,28 @@ public class StudyWithController {
 	}
 
 	@RequestMapping(value = "/with/teacher/studyinsertres.do", method = RequestMethod.POST)
-	public String studyInsert(MultipartHttpServletRequest multifile, Model model, HttpServletRequest request)
+	public String studyInsert(MultipartHttpServletRequest multifile, Model model, HttpServletRequest request, Principal principal)
 			throws IOException {
 
+		model.addAttribute(principal);
+	    //시큐리티 컨텍스트 객체를 얻습니다.
+	    SecurityContext context = SecurityContextHolder.getContext();
+	      
+	    //인증객체를 얻습니다. 
+	    Authentication authentication = 
+	                              context.getAuthentication();
+	                              // context에 있는 인증정보를 getAuthentication()으로 갖고온다.
+	    //로그인한 사용자 정보를 가진 객체를 얻습니다.
+	    UserDetails principal1 = (UserDetails)authentication.getPrincipal();
+	                        //authentication에 있는  get Princinpal 객체애 유저정보를 담는다. 
+	                        //유저객체는 UserDetails를 implement 함 
+	      
+	    String member_id = principal1.getUsername();  //사용자 이름 
+
+	    AdminDto adminDto = adminBiz.selectOne2(member_id);
+	    
 		String class_title = multifile.getParameter("class_title");
-		String class_teachername = multifile.getParameter("class_teachername");
+		String class_teachername = adminDto.getMember_name();
 		String class_bigcategory = multifile.getParameter("class_bigcategory");
 		String class_smallcategory = multifile.getParameter("class_smallcategory");
 		String class_info = multifile.getParameter("class_info");
@@ -97,7 +131,7 @@ public class StudyWithController {
 
 		StudyDto dto = new StudyDto(0, 
 									class_title, 
-									null, 
+									member_id, 
 									class_teachername, 
 									null, 
 									class_bigcategory,
@@ -161,9 +195,7 @@ public class StudyWithController {
 
 		try {
 
-			String path = WebUtils.getRealPath(request.getSession().getServletContext(), "/resources/storage");
-
-			File storage = new File(path);
+			File storage = new File(uploadPath);
 
 			// 폴더 생성
 			if (!storage.exists()) {
@@ -175,11 +207,11 @@ public class StudyWithController {
 				String filename = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
 
 				if (file.getSize() != 0) {
-					File target = new File(path, filename);
+					File target = new File(uploadPath, filename);
 					FileCopyUtils.copy(file.getBytes(), target);
 				}
 
-				String insertName = path + "/" + filename;
+				String insertName = uploadPath + "/" + filename;
 				uploadDto = new UploadDto(0, insertName, class_no);
 				list.add(uploadDto);
 			}

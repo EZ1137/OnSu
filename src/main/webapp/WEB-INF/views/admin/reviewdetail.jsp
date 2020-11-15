@@ -47,6 +47,7 @@
 									<option value="T">인증 완료</option>
 									<option value="S">인증 실패</option>
 								</select>
+								
 								<input type="submit" value="인증 완료"/>
 								<input type="button" value="목록" onclick="location.href='<c:url value="/admin/reviewlist.do"/>'"/>
 								<input type="button" value="관리자 메인" onclick="location.href='<c:url value="/admin/admin.do"/>'">
