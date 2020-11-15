@@ -7,4 +7,5 @@ public interface PayDao {
 	
 	public PayDto selectPay(String pay_memberid, int pay_classno);
 	public int insert(PayDto dto);
+	public int delete(PayDto dto);
 }

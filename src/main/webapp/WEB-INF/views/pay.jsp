@@ -50,7 +50,8 @@ IMP.request_pay({
     } else { 			// 결제 취소, 결제 실패 시
       alert("결제에 실패하였습니다. 에러 내용: " +  rsp.error_msg);
     
-      window.location.href="main.do";	// 해당 페이지로 이동
+      window.location.href="payDelete.do?pay_memberid=" + document.getElementsByName("member_id")[0].value
+    		  + "&pay_classno=" + document.getElementsByName("listen_classno")[0].value;	// 해당 페이지로 이동
     }
   });
 });	

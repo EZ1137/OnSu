@@ -57,7 +57,7 @@ public class PayController {
 	    	return "redirect:payRes.do";
 	    }
 		
-		return "redirect:main.do";
+		return "pay";
 	}
 	
 	@RequestMapping("/with/pay.do")
@@ -89,7 +89,7 @@ public class PayController {
 	    	return "redirect:payRes.do";
 	    }
 		
-		return "redirect:main.do";
+		return "pay";
 	}
 	
 	@RequestMapping("/video/payRes.do")
@@ -110,6 +110,28 @@ public class PayController {
 		model.addAttribute("listen_classno", pay_classno);
 		
 		return "pay";
+	}
+	
+	@RequestMapping("/video/payDelete")
+	public String payVDelete(PayDto dto, @RequestParam String pay_memberid, int pay_classno) {
+		
+		int res = payBiz.delete(new PayDto(pay_memberid, pay_classno));
+		if(res > 0) {
+			return "redirect:studydetail.do?class_no=" + pay_classno + "&member_id=" + pay_memberid;
+		}
+		
+		return "/mypage.do";
+	}
+	
+	@RequestMapping("/with/payDelete")
+	public String payWDelete(PayDto dto, @RequestParam String pay_memberid, int pay_classno) {
+		
+		int res = payBiz.delete(new PayDto(pay_memberid, pay_classno));
+		if(res > 0) {
+			return "redirect:studydetail.do?class_no=" + pay_classno + "&member_id=" + pay_memberid;
+		}
+		
+		return "/mypage.do";
 	}
 
 }

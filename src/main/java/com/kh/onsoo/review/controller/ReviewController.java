@@ -41,7 +41,7 @@ public class ReviewController {
 	
 	@RequestMapping("/reviewInsert.do")
 	@ResponseBody
-	public int reviewInsertRes(ReviewDto dto, @RequestParam String member_id, String review_content, int review_classno, int review_star) {
+	public int reviewInsertRes(ReviewDto dto, @RequestParam String member_id, String review_content, int review_classno, int review_star) throws Exception{
 		logger.info("[reviewInsert.do]");
 		
 		String review_id = member_id;
@@ -49,62 +49,38 @@ public class ReviewController {
 		return reviewBiz.insert(new ReviewDto(review_id, review_content, review_classno, review_star));
 	}
 	
-	@RequestMapping("/reviewDetail.do")
-	public String reviewDetail(Model model, int review_no, @RequestParam String member_id) {
-		logger.info("[reviewDetail.do]");
-		
-		model.addAttribute("dto", reviewBiz.selectOne(review_no));
-		model.addAttribute("member_id", member_id);
-		
-		return "user/reviewdetail";
-	}
 	
-	@RequestMapping("/reviewUpdate.do")
-	public String reviewUpate(Model model, int review_no, @RequestParam String member_id) {
+	@RequestMapping("/reviewUpdate")
+	@ResponseBody
+	public int reviewUpdateRes(Model model, @RequestParam String member_id, int review_no, String review_content) throws Exception{
 		logger.info("[reviewUpdate.do]");
 		
 		ReviewDto dto = reviewBiz.selectOne(review_no);
-		model.addAttribute("dto", dto);
-		model.addAttribute("member_id", member_id);
 		
-		if(member_id.equals(dto.getReview_id())) {
-			return "/user/reviewupdate";
-		}
-		model.addAttribute("msg", "작성자와 다른 id 입니다.");
-		model.addAttribute("url", "/reviewDetail.do?review_no=" + dto.getReview_no() + "&member_id=" + member_id);
-		
-		return "redirect";
-	}
-	
-	@RequestMapping("/reviewUpdateRes")
-	public String reviewUpdateRes(Model model, ReviewDto dto, @RequestParam String member_id) {
-		logger.info("[reviewUpdateRes]");
-		
-		int res = reviewBiz.update(dto);
-		if(res > 0) {
-			model.addAttribute("member_id", member_id);
-			return "redirect:reviewDetail.do?review_no=" + dto.getReview_no();
+		if(dto.getReview_id().equals(member_id)) {
+			ReviewDto reviewDto = new ReviewDto();
+			reviewDto.setReview_no(review_no);
+			reviewDto.setReview_content(review_content);
+			
+			model.addAttribute("dto", reviewBiz.update(reviewDto));
+			
+			return reviewBiz.update(reviewDto);
 		}
 		
-		return "redirect:reviewUpdate.do?review_no=" + dto.getReview_no();
+		return 0;
 	}
 	
 	@RequestMapping("/reviewDelete")
-	public String delete(Model model, int review_no, @RequestParam String member_id) {
+	@ResponseBody
+	public int delete(Model model, int review_no, @RequestParam String member_id) throws Exception{
 		logger.info("[reveiwDelete]");
 		
 		ReviewDto dto = reviewBiz.selectOne(review_no);
 		
 		if(member_id.equals(dto.getReview_id())) {
-			int res = reviewBiz.delete(review_no);
-			if(res > 0) {
-				return "redirect:review.do";
-			}
+			return reviewBiz.delete(review_no);
 		}
-		model.addAttribute("msg", "작성자와 다른 id 입니다.");
-		model.addAttribute("url", "/reviewDetail.do?review_no=" + dto.getReview_no() + "&member_id=" + member_id);
-		
-		return "redirect";
+		return 0;
 	}
 }
 

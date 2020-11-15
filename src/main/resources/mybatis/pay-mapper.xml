@@ -32,10 +32,9 @@
 		VALUES(PAYSEQ.NEXTVAL, #{pay_memberid}, #{pay_classno}, SYSDATE)
 	</insert>
 	
-	
-	
-	
-
-	
+	<delete id="delete" parameterType="PayDto">
+		DELETE FROM PAY
+		WHERE PAY_MEMBERID = #{pay_memberid} AND PAY_CLASSNO = #{pay_classno}
+	</delete>
 
 </mapper>
