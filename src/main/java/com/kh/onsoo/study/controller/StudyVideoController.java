@@ -28,6 +28,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.util.WebUtils;
 
+import com.kh.onsoo.admin.model.biz.AdminBiz;
+import com.kh.onsoo.admin.model.dto.AdminDto;
 import com.kh.onsoo.study.image.model.biz.UploadBiz;
 import com.kh.onsoo.study.image.model.dto.UploadDto;
 import com.kh.onsoo.study.model.biz.StudyVideoBiz;
@@ -56,6 +58,9 @@ public class StudyVideoController {
 
 	@Autowired
 	private VideoBiz videoBiz;
+	
+	@Autowired
+	private AdminBiz adminBiz;
 	
 	@RequestMapping(value = "/video/studylist.do")
 	public String studyVideoList(Model model, Principal principal) {
@@ -113,19 +118,36 @@ public class StudyVideoController {
 	}
 
 	@RequestMapping(value = "/video/teacher/studyinsertres.do", method = RequestMethod.POST)
-	public String studyInsert(MultipartHttpServletRequest multifile, Model model, HttpServletRequest request)
+	public String studyInsert(MultipartHttpServletRequest multifile, Model model, HttpServletRequest request, Principal principal)
 			throws IOException {
 
+		model.addAttribute(principal);
+	    //시큐리티 컨텍스트 객체를 얻습니다.
+	    SecurityContext context = SecurityContextHolder.getContext();
+	      
+	    //인증객체를 얻습니다. 
+	    Authentication authentication = 
+	                              context.getAuthentication();
+	                              // context에 있는 인증정보를 getAuthentication()으로 갖고온다.
+	    //로그인한 사용자 정보를 가진 객체를 얻습니다.
+	    UserDetails principal1 = (UserDetails)authentication.getPrincipal();
+	                        //authentication에 있는  get Princinpal 객체애 유저정보를 담는다. 
+	                        //유저객체는 UserDetails를 implement 함 
+	      
+	    String member_id = principal1.getUsername();  //사용자 이름 
+
+	    AdminDto adminDto = adminBiz.selectOne2(member_id);
+	    
 		String class_title = multifile.getParameter("class_title");
-		String class_teachername = multifile.getParameter("class_teachername");
+		String class_teachername = adminDto.getMember_name();
 		String class_bigcategory = multifile.getParameter("class_bigcategory");
 		String class_smallcategory = multifile.getParameter("class_smallcategory");
 		String class_info = multifile.getParameter("class_info");
 		int class_price = Integer.parseInt(multifile.getParameter("class_price"));
-
+		
 		StudyDto dto = new StudyDto(0, 
 									class_title, 
-									null, 
+									member_id, 
 									class_teachername, 
 									null, 
 									class_bigcategory,

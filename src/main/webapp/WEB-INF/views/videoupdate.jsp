@@ -23,6 +23,9 @@
 			<tr>
 				<td><input type="text" name="video_name" value="${videoDto.video_name }">
 			</tr>
+			<tr>
+				<td><input type="submit" value="수정"/>
+			</tr>
 		</table>
 	</form>
 	</section>

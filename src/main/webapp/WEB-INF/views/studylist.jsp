@@ -37,7 +37,7 @@
             <div class="class_row">
                <c:forEach items="${list }" var="dto">
                   <div class="class_card" onclick="location.href='studydetail.do?class_no=${dto.studyDto.class_no}&member_id=${member_id }'">
-                     <img src="<spring:url value='http://localhost:8787/image/${dto.uploadDto.image_directory }'/>" />
+                     <img id="thumbnail" src="<spring:url value='http://localhost:8787/image/${dto.uploadDto.image_directory }'/>" />
                      
                      <div class="class_title">
                         <h6 id="test" class="class_font"># ${dto.studyDto.class_bigcategory } &nbsp # ${dto.studyDto.class_smallcategory }</h6>
