@@ -61,7 +61,7 @@
 					<td>${dto.report_ided }</td>
 					<td>${dto.report_date }</td>
 					<td>${dto.report_category }</td>
-					<td class="td_btn" style="border:none;" onclick="location.href='reportdetail.do?report_content=${dto.report_content}'">이동</td>
+					<td class="td_btn" style="border:none;"><a href="<c:url value="/reportdetail.do?report_id=${dto.report_id}" />">이동</a></td>
 				</tr>
 			</tbody>
 		</c:forEach>

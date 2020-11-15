@@ -89,5 +89,27 @@ public class NoticeDaoImpl implements NoticeDao {
 		
 		return res;
 	}
+	
+	@Override
+	public List<NoticeDto> Nsearch(String search){
+		List<NoticeDto> list = new ArrayList<NoticeDto>();
+			
+			try {
+				list= sqlSession.selectList(NAMESPACE+"search",search);
+			} catch (Exception e) {
+				logger.info("error search 오류");
+				e.printStackTrace();
+			}
+		
+		
+		
+		return list;
+	}
+	
+	
+	
+	
+	
+	
 
 }

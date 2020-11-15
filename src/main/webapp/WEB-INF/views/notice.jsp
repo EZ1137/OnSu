@@ -58,7 +58,6 @@
 					<th colspan="4">현재 작성된 공지글이 존재하지 않습니다.</th>
 				</tr>
 			</c:when>
-			
 			<c:otherwise>
 				<c:forEach items="${notice }" var="dto">
 				<tr class="eval-contents">
@@ -74,12 +73,10 @@
 			<tfoot>
 				<tr>
 					<td colspan="4" align="center" class="nbtnbar">
-						<select name="">
-							<option value="" selected="selected">제목으로 검색</option>
-							<option value="">내용으로 검색</option>
-						</select>
-						<input type="search" name="" placeholder="검색어를 입력하세요"/>
-						<input type="submit" value="검색"/>
+						<form action="noticesearch.do" method="get" >
+						<input type="hidden" value="notice_title" value="notice_title"/>
+						<input type="search" name="search"  placeholder="제목을 입력해주세요"/>
+						</form>
 						<sec:authorize access="hasRole('ADMIN')">
 							<input type="button" class="i_btn" value="작성" onclick="location.href='noticeForm.do'"/>
 						</sec:authorize>

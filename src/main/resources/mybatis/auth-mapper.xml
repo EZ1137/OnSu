@@ -8,7 +8,7 @@
 		VALUES(#{member_id},'ROLE_USER')
 	</insert>
 	
-	<update id="updateb" parameterType="String">
+	<update id="updateB" parameterType="String">
 		UPDATE AUTHORITIES
 		SET AUTHORITY= 'ROLE_BLOCK'
 		WHERE MEMBER_ID = #{member_id}

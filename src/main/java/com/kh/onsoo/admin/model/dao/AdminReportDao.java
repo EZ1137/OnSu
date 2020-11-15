@@ -10,7 +10,9 @@ public interface AdminReportDao {
 	String NAMESPACE = "com.onsoo.admin.reportboard.";
 	
 	public List<AdminReportDto> selectList();
-	public AdminReportDto selectOne(String Report_id);
+	
+	public AdminReportDto selectOne(String report_id);
+	
 	public int insert(AdminReportDto dto);
 	public int update(AdminDto dto);
 	public int delete(int Report_no);

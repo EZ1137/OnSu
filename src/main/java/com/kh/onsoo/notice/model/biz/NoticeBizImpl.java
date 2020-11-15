@@ -39,5 +39,10 @@ public class NoticeBizImpl implements NoticeBiz {
 	public int delete(int notice_no) {
 		return noticeDao.delete(notice_no);
 	}
+	
+	@Override
+	public List<NoticeDto> Nsearch(String search){
+		return noticeDao.Nsearch(search);
+	}
 
 }
