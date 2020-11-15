@@ -11,5 +11,7 @@ public interface NoticeBiz {
 	public int insert(NoticeDto dto);
 	public int update(NoticeDto dto);
 	public int delete(int notice_seq);
+	
+	public List<NoticeDto> Nsearch(String search);
 
 }

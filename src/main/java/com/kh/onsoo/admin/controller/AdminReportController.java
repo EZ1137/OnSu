@@ -32,15 +32,19 @@ public class AdminReportController {
 		return "admin/report";
 	}
 	
-	@RequestMapping("admin/reportdetail.do")
-	public String detail(Model model, String report_content) {
+	@RequestMapping("/reportdetail.do")
+	public String detail(Model model, String report_id) {
 		logger.info("ReportController detail");
+		System.out.println(report_id);
 		
-		AdminReportDto dto = biz.selectOne(report_content);
-		System.out.println(dto.getReport_content());
+		
+		AdminReportDto dto = biz.selectOne(report_id);
 		model.addAttribute("rdto", dto);
 		return "admin/reportdetail";
 	}
+	
+	
+	
 	
 	@RequestMapping("reportupdate.do")
 	public String update(Model model, String member_id, String member_role) {
@@ -52,9 +56,9 @@ public class AdminReportController {
 		logger.info("강사 정지상태");
 		AdminDto dto = new AdminDto();
 		dto.setMember_id(member_id);
-		dto.setMember_role(member_role+"등급값");
+		dto.setMember_role(member_role);
 		System.out.println(member_id+"아이디 값");
-		System.out.println(dto.getMember_id());
+		System.out.println(member_role+"등급");
 		int res = biz.update(dto);
 			if(res>0) {
 				logger.info(" S 회원 권한 성공 ");
@@ -76,6 +80,7 @@ public class AdminReportController {
 		AdminDto dto = new AdminDto();	
 		dto.setMember_id(member_id);
 		dto.setMember_role(member_role);
+		
 		int res = biz.update(dto);
 		int authrity = authBiz.updateb(member_id);
 		if(res>0 && authrity>0) {
@@ -84,7 +89,7 @@ public class AdminReportController {
 			return "redirect";
 			}else {
 			model.addAttribute("msg","다시 입력해주세요");
-			model.addAttribute("url","/admin/reportdetail.do");
+			model.addAttribute("url","/admin/reportdetail.do?report_id="+member_id);
 			return "redirect";
 			}
 		

@@ -15,10 +15,11 @@
 		SELECT * FROM REPORT
 	</select>
 	
+
 	<select id="selectOne" parameterType="String" resultType="AdminReportDto">
-		SELECT *
+		SELECT REPORT_CONTENT,REPORT_DATE,REPORT_FILENAME,REPORT_ID,REPORT_IDED,REPORT_CATEGORY
 		FROM REPORT
-		WHERE REPORT_CONTENT = #{report_content}
+		WHERE REPORT_ID = #{report_id}
 	</select>
 	
 	<insert id="insert">
