@@ -22,7 +22,7 @@
 	
 	<update id="update" parameterType="ReviewDto">
 		UPDATE REVIEW
-		SET REVIEW_CONTENT = #{review_content}, REVIEW_STAR = #{review_star}, REVIEW_UPDATE = SYSDATE
+		SET REVIEW_CONTENT = #{review_content}, REVIEW_UPDATE = SYSDATE
 		WHERE REVIEW_NO = #{review_no}
 	</update>
 	

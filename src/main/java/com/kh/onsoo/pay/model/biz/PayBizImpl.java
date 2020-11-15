@@ -19,5 +19,9 @@ public class PayBizImpl implements PayBiz {
 	public int insert(PayDto dto) {
 		return payDao.insert(dto);
 	}
+	
+	public int delete(PayDto dto) {
+		return payDao.delete(dto);
+	}
 
 }

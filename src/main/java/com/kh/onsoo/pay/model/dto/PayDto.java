@@ -16,6 +16,11 @@ public class PayDto {
 	
 	public PayDto() {}
 	
+	public PayDto(String pay_member, int pay_classno) {
+		this.pay_memberid = pay_member;
+		this.pay_classno = pay_classno;
+	}
+	
 	public PayDto(int pay_no, String pay_memberid, int pay_classno, Date pay_date) {
 		this.pay_no = pay_no;
 		this.pay_memberid = pay_memberid;
