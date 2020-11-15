@@ -10,7 +10,7 @@
 </head>
 <body>
 <h1>강사인증 페이지</h1>
-	<form action="${pageContext.request.contextPath}admin/reviewupdate.do" method="get">
+	<form action="<c:url value="/reviewupdate.do" />" method="POST">
 	<input type="hidden" name="member_id" value="${dto.member_id }"/>
 	<table border="1">
 		<tr>
@@ -20,10 +20,6 @@
 		<tr>
 			<th>현재 권한</th>
 			<td>${dto.member_role }</td>
-		</tr>
-		<tr>
-			<th>첨부파일<br>미리보기</th>
-			<td><embed class="previewimg" src="<c:url value='resources/img/sample3.pdf'/>" type="application/pdf" width="100%" height="300px" /></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="right">
@@ -39,6 +35,5 @@
 	</table>
 	</form>
 	<input type="button" value="관리자 메인페이지" onclick="location.href='<c:url value="/admin/admin.do"/>'">
-	
 </body>
 </html>

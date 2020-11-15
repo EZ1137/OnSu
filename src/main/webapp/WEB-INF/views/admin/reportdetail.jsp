@@ -17,12 +17,12 @@
 			<td>${rdto.report_id }</td>
 		</tr>
 		<tr>
-			<th>신고 제목</th>
-			<td>${rdto.report_title }</td>
+			<th>신고 내용</th>
+			<td>${rdto.report_content }</td>
 		</tr>
 		<tr>
-			<th>신고 내용</th>
-			<td><textarea rows="10" cols="60" readonly="readonly">${rdto.report_content } </textarea></td>
+			<th>첨부파일<br>미리보기</th>
+			<td><textarea rows="10" cols="60" readonly="readonly">${rdto.report_filename } </textarea></td>
 		</tr>
 		<tr>
 			<th>신고 받은 사람</th>
@@ -43,7 +43,9 @@
 				<input type="button" value="목록" onclick="location.href='reportlist.do'"/>
 			</td>
 		</tr>
+		
 	</table>
+	<embed class="previewimg" src="${pageContext.request.contextPath}/resources/img/53021b1e-cff2-4422-a68d-de07f2187393.jpg" type="application/pdf" width="100%" height="300px" />
 	</form>
-</body>
+	</body>
 </html>

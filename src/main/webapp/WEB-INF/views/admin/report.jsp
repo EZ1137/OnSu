@@ -45,7 +45,7 @@
 			<thead>
 				<tr>
 					<th>신고자</th>
-					<th>제목</th>
+					<th>신고내용</th>
 					<th>신고대상</th>
 					<th>신고일자</th>
 					<th>분류</th>
@@ -57,7 +57,7 @@
 			<tbody>
 				<tr class="eval-contents">
 					<td>${dto.report_id }</td>
-					<td>${dto.report_title }</td>
+					<td>${dto.report_content }</td>
 					<td>${dto.report_ided }</td>
 					<td>${dto.report_date }</td>
 					<td>${dto.report_category }</td>
