@@ -219,9 +219,8 @@ video {
 									test="${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username ne null }">
 									<div>
 										<input type="button" class="reportbtn" value="신고하러 가기" onclick="location.href='reportinsert.do?member_id=${dto.member_id}'"/>
-										<input type="button" class="contactbtn" value="문의하러 가기" onclick="location.href='reportinsert.do?member_id=${dto.member_id}'"/>
+										<input type="button" class="contactbtn" value="문의하러 가기" onclick="location.href='contact.do'"/>
 									</div>
-
 								</c:when>
 								<c:otherwise>
 									<div>
