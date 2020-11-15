@@ -20,9 +20,11 @@ function replyList(){
         data : {'reply_boardno':reply_boardno},
         success : function(data){
             var a =''; 
-            $.each(data, function(key, reply){ //체크............................
-               a+='<div class="replybox">';
-                a += '<div class="replyArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
+
+            $.each(data, function(key, reply){ //체크
+            	a+='<div class="replybox">';
+                a += '<div class="replyArea">';
+
                 a += '<div class="replyInfo'+reply.reply_no+'">'+'댓글번호 : '+reply.reply_no+' / 작성자 : '+reply.reply_id;
                 if(reply.reply_id == member_id) {
                 	a += '<a onclick="replyUpdate('+reply.reply_no+',\''+reply.reply_title +'\');"> 수정 </a>';
@@ -32,6 +34,7 @@ function replyList(){
                 a += '</div></div>';
                 a +='</div>';
             });
+            console.log(data);
             
             $(".replyList").html(a);
         }

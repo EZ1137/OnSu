@@ -90,7 +90,7 @@ public class ReplyController {
     @RequestMapping("/replyupdate.do") //댓글 수정  
     @ResponseBody
     private int mCommentServiceUpdateProc(@RequestParam int reply_no, @RequestParam String reply_title, Model model) throws Exception{
-    	logger.info("댓글 수정  ");
+    	logger.info("댓글 수정");
     	
         ReplyDto replydto = new ReplyDto();
         replydto.setReply_no(reply_no);

@@ -67,7 +67,7 @@ public class ReportController {
 		String member_id = principal1.getUsername(); // 사용자 이름
 		
 		model.addAttribute("member_id", member_id);
-		
+			
 		return "reportinsert";
 	}
 

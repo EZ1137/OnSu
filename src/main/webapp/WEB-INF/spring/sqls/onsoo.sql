@@ -165,7 +165,7 @@ UPDATE AUTHORITIES SET (MEMBER_ID, AUTHORITY) VALUES ('mist1407', 'ROLE_USER');
 	);
 
 INSERT INTO CLASS VALUES(CLASSSEQ.NEXTVAL, 'test', 'ss', 'ss', 'V', 'test', 'test', 'test', 3000);
-INSERT INTO CLASS VALUES(CLASSSEQ.NEXTVAL, 'testk', 'ss', 'ss', 'W', 'testk', 'testk', 'testk', 7000);
+INSERT INTO CLASS VALUES(CLASSSEQ.NEXTVAL, 'testk', 'jayoung', 'ss', 'W', 'testk', 'testk', 'testk', 7000, 0);
 
 SELECT * FROM CLASS;
 
@@ -185,7 +185,7 @@ CREATE TABLE CLASSIMAGE(
 select * from CLASSIMAGE
 
 insert into CLASSIMAGE
-values(1,'ss',1)
+values(1,'ss',3)
 
 
 
@@ -276,7 +276,7 @@ CREATE TABLE REPORT(
    -- 신고일
    REPORT_DATE DATE NOT NULL,
    -- 첨부파일
-   REPORT_FILENAME VARCHAR2(1000),
+   REPORT_SAVENAME VARCHAR2(1000),
    -- 신고 한 사람
    REPORT_ID VARCHAR2(20) NOT NULL,
    -- 신고 받은 사람
@@ -523,5 +523,22 @@ CREATE TABLE PAY (
 	-- 결제일
 	PAY_DATE DATE NOT NULL
 );
+
+DROP TABLE LIVE;
+
+CREATE TABLE LIVE (
+
+	--방 번호(PK)
+	LIVE_NO NUMBER PRIMARY KEY,
+	--수강생 아이디
+	LIVE_ID VARCHAR2(200) NOT NULL,
+	
+	FOREIGN KEY (LIVE_NO) REFERENCES CLASS (CLASS_NO),
+	FOREIGN KEY (LIVE_ID) REFERENCES MEMBER (MEMBER_ID)
+	
+);
+
+SELECT * FROM LIVE;
+
 
 
