@@ -56,8 +56,8 @@
 	
 	<insert id="insert" parameterType="studyDto">
 		INSERT INTO CLASS
-		VALUES(CLASSSEQ.NEXTVAL, #{class_title}, 'test', #{class_teachername}, 'W', 
-			   #{class_bigcategory}, #{class_smallcategory}, #{class_info}, #{class_price})
+		VALUES(CLASSSEQ.NEXTVAL, #{class_title}, #{class_teacherid}, #{class_teachername}, 'W', 
+			   #{class_bigcategory}, #{class_smallcategory}, #{class_info}, #{class_price}, 0)
 	</insert>
 	
 	<update id="update" parameterType="studyDto">
