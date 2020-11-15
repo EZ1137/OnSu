@@ -21,11 +21,14 @@
 	</resultMap>
 	
 	<select id="selectList" resultMap="AdminDtoMap">
-		SELECT * FROM MEMBER
+		SELECT * FROM MEMBER 
+		ORDER BY MEMBER_REGDATE DESC
 	</select>
 	
 	<select id="teacherList" resultMap="AdminDtoMap">
-		SELECT * FROM MEMBER WHERE MEMBER_ROLE = 'S'
+		SELECT * FROM MEMBER 
+		WHERE MEMBER_ROLE = 'S' 
+		ORDER BY MEMBER_REGDATE DESC
 	</select>
 	
 	<!--회원가입  -->
