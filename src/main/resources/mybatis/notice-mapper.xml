@@ -37,5 +37,13 @@
 		DELETE FROM NOTICE
 		WHERE NOTICE_NO= #{notice_no}
 	</delete>
-
+	
+	<select id="search" resultType="NoticeDto">
+		SELECT NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENT,NOTICE_REGDATE
+		FROM NOTICE
+		WHERE NOTICE_TITLE LIKE '%'||#{search}||'%'
+	</select>
+	
+	
+	
 </mapper>
