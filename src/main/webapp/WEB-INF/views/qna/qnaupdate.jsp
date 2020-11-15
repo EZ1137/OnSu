@@ -77,7 +77,7 @@
 					<tfoot>
 						<tr>
 							<td colspan="6" style="text-align:right;">
-								<input type="button" value="LIST" onclick="location.href='qna.do'"/>
+								<input type="button" value="LIST" onclick="location.href='qna/qna.do'"/>
 								<input type="reset" value="RESET"/>
 								<input type="submit" value="UPDATE"/>
 							</td>

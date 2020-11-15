@@ -33,6 +33,7 @@
     		<frame-options policy="SAMEORIGIN"/>
     	</headers>	
     			
+        <intercept-url pattern="/qna/**" access="hasAnyRole('USER','ADMIN' )" />
         <intercept-url pattern="/user/**" access="hasRole('USER')" />
         <intercept-url pattern="/admin/**" access="hasRole('ADMIN')" />
         <intercept-url pattern="/block/**" access="hasRole('BLOCK')" />

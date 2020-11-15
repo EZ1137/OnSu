@@ -34,7 +34,7 @@
 				</tr>
 				<tr>
 					<td style="height:100px;">
-						<input type="button" value="LIST" onclick="location.href='qna.do'"/>
+						<input type="button" value="LIST" onclick="location.href='<c:url value="/qna/qna.do" />'"/>
 						<input type="button" value="Log In" onclick="location.href='qna.do'"/>
 					</td>
 				</tr>
@@ -101,25 +101,25 @@
 					<tr>
 						<td colspan="6" style="text-align:right;">
 							<div style="display:flex; align:right; margin-bottom:30px;">
-								<input type="button" value="LIST" onclick="location.href='qna.do'"/>
+								<input type="button" value="LIST" onclick="location.href='<c:url value="/qna/qna.do" />'"/>
 								<!-- 비밀글 기능은 작성자 본인만 -->
 								<c:if test="${(qnadto.qnasecret eq 'N') && (qnadto.qnawriter eq admindto.member_id)}">
-									<form action="qnasetsecret.do" method="post">
+									<form action="<c:url value="qnasetsecret.do" />" method="post">
 										<input type="hidden" name="qnano" value="${qnadto.qnano}"/>
 										<input type="submit" value="SECRET"/>
 									</form>
 								</c:if>
 								<!-- 수정은 작성자 본인만 -->
 								<c:if test="${qnadto.qnawriter eq admindto.member_id}">
-									<input type="button" value="EDIT" onclick="location.href='qnaupdateform.do?qnano=${qnadto.qnano}'"/>
+									<input type="button" value="EDIT" onclick="location.href='<c:url value="qnaupdateform.do?qnano=${qnadto.qnano}" />'"/>
 								</c:if>
 								<!-- 삭제는 관리자와 작성자 본인만 -->
 								<c:if test="${(admindto.member_id eq 'admin') || (qnadto.qnawriter eq admindto.member_id)}">
-									<input type="button" value="DELETE" onclick="location.href='qnadelete.do?qnano=${qnadto.qnano}'"/>
+									<input type="button" value="DELETE" onclick="location.href='<c:url value="qnadelete.do?qnano=${qnadto.qnano}" />'"/>
 								</c:if>
 								<!-- 답변은 관리자만 -->
 								<c:if test="${admindto.member_id eq 'admin'}">
-									<input type="button" value="ANSWER" onclick="location.href='qnaanswerform.do?qnano=${qnadto.qnano}'"/>
+									<input type="button" value="ANSWER" onclick="location.href='<c:url value="qnaanswerform.do?qnano=${qnadto.qnano}" />'"/>
 								</c:if>
 							</div>
 						</td>

@@ -100,18 +100,17 @@
                      <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/about.do'">A B O U T</p>
                      <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/video/studylist.do'">V I D E O</p>
                      <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/with/studylist.do'">1 : 1 C L A S S</p>
-                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/qna.do'">Q n A</p>
+                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/qna/qna.do'">Q n A</p>
                      <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/notice.do'">N O T I C E</p>
                      <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/contact.do'">C O N T A C T</p>
-                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/admin/admin.do'">A D M I N</p>
-                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/mypage.do'">M Y P A G E</p>
                      <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/freelist.do'">F R E E</p>
+                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/user/mypage.do'">M Y P A G E</p>
                   </sec:authorize>
                   
                   <!-- 정지일 때 페이지 -->
                   <sec:authorize access="hasRole('BLOCK')">
                      <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/block.do'">B L O C K</p>
-                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/qna.do'">Q n A</p>
+                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/qna/qna.do'">Q n A</p>
                      <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/notice.do'">N O T I C E</p>
                      <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/contact.do'">C O N T A C T</p>
                   </sec:authorize>
@@ -121,11 +120,10 @@
                      <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/about.do'">A B O U T</p>
                      <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/video/studylist.do'">V I D E O</p>
                      <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/with/studylist.do'">1 : 1 C L A S S</p>
-                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/qna.do'">Q n A</p>
+                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/qna/qna.do'">Q n A</p>
                      <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/notice.do'">N O T I C E</p>
                      <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/contact.do'">C O N T A C T</p>
-                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/admin/adminpage.do'">A D M I N</p>
-                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/mypage.do'">M Y P A G E</p>
+                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/user/mypage.do'">M Y P A G E</p>
                      <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/freelist.do'">F R E E</p>
                   </sec:authorize>
 
