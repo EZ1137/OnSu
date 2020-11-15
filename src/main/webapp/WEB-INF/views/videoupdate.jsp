@@ -12,19 +12,28 @@
 </head>
 <body>
 
+	<header id="header" class="area">
+    	<%@ include file="/WEB-INF/views/header.jsp"%>
+    </header>
+    
 	<section class="section area">
     	<!-- 타이틀 -->
 		<div class="free_board_title">
 			<p>1:1 강의 등록</p>
 		</div>
 	
-	<form action="studyupdateres.do" method="post">
-		<table class="free_insert">
+	<form action="videoupdateres.do" method="post">
+		<table class="free_update">
+			<colgroup>
+				<col width="30%">
+				<col width="70%">
+			</colgroup>
 			<tr>
-				<td><input type="text" name="video_name" value="${videoDto.video_name }">
+				<th>동영상 이름</th>
+				<td><input type="text" name="video_name" value="${videoDto.video_title}">
 			</tr>
 			<tr>
-				<td><input type="submit" value="수정"/>
+				<td colspan="2"><input type="submit" value="수정"/>
 			</tr>
 		</table>
 	</form>

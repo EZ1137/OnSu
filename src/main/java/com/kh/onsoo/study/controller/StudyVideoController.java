@@ -30,7 +30,12 @@ import org.springframework.web.util.WebUtils;
 
 import com.kh.onsoo.admin.model.biz.AdminBiz;
 import com.kh.onsoo.admin.model.dto.AdminDto;
+
+import com.kh.onsoo.listen.model.dto.ListenVideoDto;
+import com.kh.onsoo.listen.model.biz.ListenVideoBiz;
+
 import com.kh.onsoo.pay.model.biz.PayBiz;
+
 import com.kh.onsoo.study.image.model.biz.UploadBiz;
 import com.kh.onsoo.study.image.model.dto.UploadDto;
 import com.kh.onsoo.study.model.biz.StudyVideoBiz;
@@ -64,7 +69,11 @@ public class StudyVideoController {
 	private AdminBiz adminBiz;
 	
 	@Autowired
+	private ListenVideoBiz listenBiz;
+
+  @Autowired
 	private PayBiz payBiz;
+
 	
 	@RequestMapping(value = "/video/studylist.do")
 	public String studyVideoList(Model model, Principal principal) {
@@ -112,11 +121,12 @@ public class StudyVideoController {
 	}
 
 	@RequestMapping("/video/teacher/studydetail.do")
-	public String studyTeacherDetail(Model model, int class_no) {
+	public String studyTeacherDetail(Model model, int class_no, String member_id) {
 		model.addAttribute("studyDto", studyBiz.selectOne(class_no));
 		model.addAttribute("imageList", uploadBiz.selectList(class_no));
 		model.addAttribute("videoList", videoBiz.videoList(class_no));
 		
+		List<ListenVideoDto> list = listenBiz.selectList(member_id);
 		return "studydetail_teacher";
 	}
 
@@ -269,7 +279,7 @@ public class StudyVideoController {
 			return "redirect:videoinsert.do?class_no=" + class_no;
 	}
 	
-	@RequestMapping("/video/teacher/videoupdateform.do")
+	@RequestMapping("/video/teacher/videoupdate.do")
 	public String videoUpdateForm(Model model, int video_no) {
 		
 		model.addAttribute("videoDto", videoBiz.videoOne(video_no));

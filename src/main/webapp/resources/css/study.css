@@ -45,6 +45,11 @@ section {
 	align-items: center;
 }
 
+.third {
+	height: 200vh;
+	
+}
+
 .free_board_title {
 	margin: 0px auto 20px auto;
 	padding: 10px 0 0 60px;
@@ -86,6 +91,11 @@ section {
 	align-items: center;
 }
 
+.free_update {
+	margin: 10px auto 30px auto;
+	width: 40%;
+	align-items: center;
+}
 
 tr {
 	height: 30px;
@@ -98,11 +108,13 @@ tr {
 th {
 	background-color: var(--color-light-white);
 	color: var(--color-dark-blue);
+	text-align: center;
 }
 
 td {
 	text-align: center;
 }
+
 
 #list_icon {
 	padding-top: 5px;

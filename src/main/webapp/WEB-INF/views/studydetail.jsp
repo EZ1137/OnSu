@@ -25,9 +25,10 @@
 
 <!-- Bootstrap core CSS -->
 <link
-   href="${pageContext.request.contextPath}/resources/css/vendor/bootstrap/css/bootstrap.min.css"
-   rel="stylesheet">
-
+	href="${pageContext.request.contextPath}/resources/css/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/study.css"
+	rel="stylesheet">
 <link
    href="${pageContext.request.contextPath}/resources/css/blog-post.css"
    rel="stylesheet">
@@ -52,8 +53,8 @@ $(function () {
 });
 
 function videoShow(video_no) {
-   var url = "videodetail.do?video_no=" + video_no;
-   window.open(url, "", "width=400, height=400, left=600");
+	var url = "videodetail.do?video_no=" + video_no;
+	window.open(url, "", "width=1020, height=800, left=500");
 }
 
 </script>
@@ -61,118 +62,119 @@ function videoShow(video_no) {
 </head>
 
 <body>
+	<header id="header" class="area">
+    	<%@ include file="/WEB-INF/views/header.jsp"%>
+    </header>
+  
+	<!-- Page Content -->
+	<div class="main">
+		<!-- Post Content Column -->
+		<div class="div_middle">
+			<!-- Title -->
+			<h6># ${studyDto.class_bigcategory } &nbsp # ${studyDto.class_smallcategory }</h6>
+			<h1 class="mt-4">${studyDto.class_title }</h1>
+			
+			<!-- Date/Time -->
+			<p>${studyDto.class_teachername } 튜터</p>
+			<hr>
+			<hr>
+				
+			<!-- Sidebar Widgets Column -->
+			<c:choose>
+				<c:when test="${empty imageList }">
+					
+				</c:when>
+				
+				<c:otherwise>
+				<div class="swiper-container swiper2">
+					<ul class="swiper-wrapper">
+						
+							<c:forEach items="${imageList }" var="dto">
+								<li class="swiper-slide" style="text-align: center;">
+									<img style="width: 60%; height: 40%; margin-top:30px;" class="slideimg" src="<spring:url value='http://localhost:8787/image/${dto.image_directory }'/>" />
+								</li>
+							</c:forEach>
+						
+					</ul>
+				
+					<div class="swiper-button-next" id="next"></div>
+					<div class="swiper-button-prev" id="previous"></div>
+				</div>
+				</c:otherwise>
+			</c:choose>
+			
+			<!-- Post Content -->	
+			<p class="lead">${studyDto.class_info}</p>
+			
+			<table>
+				<colgroup>
+					<col width="10%">
+					<col width="70%">
+					<col width="20%">
+				</colgroup>
+				<tr>
+					<th>번호</th>
+					<th>타이틀</th>
+					<th>시간</th>
+				</tr>
+				
+				<c:choose>
+					<c:when test="${empty videoList }">
+						<tr>
+							<th colspan="3">----------------- 준비 중입니다 ------------------- </th>
+						</tr>
+						
+					</c:when>
+					
+					<c:otherwise>
+						<c:forEach items="${videoList }" var="dto" varStatus="status">
+							<tr>
+								<td>${status.count}</td>
+								<td><a href="javascript:void(0);" onclick="videoShow(${dto.video_no}); return false;">${dto.video_title}</a></td>
+								<td>${dto.video_runtime}</td>
+							</tr>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
+			</table>
+			
+			<!-- Comments Form -->
+			<div class="reviewContainer">
+				<div class="container">
+					<form name="reviewInsertForm">
+						<div class="input-group">
+							<div class="starRev">
+					  			<span class="starR1"><input type="hidden" value="1"/></span>
+					  			<span class="starR2"><input type="hidden" value="2"/></span>
+					  			<span class="starR1"><input type="hidden" value="3"/></span>
+					  			<span class="starR2"><input type="hidden" value="4"/></span>
+							 	<span class="starR1"><input type="hidden" value="5"/></span>
+								<span class="starR2"><input type="hidden" value="6"/></span>
+								<span class="starR1"><input type="hidden" value="7"/></span>
+								<span class="starR2"><input type="hidden" value="8"/></span>
+								<span class="starR1"><input type="hidden" value="9"/></span>
+								<span class="starR2"><input type="hidden" value="10"/></span>
+							</div>
+							<input type="hidden" id="starVal" name="review_star" value="0"/>
+							<input type="hidden" name="member_id" value="${member_id }">
+							<input type="hidden" name="review_classno" value="${studyDto.class_no}" />
+							<input type="text" class="form-control" id="review_content" name="review_content" placeholder="내용을 입력하세요.">
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="button" name="reviewInsertBtn">등록</button>
+							</span>
+						</div>
+					</form>
+				</div>
+				
+				<div class="container">
+					<div class="review"></div>
+				</div>
 
-   <!-- Page Content -->
-   <div class="main">
-      <!-- Post Content Column -->
-      <div class="div_middle">
-         <!-- Title -->
-         <h6># ${studyDto.class_bigcategory } &nbsp # ${studyDto.class_smallcategory }</h6>
-         <h1 class="mt-4">${studyDto.class_title }</h1>
-         
-         <!-- Date/Time -->
-         <p>${studyDto.class_teachername } 튜터</p>
-         <hr>
-         <hr>
-            
-         <!-- Sidebar Widgets Column -->
-         <c:choose>
-            <c:when test="${empty imageList }">
-               
-            </c:when>
-            
-            <c:otherwise>
-            <div class="swiper-container swiper2">
-               <ul class="swiper-wrapper">
-                  
-                     <c:forEach items="${imageList }" var="dto">
-                        <li class="swiper-slide">
-                           <img class="slideimg" src="<spring:url value='http://localhost:8787/image/${dto.image_directory }'/>" />
-                        </li>
-                     </c:forEach>
-                  
-               </ul>
-            
-               <div class="swiper-button-next" id="next"></div>
-               <div class="swiper-button-prev" id="previous"></div>
-            </div>
-            </c:otherwise>
-         </c:choose>
-         
-         <!-- Post Content -->   
-         <p class="lead">${studyDto.class_info}</p>
-         
-         <table border="1">
-            <colgroup>
-               <col width="10%">
-               <col width="70%">
-               <col width="20%">
-            </colgroup>
-            <tr>
-               <th>번호</th>
-               <th>타이틀</th>
-               <th>시간</th>
-            </tr>
-            
-            <c:choose>
-               <c:when test="${empty videoList }">
-                  <tr>
-                     <th colspan="3">----------------- 준비 중입니다 ------------------- </th>
-                  </tr>
-                  
-               </c:when>
-               
-               <c:otherwise>
-                  <c:forEach items="${videoList }" var="dto">
-                     <tr>
-                        <td>{dto.video_count}</td>
-                        <td><a href="javascript:void(0);" onclick="videoShow(${dto.video_no}); return false;">${dto.video_title}</a></td>
-                        <td>${dto.video_runtime}</td>
-                     </tr>
-                  </c:forEach>
-               </c:otherwise>
-            </c:choose>
-         </table>
-         
-         <!-- Comments Form -->
-         <div class="reviewContainer">
-            <div class="container">
-               <form name="reviewInsertForm">
-                  <div class="input-group">
-                     <div class="starRev">
-                          <span class="starR1"><input type="hidden" value="1"/></span>
-                          <span class="starR2"><input type="hidden" value="2"/></span>
-                          <span class="starR1"><input type="hidden" value="3"/></span>
-                          <span class="starR2"><input type="hidden" value="4"/></span>
-                         <span class="starR1"><input type="hidden" value="5"/></span>
-                        <span class="starR2"><input type="hidden" value="6"/></span>
-                        <span class="starR1"><input type="hidden" value="7"/></span>
-                        <span class="starR2"><input type="hidden" value="8"/></span>
-                        <span class="starR1"><input type="hidden" value="9"/></span>
-                        <span class="starR2"><input type="hidden" value="10"/></span>
-                     </div>
-                     <input type="hidden" id="starVal" name="review_star" value="0"/>
-                     <input type="hidden" name="member_id" value="${member_id }">
-                     <input type="hidden" name="review_classno" value="${studyDto.class_no}" />
-                     <input type="text" class="form-control" id="review_content" name="review_content" placeholder="내용을 입력하세요.">
-                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" name="reviewInsertBtn">등록</button>
-                     </span>
-                  </div>
-               </form>
-            </div>
-            
-            <div class="container">
-               <div class="review"></div>
-            </div>
-
-            <!--review.jsp-->
-            <%@ include file="/WEB-INF/views/review.jsp" %>
-         </div>
-      </div>
-   </div>
-
-   <div class="div_side">
+				<!--review.jsp-->
+				<%@ include file="/WEB-INF/views/review.jsp" %>
+			</div>
+		</div>
+     <div class="div_side">
       <!-- Side Widget -->
       <div class="card my-4">
          <h5 class="card-header">수업 신청</h5>
@@ -193,6 +195,7 @@ function videoShow(video_no) {
 				</div>
 			</c:otherwise>
 		</c:choose>
+
 	</div>
       
    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>

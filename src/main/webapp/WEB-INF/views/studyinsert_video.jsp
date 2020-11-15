@@ -64,7 +64,7 @@
     	<%@ include file="/WEB-INF/views/header.jsp"%>
     </header>
     
-	<section class="section area">
+	<section class="section third area">
     	<!-- 타이틀 -->
 		<div class="free_board_title">
 			<p>동영상 강의 등록</p>

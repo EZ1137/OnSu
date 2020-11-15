@@ -22,23 +22,23 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/onsooMain.js?"
 	defer></script>
-<link
-	href="${pageContext.request.contextPath}/resources/css/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-
-<link
-	href="${pageContext.request.contextPath}/resources/css/blog-post.css"
-	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/study.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/blog-post.css" rel="stylesheet">
 </head>
 
 <script>
 	function videoShow(video_no) {
 		var url = "videodetail.do?video_no=" + video_no;
-		window.open(url, "", "width=400, height=400, left=600");
+		window.open(url, "", "width=1020, height=800, left=500");
 	}
 </script>
 <body>
 
+	<header id="header" class="area">
+    	<%@ include file="/WEB-INF/views/header.jsp"%>
+    </header>
+    
 	<!-- Page Content -->
 	<div class="main">
 
@@ -82,7 +82,7 @@
 				<!-- Post Content -->
 				<p class="lead">${studyDto.class_info}</p>
 
-				<table border="1">
+				<table>
 					<colgroup>
 						<col width="10%">
 						<col width="50%">
@@ -108,9 +108,9 @@
 						</c:when>
 
 						<c:otherwise>
-							<c:forEach items="${videoList }" var="dto">
+							<c:forEach items="${videoList }" var="dto" varStatus="status">
 								<tr>
-									<td>{dto.video_count}</td>
+									<td>${status.count}</td>
 									<td><a href="javascript:void(0);" onclick="videoShow(${dto.video_no}); return false;">${dto.video_title}</a></td>
 									<td>${dto.video_runtime}</td>
 									<td><input type="button" value="수정"
@@ -123,23 +123,15 @@
 					</c:choose>
 
 					<tr>
-						<td colspan="5"><input type="button" value="비디오 등록"
-							onclick="location.href='videoform.do?class_no=${studyDto.class_no}'"></td>
+						<td colspan="5" style="text-align: right;">
+							<input type="button" value="비디오 등록" onclick="location.href='videoform.do?class_no=${studyDto.class_no}'">
+						</td>
 					</tr>
 				</table>
 
-				<!-- Comments Form -->
-				<div class="card my-4">
-					<h5 class="card-header">Leave a Comment:</h5>
-					<div class="card-body">
-						<form action="review.do" method="post">
-							<div class="form-group">
-								<textarea class="form-control" name="" rows="3"></textarea>
-							</div>
-							<button type="submit" class="btn btn-primary">리뷰 작성</button>
-						</form>
-					</div>
-				</div>
+				<hr/>
+				<hr/>
+				
 				<!-- Single Comment -->
 				<div class="media mb-4">
 					<img class="d-flex mr-3 rounded-circle"
