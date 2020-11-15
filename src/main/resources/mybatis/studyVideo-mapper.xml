@@ -13,6 +13,7 @@
 		<id property="class_smallcategory" column="class_smallcategory" />
 		<id property="class_info" column="class_info" />
 		<id property="class_price" column="class_price" />
+		<id property="class_star" column="class_star" />
 	</resultMap>
 
 	<resultMap
