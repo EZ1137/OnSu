@@ -63,7 +63,7 @@
 					<c:choose>
 						<c:when test="${empty list }">
 							<tr>
-								<td colspan="4">------------ 작성된 게시글이 없습니다 ------------</td>
+								<td colspan="4">현재 작성된 게시글이 없습니다</td>
 							</tr>
 						</c:when>
 						<c:otherwise>

@@ -91,10 +91,10 @@ function loginAlert() {
 					<span class="input-group-btn">
 					<c:choose>
 							<c:when test="${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username ne null }">
-						<button class="btn btn-default" type="button" name="replyInsertBtn">등록</button>
+								<button class="btn btn-default" type="button" name="replyInsertBtn">등록</button>
 						</c:when>
 						<c:otherwise>
-						<button onclick="loginAlert()" class="btn btn-default" type="button" name="replyInsertBtn">등록</button>
+								<button onclick="loginAlert()" class="btn btn-default" type="button" name="replyInsertBtn">등록</button>
 						</c:otherwise>
 					</c:choose>
 					</span>
