@@ -23,6 +23,10 @@
 			customConfig: '${pageContext.request.contextPath}/js/lib/ckeditor/config_oboe.js'
 		});
 	};
+	onsubmit = function(){
+		alert("신고가 접수 되었습니다.")
+	}
+	
 </script>
 </head>
 <body>
