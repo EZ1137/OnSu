@@ -22,7 +22,7 @@
 		</div>
 		
 		<div class="review_zone">
-			<form action="${pageContext.request.contextPath}admin/reviewupdate.do" method="get">
+			<form action="${pageContext.request.contextPath}/admin/reviewupdate.do" method="get">
 				<input type="hidden" name="member_id" value="${dto.member_id}"/>
 				<table class="review_one">
 					<colgroup>
