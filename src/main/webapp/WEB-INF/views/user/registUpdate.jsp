@@ -61,7 +61,7 @@
 	}
 </script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type="text/javascript" src="resources/js/registForm.js"></script>
+<script type="text/javascript" src="resources/js/registFormchk.js"></script>
 <link href="${pageContext.request.contextPath}/resources/css/registform.css" rel="stylesheet">
 </head>
 <body>
@@ -113,7 +113,7 @@
 							<tr>
 								<th class="registLabel">이름</th>
 								<td>
-									<input class="onRegist" type="text" name="member_name" readonly="readonly" required="required" value="${dto.member_name}"/>
+									<input class="onRegist" type="text" name="member_name"  readonly="readonly" value="${dto.member_name}"/>
 								</td>
 								<th class="registLabel">생일</th>
 								<td>
@@ -135,14 +135,9 @@
 								</td>
 								<th class="registLabel">EMAIL</th>
 								<td>
-									<input class="onRegist" type="email" name="member_email" id="memberemail" placeholder="이메일을 입력해주세요" required="required" value="${dto.member_email}"/> 
+									<input class="onRegist" type="email" name="member_email" id="memberemail" placeholder="이메일을 입력해주세요" readonly="readonly" value="${dto.member_email}"/> 
 								</td>
 								<td colspan="2">
-								<!-- 이메일 중복 확인 없앨거면 여기 있는 input 4개 다 지우면 됨! -->
-									<input class="registbtn" type="button" onclick="emailchk();" value="중복 확인"/>
-									<input class="onRegist" type="text" id="randomchk" onkeyup="codechk();" placeholder="인증번호 입력" style="width:90px;" required="required"/>
-									<input type="hidden" pattern="random" id="random"/>	
-									<input class="onRegist" type="text" id="e_result" style="color:#fe5f55; border:none; width:60px;" readonly="readonly"/>
 								</td>
 							</tr><tr><td colspan="6" class="line_height"></td></tr>
 							

@@ -29,7 +29,7 @@
 
 	<update id="update">
 		UPDATE MEMBER 
-		SET MEMBER_ROLE = #{member_role} 
+		SET MEMBER_ROLE = #{member_role},MEMBER_BDATE = #{member_bdate}
 		WHERE MEMBER_ID = #{member_id}
 	</update>
 </mapper>

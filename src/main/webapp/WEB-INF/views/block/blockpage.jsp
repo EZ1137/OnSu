@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,11 +23,10 @@
 		<div id="block_box_content">
 			<ul>
 				<li>
-				<span>
-					<h4>아이디 ${dto.member_id}</h4>
-					사유: report 값 갖고 오기 
-					날짜 : 2020. 12 .31일까지 정지 (member값 갖고 오기 )
-				</span>
+					<h4><fmt:formatDate value="${dto.member_bdate}" pattern="yyyy-MM-dd" />까지 계정이 정지 되었습니다.</h4>
+					 <br><br>
+					 <br><br>
+					 <p>자세한 내용은 관리자 메일로 보내주시면 답변해드리겠습니다. -dhtmdals666@naver.com-</p>
 				</li>
 				<li>
 					<span>

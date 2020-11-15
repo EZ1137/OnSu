@@ -22,7 +22,7 @@
 		</tr>
 		<tr>
 			<th>첨부파일<br>미리보기</th>
-			<td><textarea rows="10" cols="60" readonly="readonly">${rdto.report_filename } </textarea></td>
+			<td><embed class="previewimg" src="./resources/img/${rdto.report_filename }" type="application/pdf" width="500px" height="500px" /></td>
 		</tr>
 		<tr>
 			<th>신고 받은 사람</th>
@@ -34,18 +34,18 @@
 		</tr>
 		<tr>
 			<td colspan="2" align="right">
+				<input type="date" name="member_bdate" />
 				<select name="member_role">
 					<option >-----선택-----</option>
 					<option value="S">강사자격 정지</option>
 					<option value="B">회원자격 정지</option>
 				</select>
 				<input type="submit" value="수정완료">
-				<input type="button" value="목록" onclick="location.href='reportlist.do'"/>
+				<input type="button" value="목록" onclick="location.href='<c:url value="/admin/reportlist.do"/>'"/>
 			</td>
 		</tr>
 		
 	</table>
-	<embed class="previewimg" src="${pageContext.request.contextPath}/resources/img/53021b1e-cff2-4422-a68d-de07f2187393.jpg" type="application/pdf" width="100%" height="300px" />
 	</form>
 	</body>
 </html>
