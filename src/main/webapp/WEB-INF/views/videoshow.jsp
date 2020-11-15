@@ -8,11 +8,14 @@
 </head>
 <body>
 
-	<video controls width="250">
+	<header id="header" class="area">
+    	<%@ include file="/WEB-INF/views/header.jsp"%>
+    </header>
+    
+	<video controls width="1000">
 		<source src="http://localhost:8787/image/${videoDto.video_directory }" type="video/mp4">
 	</video>
 	
-	<h1>${videoDto.video_directory }</h1>
 
 </body>
 </html>

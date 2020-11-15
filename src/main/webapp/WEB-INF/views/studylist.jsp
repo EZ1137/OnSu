@@ -19,6 +19,10 @@
 </head>
 <body>
 
+	<header id="header" class="area">
+    	<%@ include file="/WEB-INF/views/header.jsp"%>
+    </header>
+
    <section class="section second area">
       <div class="vod_cards_title">
          <p>동영상 강의</p>

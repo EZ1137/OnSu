@@ -79,12 +79,14 @@ public class StudyWithController {
 		
 		model.addAttribute("member_id", member_id);
 		model.addAttribute("studyDto", studyBiz.selectOne(class_no));
+		model.addAttribute("imageList", uploadBiz.selectList(class_no));
 		return "studydetail";
 	}
 	
 	@RequestMapping("/with/teacher/studydetail.do")
 	public String studyTeacherDetail(Model model, int class_no) {
 		model.addAttribute("studyDto", studyBiz.selectOne(class_no));
+		model.addAttribute("imageList", uploadBiz.selectList(class_no));
 		return "studydetail_teacher";
 	}
 	

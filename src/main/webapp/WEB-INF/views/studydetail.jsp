@@ -27,7 +27,8 @@
 <link
 	href="${pageContext.request.contextPath}/resources/css/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
-
+<link href="${pageContext.request.contextPath}/resources/css/study.css"
+	rel="stylesheet">
 <link
 	href="${pageContext.request.contextPath}/resources/css/blog-post.css"
 	rel="stylesheet">
@@ -53,7 +54,7 @@ $(function () {
 
 function videoShow(video_no) {
 	var url = "videodetail.do?video_no=" + video_no;
-	window.open(url, "", "width=400, height=400, left=600");
+	window.open(url, "", "width=1020, height=800, left=500");
 }
 
 </script>
@@ -61,6 +62,9 @@ function videoShow(video_no) {
 </head>
 
 <body>
+	<header id="header" class="area">
+    	<%@ include file="/WEB-INF/views/header.jsp"%>
+    </header>
 
 	<!-- Page Content -->
 	<div class="main">
@@ -86,8 +90,8 @@ function videoShow(video_no) {
 					<ul class="swiper-wrapper">
 						
 							<c:forEach items="${imageList }" var="dto">
-								<li class="swiper-slide">
-									<img class="slideimg" src="<spring:url value='http://localhost:8787/image/${dto.image_directory }'/>" />
+								<li class="swiper-slide" style="text-align: center;">
+									<img style="width: 60%; height: 40%; margin-top:30px;" class="slideimg" src="<spring:url value='http://localhost:8787/image/${dto.image_directory }'/>" />
 								</li>
 							</c:forEach>
 						
@@ -102,7 +106,7 @@ function videoShow(video_no) {
 			<!-- Post Content -->	
 			<p class="lead">${studyDto.class_info}</p>
 			
-			<table border="1">
+			<table>
 				<colgroup>
 					<col width="10%">
 					<col width="70%">
@@ -123,9 +127,9 @@ function videoShow(video_no) {
 					</c:when>
 					
 					<c:otherwise>
-						<c:forEach items="${videoList }" var="dto">
+						<c:forEach items="${videoList }" var="dto" varStatus="status">
 							<tr>
-								<td>{dto.video_count}</td>
+								<td>${status.count}</td>
 								<td><a href="javascript:void(0);" onclick="videoShow(${dto.video_no}); return false;">${dto.video_title}</a></td>
 								<td>${dto.video_runtime}</td>
 							</tr>

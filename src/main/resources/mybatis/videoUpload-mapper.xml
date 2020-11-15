@@ -5,7 +5,7 @@
 	<select id="selectList" parameterType="int" resultType="videoDto">
 		SELECT * FROM VIDEO
 		WHERE CLASS_NO = #{class_no}
-		ORDER BY VIDEO_NO DESC
+		ORDER BY VIDEO_NO
 	</select>
 	
 	<select id="selectOne" parameterType="int" resultType="videoDto">
