@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -92,6 +93,7 @@ $(function () {
 						</div>
 					</form>
 				</div>
+				<br/><hr/>
 				
 				<div class="container">
 					<div class="review"></div>
@@ -112,12 +114,18 @@ $(function () {
 			<div class="card-body">
 			</div>
 		</div>
-		<div class="btns">
-			<div>
-				<button class="btn btn-primary" onclick="location.href='#'">찜</button>
-				<button class="btn btn-primary" onclick="location.href='pay.do?pay_classno=${studyDto.class_no }'">결제</button>
-			</div>
-		</div>
+		<c:choose>
+			<c:when test="${payDto ne null }">
+			</c:when>
+			<c:otherwise>
+				<div class="btns">
+					<div>
+						<button class="btn btn-primary" onclick="location.href='#'">찜</button>
+						<button class="btn btn-primary" onclick="location.href='pay.do?pay_classno=${studyDto.class_no }'">결제</button>
+					</div>
+				</div>
+			</c:otherwise>
+		</c:choose>
 	</div>
 		
 	<!-- Bootstrap core JavaScript -->
