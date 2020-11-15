@@ -31,7 +31,7 @@ public class QnaController {
 	@Autowired
 	private AdminBiz adminBiz;
 
-	@RequestMapping(value = "/qna.do")
+	@RequestMapping(value = "/qna/qna.do")
 	public String selectList(Model model) {
 		
 		logger.info("QnaController.selectList");
@@ -69,7 +69,7 @@ public class QnaController {
 
 		model.addAttribute("qnadto", qnaBiz.selectOne(qnano));
 		
-		return "/qna/qnaone";
+		return "qna/qnaone";
 	}
 
 	@RequestMapping(value = "/qnainsertform.do")
@@ -103,7 +103,7 @@ public class QnaController {
 		if (res > 0) {
 			logger.info("글 작성 성공");
 			model.addAttribute("msg","글 작성 완료");
-			model.addAttribute("url","/qna.do");
+			model.addAttribute("url","/qna/qna.do");
 			return "redirect";
 		} else {
 			logger.info("msg","글 작성 실패");
@@ -120,7 +120,7 @@ public class QnaController {
 		int res = qnaBiz.setsecret(qnaDto);
 		
 		if (res > 0) {
-			return "redirect: qna.do";
+			return "redirect: qna/qna.do";
 		} else {
 			return "qnaone.do?qnano=" + qnaDto.getQnano();	
 		}
@@ -177,7 +177,7 @@ public class QnaController {
 		int res = qnaBiz.delete(qnano);
 		
 		if (res > 0) {
-			return "redirect: qna.do";
+			return "redirect: qna/qna.do";
 		} else {
 			return "qnaone.do?qnano=" + qnano;	
 		}

@@ -25,7 +25,7 @@
 		</div>
 		
 		<!-- 게시글 작성하기 -->
-		<form action="qnainsertres.do" method="post">
+		<form action="<c:url value="/qnainsertres.do" />" method="post">
 		<input type="hidden" name="qnawriter" value="${dto.member_id}" />
 			<table class="qna_insert">
 				<colgroup>
@@ -51,7 +51,7 @@
 				<tfoot>
 					<tr>
 						<td colspan="2" style="text-align:right;">
-							<input type="button" value="LIST" onclick="location.href='qna.do'"/>
+							<input type="button" value="LIST" onclick="location.href='<c:url value="/qna/qna.do" />'"/>
 							<input type="reset" value="RESET"/>
 							<input type="submit" value="WRITE"/>
 						</td>
