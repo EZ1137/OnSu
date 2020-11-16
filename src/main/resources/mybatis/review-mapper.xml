@@ -9,6 +9,13 @@
 		ORDER BY REVIEW_NO DESC
 	</select>
 	
+	<select id="selectReview" parameterType="map" resultType="ReviewDto">
+		SELECT REVIEW_NO, REVIEW_ID, REVIEW_CONTENT, REVIEW_CLASSNO, REVIEW_STAR, REVIEW_DATE, REVIEW_UPDATE
+		FROM REVIEW
+		WHERE REVIEW_ID = #{review_id}
+		AND REVIEW_CLASSNO = TO_NUMBER(#{review_classno})
+	</select>
+	
 	<select id="selectOne" resultType="ReviewDto">
 		SELECT REVIEW_NO, REVIEW_ID, REVIEW_CONTENT, REVIEW_CLASSNO, REVIEW_STAR, REVIEW_DATE, REVIEW_UPDATE
 		FROM REVIEW

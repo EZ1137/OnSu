@@ -13,6 +13,10 @@
 </head>
 <body>
 
+<script type="text/javascript">
+	setTimeout("location.reload()", 60000);
+</script>
+
 <%
 	Calendar cal = Calendar.getInstance();
 

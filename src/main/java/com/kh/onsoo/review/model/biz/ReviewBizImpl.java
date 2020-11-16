@@ -18,6 +18,11 @@ public class ReviewBizImpl implements ReviewBiz {
 	public List<ReviewDto> selectList(int review_classno) {
 		return reviewDao.selectList(review_classno);
 	}
+	
+	@Override
+	public ReviewDto selectReview(String review_id, int review_classno) {
+		return reviewDao.selectReview(review_id, review_classno);
+	}
 
 	@Override
 	public ReviewDto selectOne(int review_no) {

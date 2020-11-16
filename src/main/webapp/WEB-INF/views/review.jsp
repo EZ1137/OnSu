@@ -1,11 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link href="${pageContext.request.contextPath}/resources/css/reviewlist.css" rel="stylesheet" >
+<html>
+<body>
+	<c:choose>
+		<c:when test="${reviewDto eq null }">
+			<input type="hidden" name="creview" value="N"/>
+		</c:when>
+		<c:otherwise>
+			<input type="hidden" name="creview" value="${reviewDto.review_content }"/>
+		</c:otherwise>
+	</c:choose>
+</body>
+</html>
 <script>
 
 var review_classno = parseInt(${studyDto.class_no});
 var member_id = "${member_id}";
-
 
 $('[name=reviewInsertBtn]').click(function(){ //댓글 등록 버튼 클릭시 
     var insertData = $('[name=reviewInsertForm]').serialize(); //replyInsertForm의 내용을 가져옴
@@ -93,18 +105,25 @@ function review(){
 }
 
 function reviewInsert(insertData){
-    $.ajax({
-        url : '/onsoo/reviewInsert.do',
-        type : 'post',
-        data : insertData,
-        success : function(data){
-        	
-            if(data == 1) {
-                review(); //댓글 작성 후 댓글 목록 reload
-                $('[name=review_content]').val('');
-            }
-        }
-    });
+	var creview = document.getElementsByName("creview")[0].value;
+	
+	if(creview == 'N') {
+	    $.ajax({
+	        url : '/onsoo/reviewInsert.do',
+	        type : 'post',
+	        data : insertData,
+	        success : function(data){
+	        	
+	            if(data == 1) {
+	                review(); //댓글 작성 후 댓글 목록 reload
+	                $('[name=review_content]').val('');
+	            }
+	        }
+	    }, location.reload());	
+	} else {
+		alert("이미 리뷰를 등록한 글 입니다.");
+		location.reload();	
+	}
 }
 
 
@@ -143,7 +162,7 @@ function reviewDelete(review_no){
         success : function(data){
             if(data == 1) review(review_classno); //댓글 삭제후 목록 출력 
         }
-    });
+    }, location.reload());
 }
  
  
