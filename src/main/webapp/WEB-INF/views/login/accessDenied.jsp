@@ -4,35 +4,29 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Access Denied</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>Access Denied</title>
 </head>
 <link href="${pageContext.request.contextPath}/resources/css/accessDenied.css" rel="stylesheet" >
 <body>
 
-<!-- header -->
+	<!-- header -->
 	<header id="header">
 		<%@ include file="/WEB-INF/views/header.jsp"%>
 	</header>
 
-
-<!-- 내용 입력  -->
-<section>
-
+	<!-- 내용 입력  -->
+	<section>
 		<div id="access">
-			<h1>접속 권한이 없습니다 </h1>
-			
-			<h3>[<a href="<c:url value="/main.do" />">메인페이지</a>]</h3>
+			<p>현재 페이지의 접속 권한이 없습니다. </p>
+			<input type="button" class="denybtn" value="메인 페이지로 돌아가기" onclick="location.href='<c:url value="/main.do"/>'"/>
 		</div>
-</section>
+	</section>
 
-
-<!-- footer -->
+	<!-- footer -->
 	<footer id="footerarea" class="area">
 		<%@ include file="/WEB-INF/views/footer.jsp"%>
 	</footer>
-
-
 
 </body>
 </html>
