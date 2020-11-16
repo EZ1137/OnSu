@@ -35,7 +35,7 @@
 				<tr>
 					<td style="height:100px;">
 						<input type="button" value="LIST" onclick="location.href='<c:url value="/qna/qna.do" />'"/>
-						<input type="button" value="Log In" onclick="location.href='qna.do'"/>
+						<input type="button" value="Log In" onclick="location.href='<c:url value="/login/loginForm.do" />'"/>
 					</td>
 				</tr>
 			</table>
