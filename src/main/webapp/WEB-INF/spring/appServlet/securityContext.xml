@@ -7,33 +7,18 @@
     
     <!-- 검사 URL -->
     <http use-expressions="true">
-    	<!-- 정적 리소스는 모두 접근허용  순서는 허용할 범위 ==> 금지할 범위 
-    		같은 범위를 금지부터 하고 허용하면 먼저 순서인 금지만 적용 
-    		
-    		표현식 / 권한 
-    		hasRole('role') 해당 권한이 있으면 요청한 페이지를, 없으면 로그인 페이지로이동 
-    		
-    		hasAnyRole('role1','role2' ) 포함된 권한 중 하나라도 있으면 요청한 페이지를, 없으면 로그인 페이지로 이동 
-    		
-    		isAuthenticated() 로그인 인증을 받은 사용자는 권한에 관계없이 허용, 익명 사용자는 로그인 페이지로이동 
-    		
-    		isFullyAuthenticated() 자동 로그인하지 않고 로그인 인증을 한 사용자는 권한에 관계없이 허용
-    		
-    		isAnonymous() 권한이 없는 익명의 사용자만 접근을 허용함 (로그인되어 권한이 있으면 접근 불가)
-    		
-    		isRememberMe() 자동 로그인 대상 사용자의 경우 접근을 허용 
-    		
-    		permitAll 모두접근 허용 
-    		
-    		denyAll 모두 접근 불가 
-    		-->
-    	
+    
+    	<!--  세션이 풀릴 경우 가게되는 url-->
+		<session-management invalid-session-url="/main.do">
+			<concurrency-control max-sessions="1"
+								 expired-url="/login/loginForm.do" 	
+								 error-if-maximum-exceeded="true" />					 
+		</session-management>  
     	<!-- iframe 안되는걸 방지 -->
     	<headers>
     		<frame-options policy="SAMEORIGIN"/>
     	</headers>	
-    			
-        <intercept-url pattern="/qna/**" access="hasAnyRole('USER','ADMIN' )" />
+    	<intercept-url pattern="/qna/**" access="hasAnyRole('USER','ADMIN' )" />
         <intercept-url pattern="/user/**" access="hasRole('USER')" />
         <intercept-url pattern="/admin/**" access="hasRole('ADMIN')" />
         <intercept-url pattern="/block/**" access="hasRole('BLOCK')" />
@@ -46,45 +31,16 @@
                     authentication-failure-url="/login/loginForm.do?error"
                     username-parameter="id"
                     password-parameter="password" />
-       <!--  
-       username-parameter 입력한 ID에 대한 파라미터 네임 
-       password-parameter 입력한 PW에 대한 파라미텉 네임 
-       login-page 서블릿에서 넘겨줄 로그인 페이지 
-       default-target-url 로그인에 성공하면 보내줄 페이지 
-       authentication-failure-url 로그인에 실패하면 보내줄 페이지 
-       --> 
+  
         <!-- 로그아웃 설정   -->
         <logout logout-url="/logout"
                 logout-success-url="/main.do"
                 invalidate-session="true"
                  />
-         <!--
-         logout-url 로그아웃  요청에 대한 URL (버튼을 눌렀을떄 발생하는 URL)
-         logout-success-url 로그아웃 완료되면 보내줄 URL
-         invalidate-session 세션 삭제여부
-         delete-cookies 쿠키 삭제 여부 
-           --> 
-          <!--권한이 없어서 금지된 URI 접속할떄 보여줄 페이지   -->      
         <access-denied-handler error-page="/login/accessDenied.do" />
-        
-        <!-- 로그인 된 상태에서는 로그인이나 회원가입 화면에 접근 못하도록 함 
-        <intercept-url pattern="/loginView" access="isAnonymous()" />
-		<intercept-url pattern="/registerUserView" access="isAnonymous()" />
-        -->
-        <!--csrf 값 활용하겠다.  -->
         <csrf disabled="true" />
-		<!--  세션이 풀릴 경우 가게되는 url-->
-		<session-management invalid-session-url="/main.do">
-			<!-- 
-			max-sessions="1"	하나의 아이디로 한번만 접속
-			expired-url="/main.do"  접속 거부시 이동할 페이지 
-			error-if-maximum-exceeded="true" 최초의 먼저접속한 아이디를 유지하겠다.
-			-->
-			<concurrency-control max-sessions="1"
-								 expired-url="/main.do" 	
-								 error-if-maximum-exceeded="true" />					 
-		
-		</session-management>        
+        
+	      
     </http>
     
     <!--db 연동 설정  -->
