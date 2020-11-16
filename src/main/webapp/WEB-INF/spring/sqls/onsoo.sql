@@ -289,6 +289,7 @@ CREATE TABLE REPORT(
    -- 신고 카테고리 : CHK(B:Blame(욕설/비방), T:Time(시간 미준수), S:Sexual(음란), Q:Quality(질이 떨어짐), P:Privacy(개인정보를 물어봄))
    CONSTRAINT REPORT_CATEGORY_CHK CHECK (REPORT_CATEGORY IN ('B', 'T', 'S', 'Q', 'P'))
 );
+drop table report
 
 select * from report
 

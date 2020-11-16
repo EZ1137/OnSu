@@ -101,11 +101,11 @@
 							<tr>
 								<th class="registLabel">비밀번호</th>
 								<td>
-									<input class="onRegist" type="password" id="password1" name="member_pw" placeholder="비밀번호를 입력해주세요" required="required" maxlength="15"/>
+									<input class="onRegist" type="password" id="password1" name="member_pw" placeholder="비밀번호를 입력해주세요" required="required" min="5" maxlength="15"/>
 								</td>
 								<th class="registLabel">비밀번호 확인</th>
 								<td>
-									<input class="onRegist" type="password" id="password2" name="member_pw_chk" placeholder="비밀번호를 확인해주세요" maxlength="15" required="required" onkeyup="fn_compare_pwd();"/>
+									<input class="onRegist" type="password" id="password2" name="member_pw_chk" placeholder="비밀번호를 확인해주세요" min="5" maxlength="15" required="required" onkeyup="fn_compare_pwd();"/>
 								</td>
 								<td colspan="2">
 									<p id="s_result" style="color:#fe5f55;"></p>

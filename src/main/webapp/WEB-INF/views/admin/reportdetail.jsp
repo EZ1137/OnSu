@@ -8,6 +8,11 @@
 <meta charset="UTF-8">
 <title>On:Soo - Admin Report</title>
 <link href="${pageContext.request.contextPath}/resources/css/reportdetail.css?after" rel="stylesheet"/>
+<script type="text/javascript">
+	onsubmit = function(){
+		alert("권한이 접수 되었습니다.")
+	}
+</script>
 </head>
 <body>
   
@@ -59,6 +64,7 @@
 						<tr>
 							<td></td>
 							<td colspan="4">
+								<input type="date" name="member_bdate" />
 								<select name="member_role">
 									<option>조치하기</option>
 									<option value="S">강사자격 정지</option>

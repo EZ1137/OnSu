@@ -33,6 +33,7 @@ import com.kh.onsoo.study.model.dto.StudyDto;
 import com.kh.onsoo.admin.model.biz.AdminBiz;
 import com.kh.onsoo.admin.model.dto.AdminDto;
 import com.kh.onsoo.pay.model.biz.PayBiz;
+import com.kh.onsoo.review.model.biz.ReviewBiz;
 import com.kh.onsoo.study.image.model.biz.UploadBiz;
 import com.kh.onsoo.study.image.model.dto.UploadDto;
 import com.kh.onsoo.study.model.biz.StudyWithBiz;
@@ -56,6 +57,9 @@ public class StudyWithController {
 	
 	@Autowired
 	private PayBiz payBiz;
+	
+	@Autowired
+	private ReviewBiz reviewBiz;
 	
 	@RequestMapping(value = "/with/studylist.do")
 	public String studyList(Model model, Principal principal) {
@@ -84,10 +88,14 @@ public class StudyWithController {
 		int pay_classno = class_no;
 		String pay_memberid = member_id;
 		
+		int review_classno = class_no;
+		String review_id = member_id;
+		
 		model.addAttribute("member_id", member_id);
 		model.addAttribute("studyDto", studyBiz.selectOne(class_no));
 		model.addAttribute("imageList", uploadBiz.selectList(class_no));
 		model.addAttribute("payDto", payBiz.selectPay(pay_memberid, pay_classno));
+		model.addAttribute("reviewDto", reviewBiz.selectReview(review_id, review_classno));
 		
 		return "studydetail";
 	}
