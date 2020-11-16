@@ -63,9 +63,7 @@
 
 	<update id="update" parameterType="studyDto">
 		UPDATE CLASS
-		SET CLASS_TITLE =
-		#{class_title}, CLASS_TYPE = #{class_type}, CLASS_BIGCATEGORY =
-		#{class_bigcategory},
+		SET CLASS_TITLE = #{class_title}, CLASS_BIGCATEGORY = #{class_bigcategory}, 
 		CLASS_SMALLCATEGORY = #{class_smallcategory}, CLASS_INFO = #{class_info}, 
 		CLASS_PRICE = #{class_price}
 	</update>

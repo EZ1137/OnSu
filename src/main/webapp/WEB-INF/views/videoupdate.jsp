@@ -23,6 +23,8 @@
 		</div>
 	
 	<form action="videoupdateres.do" method="post">
+		<input type="hidden" name="video_no" value="${videoDto.video_no }">
+		<input type="hidden" name="class_no" value="${class_no }">
 		<table class="free_update">
 			<colgroup>
 				<col width="30%">
@@ -30,7 +32,7 @@
 			</colgroup>
 			<tr>
 				<th>동영상 이름</th>
-				<td><input type="text" name="video_name" value="${videoDto.video_title}">
+				<td><input type="text" name="video_title" value="${videoDto.video_title}">
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" value="수정"/>

@@ -32,6 +32,12 @@
 		var url = "videodetail.do?video_no=" + video_no;
 		window.open(url, "", "width=1020, height=800, left=500");
 	}
+	
+	function delChk(class_no) {
+		if (confirm("삭제하시겠습니까?")) {
+			location.href="studydelete.do?class_no=" + class_no;
+		}
+	}
 </script>
 <body>
 
@@ -67,8 +73,8 @@
 					<ul class="swiper-wrapper">
 						
 							<c:forEach items="${imageList }" var="dto">
-								<li class="swiper-slide">
-									<img class="slideimg" src="<spring:url value='http://localhost:8787/image/${dto.image_directory }'/>" />
+								<li class="swiper-slide" style="text-align: center;">
+									<img style="width:600px; height:400px; margin-top:30px;" class="slideimg" src="<spring:url value='http://localhost:8787/image/${dto.image_directory }'/>" />
 								</li>
 							</c:forEach>
 						
@@ -82,18 +88,16 @@
 				<!-- Post Content -->
 				<p class="lead">${studyDto.class_info}</p>
 
-				<table>
+				<table id="detail">
 					<colgroup>
-						<col width="10%">
-						<col width="50%">
-						<col width="20%">
+						<col width="15%">
+						<col width="65%">
 						<col width="10%">
 						<col width="10%">
 					</colgroup>
 					<tr>
 						<th>번호</th>
 						<th>타이틀</th>
-						<th>시간</th>
 						<th></th>
 						<th></th>
 					</tr>
@@ -101,7 +105,7 @@
 					<c:choose>
 						<c:when test="${empty videoList	 }">
 							<tr>
-								<th colspan="5">----------------- 준비 중입니다
+								<th colspan="4">----------------- 준비 중입니다
 									-------------------</th>
 							</tr>
 
@@ -112,7 +116,6 @@
 								<tr>
 									<td>${status.count}</td>
 									<td><a href="javascript:void(0);" onclick="videoShow(${dto.video_no}); return false;">${dto.video_title}</a></td>
-									<td>${dto.video_runtime}</td>
 									<td><input type="button" value="수정"
 										onclick="location.href='videoupdate.do?video_no=${dto.video_no }&class_no=${studyDto.class_no }'"></td>
 									<td><input type="button" value="삭제"
@@ -123,7 +126,7 @@
 					</c:choose>
 
 					<tr>
-						<td colspan="5" style="text-align: right;">
+						<td colspan="4" style="text-align: right;">
 							<input type="button" value="비디오 등록" onclick="location.href='videoform.do?class_no=${studyDto.class_no}'">
 						</td>
 					</tr>
@@ -200,7 +203,7 @@
 						<button class="btn btn-primary"
 							onclick="location.href='studyupdate.do?class_no=${studyDto.class_no}'">수정</button>
 						<button class="btn btn-primary"
-							onclick="location.href='studydelete.do?class_no=${studyDto.class_no}'">삭제</button>
+							onclick="delChk(${studyDto.class_no})">삭제</button>
 					</div>
 				</div>
 			</div>
