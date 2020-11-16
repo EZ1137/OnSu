@@ -140,7 +140,10 @@ function videoShow(video_no) {
 			
 			<!-- Comments Form -->
 			<div class="reviewContainer">
-				<div class="container">
+				<c:choose>
+					<c:when test="${payDto eq null}"></c:when>
+					<c:otherwise>
+						<div class="container">
 					<form name="reviewInsertForm">
 						<div class="input-group">
 							<div class="starRev">
@@ -158,6 +161,14 @@ function videoShow(video_no) {
 							<input type="hidden" id="starVal" name="review_star" value="0"/>
 							<input type="hidden" name="member_id" value="${member_id }">
 							<input type="hidden" name="review_classno" value="${studyDto.class_no}" />
+							<c:choose>
+								<c:when test="${reviewDto eq null }">
+									<input type="hidden" name="creview" value="N"/>
+								</c:when>
+								<c:otherwise>
+									<input type="hidden" name="creview" value="${reviewDto.review_content }"/>
+								</c:otherwise>
+							</c:choose>
 							<input type="text" class="form-control" id="review_content" name="review_content" placeholder="내용을 입력하세요.">
 							<span class="input-group-btn">
 								<button class="btn btn-default" type="button" name="reviewInsertBtn">등록</button>
@@ -165,6 +176,8 @@ function videoShow(video_no) {
 						</div>
 					</form>
 				</div>
+					</c:otherwise>
+				</c:choose>
 				
 				<div class="container">
 					<div class="review"></div>

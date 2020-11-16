@@ -35,7 +35,7 @@ import com.kh.onsoo.listen.model.dto.ListenVideoDto;
 import com.kh.onsoo.listen.model.biz.ListenVideoBiz;
 
 import com.kh.onsoo.pay.model.biz.PayBiz;
-
+import com.kh.onsoo.review.model.biz.ReviewBiz;
 import com.kh.onsoo.study.image.model.biz.UploadBiz;
 import com.kh.onsoo.study.image.model.dto.UploadDto;
 import com.kh.onsoo.study.model.biz.StudyVideoBiz;
@@ -71,8 +71,11 @@ public class StudyVideoController {
 	@Autowired
 	private ListenVideoBiz listenBiz;
 
-  @Autowired
+	@Autowired
 	private PayBiz payBiz;
+	
+	@Autowired
+	private ReviewBiz reviewBiz;
 
 	
 	@RequestMapping(value = "/video/studylist.do")
@@ -102,11 +105,15 @@ public class StudyVideoController {
 		int pay_classno = class_no;
 		String pay_memberid = member_id;
 		
+		int review_classno = class_no;
+		String review_id = member_id;
+		
 		model.addAttribute("member_id", member_id);
 		model.addAttribute("studyDto", studyBiz.selectOne(class_no));
 		model.addAttribute("imageList", uploadBiz.selectList(class_no));
 		model.addAttribute("videoList", videoBiz.videoList(class_no));
 		model.addAttribute("payDto", payBiz.selectPay(pay_memberid, pay_classno));
+		model.addAttribute("reviewDto", reviewBiz.selectReview(review_id, review_classno));
 		
 		return "studydetail";
 	}

@@ -1,7 +1,9 @@
 package com.kh.onsoo.review.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
@@ -29,6 +31,26 @@ public class ReviewDaoImpl implements ReviewDao {
 			e.printStackTrace();
 		}
 		return list;
+	}
+	
+	@Override
+	public ReviewDto selectReview(String review_id, int review_classno) {
+		ReviewDto dto = new ReviewDto();
+		
+		String r_no = Integer.toString(review_classno);
+		
+		Map<String, String> map = new HashMap<>();
+		map.put("review_id", review_id);
+		map.put("review_classno", r_no);
+		
+		try {
+			dto = sqlSession.selectOne(NAMESPACE + "selectReview", map);
+		} catch (Exception e) {
+			logger.info("[ERROR] selectReview");
+			e.printStackTrace();
+		}
+		
+		return dto;
 	}
 
 	@Override

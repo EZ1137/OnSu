@@ -104,7 +104,6 @@
                      <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/notice.do'">N O T I C E</p>
                      <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/contact.do'">C O N T A C T</p>
                      <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/freelist.do'">F R E E</p>
-                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/user/mypage.do'">M Y P A G E</p>
                   </sec:authorize>
                   
                   <!-- 정지일 때 페이지 -->
@@ -123,7 +122,7 @@
                      <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/qna/qna.do'">Q n A</p>
                      <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/notice.do'">N O T I C E</p>
                      <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/contact.do'">C O N T A C T</p>
-                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/user/mypage.do'">M Y P A G E</p>
+                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/mypage.do'">M Y P A G E</p>
                      <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/freelist.do'">F R E E</p>
                   </sec:authorize>
 

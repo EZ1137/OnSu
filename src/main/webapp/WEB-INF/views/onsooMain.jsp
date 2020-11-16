@@ -31,6 +31,9 @@ video {
 		alert("로그인 해주세요");
 		location.href = "${pageContext.request.contextPath}/login/loginForm.do";
 	}
+	
+	setTimeout("location.reload()", 60000);
+	
 </script>
 </head>
 <body>
