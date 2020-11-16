@@ -86,7 +86,7 @@
 								<th class="registLabel">ID</th>
 								<td>
 									<!-- readonly 다시 넣음! -->
-									<input class="onRegist" type="text" name="member_id" id="memberid" required="required" placeholder="아이디를 입력해주세요" readonly="readonly" value="${dto.member_id }">
+									<input class="onRegist" type="text" name="member_id" id="memberid" required="required" placeholder="아이디를 입력해주세요" value="${dto.member_id }">
 									<p id="id_chk"></p>
 								</td>
 								<td colspan="4">
