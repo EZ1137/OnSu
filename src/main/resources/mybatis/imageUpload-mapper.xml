@@ -26,4 +26,8 @@
 		)A
 	</insert>
 	
+	<delete id="delete" parameterType="int">
+		DELETE FROM CLASSIMAGE
+		WHERE IMAGE_NO = #{image_no}
+	</delete>
 </mapper>

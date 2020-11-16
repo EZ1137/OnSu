@@ -21,7 +21,7 @@
 	<update id="update" parameterType="videoDto">
 		UPDATE VIDEO
 		SET VIDEO_TITLE=#{video_title}
-		WHERE VIDE_NO = #{video_no}
+		WHERE VIDEO_NO = #{video_no}
 	</update>
 	
 	<delete id="delete" parameterType="int">

@@ -13,9 +13,7 @@
 
 </head>
 <body>
-	<header id="header" class="area">
-    	<%@ include file="/WEB-INF/views/header.jsp"%>
-    </header>
+	
     
 	<form action="videoinsertres.do" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="class_no" value="${class_no }">

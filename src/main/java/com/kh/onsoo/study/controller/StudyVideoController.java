@@ -24,6 +24,7 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.util.WebUtils;
@@ -71,7 +72,7 @@ public class StudyVideoController {
 	@Autowired
 	private ListenVideoBiz listenBiz;
 
-  @Autowired
+	@Autowired
 	private PayBiz payBiz;
 
 	
@@ -108,6 +109,18 @@ public class StudyVideoController {
 		model.addAttribute("videoList", videoBiz.videoList(class_no));
 		model.addAttribute("payDto", payBiz.selectPay(pay_memberid, pay_classno));
 		
+		List<ListenVideoDto> list = listenBiz.selectList(member_id);
+		boolean trigger = false;
+		
+		for(ListenVideoDto dto : list) {
+			int vclass_no = dto.getListen_vclassno();
+			if(class_no == vclass_no) {
+				trigger = true;
+				model.addAttribute("trigger", trigger);
+				break;
+			}
+		}
+		
 		return "studydetail";
 	}
 
@@ -126,7 +139,6 @@ public class StudyVideoController {
 		model.addAttribute("imageList", uploadBiz.selectList(class_no));
 		model.addAttribute("videoList", videoBiz.videoList(class_no));
 		
-		List<ListenVideoDto> list = listenBiz.selectList(member_id);
 		return "studydetail_teacher";
 	}
 
@@ -194,6 +206,7 @@ public class StudyVideoController {
 	@RequestMapping("/video/teacher/studyupdate.do")
 	public String studyUpdate(Model model, int class_no) {
 		model.addAttribute("studyDto", studyBiz.selectOne(class_no));
+		model.addAttribute("imageList", uploadBiz.selectList(class_no));
 		return "studyupdate";
 	}
 
@@ -203,9 +216,9 @@ public class StudyVideoController {
 		int res = studyBiz.update(dto);
 
 		if (res > 0) {
-			return "redirect:video/studydetail.do?class_no=" + dto.getClass_no();
+			return "redirect:studydetail.do?class_no=" + dto.getClass_no();
 		}
-		return "redirect:video/studyupdate.do?class_no=" + dto.getClass_no();
+		return "redirect:studyupdate.do?class_no=" + dto.getClass_no();
 	}
 
 	@RequestMapping("/video/teacher/studydelete.do")
@@ -216,10 +229,17 @@ public class StudyVideoController {
 		if (res > 0) {
 			return "redirect:/studylist.do";
 		}
-		return "redirect:video/studydetail.do?class_no=" + class_no;
+		return "redirect:studydetail.do?class_no=" + class_no;
 	}
 	// 음 alert 처리?
 
+	@RequestMapping("/video/teacher/imagedelete.do") //댓글 삭제  
+    @ResponseBody
+    private int imageDelete(@RequestParam int image_no) throws Exception{
+		logger.info("이미지 삭제");
+        return uploadBiz.delete(image_no);
+    }
+	
 	@RequestMapping("/video/teacher/videoform.do")
 	public String videoForm(Model model, int class_no) {
 
@@ -280,10 +300,10 @@ public class StudyVideoController {
 	}
 	
 	@RequestMapping("/video/teacher/videoupdate.do")
-	public String videoUpdateForm(Model model, int video_no) {
+	public String videoUpdateForm(Model model, int video_no, int class_no) {
 		
 		model.addAttribute("videoDto", videoBiz.videoOne(video_no));
-		
+		model.addAttribute("class_no", class_no);
 		return "videoupdate";
 	}
 	

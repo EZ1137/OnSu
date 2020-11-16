@@ -50,6 +50,15 @@ section {
 	
 }
 
+.second {
+	height: 150vh;
+	
+}
+
+#detail {
+	width: 100%;
+}
+
 .free_board_title {
 	margin: 0px auto 20px auto;
 	padding: 10px 0 0 60px;
