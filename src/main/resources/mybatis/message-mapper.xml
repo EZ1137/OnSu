@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="msg">
+
+	<select id="toList" resultType="MessageDto">
+		SELECT MSG_NO, MSG_FROMID, MSG_TOID, MSG_CONTENT, MSG_READ, MSG_DATE
+		FROM MSG
+		WHERE MSG_TOID = #{member_id}
+		ORDER BY MSG_NO DESC
+	</select>
+	
+	<select id="fromList" resultType="MessageDto">
+		SELECT MSG_NO, MSG_FROMID, MSG_TOID, MSG_CONTENT, MSG_READ, MSG_DATE
+		FROM MSG
+		WHERE MSG_FROMID = #{member_id}
+		ORDER BY MSG_NO DESC
+	</select>
+	
+	<insert id="sendMSG" parameterType="MessageDto">
+		INSERT INTO MSG VALUES (MSGSEQ.NEXTVAL, #{msg_fromid}, #{msg_toid}, #{msg_content}, 'N', SYSDATE)
+	</insert>
+
+</mapper>

@@ -124,6 +124,7 @@
                      <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/contact.do'">C O N T A C T</p>
                      <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/mypage.do'">M Y P A G E</p>
                      <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/freelist.do'">F R E E</p>
+                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/message.do'">M E S S A G E</p>
                   </sec:authorize>
 
                </div>
