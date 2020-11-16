@@ -21,7 +21,7 @@
     <section class="section area">
     <div id="products">
 		<form action="" id="setRows">
-			<input type="hidden" name="rowPerPage" value="20">
+			<input type="hidden" name="rowPerPage" value="15">
 		</form>
     	<!-- 타이틀 -->
 		<div class="qna_board_title">

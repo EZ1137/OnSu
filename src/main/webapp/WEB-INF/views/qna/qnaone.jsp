@@ -99,8 +99,8 @@
 				
 				<tfoot>
 					<tr>
-						<td colspan="6" style="text-align:right;">
-							<div style="display:flex; align:right; margin-bottom:30px;">
+						<td colspan="6" style="align:right;">
+							<div style="display:flex; float:right; margin-bottom:30px;">
 								<input type="button" value="LIST" onclick="location.href='<c:url value="/qna/qna.do" />'"/>
 								<!-- 비밀글 기능은 작성자 본인만 -->
 								<c:if test="${(qnadto.qnasecret eq 'N') && (qnadto.qnawriter eq admindto.member_id)}">

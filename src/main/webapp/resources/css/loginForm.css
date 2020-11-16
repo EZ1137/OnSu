@@ -134,6 +134,8 @@ section {
 	border-radius: var(--border-radi-btn);
 	align-items: center;
 	box-shadow: var(--box-shadow);
+	background-image: url('../img/language.jpg');
+	background-size: cover;
 }
 
 .loginTitle, .RegistTitle {
