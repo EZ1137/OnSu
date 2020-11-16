@@ -50,7 +50,7 @@ section {
 	width: 70%;
 	height: 50px;
 	float: center;
-	background-color: var(--color-light-white);
+	background-color: var(--color-white);
 	filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.1));
 	border-radius: 10px;
 }
