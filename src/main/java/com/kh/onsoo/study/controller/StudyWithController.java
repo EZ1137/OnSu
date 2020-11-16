@@ -24,6 +24,7 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.util.WebUtils;
@@ -196,6 +197,12 @@ public class StudyWithController {
 	}
 
 	// 음 alert 처리?
+	@RequestMapping("/with/teacher/imagedelete.do") //댓글 삭제  
+    @ResponseBody
+    private int imageDelete(@RequestParam int image_no) throws Exception{
+		logger.info("이미지 삭제");
+        return uploadBiz.delete(image_no);
+    }
 	
 	public boolean uploadMany(MultipartHttpServletRequest multifile, Model model, HttpServletRequest request, int class_no)
 			throws IOException {

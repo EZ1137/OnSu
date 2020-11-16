@@ -106,38 +106,45 @@ function videoShow(video_no) {
 			<!-- Post Content -->	
 			<p class="lead">${studyDto.class_info}</p>
 			
-			<table>
-				<colgroup>
-					<col width="10%">
-					<col width="70%">
-					<col width="20%">
-				</colgroup>
-				<tr>
-					<th>번호</th>
-					<th>타이틀</th>
-					<th>시간</th>
-				</tr>
+			<c:choose>
+				<c:when test="${trigger eq null }">
 				
-				<c:choose>
-					<c:when test="${empty videoList }">
+				</c:when>
+				
+				<c:otherwise>
+					<table>
+						<colgroup>
+							<col width="10%">
+							<col width="70%">
+							<col width="20%">
+						</colgroup>
 						<tr>
-							<th colspan="3">----------------- 준비 중입니다 ------------------- </th>
+							<th>번호</th>
+							<th>타이틀</th>
+							<th>시간</th>
 						</tr>
 						
-					</c:when>
-					
-					<c:otherwise>
-						<c:forEach items="${videoList }" var="dto" varStatus="status">
-							<tr>
-								<td>${status.count}</td>
-								<td><a href="javascript:void(0);" onclick="videoShow(${dto.video_no}); return false;">${dto.video_title}</a></td>
-								<td>${dto.video_runtime}</td>
-							</tr>
-						</c:forEach>
+						<c:choose>
+							<c:when test="${empty videoList }">
+								<tr>
+									<th colspan="3">----------------- 준비 중입니다 ------------------- </th>
+								</tr>
+								
+							</c:when>
+							
+							<c:otherwise>
+								<c:forEach items="${videoList }" var="dto" varStatus="status">
+									<tr>
+										<td>${status.count}</td>
+										<td><a href="javascript:void(0);" onclick="videoShow(${dto.video_no}); return false;">${dto.video_title}</a></td>
+										<td>${dto.video_runtime}</td>
+									</tr>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
+					</table>
 					</c:otherwise>
-				</c:choose>
-			</table>
-			
+			</c:choose>
 			<!-- Comments Form -->
 			<div class="reviewContainer">
 				<c:choose>

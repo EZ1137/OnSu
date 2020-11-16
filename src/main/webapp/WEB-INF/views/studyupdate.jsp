@@ -39,6 +39,20 @@
 		toggle.style.display = "table-row";
 	}
 	
+	function imageDelete(image_no){
+	    $.ajax({
+	        url : 'imagedelete.do',
+	        type : 'post',
+	        data : {'image_no' : image_no},
+	        success : function(data){
+	            alert("삭제되었습니다");
+	            
+	            var image = document.getElementById("image" + image_no);
+	            image.style.display = "none";
+	        }
+	    });
+	}
+	
 </script>
 
 <style>
@@ -56,13 +70,14 @@
     	<%@ include file="/WEB-INF/views/header.jsp"%>
     </header>
     
-	<section class="section area">
+	<section class="section second area">
     	<!-- 타이틀 -->
 		<div class="free_board_title">
 			<p>1:1 강의 등록</p>
 		</div>
 	
 	<form action="studyupdateres.do" method="post">
+		<input type="hidden" name="class_no" value="${studyDto.class_no }">
 		<table class="free_insert">
 			<colgroup>
 				<col width="30%">
@@ -70,17 +85,17 @@
 			</colgroup>
 			<tr>
 				<th>강의명</th>
-				<td><input type="text" name="class_title" value="${studyDto.class_title }"></td>
+				<td colspan="2"><input type="text" name="class_title" value="${studyDto.class_title }"></td>
 			</tr>
 			<tr>
 				<th>강사명</th>
 				<!-- 로그인 정보 받아서 거기서 이름 받아 넣어주자 -->
-				<td><input type="text" name="class_teachername" value="${studyDto.class_teachername }" readonly="READONLY"></td>
+				<td colspan="2"><input type="text" name="class_teachername" value="${studyDto.class_teachername }" readonly="READONLY"></td>
 			</tr>
 			
 			<tr>
 				<th>카테고리(하나씩 선택)</th>
-				<td>
+				<td colspan="2">
 					<c:choose>
 						<c:when test="${studyDto.class_bigcategory eq 'IT' }" >
 							<input type="radio" name="class_bigcategory" value="IT" onclick="showCategory(this.value)" checked="checked">IT			
@@ -96,7 +111,7 @@
 			<tr id="IT" class="smallcategory">
 				<!-- 위에 중에 하나 클릭하면 해당 속성에 맞는 카테고리 아래 띄우도록 해보자 -->
 				<th>하나 선택</th>
-				<td>
+				<td colspan="2">
 					<c:choose>
 						<c:when test="${studyDto.class_smallcategory eq 'web' }">
 							<input type="radio" name="class_smallcategory" value="web" checked="checked">web
@@ -167,14 +182,22 @@
 				<th>가격</th>
 				<td><input type="text" name="class_price" value="${studyDto.class_price }"></td>
 			</tr>
+			<c:forEach items="${imageList }" var="dto">
+				<tr id="image${dto.image_no }">
+					<th>이미지</th>
+					<td>${dto.image_directory }</td>
+					<td><input type="button" value="삭제" onclick="imageDelete(${dto.image_no})"></td>
+				</tr>
+			</c:forEach>
 			<tr>
-				<td colspan="2" class="free_content">
+				<td colspan="3" class="free_content">
 					<textarea id="editor1" name="class_info">${studyDto.class_info }</textarea>
 				</td>
 			</tr>
+			
 			<tfoot>
 			<tr>
-				<td colspan="2" align="right">
+				<td colspan="3" align="right">
 					<input type="submit" value="수정">
 					<input type="button" value="목록" onclick="location.href='studydetail.do?class_no=${studyDto.class_no}'">
 				</td>
