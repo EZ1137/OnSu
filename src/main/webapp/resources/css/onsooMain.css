@@ -369,7 +369,7 @@ hr {
 .fifth {
 	margin: 120px auto 0 auto;
 	width: 70%;
-	height: 100vh;
+	height: 100vh ;
 	border-radius: 10px;
 	box-shadow: 5px 5px 10px #e6e6e6, -5px -5px 10px #ffffff;
 }

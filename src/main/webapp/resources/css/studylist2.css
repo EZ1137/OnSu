@@ -200,7 +200,7 @@ section {
 	color: var(--color-dark-blue);
 }
 
-.fourth {
+/* .fourth {
   width: 100%;
   height: 100vh;
   background-color: var(--color-white);
@@ -210,7 +210,7 @@ section {
   align-items: center;
   justify-content:space-around;
   
-}
+} */
 
 
 .fourth-wrapper{
@@ -280,7 +280,7 @@ hr{
   background-color: var(--color-red);
   color: var(--color-black);
 }
-
+/* 
 .fifth {
   width: 100%;
   height: 100vh;
@@ -290,7 +290,7 @@ hr{
   justify-content:center;
   align-items:center;
 
-}
+} */
 .fifth-wrapper{
 	width: 70%;
 	height: 600px;
