@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kh.onsoo.admin.model.biz.AdminBiz;
 import com.kh.onsoo.calendar.model.biz.CalendarBiz;
+import com.kh.onsoo.study.model.biz.StudyVideoBiz;
+import com.kh.onsoo.study.model.biz.StudyWithBiz;
 
 @Controller
 public class HomeController {
@@ -26,11 +28,18 @@ public class HomeController {
 	private CalendarBiz calendarBiz;
 	@Autowired
 	private AdminBiz adminBiz;
+	@Autowired
+	private StudyVideoBiz studyBiz;
+
+	@Autowired
+	private StudyWithBiz studyWithBiz;
 	
 	@RequestMapping(value = "main.do", method = RequestMethod.GET)
 	public String home(Model model, Principal principal) {
+		model.addAttribute("list", studyBiz.selectList());
+		
 		if(principal != null) {
-		model.addAttribute(principal);
+			model.addAttribute(principal);
 	      //시큐리티 컨텍스트 객체를 얻습니다.
 	      SecurityContext context = SecurityContextHolder.getContext();
 	      
@@ -48,6 +57,8 @@ public class HomeController {
 	      if(member_id != null) {
 	      model.addAttribute("mlist", adminBiz.selectOne2(member_id));
 	      model.addAttribute("callist", calendarBiz.schedule(member_id));
+	      
+	      model.addAttribute("withlist", studyWithBiz.selectList());
 	      }
 		}
 		

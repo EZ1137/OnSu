@@ -28,10 +28,9 @@
 		<!-- 게시판 목록 -->
 		<table class="free_list01">
 			<colgroup>
-				<col width="6%" />
-				<col width="40%" />
-				<col width="20%" />
-				<col width="24%" />
+				<col width="10%" />
+				<col width="60%" />
+				<col width="30%" />
 			</colgroup>
 
 			<thead>
@@ -47,7 +46,7 @@
 				<c:choose>
 					<c:when test="${empty withList }">
 						<tr>
-							<th colspan="4">------------ 강의가 없습니다 ----------------</th>
+							<th colspan="3">------------ 강의가 없습니다 ----------------</th>
 						</tr>
 					</c:when>
 					<c:otherwise>

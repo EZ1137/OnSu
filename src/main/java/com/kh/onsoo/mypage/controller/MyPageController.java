@@ -16,9 +16,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.onsoo.admin.model.biz.AdminBiz;
+import com.kh.onsoo.admin.model.dto.AdminDto;
 import com.kh.onsoo.calendar.model.biz.CalendarBiz;
 import com.kh.onsoo.listen.model.biz.ListenVideoBiz;
 import com.kh.onsoo.listen.model.biz.ListenWithBiz;
+import com.kh.onsoo.study.model.biz.StudyVideoBiz;
+import com.kh.onsoo.study.model.biz.StudyWithBiz;
 
 @Controller
 public class MyPageController {
@@ -33,7 +36,11 @@ public class MyPageController {
 	private CalendarBiz calendarBiz;
 	@Autowired
 	private AdminBiz adminBiz;
-	
+	@Autowired
+	private StudyVideoBiz studyBiz;
+	@Autowired
+	private StudyWithBiz studyWithBiz;
+
 	@RequestMapping(value = "mypage.do", method = RequestMethod.GET)
 	public String myPage(Model model, Principal principal) {
 		logger.info("[mypage.do]");
@@ -52,11 +59,16 @@ public class MyPageController {
 	                        //유저객체는 UserDetails를 implement 함 
 	      
 	    String member_id = principal1.getUsername();  //사용자 이름 
-	      
+	    AdminDto adminDto = adminBiz.selectOne2(member_id);
+	    
+	    logger.info(adminDto.getMember_role());
+	    
 		model.addAttribute("lvlist", listenVideoBiz.selectList(member_id));
 		model.addAttribute("lwlist", listenWithBiz.selectList(member_id));
 	    model.addAttribute("mlist", adminBiz.selectOne2(member_id));
 	    model.addAttribute("callist", calendarBiz.schedule(member_id));
+	    model.addAttribute("withList", studyWithBiz.selectListTeacher());
+		model.addAttribute("videoList", studyBiz.selectListTeacher());
 		
 		return "/user/mypage";
 		

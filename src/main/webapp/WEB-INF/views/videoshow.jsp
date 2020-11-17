@@ -24,7 +24,6 @@
 	</video>
 	
 	<div><canvas id="canvas"></canvas></div>
-	<div id="label-container"></div>
 	
 	<script type="text/javascript">
     // More API functions here:
