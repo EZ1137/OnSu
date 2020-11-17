@@ -45,170 +45,118 @@
     	<%@ include file="/WEB-INF/views/header.jsp"%>
     </header>
     
+    <section>
 	<!-- Page Content -->
-	<div class="main">
-
-		<!-- Post Content Column -->
-		<div class="div_middle">
-
-			<!-- Title -->
-			<h6># ${studyDto.class_bigcategory } &nbsp #
-				${studyDto.class_smallcategory }</h6>
-			<h1 class="mt-4">${studyDto.class_title }</h1>
-
-			<!-- Date/Time -->
-			<p>${studyDto.class_teachername }튜터</p>
-
-			<hr>
-			<hr>
-			<!-- Sidebar Widgets Column -->
-
-			<c:choose>
-				<c:when test="${empty imageList }">
+		<div class="main">
+	
+			<!-- Post Content Column -->
+			<div class="div_middle">
+	
+				<!-- Title -->
+				<h6># ${studyDto.class_bigcategory } &nbsp #
+					${studyDto.class_smallcategory }</h6>
+				<h1 class="mt-4">${studyDto.class_title }</h1>
+	
+				<!-- Date/Time -->
+				<p>${studyDto.class_teachername }튜터</p>
+	
+				<hr>
+				<hr>
+				<!-- Sidebar Widgets Column -->
+	
+				<c:choose>
+					<c:when test="${empty imageList }">
+						
+					</c:when>
 					
-				</c:when>
-				
-				<c:otherwise>
-				<div class="swiper-container swiper2">
-					<ul class="swiper-wrapper">
-						
-							<c:forEach items="${imageList }" var="dto">
-								<li class="swiper-slide" style="text-align: center;">
-									<img style="width:600px; height:400px; margin-top:30px;" class="slideimg" src="<spring:url value='http://localhost:8787/image/${dto.image_directory }'/>" />
-								</li>
-							</c:forEach>
-						
-					</ul>
-				
-					<div class="swiper-button-next" id="next"></div>
-					<div class="swiper-button-prev" id="previous"></div>
-				</div>
-				</c:otherwise>
-			</c:choose>
-				<!-- Post Content -->
-				<p class="lead">${studyDto.class_info}</p>
-
-				<table id="detail">
-					<colgroup>
-						<col width="15%">
-						<col width="65%">
-						<col width="10%">
-						<col width="10%">
-					</colgroup>
-					<tr>
-						<th>번호</th>
-						<th>타이틀</th>
-						<th></th>
-						<th></th>
-					</tr>
-
-					<c:choose>
-						<c:when test="${empty videoList	 }">
-							<tr>
-								<th colspan="4">----------------- 준비 중입니다
-									-------------------</th>
-							</tr>
-
-						</c:when>
-
-						<c:otherwise>
-							<c:forEach items="${videoList }" var="dto" varStatus="status">
+					<c:otherwise>
+					<div class="swiper-container swiper2">
+						<ul class="swiper-wrapper">
+							
+								<c:forEach items="${imageList }" var="dto">
+									<li class="swiper-slide" style="text-align: center;">
+										<img style="width:600px; height:400px; margin-top:30px;" class="slideimg" src="<spring:url value='http://localhost:8787/image/${dto.image_directory }'/>" />
+									</li>
+								</c:forEach>
+							
+						</ul>
+					
+						<div class="swiper-button-next" id="next"></div>
+						<div class="swiper-button-prev" id="previous"></div>
+					</div>
+					</c:otherwise>
+				</c:choose>
+					<!-- Post Content -->
+					<p class="lead">${studyDto.class_info}</p>
+	
+					<table id="detail">
+						<colgroup>
+							<col width="15%">
+							<col width="65%">
+							<col width="10%">
+							<col width="10%">
+						</colgroup>
+						<tr>
+							<th>번호</th>
+							<th>타이틀</th>
+							<th></th>
+							<th></th>
+						</tr>
+	
+						<c:choose>
+							<c:when test="${empty videoList	 }">
 								<tr>
-									<td>${status.count}</td>
-									<td><a href="javascript:void(0);" onclick="videoShow(${dto.video_no}); return false;">${dto.video_title}</a></td>
-									<td><input type="button" value="수정"
-										onclick="location.href='videoupdate.do?video_no=${dto.video_no }&class_no=${studyDto.class_no }'"></td>
-									<td><input type="button" value="삭제"
-										onclick="location.href='videodelete.do?video_no=${dto.video_no }&class_no=${studyDto.class_no }'"></td>
+									<th colspan="4">----------------- 준비 중입니다
+										-------------------</th>
 								</tr>
-							</c:forEach>
-						</c:otherwise>
-					</c:choose>
-
-					<tr>
-						<td colspan="4" style="text-align: right;">
-							<input type="button" value="비디오 등록" onclick="location.href='videoform.do?class_no=${studyDto.class_no}'">
-						</td>
-					</tr>
-				</table>
-
-				<hr/>
-				<hr/>
-				
-				<!-- Single Comment -->
-				<div class="media mb-4">
-					<img class="d-flex mr-3 rounded-circle"
-						src="http://placehold.it/50x50" alt="">
-					<div class="media-body">
-						<h5 class="mt-0">Commenter Name</h5>
-						Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
-						scelerisque ante sollicitudin. Cras purus odio, vestibulum in
-						vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
-						nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+	
+							</c:when>
+	
+							<c:otherwise>
+								<c:forEach items="${videoList }" var="dto" varStatus="status">
+									<tr>
+										<td>${status.count}</td>
+										<td><a href="javascript:void(0);" onclick="videoShow(${dto.video_no}); return false;">${dto.video_title}</a></td>
+										<td><input type="button" value="수정"
+											onclick="location.href='videoupdate.do?video_no=${dto.video_no }&class_no=${studyDto.class_no }'"></td>
+										<td><input type="button" value="삭제"
+											onclick="location.href='videodelete.do?video_no=${dto.video_no }&class_no=${studyDto.class_no }'"></td>
+									</tr>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
+	
+						<tr>
+							<td colspan="4" style="text-align: right;">
+								<input type="button" value="비디오 등록" onclick="location.href='videoform.do?class_no=${studyDto.class_no}'">
+							</td>
+						</tr>
+					</table>
+	
+					<hr/>
+					<hr/>
+	
+				</div>
+				<div class="div_side">
+	
+					<!-- Side Widget -->
+					<div class="card my-4">
+						<h5 class="card-header">수업 신청</h5>
+						<h5>1개월 수강권</h5>
+						<h6>${studyDto.class_price }원/월</h6>
+						<div class="card-body"></div>
 					</div>
-				</div>
-
-				<!-- Comment with nested comments -->
-				<div class="media mb-4">
-					<img class="d-flex mr-3 rounded-circle"
-						src="http://placehold.it/50x50" alt="">
-					<div class="media-body">
-						<h5 class="mt-0">Commenter Name</h5>
-						Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
-						scelerisque ante sollicitudin. Cras purus odio, vestibulum in
-						vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
-						nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-
-						<div class="media mt-4">
-							<img class="d-flex mr-3 rounded-circle"
-								src="http://placehold.it/50x50" alt="">
-							<div class="media-body">
-								<h5 class="mt-0">Commenter Name</h5>
-								Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
-								scelerisque ante sollicitudin. Cras purus odio, vestibulum in
-								vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
-								nisi vulputate fringilla. Donec lacinia congue felis in
-								faucibus.
-							</div>
+					<div class="btns">
+						<div>
+							<button class="btn btn-primary"
+								onclick="location.href='studyupdate.do?class_no=${studyDto.class_no}'">수정</button>
+							<button class="btn btn-primary"
+								onclick="delChk(${studyDto.class_no})">삭제</button>
 						</div>
-
-						<div class="media mt-4">
-							<img class="d-flex mr-3 rounded-circle"
-								src="http://placehold.it/50x50" alt="">
-							<div class="media-body">
-								<h5 class="mt-0">Commenter Name</h5>
-								Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
-								scelerisque ante sollicitudin. Cras purus odio, vestibulum in
-								vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
-								nisi vulputate fringilla. Donec lacinia congue felis in
-								faucibus.
-							</div>
-						</div>
-
-					</div>
-				</div>
-
-			</div>
-			<div class="div_side">
-
-				<!-- Side Widget -->
-				<div class="card my-4">
-					<h5 class="card-header">수업 신청</h5>
-					<h5>1개월 수강권</h5>
-					<h6>${studyDto.class_price }원/월</h6>
-					<div class="card-body"></div>
-				</div>
-				<div class="btns">
-					<div>
-						<button class="btn btn-primary"
-							onclick="location.href='studyupdate.do?class_no=${studyDto.class_no}'">수정</button>
-						<button class="btn btn-primary"
-							onclick="delChk(${studyDto.class_no})">삭제</button>
 					</div>
 				</div>
 			</div>
-		</div>
-
+	</section>
 		<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 		
 		<script>

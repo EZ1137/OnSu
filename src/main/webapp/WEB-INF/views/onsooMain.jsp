@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +10,7 @@
 <meta http-equiv="content-script-type" content="text/javascript">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
 <link
 	href="${pageContext.request.contextPath}/resources/css/onsooMain.css?after"
 	rel="stylesheet">
@@ -21,6 +24,10 @@
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
 	rel="stylesheet">
+	
+<link
+   href="${pageContext.request.contextPath}/resources/css/studylist2.css"
+   rel="stylesheet">
 <style>
 video {
 	width: 100%;
@@ -94,52 +101,35 @@ video {
 				<section class="section second area swiper-slide">
 					<div class="vod_cards_title">
 						<p>동영상 강의</p>
-						<span class="more_btn" onclick="location.href='/video/studylist.do'">강의 더 보기</span>
+						<span class="more_btn" onclick="location.href='video/studylist.do'">강의 더 보기</span>
 					</div>
-					<div class="class_row">
-						<div class="class_card class1">
-							<div class="class_title">
-								<p>class_title</p>
-							</div>
-						</div>
-						<div class="class_card class2">
-							<div class="class_title">
-								<p>class_title</p>
-							</div>
-						</div>
-						<div class="class_card class3">
-							<div class="class_title">
-								<p>class_title</p>
-							</div>
-						</div>
-						<div class="class_card class4">
-							<div class="class_title">
-								<p>class_title</p>
-							</div>
-						</div>
-					</div>
-					<div class="class_row">
-						<div class="class_card class5">
-							<div class="class_title">
-								<p>class_title</p>
-							</div>
-						</div>
-						<div class="class_card class6">
-							<div class="class_title">
-								<p>class_title</p>
-							</div>
-						</div>
-						<div class="class_card class7">
-							<div class="class_title">
-								<p>class_title</p>
-							</div>
-						</div>
-						<div class="class_card class8">
-							<div class="class_title">
-								<p>class_title</p>
-							</div>
-						</div>
-					</div>
+					<c:choose>
+				         <c:when test="${empty list }">
+				            <div class="class_row">
+				               <div class="class_card">
+				                  <div class="class_title">
+				                     <h3>준비 중</h3>
+				                  </div>
+				               </div>
+				            </div>
+				         </c:when>
+				         <c:otherwise>
+				            <div class="class_row">
+				               <c:forEach items="${list }" var="dto">
+				                  <div class="class_card" onclick="location.href='video/studydetail.do?class_no=${dto.studyDto.class_no}&member_id=${member_id }'">
+				                     <img id="thumbnail" src="<spring:url value='http://localhost:8787/image/${dto.uploadDto.image_directory }'/>" />
+				                     
+				                     <div class="class_title">
+				                        <h6 id="test" class="class_font"># ${dto.studyDto.class_bigcategory } &nbsp # ${dto.studyDto.class_smallcategory }</h6>
+				                        <h5 class="class_font">${dto.studyDto.class_teachername }</h5>
+				                        <h4 class="class_font">${dto.studyDto.class_title }</h4>
+				                     </div>
+				                     
+				                  </div>
+				               </c:forEach>
+				            </div>
+				         </c:otherwise>
+				      </c:choose>
 				</section>
 
 				<section class="section third area swiper-slide">

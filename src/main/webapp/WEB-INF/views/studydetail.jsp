@@ -91,7 +91,7 @@ function videoShow(video_no) {
 						
 							<c:forEach items="${imageList }" var="dto">
 								<li class="swiper-slide" style="text-align: center;">
-									<img style="width: 60%; height: 40%; margin-top:30px;" class="slideimg" src="<spring:url value='http://localhost:8787/image/${dto.image_directory }'/>" />
+									<img style="width:600px; height:400px; margin-top:30px;" class="slideimg" src="<spring:url value='http://localhost:8787/image/${dto.image_directory }'/>" />
 								</li>
 							</c:forEach>
 						
@@ -215,7 +215,7 @@ function videoShow(video_no) {
 				</div>
 			</c:otherwise>
 		</c:choose>
-
+		</div>
 	</div>
       
    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>

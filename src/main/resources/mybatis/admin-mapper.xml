@@ -67,7 +67,7 @@
 	<select id="selectOne2" resultMap="AdminDtoMap">
 		SELECT *
 		FROM MEMBER
-		WHERE MEMBER_ID = #{MEMBER_ID}
+		WHERE MEMBER_ID = #{member_id}
 	</select>
 	
 

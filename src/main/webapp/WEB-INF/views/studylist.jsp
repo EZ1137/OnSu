@@ -25,7 +25,7 @@
 
    <section class="section second area">
       <div class="vod_cards_title">
-         <p>동영상 강의</p>
+         <p>강의 목록</p>
       </div>
       <c:choose>
          <c:when test="${empty list }">
@@ -47,7 +47,6 @@
                         <h6 id="test" class="class_font"># ${dto.studyDto.class_bigcategory } &nbsp # ${dto.studyDto.class_smallcategory }</h6>
                         <h5 class="class_font">${dto.studyDto.class_teachername }</h5>
                         <h4 class="class_font">${dto.studyDto.class_title }</h4>
-                        <h5 class="class_font">별점</h5>
                      </div>
                      
                   </div>

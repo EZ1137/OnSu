@@ -62,23 +62,8 @@ public class StudyWithController {
 	private ReviewBiz reviewBiz;
 	
 	@RequestMapping(value = "/with/studylist.do")
-	public String studyList(Model model, Principal principal) {
-		model.addAttribute(principal);
-	    //시큐리티 컨텍스트 객체를 얻습니다.
-	    SecurityContext context = SecurityContextHolder.getContext();
-	      
-	    //인증객체를 얻습니다. 
-	    Authentication authentication = 
-	                              context.getAuthentication();
-	                              // context에 있는 인증정보를 getAuthentication()으로 갖고온다.
-	    //로그인한 사용자 정보를 가진 객체를 얻습니다.
-	    UserDetails principal1 = (UserDetails)authentication.getPrincipal();
-	                        //authentication에 있는  get Princinpal 객체애 유저정보를 담는다. 
-	                        //유저객체는 UserDetails를 implement 함 
-	      
-	    String member_id = principal1.getUsername();  //사용자 이름 
+	public String studyList(Model model) {
 		
-	    model.addAttribute("member_id", member_id);
 		model.addAttribute("list", studyBiz.selectList());
 		return "studylist";
 	}
@@ -245,5 +230,30 @@ public class StudyWithController {
 		} else
 			return false;
 
+	}
+	
+	@RequestMapping("/header.do")
+	public String header(Model model, Principal principal) {
+		
+		model.addAttribute(principal);
+	    //시큐리티 컨텍스트 객체를 얻습니다.
+	    SecurityContext context = SecurityContextHolder.getContext();
+	      
+	    //인증객체를 얻습니다. 
+	    Authentication authentication = 
+	                              context.getAuthentication();
+	                              // context에 있는 인증정보를 getAuthentication()으로 갖고온다.
+	    //로그인한 사용자 정보를 가진 객체를 얻습니다.
+	    UserDetails principal1 = (UserDetails)authentication.getPrincipal();
+	                        //authentication에 있는  get Princinpal 객체애 유저정보를 담는다. 
+	                        //유저객체는 UserDetails를 implement 함 
+	      
+	    String member_id = principal1.getUsername();  //사용자 이름 
+
+	    AdminDto adminDto = adminBiz.selectOne2(member_id);
+	    
+	    model.addAttribute("adminDto", adminDto);
+	    
+	    return "header";
 	}
 }
