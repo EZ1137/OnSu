@@ -53,8 +53,8 @@
 			<div class="div_middle">
 	
 				<!-- Title -->
-				<h6># ${studyDto.class_bigcategory } &nbsp #
-					${studyDto.class_smallcategory }</h6>
+				<h4>${studyDto.class_no }</h4>
+				<h6># ${studyDto.class_bigcategory } &nbsp # ${studyDto.class_smallcategory }</h6>
 				<h1 class="mt-4">${studyDto.class_title }</h1>
 	
 				<!-- Date/Time -->
@@ -144,6 +144,7 @@
 						<h5 class="card-header">수업 신청</h5>
 						<h5>1개월 수강권</h5>
 						<h6>${studyDto.class_price }원/월</h6>
+						<h6></h6>
 						<div class="card-body"></div>
 					</div>
 					<div class="btns">
@@ -152,6 +153,8 @@
 								onclick="location.href='studyupdate.do?class_no=${studyDto.class_no}'">수정</button>
 							<button class="btn btn-primary"
 								onclick="delChk(${studyDto.class_no})">삭제</button>
+							<button class="btn btn-primary"
+								onclick="location.href='https://localhost:9001'">수업방 생성</button>
 						</div>
 					</div>
 				</div>

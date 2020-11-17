@@ -71,6 +71,7 @@ function videoShow(video_no) {
 		<!-- Post Content Column -->
 		<div class="div_middle">
 			<!-- Title -->
+			<h4>${studyDto.class_no }</h4>
 			<h6># ${studyDto.class_bigcategory } &nbsp # ${studyDto.class_smallcategory }</h6>
 			<h1 class="mt-4">${studyDto.class_title }</h1>
 			
@@ -211,7 +212,13 @@ function videoShow(video_no) {
 					<div>
 						<button class="btn btn-primary" onclick="location.href='#'">찜</button>
 						<button class="btn btn-primary" onclick="location.href='pay.do?pay_classno=${studyDto.class_no }'">결제</button>
-					</div>
+						
+						<c:choose>
+							<c:when test="${trigger ne null }">
+								<button class="btn btn-primary" onclick="location.href='https://localhost:9001/demos/join.html'">수업방 입장</button>
+							</c:when>
+						</c:choose>
+					</div>	
 				</div>
 			</c:otherwise>
 		</c:choose>

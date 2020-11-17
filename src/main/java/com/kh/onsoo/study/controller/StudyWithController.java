@@ -32,6 +32,11 @@ import org.springframework.web.util.WebUtils;
 import com.kh.onsoo.study.model.dto.StudyDto;
 import com.kh.onsoo.admin.model.biz.AdminBiz;
 import com.kh.onsoo.admin.model.dto.AdminDto;
+import com.kh.onsoo.calendar.model.biz.CalendarBiz;
+import com.kh.onsoo.listen.model.biz.ListenVideoBiz;
+import com.kh.onsoo.listen.model.biz.ListenWithBiz;
+import com.kh.onsoo.listen.model.dto.ListenVideoDto;
+import com.kh.onsoo.listen.model.dto.ListenWithDto;
 import com.kh.onsoo.pay.model.biz.PayBiz;
 import com.kh.onsoo.review.model.biz.ReviewBiz;
 import com.kh.onsoo.study.image.model.biz.UploadBiz;
@@ -61,6 +66,12 @@ public class StudyWithController {
 	@Autowired
 	private ReviewBiz reviewBiz;
 	
+	@Autowired
+	private ListenWithBiz listenBiz;
+	
+	@Autowired
+	private CalendarBiz calendarBiz;
+	
 	@RequestMapping(value = "/with/studylist.do")
 	public String studyList(Model model) {
 		
@@ -82,6 +93,19 @@ public class StudyWithController {
 		model.addAttribute("payDto", payBiz.selectPay(pay_memberid, pay_classno));
 		model.addAttribute("reviewDto", reviewBiz.selectReview(review_id, review_classno));
 		
+		List<ListenWithDto> list = listenBiz.selectList(member_id);
+		boolean trigger = false;
+		
+		for(ListenWithDto dto : list) {
+			int wclass_no = dto.getListen_wclassno();
+			if(class_no == wclass_no) {
+				trigger = true;
+				model.addAttribute("trigger", trigger);
+				break;
+			}
+		}
+		
+		
 		return "studydetail";
 	}
 	
@@ -89,6 +113,7 @@ public class StudyWithController {
 	public String studyTeacherDetail(Model model, int class_no) {
 		model.addAttribute("studyDto", studyBiz.selectOne(class_no));
 		model.addAttribute("imageList", uploadBiz.selectList(class_no));
+		
 		return "studydetail_teacher";
 	}
 	
@@ -174,11 +199,10 @@ public class StudyWithController {
 	public String studyDelete(int class_no) {
 
 		int res = studyBiz.delete(class_no);
-
 		if (res > 0) {
 			return "redirect:/studylist.do";
 		}
-		return "redirect:with/studydetail.do?class_no=" + class_no;
+		return "redirect:studydetail.do?class_no=" + class_no;
 	}
 
 	// 음 alert 처리?
@@ -213,7 +237,7 @@ public class StudyWithController {
 					FileCopyUtils.copy(file.getBytes(), target);
 				}
 
-				String insertName = uploadPath + "/" + filename;
+				String insertName = filename;
 				uploadDto = new UploadDto(0, insertName, class_no);
 				list.add(uploadDto);
 			}
