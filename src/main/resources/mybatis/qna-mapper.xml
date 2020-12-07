@@ -17,47 +17,47 @@
 	<!-- 목록 -->
 	<select id="selectList" resultType="QnaDto">
 		SELECT QNANO, QNAWRITER, QNATITLE, QNASECRET, QNARESPONSE, QNAQREGDATE
-		FROM QNA
+		FROM J_QNA
 		ORDER BY QNANO, QNAQREGDATE DESC
 	</select>
 	
 	<!-- 상세 보기 -->
 	<select id="selectOne" parameterType="int" resultType="QnaDto">
 		SELECT QNANO, QNAWRITER, QNATITLE, QNAQCONTENT, QNAQREGDATE, QNASECRET, QNARESPONSE, QNAACONTENT, QNAAREGDATE
-		FROM QNA
+		FROM J_QNA
 		WHERE QNANO = #{qnano}
 	</select>
 	
 	<!-- 질문 작성 -->
 	<insert id="insert" parameterType="QnaDto">
-		INSERT INTO QNA
-		VALUES(QNASEQ.NEXTVAL, #{qnawriter}, #{qnatitle}, #{qnaqcontent}, SYSDATE, 'N', 'N', NULL, NULL)
+		INSERT INTO J_QNA
+		VALUES(J_QNASEQ.NEXTVAL, #{qnawriter}, #{qnatitle}, #{qnaqcontent}, SYSDATE, 'N', 'N', NULL, NULL)
 	</insert>
 	
 	<!-- 비밀글 전환 -->
 	<update id="setsecret" parameterType="QnaDto">
-		UPDATE QNA
+		UPDATE J_QNA
 		SET QNASECRET = 'Y'
 		WHERE QNANO = #{qnano}
 	</update>
 	
 	<!-- 수정 -->
 	<update id="update" parameterType="QnaDto">
-		UPDATE QNA
+		UPDATE J_QNA
 		SET QNATITLE = #{qnatitle}, QNAQCONTENT = #{qnaqcontent}
 		WHERE QNANO = #{qnano}
 	</update>
 	
 	<!-- 답변 -->
 	<update id="answer" parameterType="QnaDto">
-		UPDATE QNA
+		UPDATE J_QNA
 		SET QNARESPONSE = 'Y', QNAACONTENT = #{qnaacontent}, QNAAREGDATE = SYSDATE
 		WHERE QNANO = #{qnano}
 	</update>
 	
 	<!-- 삭제 -->
 	<delete id="delete" parameterType="int">
-		DELETE FROM QNA
+		DELETE FROM J_QNA
 		WHERE QNANO = #{qnano}
 	</delete>
 

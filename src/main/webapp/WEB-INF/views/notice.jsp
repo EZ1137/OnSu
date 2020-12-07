@@ -1,23 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>On:Soo - Notice</title>
+<title>On:Su - Notice</title>
 <style>
-	#nav.paging{
-	
-	display:flex;
-	justify-content:center;
-	align-items:center;
-	
+#nav.paging {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 </style>
 </head>
-<link href="${pageContext.request.contextPath}/resources/css/notice.css" rel="stylesheet" >
+<link href="${pageContext.request.contextPath}/resources/css/notice.css" rel="stylesheet"/>
 <body>
 
 	<!-- header -->
@@ -26,64 +23,69 @@
 	</header>
 
 	<section class="section area">
-	<div id="products">
-		<form action="" id="setRows">
+		<div id="products">
+			<form action="" id="setRows">
 				<input type="hidden" name="rowPerPage" value="20">
-		</form>
+			</form>
     
-    	<!-- 타이틀 -->
-		<div class="notice_board_title">
-			<p>NOTICE</p>
+	    	<!-- 타이틀 -->
+			<div class="notice_board_title">
+				<p>NOTICE</p>
+			</div>
+			
+			<table id="notice" class="notice_list" style="text-align:center;">
+				<colgroup>
+					<col width="10%"/>
+					<col width="65%"/>
+					<col width="10%"/>
+					<col width="15%"/>
+				</colgroup>
+				<thead>
+					<tr>
+						<th>No.</th>
+						<th>제목</th>
+						<th>작성자</th>
+						<th>작성일</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:choose>
+						<c:when test="${empty notice}">
+							<tr>
+								<th colspan="4">현재 작성된 공지글이 존재하지 않습니다.</th>
+							</tr>
+						</c:when>
+						<c:otherwise>
+							<c:forEach items="${notice}" var="dto">
+							<tr class="eval-contents">
+								<td>${dto.notice_no}</td>
+								<td>
+									<a href="noticedetail?notice_no=${dto.notice_no}" style="color:black; float:left; padding-left:30px;">${dto.notice_title}</a>
+								</td>
+								<td>관리자</td>
+								<td>
+									<fmt:formatDate value="${dto.notice_regdate}" pattern="yyyy-MM-dd"/>
+								</td>
+							</tr>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="4" align="center" class="nbtnbar">
+							<form action="noticesearch" method="get">
+								<input type="hidden" value="notice_title" value="notice_title"/>
+								<input type="search" name="search" placeholder="제목을 입력해주세요"/>
+							</form>
+							<sec:authorize access="hasRole('ADMIN')">
+								<input type="button" class="i_btn" value="작성" onclick="location.href='noticeForm'"/>
+							</sec:authorize>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
 		</div>
-		
-		<table id="notice" class="notice_list" style="text-align: center;">
-			<colgroup>
-				<col width="10%"/>
-				<col width="65%"/>
-				<col width="10%"/>
-				<col width="15%"/>
-			</colgroup>
-			<thead>
-				<tr>
-					<th>No.</th>
-					<th>제목</th>
-					<th>작성자</th>
-					<th>작성일</th>
-				</tr>
-			</thead>
-			<tbody>
-		<c:choose>
-			<c:when test="${empty notice}">
-				<tr>
-					<th colspan="4">현재 작성된 공지글이 존재하지 않습니다.</th>
-				</tr>
-			</c:when>
-			<c:otherwise>
-				<c:forEach items="${notice }" var="dto">
-				<tr class="eval-contents">
-					<td>${dto.notice_no}</td>
-					<td><a href="noticedetail.do?notice_no=${dto.notice_no}" style="color:black; float:left; padding-left:30px;"> ${dto.notice_title}</a></td>
-					<td>관리자</td>
-					<td><fmt:formatDate value="${dto.notice_regdate}" pattern="yyyy-MM-dd" /></td>
-				</tr>
-				</c:forEach>
-			</c:otherwise>
-		</c:choose>
-			</tbody>
-			<tfoot>
-				<tr>
-					<td colspan="4" align="center" class="nbtnbar">
-						<form action="noticesearch.do" method="get" >
-						<input type="hidden" value="notice_title" value="notice_title"/>
-						<input type="search" name="search"  placeholder="제목을 입력해주세요"/>
-						</form>
-						<sec:authorize access="hasRole('ADMIN')">
-							<input type="button" class="i_btn" value="작성" onclick="location.href='noticeForm.do'"/>
-						</sec:authorize>
-					</td>
-				</tr>
-			</tfoot>
-		</table>
 	</section>
 	
 	<!-- footer -->
@@ -92,6 +94,5 @@
 	</footer>
 
 </body>
- <script src="${pageContext.request.contextPath}/resources/js/paging.js"
-			type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/resources/js/paging.js" type="text/javascript"></script>
 </html>

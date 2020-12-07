@@ -1,13 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>로그인 페이지</title>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>On:Su - Log In</title>
 </head>
 <link href="${pageContext.request.contextPath}/resources/css/loginForm.css" rel="stylesheet">
 <body onload="document.f.id.focus();">
@@ -19,7 +17,6 @@
 	
 	<section>
 		<div id="loginform">
-
 			<div id="f">
 				<div class="loginForm">
 					<div class="generalLogin">
@@ -47,7 +44,7 @@
 						</form:form>
 						
 						<div class="findId">
-							<a href='<c:url value="/idpwFind.do"/>'>ID / 비밀번호 찾기</a>
+							<a href='<c:url value="/idpwFind"/>'>ID / 비밀번호 찾기</a>
 						</div>
 					</div>
 					
@@ -73,7 +70,6 @@
 					<input type="button" class="registbtn" value="지금 바로 가입하기" onclick="location.href='<c:url value="/registForm.do"/>'"/>
 				</div>
 			</div>
-
 		</div>
 	</section>
 

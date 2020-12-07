@@ -9,11 +9,12 @@
     <http use-expressions="true">
     
     	<!--  세션이 풀릴 경우 가게되는 url-->
-		<session-management invalid-session-url="/main.do">
+		<session-management invalid-session-url="/main">
 			<concurrency-control max-sessions="1"
-								 expired-url="/login/loginForm.do" 	
+								 expired-url="/login/loginForm" 	
 								 error-if-maximum-exceeded="true" />					 
 		</session-management>  
+		
     	<!-- iframe 안되는걸 방지 -->
     	<headers>
     		<frame-options policy="SAMEORIGIN"/>
@@ -22,24 +23,24 @@
         <intercept-url pattern="/user/**" access="hasRole('USER')" />
         <intercept-url pattern="/admin/**" access="hasRole('ADMIN')" />
         <intercept-url pattern="/block/**" access="hasRole('BLOCK')" />
-        <intercept-url pattern="/login/loginForm.do" access="permitAll" />
-        <intercept-url pattern="/main.do" access="permitAll" />
+        <intercept-url pattern="/login/loginForm" access="permitAll" />
+        <intercept-url pattern="/main" access="permitAll" />
         <intercept-url pattern="/**" access="permitAll" />
+        
         <!--로그인 설정   -->
-        <form-login login-page="/login/loginForm.do"
-                    default-target-url="/main.do"
-                    authentication-failure-url="/login/loginForm.do?error"
+        <form-login login-page="/login/loginForm"
+                    default-target-url="/main"
+                    authentication-failure-url="/login/loginForm?error"
                     username-parameter="id"
                     password-parameter="password" />
   
         <!-- 로그아웃 설정   -->
         <logout logout-url="/logout"
-                logout-success-url="/main.do"
-                invalidate-session="true"
-                 />
-        <access-denied-handler error-page="/login/accessDenied.do" />
+                logout-success-url="/main"
+                invalidate-session="true"/>
+                
+        <access-denied-handler error-page="/login/accessDenied" />
         <csrf disabled="true" />
-        
 	      
     </http>
     
@@ -47,7 +48,6 @@
     <beans:bean id="userDetailsService" class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
         <beans:property name="dataSource" ref="dataSource"/>
     </beans:bean>
-    
     
     <!-- BCryptPasswordEncoder 클래스 빈 추가  -->
 	<beans:bean id="bcryptPasswordEncoder" 
@@ -62,30 +62,26 @@
     </authentication-manager>
     
     <!-- class부분은 사용자가 구현한 클래스 부분이다. -->
-    <beans:bean id="securityService" class="com.kh.onsoo.member.model.jdbc.UserJdbcDaoImpl">
+    <beans:bean id="securityService" class="com.kh.onsu.member.model.jdbc.UserJdbcDaoImpl">
     	<beans:property name="dataSource" ref="dataSource" />
     	<beans:property name="rolePrefix" value="" />
 		<beans:property name="usersByUsernameQuery">
 				<!-- 사용자 인증정보  -->
 				<beans:value>
-				SELECT MEMBER_ID,MEMBER_PW,enabled
-				FROM MEMBER
-				WHERE MEMBER_ID= ?
+				SELECT MEMBER_ID, MEMBER_PW, enabled
+				FROM J_MEMBER
+				WHERE MEMBER_ID = ?
 				</beans:value>
 		</beans:property>
     	<beans:property name="authoritiesByUsernameQuery">
     			<!--사용자 권한 정보  -->
     		<beans:value>
-    			SELECT MEMBER_ID,authority
-    			FROM authorities
-    			WHERE MEMBER_ID= ?
+    			SELECT MEMBER_ID, authority
+    			FROM J_authorities
+    			WHERE MEMBER_ID = ?
     		</beans:value>
     	</beans:property>
     	<beans:property name="enableGroups" value="false"/>
     </beans:bean>
-    
-    
-    
-    
    
 </beans:beans>

@@ -5,23 +5,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-
-<title>Onsoo</title>
-
+<title>On:Su - Study Detail Page</title>
 <!-- Bootstrap core CSS -->
-<link rel="stylesheet"
-	href="https://unpkg.com/swiper/swiper-bundle.min.css">
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/js/onsooMain.js?"
-	defer></script>
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/onsooMain.js?" defer></script>
 <link href="${pageContext.request.contextPath}/resources/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/study.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/blog-post.css" rel="stylesheet">
@@ -29,13 +21,13 @@
 
 <script>
 	function videoShow(video_no) {
-		var url = "videodetail.do?video_no=" + video_no;
+		var url = "videodetail?video_no=" + video_no;
 		window.open(url, "", "width=1020, height=800, left=500");
 	}
 	
 	function delChk(class_no) {
 		if (confirm("삭제하시겠습니까?")) {
-			location.href="studydelete.do?class_no=" + class_no;
+			location.href="studydelete?class_no=" + class_no;
 		}
 	}
 </script>
@@ -73,9 +65,9 @@
 					<div class="swiper-container swiper2">
 						<ul class="swiper-wrapper">
 							
-								<c:forEach items="${imageList }" var="dto">
+								<c:forEach items="${imageList}" var="dto">
 									<li class="swiper-slide" style="text-align: center;">
-										<img style="width:600px; height:400px; margin-top:30px;" class="slideimg" src="<spring:url value='http://localhost:8787/image/${dto.image_directory }'/>" />
+										<img style="width:600px; height:400px; margin-top:30px;" class="slideimg" src="<spring:url value='http://localhost:8787/image/${dto.image_directory}'/>" />
 									</li>
 								</c:forEach>
 							
@@ -104,23 +96,22 @@
 						</tr>
 	
 						<c:choose>
-							<c:when test="${empty videoList	 }">
+							<c:when test="${empty videoList}">
 								<tr>
-									<th colspan="4">----------------- 준비 중입니다
-										-------------------</th>
+									<th colspan="4">----------------- 준비 중입니다 -------------------</th>
 								</tr>
 	
 							</c:when>
 	
 							<c:otherwise>
-								<c:forEach items="${videoList }" var="dto" varStatus="status">
+								<c:forEach items="${videoList}" var="dto" varStatus="status">
 									<tr>
 										<td>${status.count}</td>
 										<td><a href="javascript:void(0);" onclick="videoShow(${dto.video_no}); return false;">${dto.video_title}</a></td>
 										<td><input type="button" value="수정"
-											onclick="location.href='videoupdate.do?video_no=${dto.video_no }&class_no=${studyDto.class_no }'"></td>
+											onclick="location.href='videoupdate?video_no=${dto.video_no }&class_no=${studyDto.class_no }'"></td>
 										<td><input type="button" value="삭제"
-											onclick="location.href='videodelete.do?video_no=${dto.video_no }&class_no=${studyDto.class_no }'"></td>
+											onclick="location.href='videodelete?video_no=${dto.video_no }&class_no=${studyDto.class_no }'"></td>
 									</tr>
 								</c:forEach>
 							</c:otherwise>
@@ -128,7 +119,7 @@
 	
 						<tr>
 							<td colspan="4" style="text-align: right;">
-								<input type="button" value="비디오 등록" onclick="location.href='videoform.do?class_no=${studyDto.class_no}'">
+								<input type="button" value="비디오 등록" onclick="location.href='videoform?class_no=${studyDto.class_no}'">
 							</td>
 						</tr>
 					</table>
@@ -149,47 +140,40 @@
 					</div>
 					<div class="btns">
 						<div>
-							<button class="btn btn-primary"
-								onclick="location.href='studyupdate.do?class_no=${studyDto.class_no}'">수정</button>
-							<button class="btn btn-primary"
-								onclick="delChk(${studyDto.class_no})">삭제</button>
-							<button class="btn btn-primary"
-								onclick="location.href='https://localhost:9001'">수업방 생성</button>
+							<button class="btn btn-primary" onclick="location.href='studyupdate?class_no=${studyDto.class_no}'">수정</button>
+							<button class="btn btn-primary" onclick="delChk(${studyDto.class_no})">삭제</button>
+							<button class="btn btn-primary" onclick="location.href='https://localhost:9001'">수업방 생성</button>
 						</div>
 					</div>
 				</div>
 			</div>
 	</section>
-		<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-		
-		<script>
-			new Swiper('.swiper1', {
-				direction : 'vertical',
-				slidesPerView : 1,
-				spaceBetween : 30,
-				mousewheel : true
-			});
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+	new Swiper('.swiper1', {
+		direction : 'vertical',
+		slidesPerView : 1,
+		spaceBetween : 30,
+		mousewheel : true
+	});
 
-			new Swiper('.swiper2', {
-				slidesPerView : 1,
-				spaceBetween : 30,
-				loop : true,
-				pagination : {
-					el : '.swiper-pagination',
-					clickable : true,
-				},
-				navigation : {
-					nextEl : '.swiper-button-next',
-					prevEl : '.swiper-button-prev',
-				}
-			});
-		</script>
+	new Swiper('.swiper2', {
+		slidesPerView : 1,
+		spaceBetween : 30,
+		loop : true,
+		pagination : {
+			el : '.swiper-pagination',
+			clickable : true,
+		},
+		navigation : {
+			nextEl : '.swiper-button-next',
+			prevEl : '.swiper-button-prev',
+		}
+	});
+</script>
 
-		<!-- Bootstrap core JavaScript -->
-		<script
-			src="${pageContext.request.contextPath}/resources/css/vendor/jquery/jquery.min.js"></script>
-		<script
-			src="${pageContext.request.contextPath}/resources/css/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script src="${pageContext.request.contextPath}/resources/css/vendor/jquery/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/css/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

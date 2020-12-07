@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.onsoo.study.upload">
+<mapper namespace="com.onsu.study.upload">
 
 	<select id="selectList" resultType="imageDto">
-		SELECT * FROM CLASSIMAGE
+		SELECT * FROM J_CLASSIMAGE
 		WHERE CLASS_NO = #{class_no}
 		ORDER BY IMAGE_NO 
 	</select>
 	
 	<select id="thumbnail" parameterType="int" resultType="imageDto">
-		SELECT * FROM CLASSIMAGE
+		SELECT * FROM J_CLASSIMAGE
 		WHERE CLASS_NO = #{class_no} AND ROWNUM=1
 		ORDER BY IMAGE_NO
 	</select>
 	
 	<insert id="insert" parameterType="java.util.List"> 
 	
-		INSERT INTO CLASSIMAGE(image_no, image_directory, class_no)
-		SELECT IMAGESEQ.NEXTVAL AS image_no, A.* FROM(
+		INSERT INTO J_CLASSIMAGE(image_no, image_directory, class_no)
+		SELECT J_IMAGESEQ.NEXTVAL AS image_no, A.* FROM(
 		<foreach collection="list" item="i" separator="UNION ALL">
 			SELECT #{i.image_directory} as image_directory,
 				   #{i.class_no} as class_no
@@ -27,7 +27,7 @@
 	</insert>
 	
 	<delete id="delete" parameterType="int">
-		DELETE FROM CLASSIMAGE
+		DELETE FROM J_CLASSIMAGE
 		WHERE IMAGE_NO = #{image_no}
 	</delete>
 </mapper>

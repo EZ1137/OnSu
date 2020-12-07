@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-<%@ page import="com.kh.onsoo.admin.model.dto.AdminDto" %>
-<%@ page import="com.kh.onsoo.admin.model.dto.AuthDto" %>
+<%@ page import="com.kh.onsu.admin.model.dto.AdminDto" %>
+<%@ page import="com.kh.onsu.admin.model.dto.AuthDto" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>   
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -27,12 +27,12 @@
 
    <div>
       <div class="wrapper">
-         <div id="header-bar" onclick="location.href='${pageContext.request.contextPath}/main.do'">
-            <span> On:Soo </span>
+         <div id="header-bar" onclick="location.href='${pageContext.request.contextPath}/main'">
+            <span> On:Su </span>
          </div>
          <nav>
             <!-- 통합검색 -->
-            <form id="searchzone" action="classSearch.do">
+            <form id="searchzone" action="classSearch">
                <input type="hidden" name="class_title" value="class_title">
                <input type="text" name="search" id="headsearch" required="required" placeholder="찾으시는 강의를 검색하세요"> 
             </form>
@@ -42,10 +42,10 @@
                <!-- 권한 없을 시 페이지   -->
                <sec:authorize access="isAnonymous()">
                   <li>
-                     <input type="button" class="login" id="loginbtn" value="Log In" onclick="location.href='<c:url value="/login/loginForm.do"/>'" />
+                     <input type="button" class="login" id="loginbtn" value="Log In" onclick="location.href='<c:url value="/login/loginForm"/>'" />
                   </li>
                   <li>
-                     <input type="button" class="regist" id="registbtn" value="Sign Up" onclick="location.href='<c:url value="/registForm.do"/>'"/>
+                     <input type="button" class="regist" id="registbtn" value="Sign Up" onclick="location.href='<c:url value="/registForm"/>'"/>
                   </li>
                </sec:authorize>
                
@@ -63,14 +63,14 @@
                      </span>
                   </li>
                   <li>
-                     <input type="button" class="regist" id="registbtn" value="My Info" onclick="location.href='<c:url value="/user/registUpdatechk.do"/>'"/>
+                     <input type="button" class="regist" id="registbtn" value="My Info" onclick="location.href='<c:url value="/user/registUpdatechk"/>'"/>
                   </li>
                </sec:authorize>
                
                <!-- 관리자일 때 페이지 -->
                <sec:authorize access="hasRole('ADMIN')">
                   <li>
-                     <input type="button" class="regist" id="registbtn" value="Admin Page" onclick="location.href='<c:url value="admin/admin.do"/>'"/>
+                     <input type="button" class="regist" id="registbtn" value="Admin Page" onclick="location.href='<c:url value="admin/admin"/>'"/>
                   </li>
                </sec:authorize>
                
@@ -88,7 +88,7 @@
                      </span>
                   </li>
                   <li>
-                     <input type="button" class="regist" id="registbtn" value="My Info" onclick="location.href='<c:url value="/user/registUdpatechk.do"/>'"/>
+                     <input type="button" class="regist" id="registbtn" value="My Info" onclick="location.href='<c:url value="/user/registUdpatechk"/>'"/>
                   </li>
                </sec:authorize>
             </ul>
@@ -97,35 +97,35 @@
                <i id="hamburger" class="fas fa-bars fa-2x" onclick="menu()"></i>
                <div id="mySidenav">
                <sec:authorize access="isAnonymous()">
-                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/about.do'">A B O U T</p>
-                     <p class="sideAsset" onclick="location.href=' http://127.0.0.1:5000/'">V I D E O</p>
+                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/about'">A B O U T</p>
+                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/streaming'">V I D E O</p>
                       <!-- <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/with/studylist.do'">1 : 1 C L A S S</p>-->
-                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/qna/qna.do'">Q n A</p>
-                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/notice.do'">N O T I C E</p>
-                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/contact.do'">C O N T A C T</p>
-                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/freelist.do'">F R E E</p>
+                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/qna/qna'">Q n A</p>
+                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/notice'">N O T I C E</p>
+                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/contact'">C O N T A C T</p>
+                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/freelist'">F R E E</p>
                   </sec:authorize>
                   
                   <!-- 정지일 때 페이지 -->
                   <sec:authorize access="hasRole('BLOCK')">
-                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/block.do'">B L O C K</p>
-                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/qna/qna.do'">Q n A</p>
-                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/notice.do'">N O T I C E</p>
-                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/contact.do'">C O N T A C T</p>
+                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/block'">B L O C K</p>
+                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/qna/qna'">Q n A</p>
+                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/notice'">N O T I C E</p>
+                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/contact'">C O N T A C T</p>
                   </sec:authorize>
                   
                   <!-- 회원, 관리자일 때 페이지 -->
                   <sec:authorize access="hasAnyRole('USER','ADMIN')">
-                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/about.do'">A B O U T</p>
-                     <p class="sideAsset" onclick="location.href=' http://127.0.0.1:5000/'">V I D E O</p>
+                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/about'">A B O U T</p>
+                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/streaming'">V I D E O</p>
                      <!-- <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/with/studylist.do'">1 : 1 C L A S S</p>-->
-                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/qna/qna.do'">Q n A</p>
-                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/notice.do'">N O T I C E</p>
-                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/contact.do'">C O N T A C T</p>
-                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/mypage.do'">M Y P A G E</p>
-                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/studylist.do'">M Y C L A S S</p>
-                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/freelist.do'">F R E E</p>
-                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/message.do'">M E S S A G E</p>
+                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/qna/qna'">Q n A</p>
+                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/notice'">N O T I C E</p>
+                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/contact'">C O N T A C T</p>
+                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/mypage'">M Y P A G E</p>
+                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/studylist'">M Y C L A S S</p>
+                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/freelist'">F R E E</p>
+                     <p class="sideAsset" onclick="location.href='${pageContext.request.contextPath}/message'">M E S S A G E</p>
                   </sec:authorize>
 
                </div>

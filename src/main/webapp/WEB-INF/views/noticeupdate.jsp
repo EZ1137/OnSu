@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>On:Su - Notice</title>
 <link href="${pageContext.request.contextPath}/resources/css/notice.css" rel="stylesheet" >
 </head>
 <body>
@@ -20,7 +20,7 @@
 			<p>NOTICE</p>
 		</div>
 		
-		<form action="updateRes.do" method="post">
+		<form action="updateRes" method="post">
 			<input type="hidden" name="notice_no" value="${dto.notice_no}"/>
 			<table class="notice_insert">
 				<colgroup>
@@ -31,7 +31,7 @@
 					<tr>
 						<th>제목</th>
 						<td>
-							<input type="text" name="notice_title" value="${dto.notice_title }" required="required"/>
+							<input type="text" name="notice_title" value="${dto.notice_title}" required="required"/>
 						</td>
 					</tr>
 					<tr>
@@ -46,7 +46,7 @@
 						<td colspan="2" class="nbtnbar" style="text-align:right;">
 							<input type="reset" value="RESET"/>
 							<input type="submit" value="EDIT"/>
-							<input type="button" value="LIST" class="l_btn" onclick="location.href='noticedetail.do?notice_no=${dto.notice_no}'"/>
+							<input type="button" value="LIST" class="l_btn" onclick="location.href='noticedetail?notice_no=${dto.notice_no}'"/>
 						</td>
 					</tr>
 				</tfoot>

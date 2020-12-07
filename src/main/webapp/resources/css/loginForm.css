@@ -3,30 +3,28 @@
 :root {
 	font-family: 'IBM Plex Sans', sans-serif;
 	
-  /* Color */
-  --color-white: #ffffff;
-  --color-light-white: #f7f7ff;
-  --color-black: #000000;
+	/* Color */
+	--color-white: #ffffff;
+	--color-light-white: #f7f7ff;
+	--color-black: #000000;
+	--color-blue: #577399;
+	--color-light-blue: #bdd5ea;
+	--color-dark-blue: #495867;
+	--color-red: #fe5f55;
+	--color-light-grey: #7c7979;
+	--color-yellow: #fff7d1;
+	--color-orange: #feb546;
 
-  --color-blue: #577399;
-  --color-light-blue: #bdd5ea;
-  --color-dark-blue: #495867;
-  --color-red: #fe5f55;
-  --color-light-grey: #7c7979;
+	/*Font size*/
+	--font-large: 48px;
+	--font-medium: 28px;
+	--font-regular: 18px;
+	--font-small: 16px;
+	--font-micro: 14px;
 
-  --color-yellow: #fff7d1;
-  --color-orange: #feb546;
-
-  /*Font size*/
-
-  --font-large: 48px;
-  --font-medium: 28px;
-  --font-regular: 18px;
-  --font-small: 16px;
-  --font-micro: 14px;
-  --box-shadow: 2px 2px 6px #b6b6b6, -2px -2px 6px #ffffff;
-  --btn-shadow: 2px 2px 3px #b6b6b6, -2px -2px 3px #ffffff;
-  --border-radi: 2px;
+	--box-shadow: 2px 2px 6px #b6b6b6, -2px -2px 6px #ffffff;
+	--btn-shadow: 2px 2px 3px #b6b6b6, -2px -2px 3px #ffffff;
+	--border-radi: 2px;
 }
 
 * {

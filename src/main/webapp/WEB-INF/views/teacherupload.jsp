@@ -1,12 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
 <!DOCTYPE html>
 <html>
 <head>
-<title>On:Soo - Valid</title>
+<title>On:Su - Validation</title>
 <link href="${pageContext.request.contextPath}/resources/css/teacherupload.css" rel="stylesheet" >
 </head>
 <body>
@@ -27,7 +24,7 @@
 				<tr>
 					<td style="text-align:left; padding: 10px 0 10px 80px;">
 						<p class="valid_semi_title">
-							저희 <b>On:Soo</b>와 <br>
+							저희 <b>On:Su</b>와 <br>
 							함께 해 주실 선생님들을 모시기에 앞서, <br>
 							서로의 확인을 위해 <b>몇 가지 필요한 서류들</b>이 있어요! <br><br>
 						</p>
@@ -53,7 +50,7 @@
 			<tfoot>
 				<tr>
 					<td style="display:flex; padding: 40px 0 20px 80px; text-align:left; border-top:1px solid var(--color-light-grey);">
-						<p>'강사 인증 - ㅇㅇㅇ'의 제목으로 저희 메일 <b>validate@onsoo.com</b>에 상기 서류들을 첨부해서 보내 주세요.</p>
+						<p>'강사 인증 - ㅇㅇㅇ'의 제목으로 저희 메일 <b>onsu.validate@gmail.com</b>에 상기 서류들을 첨부해서 보내 주세요.</p>
 					</td>
 				</tr>
 			</tfoot>

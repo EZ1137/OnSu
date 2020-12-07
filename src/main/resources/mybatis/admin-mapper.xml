@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.onsoo.admin.memberboard">
+<mapper namespace="admin">
 
 	<resultMap type="AdminDto" id="AdminDtoMap">
 		<result property="seq" column="SEQ"/>
@@ -22,20 +22,20 @@
 	
 	
 	<select id="selectList" resultMap="AdminDtoMap">
-		SELECT * FROM MEMBER 
+		SELECT * FROM J_MEMBER 
 		ORDER BY MEMBER_REGDATE DESC
 	</select>
 	
 	<select id="teacherList" resultMap="AdminDtoMap">
-		SELECT * FROM MEMBER 
+		SELECT * FROM J_MEMBER 
 		WHERE MEMBER_ROLE = 'S' 
 		ORDER BY MEMBER_REGDATE DESC
 	</select>
 	
 	<!--회원가입  -->
 	<insert id="insert" parameterType="AdminDto">
-        INSERT INTO MEMBER
-        VALUES(MEMBERSEQ.NEXTVAL,
+        INSERT INTO J_MEMBER
+        VALUES(J_MEMBERSEQ.NEXTVAL,
                 #{member_id},
                 #{member_pw},
                 #{member_name},
@@ -54,63 +54,57 @@
 	
 	<select id="selectOne" parameterType="String" resultType="AdminDto">
 		SELECT * 
-		FROM MEMBER 
+		FROM J_MEMBER 
 		WHERE MEMBER_ID = #{member_id}
 	</select>
 	
 	<update id="update" parameterType="AdminDto">
-		UPDATE MEMBER
+		UPDATE J_MEMBER
 		SET MEMBER_ROLE = #{member_role} 
 		WHERE MEMBER_ID = #{member_id}
 	</update>
 	
 	<select id="selectOne2" resultMap="AdminDtoMap">
 		SELECT *
-		FROM MEMBER
+		FROM J_MEMBER
 		WHERE MEMBER_ID = #{member_id}
 	</select>
 	
 
 	<select id="idchk"  resultType="_int">
 		SELECT COUNT(member_id)
-		FROM MEMBER 
+		FROM J_MEMBER 
 		WHERE MEMBER_ID = #{member_id}
 	</select>
 	
 	<select id="emailchk" resultType="_int">
 		SELECT COUNT(member_email)
-		FROM MEMBER
+		FROM J_MEMBER
 		WHERE MEMBER_EMAIL = #{member_email}
 	</select>
 	
 	<select id="idfind" parameterType="String" resultType="AdminDto">
 		SELECT MEMBER_ID,MEMBER_NAME
-		FROM MEMBER
+		FROM J_MEMBER
 		WHERE MEMBER_EMAIL=#{member_email} AND MEMBER_NAME = #{member_name} 
 	</select>
 	
 	<update id="pwfind" parameterType="AdminDto" >
-		UPDATE MEMBER
+		UPDATE J_MEMBER
 		SET MEMBER_PW =#{member_pw}
 		WHERE MEMBER_ID= #{member_id} AND MEMBER_NAME= #{member_name} AND MEMBER_EMAIL= #{member_email}
 	</update>
 	
 	<select id="updatechk" parameterType="String" resultType="AdminDto">
 		SELECT * 
-		FROM MEMBER
+		FROM J_MEMBER
 		WHERE MEMBER_ID = #{member_id} AND MEMBER_PW= #{member_pw}
 	</select>
 	
 	<update id="registUpdate" parameterType="AdminDto">
-		UPDATE MEMBER
+		UPDATE J_MEMBER
 		SET MEMBER_PW=#{member_pw}, MEMBER_EMAIL=#{member_email} , MEMBER_ADDR=#{member_addr}, MEMBER_PHONE=#{member_phone}, MEMBER_BIRTH=#{member_birth}
 		WHERE MEMBER_ID = #{member_id}
 	</update>
-	
-	<update id="teacherupload">
-	
-	</update>
-	
-	
 	
 </mapper>

@@ -1,39 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.onsoo.free">
-
-
+<mapper namespace="free">
 	
 	<select id="selectList" resultType="freeDto">
-		SELECT * FROM FREE
+		SELECT * FROM J_FREE
 		ORDER BY FREE_NO DESC
 	</select>
 
 	<select id="selectOne" resultType="freeDto" parameterType="int">
-		SELECT * FROM FREE
+		SELECT * FROM J_FREE
 		WHERE FREE_NO = #{free_no}
 	</select>
 	
 	<select id="insert" parameterType="freeDto">
-		INSERT INTO FREE
-		VALUES(FREESEQ.NEXTVAL,#{free_writer},#{free_title},#{free_content},SYSDATE)
+		INSERT INTO J_FREE
+		VALUES(J_FREESEQ.NEXTVAL,#{free_writer},#{free_title},#{free_content},SYSDATE)
 	</select>
 	
 	<update id="update" parameterType="freeDto">
-		UPDATE FREE
+		UPDATE J_FREE
 		SET FREE_TITLE = #{free_title},
 			FREE_CONTENT = #{free_content}
 		WHERE FREE_NO = #{free_no}
 	</update>
 			
 	<delete id="delete" parameterType="int">
-		DELETE FROM FREE
+		DELETE FROM J_FREE
 		WHERE FREE_NO = #{free_no}
 	</delete>
 
 	<!--총 게시글 갯수 출력-->
 	<select id="countBoard" resultType="int">
-		SELECT COUNT(*) FROM FREE
+		SELECT COUNT(*) FROM J_FREE
 	</select>
 
 	<!--페이징 처리 후 게시글 조회-->
@@ -43,7 +41,7 @@
 			SELECT ROWNUM RN, A.* 
 				FROM (
 						SELECT * 
-						FROM FREE 
+						FROM J_FREE 
 						ORDER BY FREE_NO DESC 
 						) A
 				)

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.onsoo.admin.reportboard">
+<mapper namespace="report">
 
 	<resultMap type="AdminReportDto" id="AdminReportDtoMap">
+		<result property="report_no" column="REPORT_NO"/>
 		<result property="report_content" column="REPORT_CONTENT"/>
 		<result property="report_date" column="REPORT_DATE"/>
 		<result property="report_savename" column="REPORT_SAVENAME"/>
@@ -12,24 +13,24 @@
 	</resultMap>
 	
 	<select id="selectList" resultMap="AdminReportDtoMap">
-		SELECT * FROM REPORT 
+		SELECT * FROM J_REPORT 
 		ORDER BY REPORT_DATE DESC
 	</select>
 	
 
 	<select id="selectOne" parameterType="String" resultType="AdminReportDto">
-		SELECT REPORT_CONTENT,REPORT_DATE,REPORT_FILENAME,REPORT_ID,REPORT_IDED,REPORT_CATEGORY
-		FROM REPORT
+		SELECT REPORT_NO,REPORT_CONTENT,REPORT_DATE,REPORT_FILENAME,REPORT_ID,REPORT_IDED,REPORT_CATEGORY
+		FROM J_REPORT
 		WHERE REPORT_ID = #{report_id}
 	</select>
 	
 	<insert id="insert">
-		INSERT INTO REPORT		
-		VALUES(#{report_content}, SYSDATE, #{report_savename}, #{report_id}, #{report_ided}, #{report_category} )
+		INSERT INTO J_REPORT		
+		VALUES(J_REPORTSEQ.NEXTVAL, #{report_content}, SYSDATE, #{report_savename}, #{report_id}, #{report_ided}, #{report_category} )
 	</insert>
 
 	<update id="update">
-		UPDATE MEMBER 
+		UPDATE J_MEMBER 
 		SET MEMBER_ROLE = #{member_role},MEMBER_BDATE = #{member_bdate}
 		WHERE MEMBER_ID = #{member_id}
 	</update>

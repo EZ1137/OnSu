@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page import="com.kh.onsoo.qna.model.dto.QnaDto" %>
+<%@ page import="com.kh.onsu.qna.model.dto.QnaDto" %>
 <!DOCTYPE html>
 <html>
 <head>

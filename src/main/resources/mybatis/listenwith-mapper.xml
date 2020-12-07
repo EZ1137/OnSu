@@ -4,14 +4,14 @@
 
 	<select id="selectList" resultType="ListenWithDto">
 		SELECT LISTEN_WNO, LISTEN_WMEMBERID, LISTEN_WCLASSNO, LISTEN_WCOUNT, LISTEN_WCLASSTITLE
-		FROM LISTEN_WITH
+		FROM J_LISTEN_WITH
 		WHERE LISTEN_WMEMBERID = #{member_id}
 		ORDER BY LISTEN_WNO DESC
 	</select>
 	
 	<insert id="insert" parameterType="ListenWithDto">
-		INSERT INTO LISTEN_WITH
-		VALUES(LISTENVIDEOSEQ.NEXTVAL, #{listen_wmemberid}, #{listen_wclassno}, 1, #{listen_wclasstitle})
+		INSERT INTO J_LISTEN_WITH
+		VALUES(J_LISTENVIDEOSEQ.NEXTVAL, #{listen_wmemberid}, #{listen_wclassno}, 1, #{listen_wclasstitle})
 	</insert>
 
 </mapper>

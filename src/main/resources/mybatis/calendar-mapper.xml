@@ -4,43 +4,43 @@
 
 	<select id="selectList" resultType="CalendarDto">
 		SELECT CALENDAR_NO, CALENDAR_TITLE, CALENDAR_CONTENT, CALENDAR_MDATE, CALENDAR_REGDATE
-		FROM CALENDAR
+		FROM J_CALENDAR
 		WHERE SUBSTR(CALENDAR_MDATE, 1, 8) = #{yyyyMMdd}
 		ORDER BY CALENDAR_NO DESC
 	</select>
 
 	<insert id="insert" parameterType="CalendarDto">
-		INSERT INTO CALENDAR
-		VALUES(CALENDARSEQ.NEXTVAL, #{calendar_title}, #{calendar_content}, #{calendar_mdate}, SYSDATE, #{member_id})
+		INSERT INTO J_CALENDAR
+		VALUES(J_CALENDARSEQ.NEXTVAL, #{calendar_title}, #{calendar_content}, #{calendar_mdate}, SYSDATE, #{member_id})
 	</insert>
 	
 	<select id="calendarList" resultType="CalendarDto">
 		SELECT CALENDAR_NO, CALENDAR_TITLE, CALENDAR_CONTENT, CALENDAR_MDATE, CALENDAR_REGDATE
-		FROM CALENDAR
+		FROM J_CALENDAR
 		WHERE SUBSTR(CALENDAR_MDATE, 1, 8) = #{yyyyMMdd}
 		ORDER BY CALENDAR_NO DESC
 	</select>
 	
 	<select id="selectOne" resultType="CalendarDto">
 		SELECT CALENDAR_NO, CALENDAR_TITLE, CALENDAR_CONTENT, CALENDAR_MDATE, CALENDAR_REGDATE, MEMBER_ID
-		FROM CALENDAR
+		FROM J_CALENDAR
 		WHERE CALENDAR_NO = #{calendar_no}
 	</select>
 	
 	<update id="update" parameterType="CalendarDto" >
-		UPDATE CALENDAR
+		UPDATE J_CALENDAR
 		SET CALENDAR_TITLE = #{calendar_title}, CALENDAR_CONTENT = #{calendar_content}
 		WHERE CALENDAR_NO = #{calendar_no}
 	</update>
 	
 	<delete id="delete" parameterType="int">
-		DELETE FROM CALENDAR
+		DELETE FROM J_CALENDAR
 		WHERE CALENDAR_NO = #{calendar_no}
 	</delete>
 	
 	<select id="schedule" resultType="CalendarDto">
 		SELECT CALENDAR_NO, CALENDAR_TITLE, CALENDAR_MDATE
-		FROM CALENDAR
+		FROM J_CALENDAR
 		WHERE MEMBER_ID = #{member_id} AND ((CALENDAR_MDATE BETWEEN TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS') AND TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS')+1))
 		ORDER BY CALENDAR_MDATE
 	</select>

@@ -22,18 +22,18 @@
 	
 	<select id="selectPay" parameterType="map" resultMap="PayDto">
 		SELECT M.SEQ, M.MEMBER_ID, M.MEMBER_NAME, M.MEMBER_EMAIL, M.MEMBER_ADDR, C.CLASS_TITLE, C.CLASS_PRICE
-		FROM MEMBER M JOIN PAY P ON M.MEMBER_ID = P.PAY_MEMBERID JOIN CLASS C ON C.CLASS_NO = P.PAY_CLASSNO
+		FROM J_MEMBER M JOIN J_PAY P ON M.MEMBER_ID = P.PAY_MEMBERID JOIN J_CLASS C ON C.CLASS_NO = P.PAY_CLASSNO
 		WHERE P.PAY_MEMBERID = #{pay_memberid}
 		AND P.PAY_CLASSNO = TO_NUMBER(#{pay_classno})
 	</select>
 	
 	<insert id="insert" parameterType="PayDto">
-		INSERT INTO PAY
-		VALUES(PAYSEQ.NEXTVAL, #{pay_memberid}, #{pay_classno}, SYSDATE)
+		INSERT INTO J_PAY
+		VALUES(J_PAYSEQ.NEXTVAL, #{pay_memberid}, #{pay_classno}, SYSDATE)
 	</insert>
 	
 	<delete id="delete" parameterType="PayDto">
-		DELETE FROM PAY
+		DELETE FROM J_PAY
 		WHERE PAY_MEMBERID = #{pay_memberid} AND PAY_CLASSNO = #{pay_classno}
 	</delete>
 

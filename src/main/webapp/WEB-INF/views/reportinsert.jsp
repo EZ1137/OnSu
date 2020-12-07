@@ -5,28 +5,26 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>On:Soo - Report</title>
+<title>On:Su - Report</title>
 <!-- Editor's Dependecy Style -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.css"/>
 <!-- Editor's Style -->
-<link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
-<link href="${pageContext.request.contextPath}/resources/css/reportinsert.css?after" rel="stylesheet">
+<link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css"/>
+<link href="${pageContext.request.contextPath}/resources/css/reportinsert.css?after" rel="stylesheet"/>
 <script>
 	window.onload = function() {
-		ck = CKEDITOR
-			.replace(
-				"editor1",
-		{
-			filebrowserImageUploadUrl: '${pageContext.request.contextPath}/reportinsertres.do',
-			customConfig: '${pageContext.request.contextPath}/js/lib/ckeditor/config_oboe.js'
-		});
+		ck = CKEDITOR.replace(
+			"editor1", {
+				filebrowserImageUploadUrl: '${pageContext.request.contextPath}/reportinsertres',
+				customConfig: '${pageContext.request.contextPath}/js/lib/ckeditor/config_oboe.js'
+			}
+		);
 	};
-	onsubmit = function(){
-		alert("신고가 접수 되었습니다.")
-	}
 	
+	onsubmit = function(){
+		alert("신고가 접수 되었습니다.");
+	}
 </script>
 </head>
 <body>
@@ -42,7 +40,7 @@
 		</div>
 		
 		<div class="report_box">
-			<form action="reportinsretres.do" method="POST" enctype="multipart/form-data">
+			<form action="reportinsretres" method="POST" enctype="multipart/form-data">
 				<table class="report_table">
 					<colgroup>
 						<col width="15%"/>

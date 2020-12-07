@@ -1,4 +1,4 @@
-<%@page import="com.kh.onsoo.utils.Utils"%>
+<%@page import="com.kh.onsu.utils.Utils"%>
 <%@page import="java.util.Calendar"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>

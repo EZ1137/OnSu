@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link href="${pageContext.request.contextPath}/resources/css/msg.css?after" rel="stylesheet">
+<title>On:Su - Send Message</title>
+<link href="${pageContext.request.contextPath}/resources/css/msg.css?after" rel="stylesheet"/>
 </head>
 <body>
 
@@ -16,8 +16,8 @@
 
 	<section>
 		<div>
-			<form action="sendMSGRes.do" method="post">
-			<input type="hidden" name="member_id" value="${member_id }">
+			<form action="sendMSGRes" method="post">
+			<input type="hidden" name="member_id" value="${member_id}">
 				<table class="insert">
 					<tr>
 						<th>받는 사람 ID</th>
@@ -31,8 +31,8 @@
 					</tr>
 					<tr>
 						<td colspan="2" style="text-align:right;">
-							<input type="button" value="취소" onclick="location.href='message.do'">
-							<input type="submit" value="보내기">
+							<input type="button" value="취소" onclick="location.href='message'"/>
+							<input type="submit" value="보내기"/>
 						</td>
 					</tr>
 				</table>

@@ -3,34 +3,31 @@
 :root {
 	font-family: 'IBM Plex Sans', sans-serif;
 	
-  /* Color */
-  --color-white: #ffffff;
-  --color-light-white: #f7f7ff;
-  --color-black: #000000;
+	/* Color */
+	--color-white: #ffffff;
+	--color-light-white: #f7f7ff;
+	--color-black: #000000;
+	--color-blue: #577399;
+	--color-light-blue: #bdd5ea;
+	--color-dark-blue: #495867;
+	--color-red: #fe5f55;
+	--color-light-grey: #7c7979;
+	--color-yellow: #fff7d1;
+	--color-orange: #feb546;
 
-  --color-blue: #577399;
-  --color-light-blue: #bdd5ea;
-  --color-dark-blue: #495867;
-  --color-red: #fe5f55;
-  --color-light-grey: #7c7979;
-
-  --color-yellow: #fff7d1;
-  --color-orange: #feb546;
-
-  /*Font size*/
-
-  --font-large: 48px;
-  --font-medium: 28px;
-  --font-regular: 18px;
-  --font-small: 16px;
-  --font-micro: 14px;
-  --border-radi: 2px;
+	/*Font size*/
+	--font-large: 48px;
+	--font-medium: 28px;
+	--font-regular: 18px;
+	--font-small: 16px;
+	--font-micro: 14px;
+	--border-radi: 2px;
 }
 
 * {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
 }
 
 section {
@@ -119,44 +116,44 @@ textarea {
 	background-color: rgba(255,255,255,0);
 }
 
-td > input[type="button"],input[type="reset"],input[type="submit"] {
-  /* 로그인 */
-  margin: 4px 4px;
-  padding: 5px 10px 0 10px;
-  background: var(--color-white);
-  color: var(--color-dark-grey);
-  height: 30px;
-  border: none;
-  border-radius: var(--border-radi-btn);
-  box-shadow: var(--btn-shadow);
+td > input[type="button"],td > input[type="reset"],td > input[type="submit"] {
+	/* 로그인 */
+	margin: 4px 4px;
+	padding: 5px 10px 0 10px;
+	background: var(--color-white);
+	color: var(--color-dark-grey);
+	height: 30px;
+	border: none;
+	border-radius: var(--border-radi-btn);
+	box-shadow: var(--btn-shadow);
 }
 
-div > input[type="button"],input[type="reset"],input[type="submit"] {
-  /* 로그인 */
-  margin: 4px 4px;
-  padding: 5px 10px 0 10px;
-  background: var(--color-white);
-  color: var(--color-dark-grey);
-  height: 30px;
-  border: none;
-  border-radius: var(--border-radi-btn);
-  box-shadow: var(--btn-shadow);
+div > input[type="button"],div > input[type="reset"],div > input[type="submit"] {
+	/* 로그인 */
+	margin: 4px 4px;
+	padding: 5px 10px 0 10px;
+	background: var(--color-white);
+	color: var(--color-dark-grey);
+	height: 30px;
+	border: none;
+	border-radius: var(--border-radi-btn);
+	box-shadow: var(--btn-shadow);
 }
 
 .i_btn:hover, .l_btn:hover {
-  background-color: var(--color-light-blue);
-  color: var(--color-black);
-  border: none;
+	background-color: var(--color-light-blue);
+	color: var(--color-black);
+	border: none;
 }
 
 td > input[type="reset"]:hover, .d_btn:hover {
-  background-color: var(--color-red);
-  color: var(--color-black);
-  border: none;
+	background-color: var(--color-red);
+	color: var(--color-black);
+	border: none;
 }
 
 td > input[type="submit"]:hover, .e_btn:hover {
-  background-color: var(--color-orange);
-  color: var(--color-black);
-  border: none;
+	background-color: var(--color-orange);
+	color: var(--color-black);
+	border: none;
 }

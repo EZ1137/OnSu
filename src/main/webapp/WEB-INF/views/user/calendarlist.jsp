@@ -23,7 +23,7 @@
 		<p>일정 목록</p>
 	</div>
 		<div>
-		<jsp:useBean id="utils" class="com.kh.onsoo.utils.Utils" />
+		<jsp:useBean id="utils" class="com.kh.onsu.utils.Utils" />
 		<table class="list">
 			<col width="50px" />
 			<col width="250px" />

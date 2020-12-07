@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>On:Soo - Sign Up</title>
+<title>On:Su - Sign Up</title>
 
 <!--다음 api 주소 같이 있어야 사용가능   -->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -33,15 +33,12 @@
 						if (data.userSelectedType === 'R') {
 							// 법정동명이 있을 경우 추가한다. (법정리는 제외)
 							// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-							if (data.bname !== ''
-									&& /[동|로|가]$/g.test(data.bname)) {
+							if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
 								extraAddr += data.bname;
 							}
 							// 건물명이 있고, 공동주택일 경우 추가한다.
-							if (data.buildingName !== ''
-									&& data.apartment === 'Y') {
-								extraAddr += (extraAddr !== '' ? ', '
-										+ data.buildingName : data.buildingName);
+							if (data.buildingName !== '' && data.apartment === 'Y') {
+								extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
 							}
 							// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
 							if (extraAddr !== '') {
@@ -54,10 +51,10 @@
 						document.getElementById('sample6_postcode').value = data.zonecode;
 						document.getElementById("sample6_address").value = addr;
 						// 커서를 상세주소 필드로 이동한다.
-						document.getElementById("sample6_detailAddress")
-								.focus();
+						document.getElementById("sample6_detailAddress").focus();
 					}
-				}).open();
+				}
+			).open();
 	}
 </script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -74,8 +71,8 @@
 	<section>
 		<div id="content">
 			<div id="registform">
-				<p class="registTitle">On:Soo 회원가입</p>
-				<c:url value="/regist.do" var="addUserUrl" />
+				<p class="registTitle">On:Su 회원가입</p>
+				<c:url value="/regist" var="addUserUrl" />
 				<form:form action="${addUserUrl}" method="POST">
 					<table class="generalRegist">
 						<colgroup>
@@ -152,19 +149,20 @@
 								<td colspan="3">
 									<input class="onRegist" type="text" onclick="sample6_execDaumPostcode();" id="sample6_postcode" class="addr1" name="member_addr" style="width:100px;" placeholder="우편번호" readonly="readonly"/> 
 									<input class="onRegist" type="text" onclick="sample6_execDaumPostcode();" id="sample6_address" class="addr1" name="member_addr" placeholder="주소" readonly="readonly"/>
-									<input class="onRegist" type="text" onclick="sample6_execDaumPostcode();" id="sample6_detailAddress" class="addr1" name="member_addr" placeholder="상세주소" required="required"/>
+									<input class="onRegist" type="text" id="sample6_detailAddress" class="addr1" name="member_addr" placeholder="상세주소" required="required"/>
 								</td>
 								<td colspan="2">
 									<input class="registbtn" type="button" onclick="sample6_execDaumPostcode();" id="daumaddr" value="우편번호 찾기"/> 
 								</td>
 							</tr>
 						</tbody>
+						
 						<tfoot>
 							<tr class="registBottom">
 								<td colspan="6" style="padding-top:40px;">
 									<input type="reset" class="resetbtn" id="reset" value="RESET" onclick="reset_res();"/>
 									<input type="submit" class="submitbtn" id="submit" value="JOIN"/>
-									<input type="button" class="cancletbtn" id="cancle" onclick="location.href='<c:url value="/main.do"/>'" value="BACK"/>
+									<input type="button" class="cancletbtn" id="cancle" onclick="location.href='<c:url value="/main"/>'" value="BACK"/>
 								</td>
 							</tr>
 						</tfoot>

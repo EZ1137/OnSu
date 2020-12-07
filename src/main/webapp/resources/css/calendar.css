@@ -3,35 +3,32 @@
 :root {
 	font-family: 'IBM Plex Sans', sans-serif;
 	
-  /* Color */
-  --color-white: #ffffff;
-  --color-light-white: #f7f7ff;
-  --color-black: #000000;
+	/* Color */
+	--color-white: #ffffff;
+	--color-light-white: #f7f7ff;
+	--color-black: #000000;
+	--color-blue: #577399;
+	--color-light-blue: #bdd5ea;
+	--color-dark-blue: #495867;
+	--color-red: #fe5f55;
+	--color-light-grey: #7c7979;
+	--color-yellow: #fff7d1;
+	--color-orange: #feb546;
 
-  --color-blue: #577399;
-  --color-light-blue: #bdd5ea;
-  --color-dark-blue: #495867;
-  --color-red: #fe5f55;
-  --color-light-grey: #7c7979;
-
-  --color-yellow: #fff7d1;
-  --color-orange: #feb546;
-
-  /*Font size*/
-
-  --font-large: 48px;
-  --font-medium: 28px;
-  --font-regular: 18px;
-  --font-small: 16px;
-  --font-micro: 14px;
+	/*Font size*/
+	--font-large: 48px;
+	--font-medium: 28px;
+	--font-regular: 18px;
+	--font-small: 16px;
+	--font-micro: 14px;
   
-  --border-radi: 2px;
+	--border-radi: 2px;
 }
 
 * {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
 }
 
 header {
@@ -90,15 +87,15 @@ td > input[type="text"] {
 }
 
 td > input[type="button"], input[type="submit"] {
-  /* 로그인 */
-  margin: 4px 4px;
-  padding: 5px 10px 0 10px;
-  background: var(--color-white);
-  color: var(--color-dark-grey);
-  height: 30px;
-  border: none;
-  border-radius: var(--border-radi-btn);
-  box-shadow: var(--btn-shadow);
+	/* 로그인 */
+	margin: 4px 4px;
+	padding: 5px 10px 0 10px;
+	background: var(--color-white);
+	color: var(--color-dark-grey);
+	height: 30px;
+	border: none;
+	border-radius: var(--border-radi-btn);
+	box-shadow: var(--btn-shadow);
 }
 
 .insert, .list, .one {
@@ -106,17 +103,3 @@ td > input[type="button"], input[type="submit"] {
 	width: 70%;
 	align-items: center;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

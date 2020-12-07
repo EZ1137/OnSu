@@ -5,33 +5,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta charset="utf-8">
-<meta name="viewport"
-   content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-
-<title>Onsoo</title>
-<link rel="stylesheet"
-   href="https://unpkg.com/swiper/swiper-bundle.min.css">
-<script type="text/javascript"
-   src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script type="text/javascript"
-   src="${pageContext.request.contextPath}/resources/js/onsooMain.js?"
-   defer></script>
-<link href="${pageContext.request.contextPath}/resources/css/review.css" rel="stylesheet" >
+<title>On:Su - Study Detail Page</title>
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/onsooMain.js?" defer></script>
+<link href="${pageContext.request.contextPath}/resources/css/review.css" rel="stylesheet"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <!-- Bootstrap core CSS -->
-<link
-	href="${pageContext.request.contextPath}/resources/css/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/css/study.css"
-	rel="stylesheet">
-<link
-   href="${pageContext.request.contextPath}/resources/css/blog-post.css"
-   rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/study.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/blog-post.css" rel="stylesheet">
 
 <script type="text/javascript">
 
@@ -225,9 +213,8 @@ function videoShow(video_no) {
 		</div>
 	</div>
       
-   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-      
-      <script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
          new Swiper('.swiper1', {
             direction : 'vertical',
             slidesPerView : 1,
@@ -250,11 +237,8 @@ function videoShow(video_no) {
          });
       </script>
 
-      <!-- Bootstrap core JavaScript -->
-      <script
-         src="${pageContext.request.contextPath}/resources/css/vendor/jquery/jquery.min.js"></script>
-      <script
-         src="${pageContext.request.contextPath}/resources/css/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>   
+<!-- Bootstrap core JavaScript -->
+<script src="${pageContext.request.contextPath}/resources/css/vendor/jquery/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/css/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>   
 </body>
-
 </html>

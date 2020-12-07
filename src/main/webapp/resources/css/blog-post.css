@@ -13,7 +13,6 @@
 	.div_side {
 		width: 80%;
 		margin-top: 90%;
-		
 	}
 }
 
@@ -29,18 +28,16 @@
 }
 
 .div_side {
-	
 	width: 22%;
 	position: fixed;
 	float: right;
 	margin-left: 68%;
 	margin-top: 100px;
-	
 }
 
-.btns{
-	display:flex;
-	flex-direction:row-reverse;
+.btns {
+	display: flex;
+	flex-direction: row-reverse;
 }
 
 .swiper1 {
@@ -66,4 +63,3 @@
 .swiper-pagination {
 	color: var(--color-black);
 }
-

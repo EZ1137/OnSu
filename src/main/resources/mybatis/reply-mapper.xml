@@ -13,8 +13,7 @@
 	<!-- 댓글 리스트 -->
 	<select id="replyList" resultMap="replyReply" resultType="int">
 		SELECT REPLY_NO , REPLY_ID, REPLY_BOARDNO ,REPLY_TITLE
-		FROM
-		REPLY
+		FROM J_REPLY
 		WHERE REPLY_BOARDNO = #{reply_boardno}
 		ORDER BY REPLY_NO
 	</select>
@@ -22,14 +21,14 @@
 
 	<!-- 댓글 등록 -->
 	<insert id="replyInsert" parameterType="ReplyDto">
-		INSERT INTO REPLY
+		INSERT INTO J_REPLY
 		VALUES
-		(REPLY_SEQ.NEXTVAL, #{reply_id}, #{reply_boardno}, #{reply_title}, SYSDATE)
+		(J_REPLY_SEQ.NEXTVAL, #{reply_id}, #{reply_boardno}, #{reply_title}, SYSDATE)
 	</insert>
 
 	<!--댓글 수정 -->
 	<update id="replyUpdate" parameterType="ReplyDto">
-		UPDATE REPLY
+		UPDATE J_REPLY
 		SET
 		REPLY_TITLE = #{reply_title}
 		WHERE REPLY_NO = #{reply_no}
@@ -38,7 +37,7 @@
 
 	<!-- 댓글 삭제 -->
 	<delete id="replyDelete" parameterType="int">
-		DELETE FROM REPLY
+		DELETE FROM J_REPLY
 		WHERE
 		REPLY_NO = #{reply_no}
 	</delete>

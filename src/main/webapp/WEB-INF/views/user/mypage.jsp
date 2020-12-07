@@ -1,4 +1,4 @@
-<%@page import="com.kh.onsoo.utils.Utils"%>
+<%@page import="com.kh.onsu.utils.Utils"%>
 <%@page import="java.util.Calendar"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -156,7 +156,7 @@
 				</div>
 				
 				<div>
-					<jsp:useBean id="utils" class="com.kh.onsoo.utils.Utils" />
+					<jsp:useBean id="utils" class="com.kh.onsu.utils.Utils" />
 					<div class="myp_subtitle">오늘, 내일의 남은 일정</div>
 					<table class="list">
 						<colgroup>

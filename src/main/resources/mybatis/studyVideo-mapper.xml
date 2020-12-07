@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.onsoo.study.video">
+<mapper namespace="studyVideo">
 
-	<resultMap type="com.kh.onsoo.study.model.dto.StudyDto"
-		id="studyDto">
+	<resultMap type="com.kh.onsu.study.model.dto.StudyDto" id="studyDto">
 		<id property="class_no" column="class_no" />
 		<id property="class_title" column="class_title" />
 		<id property="class_teacherid" column="class_teacherid" />
@@ -16,14 +15,13 @@
 		<id property="class_star" column="class_star" />
 	</resultMap>
 
-	<resultMap
-		type="com.kh.onsoo.study.image.model.dto.UploadDto" id="uploadDto">
+	<resultMap type="com.kh.onsu.study.image.model.dto.UploadDto" id="uploadDto">
 		<id property="image_no" column="image_no" />
 		<id property="image_directory" column="image_directory" />
 		<id property="class_no" column="class_no" />
 	</resultMap>
 
-	<resultMap type="com.kh.onsoo.study.model.dto.StudyImageDto" id="studyImageDto">
+	<resultMap type="com.kh.onsu.study.model.dto.StudyImageDto" id="studyImageDto">
 		<collection property="studyDto" resultMap="studyDto" />
 		<collection property="uploadDto" resultMap="uploadDto" />
 	</resultMap>
@@ -31,45 +29,45 @@
 	<select id="selectList" resultMap="studyImageDto">
 		SELECT C.CLASS_NO, CLASS_TITLE, CLASS_TEACHERID, CLASS_TEACHERNAME, 
 		   CLASS_BIGCATEGORY, CLASS_SMALLCATEGORY, CLASS_PRICE,
-		   IMAGE_DIRECTORY FROM CLASS C INNER JOIN
-			(SELECT * FROM CLASSIMAGE WHERE IMAGE_NO 
-			IN (SELECT MIN(IMAGE_NO) FROM CLASSIMAGE GROUP BY CLASS_NO)) CI
+		   IMAGE_DIRECTORY FROM J_CLASS C INNER JOIN
+			(SELECT * FROM J_CLASSIMAGE WHERE IMAGE_NO 
+			IN (SELECT MIN(IMAGE_NO) FROM J_CLASSIMAGE GROUP BY CLASS_NO)) CI
 			ON C.CLASS_NO = CI.CLASS_NO 
 			WHERE CLASS_TYPE = 'V'
 			ORDER BY CLASS_NO DESC
 	</select>
 
 	<select id="selectList_teacher" resultType="studyDto">
-		SELECT * FROM CLASS
+		SELECT * FROM J_CLASS
 		WHERE CLASS_TYPE = 'V' <!-- AND CLASS_TEACHERID = #{class_teacherid} -->
 		ORDER BY CLASS_NO DESC
 	</select>
 	
 	<select id="selectNum" resultType="int">
-		SELECT MAX(CLASS_NO) FROM CLASS
+		SELECT MAX(CLASS_NO) FROM J_CLASS
 	</select>
 	
 	<select id="selectOne" resultType="studyDto" parameterType="int">
-		SELECT * FROM CLASS
+		SELECT * FROM J_CLASS
 		WHERE CLASS_NO = #{class_no}
 	</select>
 
 	<insert id="insert" parameterType="studyDto">
-		INSERT INTO CLASS
-		VALUES(CLASSSEQ.NEXTVAL, #{class_title}, #{class_teacherid}, #{class_teachername},
+		INSERT INTO J_CLASS
+		VALUES(J_CLASSSEQ.NEXTVAL, #{class_title}, #{class_teacherid}, #{class_teachername},
 		'V', #{class_bigcategory}, #{class_smallcategory}, #{class_info},
 		#{class_price}, 0)
 	</insert>
 
 	<update id="update" parameterType="studyDto">
-		UPDATE CLASS
+		UPDATE J_CLASS
 		SET CLASS_TITLE = #{class_title}, CLASS_BIGCATEGORY = #{class_bigcategory}, 
 		CLASS_SMALLCATEGORY = #{class_smallcategory}, CLASS_INFO = #{class_info}, 
 		CLASS_PRICE = #{class_price}
 	</update>
 
 	<delete id="delete" parameterType="int">
-		DELETE FROM CLASS
+		DELETE FROM J_CLASS
 		WHERE
 		CLASS_NO = #{class_no}
 	</delete>

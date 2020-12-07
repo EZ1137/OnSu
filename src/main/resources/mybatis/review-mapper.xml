@@ -4,37 +4,37 @@
 
 	<select id="selectList" resultType="ReviewDto">
 		SELECT REVIEW_NO, REVIEW_ID, REVIEW_CONTENT, REVIEW_CLASSNO, REVIEW_STAR, REVIEW_DATE, REVIEW_UPDATE
-		FROM REVIEW
+		FROM J_REVIEW
 		WHERE REVIEW_CLASSNO = ${review_classno}
 		ORDER BY REVIEW_NO DESC
 	</select>
 	
 	<select id="selectReview" parameterType="map" resultType="ReviewDto">
 		SELECT REVIEW_NO, REVIEW_ID, REVIEW_CONTENT, REVIEW_CLASSNO, REVIEW_STAR, REVIEW_DATE, REVIEW_UPDATE
-		FROM REVIEW
+		FROM J_REVIEW
 		WHERE REVIEW_ID = #{review_id}
 		AND REVIEW_CLASSNO = TO_NUMBER(#{review_classno})
 	</select>
 	
 	<select id="selectOne" resultType="ReviewDto">
 		SELECT REVIEW_NO, REVIEW_ID, REVIEW_CONTENT, REVIEW_CLASSNO, REVIEW_STAR, REVIEW_DATE, REVIEW_UPDATE
-		FROM REVIEW
+		FROM J_REVIEW
 		WHERE REVIEW_NO = #{review_no}
 	</select>
 	
 	<insert id="insert" parameterType="ReviewDto">
-		INSERT INTO REVIEW
-		VALUES(REVIEWSEQ.NEXTVAL, #{review_id}, #{review_content}, #{review_classno}, #{review_star}, SYSDATE, NULL)
+		INSERT INTO J_REVIEW
+		VALUES(J_REVIEWSEQ.NEXTVAL, #{review_id}, #{review_content}, #{review_classno}, #{review_star}, SYSDATE, NULL)
 	</insert>
 	
 	<update id="update" parameterType="ReviewDto">
-		UPDATE REVIEW
+		UPDATE J_REVIEW
 		SET REVIEW_CONTENT = #{review_content}, REVIEW_UPDATE = SYSDATE
 		WHERE REVIEW_NO = #{review_no}
 	</update>
 	
 	<delete id="delete" parameterType="int">
-		DELETE FROM REVIEW
+		DELETE FROM J_REVIEW
 		WHERE REVIEW_NO = #{review_no}
 	</delete>
 

@@ -1,5 +1,5 @@
 <%@page import="java.util.Calendar"%>
-<%@page import="com.kh.onsoo.calendar.model.dto.CalendarDto"%>
+<%@page import="com.kh.onsu.calendar.model.dto.CalendarDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.kh.onsoo.study.video">
+<mapper namespace="StudyVideo">
 
 	<select id="selectList" parameterType="int" resultType="videoDto">
-		SELECT * FROM VIDEO
+		SELECT * FROM J_VIDEO
 		WHERE CLASS_NO = #{class_no}
 		ORDER BY VIDEO_NO
 	</select>
 	
 	<select id="selectOne" parameterType="int" resultType="videoDto">
-		SELECT * FROM VIDEO
+		SELECT * FROM J_VIDEO
 		WHERE VIDEO_NO = #{video_no}
 	</select>
 	
 	<insert id="insert" parameterType="videoDto">
-		INSERT INTO VIDEO
-		VALUES(VIDEOSEQ.NEXTVAL, #{video_title}, #{video_runtime}, #{video_directory}, #{class_no})
+		INSERT INTO J_VIDEO
+		VALUES(J_VIDEOSEQ.NEXTVAL, #{video_title}, #{video_runtime}, #{video_directory}, #{class_no})
 	</insert>
 	
 	<update id="update" parameterType="videoDto">
-		UPDATE VIDEO
+		UPDATE J_VIDEO
 		SET VIDEO_TITLE=#{video_title}
 		WHERE VIDEO_NO = #{video_no}
 	</update>
 	
 	<delete id="delete" parameterType="int">
-		DELETE FROM VIDEO
+		DELETE FROM J_VIDEO
 		WHERE VIDEO_NO = #{video_no}
 	</delete>
 </mapper>

@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page import="com.kh.onsoo.admin.model.dto.AdminDto" %>
+<%@ page import="com.kh.onsu.admin.model.dto.AdminDto" %>
 <!DOCTYPE html>
 <html>
 <head>
-<title>On:Soo - Valid</title>
+<title>On:Su - Validation</title>
 <link href="${pageContext.request.contextPath}/resources/css/teachervalid.css" rel="stylesheet" >
 </head>
 <body>
@@ -34,7 +34,7 @@
 			</tr>
 			<tr>
 				<td style="display:flex; padding: 10px; border-top:1px solid var(--color-light-grey);">
-					<input type="button" value="MAIN" onclick="location.href='main.do'"/>
+					<input type="button" value="MAIN" onclick="location.href='main'"/>
 				</td>
 			</tr>
 		</table>

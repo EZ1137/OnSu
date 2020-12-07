@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title> 알림창 </title>
+<title>On:Su - Redirect</title>
 </head>
 <body>
 

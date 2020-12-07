@@ -3,14 +3,12 @@ section {
 	height: 100vh;
 	padding-top: 100px;
 }
-table{
-	
-	width:90%;
-	padding-top:10%;
-	padding-left: 15%;
-	
-}
 
+table {
+	width: 90%;
+	padding-top: 10%;
+	padding-left: 15%;
+}
 
 tr {
 	height: 30px;

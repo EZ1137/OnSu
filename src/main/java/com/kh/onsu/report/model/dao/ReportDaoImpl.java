@@ -1,0 +1,45 @@
+package com.kh.onsu.report.model.dao;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.kh.onsu.report.model.dto.ReportDto;
+
+@Repository
+public class ReportDaoImpl implements ReportDao {
+
+	@Autowired
+	private SqlSessionTemplate sqlSession;
+
+	private Logger logger = LoggerFactory.getLogger(ReportDaoImpl.class);
+
+	@Override
+	public int insert(ReportDto dto) {
+			int res = 0;
+		try {
+			res = sqlSession.insert(NAMESPACE + "insert", dto);
+		} catch (Exception e) {
+			logger.info("[ERROR repport insert]");
+			e.printStackTrace();
+		}
+		return res;
+	}
+	
+	
+	@Override
+	public ReportDto selectOne(String report_id) {
+		ReportDto res = null;
+		
+		try {
+			res = sqlSession.selectOne(NAMESPACE+"reportOne",report_id);
+		} catch (Exception e) {
+			logger.info("selectOne 에러 ");
+			e.printStackTrace();
+		}
+		return res;
+	}
+
+}

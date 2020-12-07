@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link href="${pageContext.request.contextPath}/resources/css/reviewlist.css" rel="stylesheet" >
+<link href="${pageContext.request.contextPath}/resources/css/reviewlist.css" rel="stylesheet"/>
 <html>
 <body>
 	<c:choose>
-		<c:when test="${reviewDto eq null }">
+		<c:when test="${reviewDto eq null}">
 			<input type="hidden" name="creview" value="N"/>
 		</c:when>
 		<c:otherwise>
-			<input type="hidden" name="creview" value="${reviewDto.review_content }"/>
+			<input type="hidden" name="creview" value="${reviewDto.review_content}"/>
 		</c:otherwise>
 	</c:choose>
 </body>
@@ -26,28 +26,26 @@ $('[name=reviewInsertBtn]').click(function(){ //댓글 등록 버튼 클릭시
 
 function review(){
     $.ajax({
-        url : '/onsoo/review.do',
+        url : '/onsu/review',
         type : 'get',
         data : {'review_classno':review_classno},
         success : function(data){
-            var a =''; 
+            var a = ''; 
             $.each(data, function(key, review){
-            	
             	$(function () {
             		$(".starList").each(function(){
             			$(this).parent().children($('.starR1')).slice(0, $(this).val()).addClass('on');
             			$(this).parent().children($('.starR2')).slice(0, $(this).val()).addClass('on');
             		})
             	});
-            	
             	var t = new Date(parseInt(review.review_date));
             	var ut = new Date(parseInt(review.review_update));
             	var date = t.getFullYear() + "-" + (t.getMonth()+1) + "-" + t.getDate() + " " + t.getHours() + ":" + t.getMinutes();
             	var update = ut.getFullYear() + "-" + (ut.getMonth()+1) + "-" + ut.getDate() + " " + ut.getHours() + ":" + ut.getMinutes();
-            	if(review.review_update != null) {
+            	if (review.review_update != null) {
             		a += '<div class="reviewbox">';
                     a += '<div class="reviewArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
-                    a += '<div class="reviewInfo'+review.review_no+'">'+'작성자 : '+review.review_id+' ㅣ 작성일 : '+ date +' ㅣ 수정일 : '+update + " ㅣ ";
+                    a += '<div class="reviewInfo' + review.review_no + '">'+'작성자 : ' + review.review_id + ' ㅣ 작성일 : ' + date + ' ㅣ 수정일 : ' + update + " ㅣ ";
                     a += '<div class="starRev">';
     	  			a += '<span class="starR1" id="s1"><input type="hidden" value="1"/></span>';
       				a += '<span class="starR2" id="s2"><input type="hidden" value="2"/></span>';
@@ -61,10 +59,10 @@ function review(){
     		  		a += '<span class="starR2" id="s10"><input type="hidden" value="10"/></span>';
     				a += '<input type="hidden" class="starList" value="' + review.review_star + '"/>';
     				a += '</div>';
-                    a += '<div class="reviewContent'+review.review_no+'"> <p>'+review.review_content +'</p></div>';
-                    if(review.review_id == member_id) {
-                         a += '<a onclick="reviewUpdate('+review.review_no+',\''+review.review_content +'\');"> 수정 ㅣ  </a>';
-                         a += '<a onclick="reviewDelete('+review.review_no+');"> 삭제 </a>';
+                    a += '<div class="reviewContent' + review.review_no+'"> <p>'+review.review_content + '</p></div>';
+                    if (review.review_id == member_id) {
+                         a += '<a onclick="reviewUpdate(' + review.review_no + ',\'' + review.review_content + '\');"> 수정 ㅣ  </a>';
+                         a += '<a onclick="reviewDelete(' + review.review_no + ');"> 삭제 </a>';
                          a += '</div>';
                     }
                     a += '</div>';
@@ -86,35 +84,32 @@ function review(){
     		  		a += '<span class="starR2" id="s10"><input type="hidden" value="10"/></span>';
     				a += '<input type="hidden" class="starList" value="' + review.review_star + '"/>';
     				a += '</div><br/><br/>';
-                    a += '<div class="reviewContent'+review.review_no+'"> <p>'+review.review_content +'</p></div>';
-                    a += '<div class="reviewInfo'+review.review_no+'">'+'작성자 : '+review.review_id+' ㅣ 작성일 : '+ date +' ㅣ수정일 : '+ update;
+                    a += '<div class="reviewContent' + review.review_no + '"> <p>' + review.review_content + '</p></div>';
+                    a += '<div class="reviewInfo' + review.review_no + '">' + '작성자 : ' + review.review_id + ' ㅣ 작성일 : ' + date + ' ㅣ수정일 : ' + update;
                     if(review.review_id == member_id) {
-                        a += '<a onclick="reviewUpdate('+review.review_no+',\''+review.review_content +'\');"> 수정 ㅣ </a>';
-                        a += '<a onclick="reviewDelete('+review.review_no+');"> 삭제 </a>';
+                        a += '<a onclick="reviewUpdate(' + review.review_no + ',\'' + review.review_content + '\');"> 수정 ㅣ </a>';
+                        a += '<a onclick="reviewDelete(' + review.review_no + ');"> 삭제 </a>';
                         a += '</div>';
                    }
                     a += '</div>';
-                    a +='</div>';
+                    a += '</div>';
             	}
             });
             console.log(data);
             $(".review").html(a);
-            
         }
     });
 }
 
 function reviewInsert(insertData){
 	var creview = document.getElementsByName("creview")[0].value;
-	
-	if(creview == 'N') {
+	if (creview == 'N') {
 	    $.ajax({
-	        url : '/onsoo/reviewInsert.do',
+	        url : '/onsu/reviewInsert',
 	        type : 'post',
 	        data : insertData,
 	        success : function(data){
-	        	
-	            if(data == 1) {
+	            if (data == 1) {
 	                review(); //댓글 작성 후 댓글 목록 reload
 	                $('[name=review_content]').val('');
 	            }
@@ -126,57 +121,40 @@ function reviewInsert(insertData){
 	}
 }
 
-
 function reviewUpdate(review_no, review_content){
-    var a ='';
-    
+    var a = '';
     a += '<div class="input-group">';
-    a += '<input type="text" class="form-control" name="review_content_'+review_no+'" value="'+review_content+'"/>';//체크!!
-    a += '<span class="input-group-btn"><button class="btn btn-default" type="button" onclick="reviewUpdateProc('+review_no+');">수정</button> </span>';
+    a += '<input type="text" class="form-control" name="review_content_' + review_no + '" value="' + review_content + '"/>';//체크!!
+    a += '<span class="input-group-btn"><button class="btn btn-default" type="button" onclick="reviewUpdateProc(' + review_no + ');">수정</button> </span>';
     a += '</div>';
-    
     $('.reviewContent'+review_no).html(a);
-    
 }
 
-
 function reviewUpdateProc(review_no){
-    var updateContent = $('[name=review_content_'+review_no+']').val();//체크!!
-    
+    var updateContent = $('[name=review_content_' + review_no + ']').val();//체크!!
     $.ajax({
-        url : '/onsoo/reviewUpdate.do',
+        url : '/onsu/reviewUpdate',
         type : 'post',
         data : {'review_content' : updateContent, 'review_no' : review_no, 'member_id' : member_id},
         success : function(data){
-            if(data == 1) review(review_classno); //댓글 수정후 목록 출력 
+            if (data == 1) review(review_classno); //댓글 수정후 목록 출력 
         }
     });
 }
 
-
 function reviewDelete(review_no){
     $.ajax({
-        url : '/onsoo/reviewDelete.do',
+        url : '/onsu/reviewDelete',
         type : 'post',
         data : {'review_no' : review_no, "member_id" : member_id},
         success : function(data){
-            if(data == 1) review(review_classno); //댓글 삭제후 목록 출력 
+            if (data == 1) review(review_classno); //댓글 삭제후 목록 출력 
         }
     }, location.reload());
 }
- 
  
 $(document).ready(function(){
     review(); //페이지 로딩시 댓글 목록 출력 
 });
 
-
-
 </script>
-
-
-
-
-
-
-

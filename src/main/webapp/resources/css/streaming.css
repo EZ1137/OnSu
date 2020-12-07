@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 :root {
-	font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 	
   /* Color */
   --color-white: #ffffff;
@@ -40,6 +40,7 @@ header {
 
 section {
 	width: 100%;
+	height: 100vh;
 	padding-top: 100px;
 }
 
@@ -49,7 +50,7 @@ section {
 	width: 70%;
 	height: 50px;
 	float: center;
-	background-color: var(--color-light-white);
+	background-color: var(--color-white);
 	filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.1));
 	border-radius: 10px;
 }
@@ -76,17 +77,31 @@ section {
   box-sizing: border-box;
 }
 
-#localvideo {
-	float : left;
-	margin-right: 20px;
+.videozone {
+	width: 70%;
+	margin: 0 auto 40px auto;
 }
 
-#btn-open {
+video {
+	width: 100%;
+	margin: auto;
+}
+
+#localvideo {
+	width: 49%;
+	margin-right: 2%;
+}
+
+#remotevideo {
+	width: 49%;
+}
+
+#open-or-join {
 	margin-left: 10px;
 }
 
-#inputmenu > button {
-	width: 50px; 
+.roombtn {
+	width: 100px; 
 	height: 26px; 
 	background: var(--color-white);
 	color: var(--color-dark-grey);
@@ -96,7 +111,7 @@ section {
 	box-shadow: var(--btn-shadow);
 }
 
-#inputmenu > button:hover {
+.roombtn:hover {
 	border: none;
 	background-color: var(--color-orange);
 	color: var(--color-black);
